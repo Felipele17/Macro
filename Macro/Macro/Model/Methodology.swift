@@ -1,8 +1,11 @@
 //
-//  Perfil.swift
+//  Methodology.swift
 //  Macro
 //
 //  Created by Vitor Cheung on 02/09/22.
 //
 
 import Foundation
+struct MethodologySpent{
+    var values: [Int]
+}

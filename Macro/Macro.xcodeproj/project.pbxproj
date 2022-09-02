@@ -29,9 +29,12 @@
 		06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalModelView.swift */; };
 		06449C4028C29E8300035324 /* SettingsModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3F28C29E8300035324 /* SettingsModelView.swift */; };
 		06449C4228C29EA400035324 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4128C29EA400035324 /* Meta.swift */; };
-		06449C4428C29EB400035324 /* Gasto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4328C29EB400035324 /* Gasto.swift */; };
-		06449C4628C29EC000035324 /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4528C29EC000035324 /* Perfil.swift */; };
+		06449C4428C29EB400035324 /* Spent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4328C29EB400035324 /* Spent.swift */; };
+		06449C4628C29EC000035324 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4528C29EC000035324 /* User.swift */; };
 		06449C4828C29F1100035324 /* CloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4728C29F1100035324 /* CloudModel.swift */; };
+		06449C4B28C2A19000035324 /* CategoriaMetaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4A28C2A19000035324 /* CategoriaMetaEnum.swift */; };
+		06449C4D28C2A2DC00035324 /* CategoriaGastoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4C28C2A2DC00035324 /* CategoriaGastoEnum.swift */; };
+		06449C5028C2A45C00035324 /* Methodology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* Methodology.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +80,12 @@
 		06449C3D28C29E5D00035324 /* GoalModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModelView.swift; sourceTree = "<group>"; };
 		06449C3F28C29E8300035324 /* SettingsModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModelView.swift; sourceTree = "<group>"; };
 		06449C4128C29EA400035324 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
-		06449C4328C29EB400035324 /* Gasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gasto.swift; sourceTree = "<group>"; };
-		06449C4528C29EC000035324 /* Perfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
+		06449C4328C29EB400035324 /* Spent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spent.swift; sourceTree = "<group>"; };
+		06449C4528C29EC000035324 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		06449C4728C29F1100035324 /* CloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudModel.swift; sourceTree = "<group>"; };
+		06449C4A28C2A19000035324 /* CategoriaMetaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaMetaEnum.swift; sourceTree = "<group>"; };
+		06449C4C28C2A2DC00035324 /* CategoriaGastoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaGastoEnum.swift; sourceTree = "<group>"; };
+		06449C4F28C2A45C00035324 /* Methodology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methodology.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,10 +200,12 @@
 		06449C1928C2994800035324 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4928C29F2500035324 /* Cloud */,
 				06449C4128C29EA400035324 /* Meta.swift */,
-				06449C4328C29EB400035324 /* Gasto.swift */,
-				06449C4528C29EC000035324 /* Perfil.swift */,
+				06449C4328C29EB400035324 /* Spent.swift */,
+				06449C4528C29EC000035324 /* User.swift */,
+				06449C4F28C2A45C00035324 /* Methodology.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +315,15 @@
 				06449C4728C29F1100035324 /* CloudModel.swift */,
 			);
 			path = Cloud;
+			sourceTree = "<group>";
+		};
+		06449C4E28C2A2E000035324 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				06449C4C28C2A2DC00035324 /* CategoriaGastoEnum.swift */,
+				06449C4A28C2A19000035324 /* CategoriaMetaEnum.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,7 +481,7 @@
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
 				06449C4028C29E8300035324 /* SettingsModelView.swift in Sources */,
-				06449C4628C29EC000035324 /* Perfil.swift in Sources */,
+				06449C4628C29EC000035324 /* User.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */,
@@ -472,12 +489,15 @@
 				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
 				06449C3828C29E1800035324 /* InputModelView.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
+				06449C5028C2A45C00035324 /* Methodology.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
-				06449C4428C29EB400035324 /* Gasto.swift in Sources */,
+				06449C4428C29EB400035324 /* Spent.swift in Sources */,
+				06449C4D28C2A2DC00035324 /* CategoriaGastoEnum.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
 				06449C4228C29EA400035324 /* Meta.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentModelView.swift in Sources */,
+				06449C4B28C2A19000035324 /* CategoriaMetaEnum.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
 				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
 			);
