@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct GoalsView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
@@ -17,6 +17,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        GoalsView()
     }
 }

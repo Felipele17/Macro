@@ -8,13 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		06449BEB28C2921E00035324 /* MacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449BEA28C2921E00035324 /* MacroApp.swift */; };
-		06449BED28C2921E00035324 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449BEC28C2921E00035324 /* ContentView.swift */; };
+		06449BED28C2921E00035324 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449BEC28C2921E00035324 /* GoalsView.swift */; };
 		06449BEF28C2921F00035324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06449BEE28C2921F00035324 /* Assets.xcassets */; };
 		06449BF228C2921F00035324 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06449BF128C2921F00035324 /* Preview Assets.xcassets */; };
 		06449BFC28C2921F00035324 /* MacroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449BFB28C2921F00035324 /* MacroTests.swift */; };
 		06449C0628C2922000035324 /* MacroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C0528C2922000035324 /* MacroUITests.swift */; };
 		06449C0828C2922000035324 /* MacroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C0728C2922000035324 /* MacroUITestsLaunchTests.swift */; };
 		06449C1628C2957F00035324 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 06449C1528C2957F00035324 /* .swiftlint.yml */; };
+		06449C1E28C29B6600035324 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C1D28C29B6600035324 /* HomeView.swift */; };
+		06449C2028C29BCC00035324 /* SpentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C1F28C29BCC00035324 /* SpentView.swift */; };
+		06449C2228C29BFB00035324 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2128C29BFB00035324 /* SettingsView.swift */; };
+		06449C2428C29C1800035324 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2328C29C1800035324 /* InputView.swift */; };
+		06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2528C29C2B00035324 /* OnBoardingView.swift */; };
+		06449C2828C29C4700035324 /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2728C29C4700035324 /* GoalCardView.swift */; };
+		06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2928C29C5D00035324 /* SpentsCardView.swift */; };
+		06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */; };
+		06449C3828C29E1800035324 /* InputModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3728C29E1800035324 /* InputModelView.swift */; };
+		06449C3A28C29E2200035324 /* HomeModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3928C29E2200035324 /* HomeModelView.swift */; };
+		06449C3C28C29E4100035324 /* SpentModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3B28C29E4100035324 /* SpentModelView.swift */; };
+		06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalModelView.swift */; };
+		06449C4028C29E8300035324 /* SettingsModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3F28C29E8300035324 /* SettingsModelView.swift */; };
+		06449C4228C29EA400035324 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4128C29EA400035324 /* Meta.swift */; };
+		06449C4428C29EB400035324 /* Gasto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4328C29EB400035324 /* Gasto.swift */; };
+		06449C4628C29EC000035324 /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4528C29EC000035324 /* Perfil.swift */; };
+		06449C4828C29F1100035324 /* CloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4728C29F1100035324 /* CloudModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +54,7 @@
 /* Begin PBXFileReference section */
 		06449BE728C2921E00035324 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06449BEA28C2921E00035324 /* MacroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroApp.swift; sourceTree = "<group>"; };
-		06449BEC28C2921E00035324 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		06449BEC28C2921E00035324 /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
 		06449BEE28C2921F00035324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06449BF128C2921F00035324 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		06449BF728C2921F00035324 /* MacroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +63,23 @@
 		06449C0528C2922000035324 /* MacroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroUITests.swift; sourceTree = "<group>"; };
 		06449C0728C2922000035324 /* MacroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		06449C1528C2957F00035324 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		06449C1D28C29B6600035324 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		06449C1F28C29BCC00035324 /* SpentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentView.swift; sourceTree = "<group>"; };
+		06449C2128C29BFB00035324 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		06449C2328C29C1800035324 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		06449C2528C29C2B00035324 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		06449C2728C29C4700035324 /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
+		06449C2928C29C5D00035324 /* SpentsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCardView.swift; sourceTree = "<group>"; };
+		06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsDetailsCardView.swift; sourceTree = "<group>"; };
+		06449C3728C29E1800035324 /* InputModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputModelView.swift; sourceTree = "<group>"; };
+		06449C3928C29E2200035324 /* HomeModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModelView.swift; sourceTree = "<group>"; };
+		06449C3B28C29E4100035324 /* SpentModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentModelView.swift; sourceTree = "<group>"; };
+		06449C3D28C29E5D00035324 /* GoalModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModelView.swift; sourceTree = "<group>"; };
+		06449C3F28C29E8300035324 /* SettingsModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModelView.swift; sourceTree = "<group>"; };
+		06449C4128C29EA400035324 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
+		06449C4328C29EB400035324 /* Gasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gasto.swift; sourceTree = "<group>"; };
+		06449C4528C29EC000035324 /* Perfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
+		06449C4728C29F1100035324 /* CloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,19 +132,21 @@
 			isa = PBXGroup;
 			children = (
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
-				06449BEC28C2921E00035324 /* ContentView.swift */,
-				06449BEE28C2921F00035324 /* Assets.xcassets */,
-				06449BF028C2921F00035324 /* Preview Content */,
+				06449C1928C2994800035324 /* Model */,
+				06449C1828C2993C00035324 /* ModelView */,
+				06449C1728C2993300035324 /* View */,
+				06449BF028C2921F00035324 /* Assets */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
 		};
-		06449BF028C2921F00035324 /* Preview Content */ = {
+		06449BF028C2921F00035324 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				06449BF128C2921F00035324 /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		06449BFA28C2921F00035324 /* MacroTests */ = {
@@ -128,6 +164,149 @@
 				06449C0728C2922000035324 /* MacroUITestsLaunchTests.swift */,
 			);
 			path = MacroUITests;
+			sourceTree = "<group>";
+		};
+		06449C1728C2993300035324 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06449C2F28C29CF300035324 /* onboarding */,
+				06449C2E28C29CE700035324 /* input */,
+				06449C2D28C29CC700035324 /* Settings */,
+				06449C2C28C29CA000035324 /* Home */,
+				06449C2B28C29C9200035324 /* Goals */,
+				06449C1C28C29B3300035324 /* Spent */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06449C1828C2993C00035324 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				06449C3728C29E1800035324 /* InputModelView.swift */,
+				06449C3928C29E2200035324 /* HomeModelView.swift */,
+				06449C3B28C29E4100035324 /* SpentModelView.swift */,
+				06449C3D28C29E5D00035324 /* GoalModelView.swift */,
+				06449C3F28C29E8300035324 /* SettingsModelView.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		06449C1928C2994800035324 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06449C4928C29F2500035324 /* Cloud */,
+				06449C4128C29EA400035324 /* Meta.swift */,
+				06449C4328C29EB400035324 /* Gasto.swift */,
+				06449C4528C29EC000035324 /* Perfil.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06449C1B28C29B2900035324 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				06449C2728C29C4700035324 /* GoalCardView.swift */,
+				06449C2928C29C5D00035324 /* SpentsCardView.swift */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		06449C1C28C29B3300035324 /* Spent */ = {
+			isa = PBXGroup;
+			children = (
+				06449C1F28C29BCC00035324 /* SpentView.swift */,
+				06449C3028C29D0E00035324 /* elements */,
+			);
+			path = Spent;
+			sourceTree = "<group>";
+		};
+		06449C2B28C29C9200035324 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				06449BEC28C2921E00035324 /* GoalsView.swift */,
+				06449C3328C29D7300035324 /* elements */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		06449C2C28C29CA000035324 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				06449C1D28C29B6600035324 /* HomeView.swift */,
+				06449C1B28C29B2900035324 /* elements */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		06449C2D28C29CC700035324 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				06449C2128C29BFB00035324 /* SettingsView.swift */,
+				06449C3428C29D8700035324 /* elements */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		06449C2E28C29CE700035324 /* input */ = {
+			isa = PBXGroup;
+			children = (
+				06449C2328C29C1800035324 /* InputView.swift */,
+				06449C3528C29D9300035324 /* elements */,
+			);
+			path = input;
+			sourceTree = "<group>";
+		};
+		06449C2F28C29CF300035324 /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				06449C3628C29D9E00035324 /* elements */,
+				06449C2528C29C2B00035324 /* OnBoardingView.swift */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
+		06449C3028C29D0E00035324 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		06449C3328C29D7300035324 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		06449C3428C29D8700035324 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		06449C3528C29D9300035324 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		06449C3628C29D9E00035324 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = elements;
+			sourceTree = "<group>";
+		};
+		06449C4928C29F2500035324 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				06449C4728C29F1100035324 /* CloudModel.swift */,
+			);
+			path = Cloud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,8 +461,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06449BED28C2921E00035324 /* ContentView.swift in Sources */,
+				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
+				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
+				06449C4028C29E8300035324 /* SettingsModelView.swift in Sources */,
+				06449C4628C29EC000035324 /* Perfil.swift in Sources */,
+				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
+				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
+				06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */,
+				06449C3A28C29E2200035324 /* HomeModelView.swift in Sources */,
+				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
+				06449C3828C29E1800035324 /* InputModelView.swift in Sources */,
+				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
+				06449C2428C29C1800035324 /* InputView.swift in Sources */,
+				06449C4428C29EB400035324 /* Gasto.swift in Sources */,
+				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
+				06449C4228C29EA400035324 /* Meta.swift in Sources */,
+				06449C3C28C29E4100035324 /* SpentModelView.swift in Sources */,
+				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
+				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
