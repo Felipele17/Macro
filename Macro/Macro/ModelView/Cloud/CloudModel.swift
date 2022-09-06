@@ -22,4 +22,24 @@ class CloudKitModel {
         databaseShared = container.sharedCloudDatabase
     }
     
+    //MARK: Post
+    func post(recordType: String, model: DataModelProtocol) async throws {
+
+        let recordId = CKRecord.ID(recordName: model.getID().description, zoneID:  SharedZone.ZoneID)
+        let record = CKRecord(recordType: recordType, recordID: recordId)
+        let properties = model.getProperties()
+        let propertiesdata = model.getData()
+        for  propertie in properties {
+            if let dataInt = propertiesdata[propertie] as? Int {
+                record[propertie] =  dataInt as CKRecordValue
+            }else if let dataString = propertiesdata[propertie] as? String{
+                record[propertie] =  dataString as CKRecordValue
+            }
+        }
+        do {
+            try await container.privateCloudDatabase.save(record)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

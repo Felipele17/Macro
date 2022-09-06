@@ -7,7 +7,7 @@
 
 import Foundation
 
-class User {
+struct User {
     var name: String
     var income: Int
     var methodologySpent: MethodologySpent

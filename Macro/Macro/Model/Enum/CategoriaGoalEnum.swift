@@ -6,6 +6,6 @@
 //
 
 import Foundation
-enum CategoriaMeta: String {
+enum CategoryGoal: String {
     case work = "trabalho"
 }
