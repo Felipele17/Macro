@@ -36,6 +36,7 @@
 		06449C4D28C2A2DC00035324 /* CategoriaGastoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4C28C2A2DC00035324 /* CategoriaGastoEnum.swift */; };
 		06449C5028C2A45C00035324 /* Methodology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* Methodology.swift */; };
 		06449C5528C2A66800035324 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06449C5428C2A66800035324 /* CloudKit.framework */; };
+		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		06449C5128C2A65500035324 /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
 		06449C5228C2A65B00035324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06449C5428C2A66800035324 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,21 +148,21 @@
 				06449C5228C2A65B00035324 /* Info.plist */,
 				06449C5128C2A65500035324 /* Macro.entitlements */,
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
+				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				06449C1928C2994800035324 /* Model */,
 				06449C1828C2993C00035324 /* ModelView */,
 				06449C1728C2993300035324 /* View */,
-				06449BF028C2921F00035324 /* Assets */,
+				06449BF028C2921F00035324 /* Preview Content */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
 		};
-		06449BF028C2921F00035324 /* Assets */ = {
+		06449BF028C2921F00035324 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				06449BF128C2921F00035324 /* Preview Assets.xcassets */,
 			);
-			path = Assets;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		06449BFA28C2921F00035324 /* MacroTests */ = {
@@ -196,6 +198,7 @@
 		06449C1828C2993C00035324 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				06449C4928C29F2500035324 /* Cloud */,
 				06449C3728C29E1800035324 /* InputModelView.swift */,
 				06449C3928C29E2200035324 /* HomeModelView.swift */,
 				06449C3B28C29E4100035324 /* SpentModelView.swift */,
@@ -209,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				06449C4E28C2A2E000035324 /* Enum */,
-				06449C4928C29F2500035324 /* Cloud */,
 				06449C4128C29EA400035324 /* Meta.swift */,
 				06449C4328C29EB400035324 /* Spent.swift */,
 				06449C4528C29EC000035324 /* User.swift */,
@@ -330,6 +332,7 @@
 			children = (
 				06449C4C28C2A2DC00035324 /* CategoriaGastoEnum.swift */,
 				06449C4A28C2A19000035324 /* CategoriaMetaEnum.swift */,
+				0688A9D128C7B7B2001044A6 /* SharedZone.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				06449C3828C29E1800035324 /* InputModelView.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				06449C5028C2A45C00035324 /* Methodology.swift in Sources */,
+				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,

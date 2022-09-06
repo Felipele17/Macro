@@ -7,14 +7,14 @@
 
 import Foundation
 
-class User{
-    var name : String
-    var income : Int
-    var MethodologySpent : MethodologySpent
+class User {
+    var name: String
+    var income: Int
+    var methodologySpent: MethodologySpent
     
-    init(name:String, income:Int, MethodologySpent:MethodologySpent){
+    init(name: String, income: Int, methodologySpent: MethodologySpent) {
         self.name = name
         self.income = income
-        self.MethodologySpent = MethodologySpent
+        self.methodologySpent = methodologySpent
     }
 }
