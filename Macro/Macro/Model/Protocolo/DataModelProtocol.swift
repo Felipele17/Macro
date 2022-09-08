@@ -6,9 +6,11 @@
 //
 
 import Foundation
-protocol DataModelProtocol{
+import CloudKit
+protocol DataModelProtocol {
     func getType() -> String
     func getID() -> UUID
     func getProperties() -> [String]
     func getData() -> [String: Any]
+    init?(record: CKRecord)
 }

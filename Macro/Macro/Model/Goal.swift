@@ -6,21 +6,39 @@
 //
 
 import Foundation
+import CloudKit
 
 struct Goal: DataModelProtocol {
 
-    var ID: UUID
+    var idName: UUID
     var title: String
     var value: Int
     var check: Int
-    var categoria: CategoryGoal
+    var category: CategoryGoal
     
-    init(title: String, value: Int, check:Int, categoria: CategoryGoal) {
-        self.ID = UUID()
+    init(title: String, value: Int, check: Int, category: CategoryGoal) {
+        self.idName = UUID()
         self.title = title
         self.value = value
-        self.categoria = categoria
+        self.category = category
         self.check = check
+    }
+    
+    init?(record: CKRecord) {
+        guard let  idName = record["recordName"] as? String else { return nil }
+        guard let  title = record["title"] as? String else { return nil }
+        guard let  value = record["value"] as? Int else { return nil }
+        guard let  check = record["check"] as? Int else { return nil }
+        guard let  category = record["category"] as? String else { return nil }
+        
+        guard let idName = UUID(uuidString: idName) else { return nil }
+        guard let category = CategoryGoal.init(rawValue: category) else { return nil }
+        
+        self.idName = idName
+        self.category = category
+        self.check = check
+        self.title = title
+        self.value = value
     }
     
     func getType() -> String {
@@ -28,15 +46,15 @@ struct Goal: DataModelProtocol {
     }
     
     func getID() -> UUID {
-        return ID
+        return idName
     }
     
     func getProperties() -> [String] {
-        return["title","value","check","categoria"]
+        return["title", "value", "check", "category"]
     }
     
-    func getData() -> [String : Any] {
-        return["title":title,"value":value,"check":check,"categoria":categoria.rawValue]
+    func getData() -> [String: Any] {
+        return["title": title, "value": value, "check": check, "category": category.rawValue]
     }
 
 }
