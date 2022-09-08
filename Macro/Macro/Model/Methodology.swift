@@ -6,6 +6,6 @@
 //
 
 import Foundation
-struct MethodologySpent{
+struct MethodologySpent {
     var values: [Int]
 }

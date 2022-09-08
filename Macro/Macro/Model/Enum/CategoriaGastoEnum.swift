@@ -6,6 +6,6 @@
 //
 
 import Foundation
-enum CategoriaSpent:String{
+enum CategorySpent: String {
     case work = "trabalho"
 }
