@@ -14,7 +14,7 @@ struct SpentsDetailsCardView: View {
                 Color.brown
                     .cornerRadius(10)
                 Image(systemName: "car.fill")
-            }.frame(width: 60, height: 60, alignment: .leading)
+            }.frame(width: UIScreen.screenWidth/9, height: UIScreen.screenWidth/9, alignment: .leading)
             VStack {
                 Text("Roda carro")
                 Text("25/09/2021")

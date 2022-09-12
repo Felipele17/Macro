@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SpentView: View {
     var body: some View {
-        NavigationView {
             VStack {
                 Text("Gasto atual")
                     .font(.title)
@@ -49,8 +48,14 @@ struct SpentView: View {
             }
             .navigationTitle("Essencial")
             .navigationBarTitleDisplayMode(.inline)
-            
-        }
+            .toolbar {
+                Button(role: nil) {
+                    print("editar")
+                } label: {
+                    Text("editar")
+                        .tint(.blue)
+                }
+            }
     }
 }
 

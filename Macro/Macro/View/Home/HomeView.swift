@@ -51,7 +51,7 @@ struct HomeView: View {
                 }
                 VStack {
                     ForEach(viewCardSpends) { spends in
-                        NavigationLink(destination: SettingsView()) {
+                        NavigationLink(destination: SpentView()) {
                             spends
                                 .padding()
                         }
