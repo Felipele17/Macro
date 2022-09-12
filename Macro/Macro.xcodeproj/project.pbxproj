@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FFD6228CBD66C003F9FDA /* CarouselView.swift */; };
 		06449BEB28C2921E00035324 /* MacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449BEA28C2921E00035324 /* MacroApp.swift */; };
 		06449BED28C2921E00035324 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449BEC28C2921E00035324 /* GoalsView.swift */; };
 		06449BEF28C2921F00035324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06449BEE28C2921F00035324 /* Assets.xcassets */; };
@@ -36,6 +37,8 @@
 		06449C4D28C2A2DC00035324 /* CategoriaGastoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4C28C2A2DC00035324 /* CategoriaGastoEnum.swift */; };
 		06449C5028C2A45C00035324 /* Methodology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* Methodology.swift */; };
 		06449C5528C2A66800035324 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06449C5428C2A66800035324 /* CloudKit.framework */; };
+		065E258528CFAD3C00EEAFAD /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258428CFAD3C00EEAFAD /* CarouselViewModel.swift */; };
+		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061FFD6228CBD66C003F9FDA /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		06449BE728C2921E00035324 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06449BEA28C2921E00035324 /* MacroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroApp.swift; sourceTree = "<group>"; };
 		06449BEC28C2921E00035324 /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 		06449C5128C2A65500035324 /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
 		06449C5228C2A65B00035324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06449C5428C2A66800035324 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		065E258428CFAD3C00EEAFAD /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
+		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +193,7 @@
 		06449C1728C2993300035324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				06449C2F28C29CF300035324 /* onboarding */,
 				06449C2E28C29CE700035324 /* input */,
 				06449C2D28C29CC700035324 /* Settings */,
@@ -200,9 +207,9 @@
 		06449C1828C2993C00035324 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
 				06449C3728C29E1800035324 /* InputModelView.swift */,
-				06449C3928C29E2200035324 /* HomeModelView.swift */,
 				06449C3B28C29E4100035324 /* SpentModelView.swift */,
 				06449C3D28C29E5D00035324 /* GoalModelView.swift */,
 				06449C3F28C29E8300035324 /* SettingsModelView.swift */,
@@ -228,6 +235,7 @@
 			children = (
 				06449C2728C29C4700035324 /* GoalCardView.swift */,
 				06449C2928C29C5D00035324 /* SpentsCardView.swift */,
+				061FFD6228CBD66C003F9FDA /* CarouselView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -346,6 +354,15 @@
 				06449C5428C2A66800035324 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		065E258328CFAD1A00EEAFAD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				06449C3928C29E2200035324 /* HomeModelView.swift */,
+				065E258428CFAD3C00EEAFAD /* CarouselViewModel.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		0688A9D528C7D62F001044A6 /* Protocolo */ = {
@@ -518,7 +535,10 @@
 				06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeModelView.swift in Sources */,
 				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
+				065E258528CFAD3C00EEAFAD /* CarouselViewModel.swift in Sources */,
+				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				06449C3828C29E1800035324 /* InputModelView.swift in Sources */,
+				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				06449C5028C2A45C00035324 /* Methodology.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
