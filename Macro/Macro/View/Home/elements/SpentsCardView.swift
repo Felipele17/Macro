@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SpentsCardView: View {
+struct SpentsCardView: View{
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
