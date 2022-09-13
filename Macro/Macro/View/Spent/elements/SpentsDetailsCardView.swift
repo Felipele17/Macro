@@ -9,7 +9,20 @@ import SwiftUI
 
 struct SpentsDetailsCardView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            ZStack {
+                Color.brown
+                    .cornerRadius(10)
+                Image(systemName: "car.fill")
+            }.frame(width: UIScreen.screenWidth/9, height: UIScreen.screenWidth/9, alignment: .leading)
+            VStack {
+                Text("Roda carro")
+                Text("25/09/2021")
+            }
+            Spacer()
+            Text("R$199,99")
+                .padding()
+        }
     }
 }
 
