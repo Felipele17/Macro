@@ -50,6 +50,14 @@ struct GoalsView: View {
             }
         }
         .navigationTitle("Carro Novo")
+        .toolbar {
+            Button(role: nil) {
+                print("add configuração")
+            } label: {
+                Text("editar")
+                    .tint(.blue)
+            }
+        }
     }
 }
 
