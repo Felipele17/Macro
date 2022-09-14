@@ -8,10 +8,54 @@
 import SwiftUI
 
 struct GoalsView: View {
+    
+    @State private var selectFilter = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-        
+        VStack {
+            GraphView()
+                .cornerRadius(cornerRadiusNumber())
+                .shadow(radius: cornerRadiusNumber())
+                .frame(height: UIScreen.screenHeight/4)
+                .padding()
+            ZStack {
+                Color.white
+                    .cornerRadius(cornerRadiusNumber())
+                    .shadow(radius: cornerRadiusNumber())
+                VStack {
+                    Text("Faltam R$19500,00")
+                        .font(.title3)
+                        .bold()
+                    Text("de R$20000,00")
+                }
+            }
+            .frame(height: UIScreen.screenHeight/8)
+            .padding([.leading, .trailing, .bottom])
+            VStack {
+                Picker("Qual filtro voce?", selection: $selectFilter) {
+                    Text("Todos").tag(0)
+                    Text("Á fazer").tag(1)
+                    Text("Concluído").tag(2)
+                }
+                .pickerStyle(.segmented)
+                .padding([.leading, .trailing])
+                List {
+                    WeakGoalsView()
+                        .listRowBackground(Color.indigo)
+                        .colorInvert()
+                    WeakGoalsView()
+                    WeakGoalsView()
+                    WeakGoalsView()
+                }
+            }
+        }
+        .navigationTitle("Carro Novo")
+    }
+}
+
+extension GoalsView {
+    private func cornerRadiusNumber() -> CGFloat {
+        return 10
     }
 }
 
