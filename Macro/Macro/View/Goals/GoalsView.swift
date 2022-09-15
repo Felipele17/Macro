@@ -13,11 +13,20 @@ struct GoalsView: View {
     
     var body: some View {
         VStack {
-            GraphView()
-                .cornerRadius(cornerRadiusNumber())
-                .shadow(radius: cornerRadiusNumber())
-                .frame(height: UIScreen.screenHeight/4)
-                .padding()
+            ZStack {
+                Color.white
+                    .cornerRadius(cornerRadiusNumber())
+                    .shadow(radius: cornerRadiusNumber())
+                    .padding([.leading, .trailing, .bottom])
+                GraphView(chartPieViewModel: ChartPieViewModel(
+                    chartDatas: [ChartData(color: .green, value: 100),
+                                ChartData(color: .cyan, value: 50)]
+                    )
+                )
+                    .offset(x: 0, y: UIScreen.screenHeight/20)
+
+            }
+            .frame(height: UIScreen.screenHeight/3)
             ZStack {
                 Color.white
                     .cornerRadius(cornerRadiusNumber())
