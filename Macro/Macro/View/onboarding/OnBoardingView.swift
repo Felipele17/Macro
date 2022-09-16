@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    
-    @State private var onboardingPage: Int = 0
-    private let pages: [OnBoarding] = OnBoarding.onboardingPages
+    @State var onboardingPage: Int = 0
+    @ObservedObject private var viewModel = OnBoardingStateModelView()
     private let dotAppearance = UIPageControl.appearance()
     
     var textButton: String = ButtonText.nextButton.rawValue
@@ -22,45 +21,33 @@ struct OnBoardingView: View {
                 Spacer()
                 SkipButton(skipButton: ButtonText.skip.rawValue)
             }
-            Group {
-                TabView(selection: $onboardingPage) {
-                    ForEach(pages) { page in
+            TabView(selection: $onboardingPage) {
+                    ForEach(viewModel.pages) { page in
                         VStack {
                             Spacer()
                             ImageView(onboarding: page)
-                            Spacer()
-                            if page == pages.last {
-                                
-                                NextButton(actionButton: {
-                                    print("share button pressed")
-                                }, textButton: ButtonText.shareButton.rawValue)
-                            } else {
-                                
-                                NextButton(actionButton: {
-                                    incrementPage()
-                                    print("next button pressed")
-                                }, textButton: textButton)
-                            }
                             Spacer()
                         }
                         .tag(page.tag)
                     }
                 }
-                .animation(.easeInOut, value: onboardingPage)
+            .animation(.easeInOut, value: onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(PageTabViewStyle())
                 .onAppear {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(Color("dotShowing"))
                     dotAppearance.pageIndicatorTintColor = UIColor(Color("dotNotShowing"))
                 }
+            viewModel.buttonOnBoarding(onboardingPage: onboardingPage) {
+                onboardingPage += 1
+            } actionCompartilhar: {
+                print("compartilhar")
             }
+
+            Spacer()
         }
         .padding(24)
         .background(Color("onboardingBackground"))
-    }
-    
-    func incrementPage() {
-        onboardingPage += 1
     }
 
 }

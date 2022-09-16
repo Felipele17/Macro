@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OnBoarding: Identifiable, Hashable {
+struct OnBoarding: Identifiable, Hashable, Equatable {
     let id = UUID()
     var imageName: String
     var title: String
@@ -21,3 +21,4 @@ struct OnBoarding: Identifiable, Hashable {
         OnBoarding(imageName: ImageName.invitePhone.rawValue, title: OnBoardingText.titleInviteScreen.rawValue, description: OnBoardingText.inviteScreen.rawValue, tag: 3)
     ]
 }
+

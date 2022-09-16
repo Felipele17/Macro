@@ -25,9 +25,6 @@ struct NextButton: View {
                 .frame(maxWidth: .infinity)
                 .background(Color("button"))
                 .cornerRadius(13)
-//                .onTapGesture {
-//                    print("onTapGesture")
-//                }
         }
 
     }

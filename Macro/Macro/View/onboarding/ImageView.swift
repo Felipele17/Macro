@@ -14,17 +14,28 @@ struct ImageView: View {
     var body: some View {
              
         VStack {
-            Image(self.onboarding.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-            Text(onboarding.title)
-                .fontWeight(.bold)
-            
-            Text(onboarding.description)
-                .frame(alignment: .bottomLeading)
-            
-            Spacer()
+            if onboarding.tag != 2 {
+                Image(self.onboarding.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Text(onboarding.title)
+                    .fontWeight(.bold)
+                
+                Text(onboarding.description)
+                    .frame(alignment: .bottomLeading)
+                
+                Spacer()
+            } else { // textfield renda mensal
+                Text(onboarding.title)
+                    .fontWeight(.bold)
+                Text(onboarding.description)
+                    .frame(alignment: .bottomLeading)
+                Spacer()
+                Image(self.onboarding.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
         }
     }
     
