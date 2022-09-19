@@ -8,40 +8,51 @@
 import Foundation
 import CloudKit
 
-struct Goal: DataModelProtocol {
+class Goal: DataModelProtocol {
 
     var idName: UUID
     var title: String
     var value: Int
-    var check: Int
-    var category: CategoryGoal
+    var weeks: Int // Reference to the weeks that are completed to complet the goal
+    var motivaton: String? // Reference the frase that is presented in the card
+    var priority: Int // Reference the priority of the goal
+    var methodologyGoal: MethodologyGoal //on iCloud this is store as a UUID
     
-    init(title: String, value: Int, check: Int, category: CategoryGoal) {
+    init(title: String, value: Int, weeks: Int, motivaton: String?, priority: Int, methodologyGoal: MethodologyGoal) {
         self.idName = UUID()
         self.title = title
         self.value = value
-        self.category = category
-        self.check = check
+        self.weeks = weeks
+        self.priority = priority
+        self.motivaton = motivaton
+        self.methodologyGoal = methodologyGoal
     }
     
-    init?(record: CKRecord) {
+    required init?(record: CKRecord) {
         guard let  idName = record["recordName"] as? String else { return nil }
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Int else { return nil }
-        guard let  check = record["check"] as? Int else { return nil }
-        guard let  category = record["category"] as? String else { return nil }
+        guard let  weeks = record["weeks"] as? Int else { return nil }
+        guard let  motivaton = record["motivaton"] as? String? else { return nil }
+        guard let  methodologyGoal = record["methodologyGoal"] as? String else { return nil } //its necessary to fecth the UUID
+        guard let  priority = record["priority"] as? Int else { return nil }
         
         guard let idName = UUID(uuidString: idName) else { return nil }
-        guard let category = CategoryGoal.init(rawValue: category) else { return nil }
         
         self.idName = idName
-        self.category = category
-        self.check = check
         self.title = title
         self.value = value
+        self.weeks = weeks
+        self.motivaton = motivaton
+        self.priority = priority
+        Task.init {
+            guard let record = try await CloudKitModel.shared.fetchByID(id: methodologyGoal, tipe: MethodologyGoal.getType()) else { return }
+            guard let methodologyGoal = MethodologyGoal(record: record) else { return }
+            self.methodologyGoal = methodologyGoal
+        }
     }
     
-    func getType() -> String {
+    static func getType() -> String {
         return "Meta"
     }
     
@@ -54,7 +65,7 @@ struct Goal: DataModelProtocol {
     }
     
     func getData() -> [String: Any] {
-        return["title": title, "value": value, "check": check, "category": category.rawValue]
+        return["title": title, "value": value, "weeks": weeks, "motivaton": motivaton ?? "", "priority":priority, "methodologyGoal": methodologyGoal]
     }
 
 }
