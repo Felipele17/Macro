@@ -16,7 +16,7 @@ class Goal: DataModelProtocol {
     var weeks: Int // Reference to the weeks that are completed to complet the goal
     var motivaton: String? // Reference the frase that is presented in the card
     var priority: Int // Reference the priority of the goal
-    var methodologyGoal: MethodologyGoal //on iCloud this is store as a UUID
+    var methodologyGoal: MethodologyGoal? //on iCloud this is store as a UUID
     
     init(title: String, value: Int, weeks: Int, motivaton: String?, priority: Int, methodologyGoal: MethodologyGoal) {
         self.idName = UUID()

@@ -15,9 +15,10 @@ class User: DataModelProtocol {
     var partner: String
     var dueData: Int
     var notification: [Int] //(→ array de index mostrando qual notificação foi ligada, [1,2] nesse caso a segunda e terceira notificação foram ligadas)
-    var methodologySpent: MethodologySpent
+    var methodologySpent: MethodologySpent?
     
-    init(name: String, income: Int, dueData:Int, partner:String, notification:[Int], methodologySpent: MethodologySpent) {
+    init(idName: UUID, name: String, income: Int, dueData:Int, partner:String, notification:[Int], methodologySpent: MethodologySpent) {
+        self.idName = idName
         self.name = name
         self.income = income
         self.partner = partner

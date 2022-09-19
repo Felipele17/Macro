@@ -136,5 +136,6 @@ class CloudKitModel {
         } catch let error {
             print(error.localizedDescription)
         }
+        return nil
     }
 }
