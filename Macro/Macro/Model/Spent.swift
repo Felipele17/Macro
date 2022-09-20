@@ -8,36 +8,43 @@
 import Foundation
 import CloudKit
 
-struct Spent: DataModelProtocol {
+class Spent: DataModelProtocol {
     
     var idName: UUID
     var title: String
     var value: Int
-    var category: CategorySpent
+    var icon: String
+    var date: Date
+    var categoryPercent: EnumCategoryPercent
     
-    init(title: String, value: Int, category: CategorySpent) {
+    init(title: String, value: Int, icon: String, date: Date, categoryPercent: EnumCategoryPercent) {
         self.idName = UUID()
         self.title = title
         self.value = value
-        self.category = category
+        self.icon = icon
+        self.date = date
+        self.categoryPercent = categoryPercent
     }
     
-    init?(record: CKRecord) {
+    required init?(record: CKRecord) {
         guard let  idName = record["recordName"] as? String else { return nil }
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Int else { return nil }
+        guard let  icon = record["icon"] as? String else { return nil }
+        guard let  date = record["date"] as? Date else { return nil }
         guard let  category = record["category"] as? String else { return nil }
-        
         guard let idName = UUID(uuidString: idName) else { return nil }
-        guard let category = CategorySpent.init(rawValue: category) else { return nil }
+        guard let categoryPercent = EnumCategoryPercent.init(rawValue: category) else { return nil }
         
         self.idName = idName
-        self.category = category
         self.title = title
         self.value = value
+        self.icon = icon
+        self.date = date
+        self.categoryPercent = categoryPercent
     }
     
-    func getType() -> String {
+    static func getType() -> String {
         return "Spent"
     }
     
@@ -50,6 +57,6 @@ struct Spent: DataModelProtocol {
     }
     
     func getData() -> [String: Any] {
-        return ["title": title, "value": value, "category": category.rawValue]
+        return ["title": title, "value": value, "icon":icon, "date":date, "categoryPercent": categoryPercent.rawValue]
     }
 }
