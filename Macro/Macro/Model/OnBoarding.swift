@@ -21,4 +21,3 @@ struct OnBoarding: Identifiable, Hashable, Equatable {
         OnBoarding(imageName: ImageName.invitePhone.rawValue, title: OnBoardingText.titleInviteScreen.rawValue, description: OnBoardingText.inviteScreen.rawValue, tag: 3)
     ]
 }
-

@@ -48,6 +48,7 @@
 		5584A45628D38FFD00EE33E5 /* OnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584A45528D38FFD00EE33E5 /* OnBoardingText.swift */; };
 		5584A45828D392A100EE33E5 /* ButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584A45728D392A100EE33E5 /* ButtonText.swift */; };
 		5584A45C28D3949600EE33E5 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584A45B28D3949600EE33E5 /* OnBoarding.swift */; };
+		55E77B1428D9134E000F40B2 /* ExpensesMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E77B1328D9134E000F40B2 /* ExpensesMethodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		5584A45528D38FFD00EE33E5 /* OnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingText.swift; sourceTree = "<group>"; };
 		5584A45728D392A100EE33E5 /* ButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonText.swift; sourceTree = "<group>"; };
 		5584A45B28D3949600EE33E5 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		55E77B1328D9134E000F40B2 /* ExpensesMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesMethodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 		06449C1728C2993300035324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55E77B1228D912BF000F40B2 /* Methodology */,
 				5511936C28D2622C008A0486 /* Elements */,
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				06449C2F28C29CF300035324 /* onboarding */,
@@ -410,6 +413,14 @@
 			path = OnBoarding;
 			sourceTree = "<group>";
 		};
+		55E77B1228D912BF000F40B2 /* Methodology */ = {
+			isa = PBXGroup;
+			children = (
+				55E77B1328D9134E000F40B2 /* ExpensesMethodView.swift */,
+			);
+			path = Methodology;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -576,6 +587,7 @@
 				06449C3A28C29E2200035324 /* HomeModelView.swift in Sources */,
 				5584A45C28D3949600EE33E5 /* OnBoarding.swift in Sources */,
 				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
+				55E77B1428D9134E000F40B2 /* ExpensesMethodView.swift in Sources */,
 				065E258528CFAD3C00EEAFAD /* CarouselViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				5511937728D269C8008A0486 /* ImageName.swift in Sources */,

@@ -11,45 +11,52 @@ struct OnBoardingView: View {
     @State var onboardingPage: Int = 0
     @ObservedObject private var viewModel = OnBoardingStateModelView()
     private let dotAppearance = UIPageControl.appearance()
-    
     var textButton: String = ButtonText.nextButton.rawValue
-   
+    
     var body: some View {
         
-        VStack {
-            HStack {
-                Spacer()
-                SkipButton(skipButton: ButtonText.skip.rawValue)
-            }
-            TabView(selection: $onboardingPage) {
+        NavigationView {
+            VStack {
+                TabView(selection: $onboardingPage) {
                     ForEach(viewModel.pages) { page in
                         VStack {
-                            Spacer()
                             ImageView(onboarding: page)
                             Spacer()
                         }
                         .tag(page.tag)
                     }
                 }
-            .animation(.easeInOut, value: onboardingPage)
+                .animation(.easeInOut, value: onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(PageTabViewStyle())
                 .onAppear {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(Color("dotShowing"))
                     dotAppearance.pageIndicatorTintColor = UIColor(Color("dotNotShowing"))
                 }
-            viewModel.buttonOnBoarding(onboardingPage: onboardingPage) {
-                onboardingPage += 1
-            } actionCompartilhar: {
-                print("compartilhar")
+                viewModel.buttonOnBoarding(onboardingPage: onboardingPage) {
+                    onboardingPage += 1
+                } actionCompartilhar: {
+                    print("compartilhar")
+                    viewModel.finishOnBoarding()
+                }
+                
             }
-
-            Spacer()
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    if onboardingPage < 2 {
+                        SkipButton(onboardingPage: $viewModel.onboardingPage, string: ButtonText.skip.rawValue)
+                    } else if onboardingPage == 2 {
+                        InfoButton(infoButton: "info.circle")
+                    }
+                }
+                
+            }
+            .padding(24)
+            .background(Color("onboardingBackground"))
         }
-        .padding(24)
-        .background(Color("onboardingBackground"))
+        
     }
-
+    
 }
 
 struct OnBoardingView_Previews: PreviewProvider {

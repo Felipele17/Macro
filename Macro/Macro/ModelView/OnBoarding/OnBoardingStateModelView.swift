@@ -11,9 +11,10 @@ import SwiftUI
 class OnBoardingStateModelView: ObservableObject {
     
     let pages: [OnBoarding] = OnBoarding.onboardingPages
-    /// fazendo o onboarding aparecer apenas uma vez no App
-    @Published var onboardingState: Bool = false
-    /// fazendo a lógica do botão e da view do onboarding
+    
+    @Published var onboardingPage: Int = 0
+    
+    @Published var onboardingState: Bool = false /// fazendo o onboarding aparecer apenas uma vez no App
         
     init() {
         if UserDefaults().bool(forKey: "State") {
@@ -28,7 +29,7 @@ class OnBoardingStateModelView: ObservableObject {
         UserDefaults().set(true, forKey: "State")
     }
     
-    func buttonOnBoarding( onboardingPage: Int, actionNext: @escaping ()->Void, actionCompartilhar: @escaping ()->Void) -> NextButton {
+    func buttonOnBoarding( onboardingPage: Int, actionNext: @escaping () -> Void, actionCompartilhar: @escaping () -> Void) -> NextButton {
         var text = ButtonText.nextButton.rawValue
         var action = actionNext
         if onboardingPage == pages.count-1 {
@@ -37,5 +38,7 @@ class OnBoardingStateModelView: ObservableObject {
         }
         return NextButton(actionButton: action, textButton: text)
     }
+    
 
 }
+

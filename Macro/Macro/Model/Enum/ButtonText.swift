@@ -11,6 +11,6 @@ enum ButtonText: String {
     
     case nextButton = "Próximo"
     case skip = "Pular"
-    case shareButton = "Compartilhe"
+    case shareButton = "Compartilhar"
     
 }

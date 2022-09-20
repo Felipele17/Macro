@@ -10,9 +10,8 @@ import SwiftUI
 
 struct NextButton: View {
     
-    var actionButton: ()-> Void
+    var actionButton: () -> Void
     var textButton: String
-    @State var onboardingPage: Int = 0
     
     var body: some View {
         Button {
@@ -32,16 +31,38 @@ struct NextButton: View {
 
 struct SkipButton: View {
     var skipButton: String
+    @Binding var onboardingPage: Int
+    
+    init(onboardingPage: Binding<Int>, string: String) {
+        self._onboardingPage = onboardingPage
+        self.skipButton = string
+    }
     
     var body: some View {
         Button {
-            print("skip view")
+            print("skip button")
+            onboardingPage = 3
         } label: {
             Text(skipButton)
-                .font(.footnote)
+                .font(.custom("SF Pro Text", fixedSize: 17))
                 .foregroundColor(.gray)
                 .padding(16)
         }
 
+    }
+}
+
+struct InfoButton: View {
+    var infoButton: String
+
+    var body: some View {
+        NavigationLink {
+            ExpensesMethodView()
+        } label: {
+            Label("Informação", systemImage: infoButton)
+                .tint(.blue)
+                .padding(.trailing)
+            .padding(.top)
+        }
     }
 }
