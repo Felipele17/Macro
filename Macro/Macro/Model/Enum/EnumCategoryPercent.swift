@@ -6,6 +6,6 @@
 //
 
 import Foundation
-enum CategoryGoal: String {
+enum EnumCategoryPercent: String {
     case work = "trabalho"
 }
