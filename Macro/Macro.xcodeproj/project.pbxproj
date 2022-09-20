@@ -28,11 +28,11 @@
 		06449C2828C29C4700035324 /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2728C29C4700035324 /* GoalCardView.swift */; };
 		06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2928C29C5D00035324 /* SpentsCardView.swift */; };
 		06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */; };
-		06449C3828C29E1800035324 /* InputModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3728C29E1800035324 /* InputModelView.swift */; };
-		06449C3A28C29E2200035324 /* HomeModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3928C29E2200035324 /* HomeModelView.swift */; };
-		06449C3C28C29E4100035324 /* SpentModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3B28C29E4100035324 /* SpentModelView.swift */; };
-		06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalModelView.swift */; };
-		06449C4028C29E8300035324 /* SettingsModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3F28C29E8300035324 /* SettingsModelView.swift */; };
+		06449C3828C29E1800035324 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3728C29E1800035324 /* InputViewModel.swift */; };
+		06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3928C29E2200035324 /* HomeViewModel.swift */; };
+		06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3B28C29E4100035324 /* SpentViewModel.swift */; };
+		06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalViewModel.swift */; };
+		06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3F28C29E8300035324 /* SettingsViewModel.swift */; };
 		06449C4228C29EA400035324 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4128C29EA400035324 /* Goal.swift */; };
 		06449C4428C29EB400035324 /* Spent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4328C29EB400035324 /* Spent.swift */; };
 		06449C4628C29EC000035324 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4528C29EC000035324 /* User.swift */; };
@@ -89,11 +89,11 @@
 		06449C2728C29C4700035324 /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		06449C2928C29C5D00035324 /* SpentsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCardView.swift; sourceTree = "<group>"; };
 		06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsDetailsCardView.swift; sourceTree = "<group>"; };
-		06449C3728C29E1800035324 /* InputModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputModelView.swift; sourceTree = "<group>"; };
-		06449C3928C29E2200035324 /* HomeModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModelView.swift; sourceTree = "<group>"; };
-		06449C3B28C29E4100035324 /* SpentModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentModelView.swift; sourceTree = "<group>"; };
-		06449C3D28C29E5D00035324 /* GoalModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModelView.swift; sourceTree = "<group>"; };
-		06449C3F28C29E8300035324 /* SettingsModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModelView.swift; sourceTree = "<group>"; };
+		06449C3728C29E1800035324 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
+		06449C3928C29E2200035324 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		06449C3B28C29E4100035324 /* SpentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentViewModel.swift; sourceTree = "<group>"; };
+		06449C3D28C29E5D00035324 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
+		06449C3F28C29E8300035324 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		06449C4128C29EA400035324 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		06449C4328C29EB400035324 /* Spent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spent.swift; sourceTree = "<group>"; };
 		06449C4528C29EC000035324 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -218,9 +218,9 @@
 				0664AF7428D2691300244EB2 /* Goal */,
 				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
-				06449C3728C29E1800035324 /* InputModelView.swift */,
-				06449C3B28C29E4100035324 /* SpentModelView.swift */,
-				06449C3F28C29E8300035324 /* SettingsModelView.swift */,
+				06449C3728C29E1800035324 /* InputViewModel.swift */,
+				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
+				06449C3F28C29E8300035324 /* SettingsViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -370,7 +370,7 @@
 		065E258328CFAD1A00EEAFAD /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				06449C3928C29E2200035324 /* HomeModelView.swift */,
+				06449C3928C29E2200035324 /* HomeViewModel.swift */,
 				065E258428CFAD3C00EEAFAD /* CarouselViewModel.swift */,
 			);
 			path = Home;
@@ -379,7 +379,7 @@
 		0664AF7428D2691300244EB2 /* Goal */ = {
 			isa = PBXGroup;
 			children = (
-				06449C3D28C29E5D00035324 /* GoalModelView.swift */,
+				06449C3D28C29E5D00035324 /* GoalViewModel.swift */,
 				063C8AA528D2661C0053054B /* ChartPieViewModel.swift */,
 			);
 			path = Goal;
@@ -549,16 +549,16 @@
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
-				06449C4028C29E8300035324 /* SettingsModelView.swift in Sources */,
+				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
-				06449C3E28C29E5D00035324 /* GoalModelView.swift in Sources */,
-				06449C3A28C29E2200035324 /* HomeModelView.swift in Sources */,
+				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
+				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
 				065E258528CFAD3C00EEAFAD /* CarouselViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
-				06449C3828C29E1800035324 /* InputModelView.swift in Sources */,
+				06449C3828C29E1800035324 /* InputViewModel.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
@@ -572,7 +572,7 @@
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
-				06449C3C28C29E4100035324 /* SpentModelView.swift in Sources */,
+				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
 				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
