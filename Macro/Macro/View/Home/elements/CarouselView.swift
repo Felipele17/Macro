@@ -16,12 +16,15 @@ struct CarouselView: View {
     var body: some View {
         ZStack {
             ForEach(viewsCells) { cell in
-                cell
-                    .frame(width: viewModel.width, height: viewModel.heigth)
-                .offset(x: viewModel.myXOffset(cell.id), y: 0)
+                NavigationLink(destination: GoalsView()){
+                    cell
+                        .frame(width: viewModel.width, height: viewModel.heigth)
+                        .offset(x: viewModel.myXOffset(cell.id), y: 0)
+                }
+
             }
         }
-        .gesture(
+        .highPriorityGesture(
             DragGesture()
                 .onChanged { value in
                     viewModel.onChange(value: value.translation.width)

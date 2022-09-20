@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SpentsCardView: View,Identifiable {
+struct SpentsCardView: View, Identifiable {
     var id: Int
     var body: some View {
         ZStack {
