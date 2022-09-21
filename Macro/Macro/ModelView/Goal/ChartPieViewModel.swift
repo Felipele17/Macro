@@ -8,13 +8,15 @@
 import Foundation
 import SwiftUI
 class ChartPieViewModel: ObservableObject {
-    @Published var chartDatas: [ChartData]
+    @Published var percents: [CGFloat] = []
+    var chartDatas: [ChartData]
     
     init(chartDatas: [ChartData]) {
         self.chartDatas = chartDatas
+        calc()
     }
     
-    func countChartData()-> Int {
+    func countChartData() -> Int {
         return chartDatas.count
     }
     
@@ -27,12 +29,13 @@ class ChartPieViewModel: ObservableObject {
     }
   
     func calc() {
-        var value : CGFloat = 0
+        var value: CGFloat = 0
         
-        for idn in 0..<chartDatas.count  {
-            chartDatas[idn].percent = chartDatas[idn].value/totalValue()
-            value += chartDatas[idn].percent
-            chartDatas[idn].percent = value
+        for idn in 0..<chartDatas.count {
+            let percent = chartDatas[idn].value/totalValue()
+            value += percent
+            percents.append(value)
+            print(value)
         }
     }
 }

@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct WeakGoalsView: View {
-
+    var title: String
+    var valor: Float
     var body: some View {
         HStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                .padding(UIScreen.screenHeight/80)
+            Label("", systemImage: "circle")
+                .font(.system(size: 36))
+                .padding(.leading)
+            Text(title)
             Spacer()
-            Text("R$200,00")
+            Text("R$\(valor)")
                 .bold()
                 .font(.title3)
-                .padding(UIScreen.screenHeight/80)
+                .padding()
         }
     }
 }
 
 struct WeakGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        WeakGoalsView()
+        WeakGoalsView(title: "carro", valor: 100.0)
     }
 }

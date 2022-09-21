@@ -12,25 +12,27 @@ struct GraphView: View {
     @ObservedObject var chartPieViewModel: ChartPieViewModel
     
     var body: some View {
-        VStack {
-            Text("26 semanas")
-                .font(.title2)
-                ZStack {
-                    ForEach(0..<chartPieViewModel.countChartData()) { index in
-                        Circle()
-                            .trim(from: index == 0 ? 0.0 : chartPieViewModel.chartDatas[index-1].percent/2,
-                              to: chartPieViewModel.chartDatas[index].percent/2)
-                            .stroke(chartPieViewModel.chartDatas[index].color, lineWidth: UIScreen.screenWidth/12)
-                            .animation(.spring())
-                            .rotationEffect(.degrees(-180))
-                    }
-                VStack {
-                    Text("\(chartPieViewModel.chartDatas[0].percent*100)%")
-                        .font(.title)
-                    Text("completo")
-                }.offset(y: -20)
+        ZStack {
+            ForEach(0..<chartPieViewModel.countChartData()) { index in
+                if !(chartPieViewModel.percents.isEmpty) {
+                    Circle()
+                        .trim(from: index == 0 ? 0.0 : chartPieViewModel.percents[index-1]/2, to: chartPieViewModel.percents[index]/2)
+                        .stroke(chartPieViewModel.chartDatas[index].color, lineWidth: UIScreen.screenWidth/12)
+                        .animation(.spring())
+                        .rotationEffect(.degrees(-180))
+                }
             }
-        }.onAppear {self.chartPieViewModel.calc()}
+            VStack {
+                Text("\((chartPieViewModel.percents.first ?? 0)*100)%")
+                    .font(.title)
+                Text("completo")
+                    .padding(.bottom)
+                Text("Faltam R$\(chartPieViewModel.chartDatas[0].value)")
+                    .font(.title3)
+                    .bold()
+                Text("de R$\(chartPieViewModel.chartDatas[1].value)")
+            }.offset(y: 0)
+        }
     }
 }
 

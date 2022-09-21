@@ -12,13 +12,13 @@ class Goal: DataModelProtocol {
 
     var idName: UUID
     var title: String
-    var value: Int
+    var value: Float
     var weeks: Int // Reference to the weeks that are completed to complet the goal
     var motivaton: String? // Reference the frase that is presented in the card
     var priority: Int // Reference the priority of the goal
     var methodologyGoal: MethodologyGoal? //on iCloud this is store as a UUID
     
-    init(title: String, value: Int, weeks: Int, motivaton: String?, priority: Int, methodologyGoal: MethodologyGoal) {
+    init(title: String, value: Float, weeks: Int, motivaton: String?, priority: Int, methodologyGoal: MethodologyGoal) {
         self.idName = UUID()
         self.title = title
         self.value = value
@@ -31,7 +31,7 @@ class Goal: DataModelProtocol {
     required init?(record: CKRecord) {
         guard let  idName = record["recordName"] as? String else { return nil }
         guard let  title = record["title"] as? String else { return nil }
-        guard let  value = record["value"] as? Int else { return nil }
+        guard let  value = record["value"] as? Float else { return nil }
         guard let  weeks = record["weeks"] as? Int else { return nil }
         guard let  motivaton = record["motivaton"] as? String? else { return nil }
         guard let  methodologyGoal = record["methodologyGoal"] as? String else { return nil } //its necessary to fecth the UUID
@@ -64,8 +64,28 @@ class Goal: DataModelProtocol {
         return["title", "value", "check", "category"]
     }
     
-    func getData() -> [String: Any] {
-        return["title": title, "value": value, "weeks": weeks, "motivaton": motivaton ?? "", "priority":priority, "methodologyGoal": methodologyGoal]
+    func getData() -> [String: Any?] {
+        return["title": title, "value": value, "weeks": weeks, "motivaton": motivaton ?? "", "priority": priority, "methodologyGoal": methodologyGoal]
     }
-
+    
+    func getAllMoneySave() -> Float {
+        var total: Float = 0.0
+        for index in 0 ... weeks {
+            total += getMoneySaveForWeek(week: index)
+        }
+       return total
+    }
+    
+    func getNeedMoneyToCompleteGoal() -> Float {
+        return value - getAllMoneySave()
+    }
+    
+    func getMoneySaveForWeek(week: Int) -> Float {
+        return Float(week) * getMoneySavePerWeek()
+    }
+    
+    func getMoneySavePerWeek() -> Float {
+        let num = Float(methodologyGoal?.weeks ?? 0)
+        return (value*2.0)/(num*(num+1.0))
+    }
 }

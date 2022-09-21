@@ -63,7 +63,7 @@ class User: DataModelProtocol {
         return ["name", "income", "partner", "dueData", "notification", "methodologySpent"]
     }
     
-    func getData() -> [String : Any] {
+    func getData() -> [String: Any?] {
         return ["name": name, "income": income, "partner": partner, "dueData":dueData, "notification": notification, "methodologySpent": methodologySpent]
     }
     
