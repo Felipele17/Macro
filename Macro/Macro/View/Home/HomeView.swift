@@ -10,9 +10,9 @@ import SwiftUI
 struct HomeView: View {
     
     var viewsCells = [
-        GoalCardView(id: 1),
-        GoalCardView(id: 2),
-        GoalCardView(id: 3)
+        GoalCardView(id: 1, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), progress: ProgressBarCardView()),
+        GoalCardView(id: 2, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), progress: ProgressBarCardView()),
+        GoalCardView(id: 3, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), progress: ProgressBarCardView())
     ]
     
     var viewCardSpends = [

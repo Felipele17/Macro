@@ -14,17 +14,17 @@ class Goal: DataModelProtocol {
     var title: String
     var value: Int
     var weeks: Int // Reference to the weeks that are completed to complet the goal
-    var motivaton: String? // Reference the frase that is presented in the card
+    var motivation: String? // Reference the frase that is presented in the card
     var priority: Int // Reference the priority of the goal
-    var methodologyGoal: MethodologyGoal? //on iCloud this is store as a UUID
+    var methodologyGoal: MethodologyGoal? // On iCloud this is store as a UUID
     
-    init(title: String, value: Int, weeks: Int, motivaton: String?, priority: Int, methodologyGoal: MethodologyGoal) {
+    init(title: String, value: Int, weeks: Int, motivation: String?, priority: Int, methodologyGoal: MethodologyGoal) {
         self.idName = UUID()
         self.title = title
         self.value = value
         self.weeks = weeks
         self.priority = priority
-        self.motivaton = motivaton
+        self.motivation = motivation
         self.methodologyGoal = methodologyGoal
     }
     
@@ -33,8 +33,8 @@ class Goal: DataModelProtocol {
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Int else { return nil }
         guard let  weeks = record["weeks"] as? Int else { return nil }
-        guard let  motivaton = record["motivaton"] as? String? else { return nil }
-        guard let  methodologyGoal = record["methodologyGoal"] as? String else { return nil } //its necessary to fecth the UUID
+        guard let  motivation = record["motivation"] as? String? else { return nil }
+        guard let  methodologyGoal = record["methodologyGoal"] as? String else { return nil } // Its necessary to fecth the UUID
         guard let  priority = record["priority"] as? Int else { return nil }
         
         guard let idName = UUID(uuidString: idName) else { return nil }
@@ -43,7 +43,7 @@ class Goal: DataModelProtocol {
         self.title = title
         self.value = value
         self.weeks = weeks
-        self.motivaton = motivaton
+        self.motivation = motivation
         self.priority = priority
         Task.init {
             guard let record = try await CloudKitModel.shared.fetchByID(id: methodologyGoal, tipe: MethodologyGoal.getType()) else { return }
@@ -65,7 +65,7 @@ class Goal: DataModelProtocol {
     }
     
     func getData() -> [String: Any] {
-        return["title": title, "value": value, "weeks": weeks, "motivaton": motivaton ?? "", "priority":priority, "methodologyGoal": methodologyGoal]
+        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority":priority, "methodologyGoal": methodologyGoal]
     }
 
 }

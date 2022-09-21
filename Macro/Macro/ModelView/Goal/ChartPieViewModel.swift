@@ -29,7 +29,7 @@ class ChartPieViewModel: ObservableObject {
     func calc() {
         var value : CGFloat = 0
         
-        for idn in 0..<chartDatas.count  {
+        for idn in 0..<chartDatas.count {
             chartDatas[idn].percent = chartDatas[idn].value/totalValue()
             value += chartDatas[idn].percent
             chartDatas[idn].percent = value
