@@ -65,7 +65,7 @@ class Goal: DataModelProtocol {
     }
     
     func getData() -> [String: Any] {
-        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority":priority, "methodologyGoal": methodologyGoal]
+        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority": priority, "methodologyGoal": methodologyGoal]
     }
 
 }

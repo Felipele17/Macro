@@ -12,41 +12,41 @@ struct GoalCardView: View, Identifiable {
     let goal: Goal
     let progress: ProgressBarCardView
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(goal.title)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(goal.title)
+                
+                    .font(.system(.title2))
+                    .fontWeight(.semibold)
+                    .padding(.bottom, 2)
             
-                .font(.system(.title2))
-                .fontWeight(.semibold)
-                .padding(.bottom, 4)
-        
-           //arrumar
-            Text("Motivação:").font(.footnote).fontWeight(.medium) + Text(goal.motivation!).font(.footnote)
-            Spacer()
-            
-            progress
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    
-                    Text("R$\(goal.value/10) ")
-                        .font(.body).bold()
-                        + Text("de R$\(goal.value)").font(.body .weight(.light))
-                    
-                    Text("Faltam \(goal.weeks) semanas").font(.footnote)
-                        .padding(.top, 1)
+                Text("Motivação:").font(.footnote).fontWeight(.medium) + Text(goal.motivation ?? "").font(.footnote)
+                Spacer()
+                
+                progress
+                    .padding(.top, 2)
+                    .padding(.bottom, 2)
+                
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
                         
+                        Text("R$\(goal.value/10) ")
+                            .font(.body).bold()
+                            + Text("de R$\(goal.value)").font(.body .weight(.light))
+                        
+                        Text("Faltam \(52 - goal.weeks) semanas").font(.footnote)
+                            
+                        Spacer()
+                    }
                     Spacer()
                 }
-                
-               // goal.priority
-                Spacer()
             }
+            .padding(.leading, 20)
+            .padding(.top, 20)
+            .foregroundColor(.white)
+            .background(Color("CardGoalsColor"))
+            .cornerRadius(8)
         }
-        .padding(.leading, 20)
-        .padding(.top, 20)
-        .foregroundColor(.white)
-        .background(Color("CardGoalsColor"))
-        .cornerRadius(8)
     }
 }
 
