@@ -10,7 +10,7 @@ import SwiftUI
 struct ImageView: View {
     
     let onboarding: OnBoarding
-    @State private var incomeTextField: Int?
+    @State private var incomeTextField: Float?
     
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
