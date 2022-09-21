@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @State var onboardingPage: Int = 0
+    @State private var onboardingPage: Int = 0
     @ObservedObject private var viewModel = OnBoardingStateModelView()
     private let dotAppearance = UIPageControl.appearance()
     var textButton: String = ButtonText.nextButton.rawValue
@@ -16,6 +16,7 @@ struct OnBoardingView: View {
     var body: some View {
         
         NavigationView {
+            
             VStack {
                 TabView(selection: $onboardingPage) {
                     ForEach(viewModel.pages) { page in
@@ -44,7 +45,7 @@ struct OnBoardingView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if onboardingPage < 2 {
-                        SkipButton(onboardingPage: $viewModel.onboardingPage, string: ButtonText.skip.rawValue)
+                        SkipButton(onboardingPage: $onboardingPage, skipButton: ButtonText.skip.rawValue)
                     } else if onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                     }

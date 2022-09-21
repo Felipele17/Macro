@@ -10,7 +10,13 @@ import SwiftUI
 struct ImageView: View {
     
     let onboarding: OnBoarding
-    @State var textField = ""
+    @State private var incomeTextField: Int?
+    
+    let formatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return formatter
+        }()
     
     var body: some View {
         
@@ -41,12 +47,16 @@ struct ImageView: View {
                     .font(.custom("SF Pro Text", fixedSize: 16))
                     .padding(1.1)
                 
-                TextField("Ex.: R$ 3000,00", text: $textField)
-                    .foregroundColor(Color("Placeholder"))
-                Rectangle()
-                    .frame(height: 1.0, alignment: .bottom)
-                    .foregroundColor(Color("Placeholder"))
-                    .padding(1.5)
+                VStack {
+                    TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
+                        .keyboardType(.decimalPad)
+                        .foregroundColor(Color("Placeholder"))
+                    Rectangle()
+                        .frame(height: 1.0, alignment: .bottom)
+                        .foregroundColor(Color("Placeholder"))
+                        
+                }
+                .padding(1.5)
                 Spacer()
                 HStack {
                     Spacer()

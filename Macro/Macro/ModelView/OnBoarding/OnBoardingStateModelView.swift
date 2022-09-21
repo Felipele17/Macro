@@ -38,7 +38,4 @@ class OnBoardingStateModelView: ObservableObject {
         }
         return NextButton(actionButton: action, textButton: text)
     }
-    
-
 }
-
