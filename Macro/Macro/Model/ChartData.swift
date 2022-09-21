@@ -10,7 +10,5 @@ import SwiftUI
 struct ChartData {
     var id = UUID()
     var color: Color
-    var percent: CGFloat = 0
     var value: CGFloat
-
 }

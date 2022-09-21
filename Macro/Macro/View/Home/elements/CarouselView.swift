@@ -16,7 +16,9 @@ struct CarouselView: View {
     var body: some View {
         ZStack {
             ForEach(viewsCells) { cell in
-                NavigationLink(destination: GoalsView()){
+                NavigationLink( destination:
+                                    GoalsView(goal: Goal(title: "Novo Carro", value: 2000.00, weeks: 30, motivaton: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+                ) {
                     cell
                         .frame(width: viewModel.width, height: viewModel.heigth)
                         .offset(x: viewModel.myXOffset(cell.id), y: 0)
