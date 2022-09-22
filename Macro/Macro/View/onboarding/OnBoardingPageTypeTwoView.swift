@@ -1,0 +1,73 @@
+//
+//  OnBoardingPageTypeTwoView.swift
+//  Macro
+//
+//  Created by Bianca Maciel Matos on 21/09/22.
+//
+
+import SwiftUI
+
+struct OnBoardingPageTypeTwoView: View {
+    
+    let onboarding: OnBoarding
+    @ObservedObject var viewModel: OnBoardingStateViewModel
+    @Binding var incomeTextField: Float?
+//    @State var income: Bool
+    @FocusState var keyboardIsFocused: Bool
+    let formatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return formatter
+        }()
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(onboarding.title)
+                .font(.custom("SFProText-Semibold", fixedSize: 26))
+            Text(onboarding.description)
+                .font(.custom("SFProText-Medium", fixedSize: 16))
+                .padding(1.3)
+            
+            VStack {
+                TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
+                    .keyboardType(.decimalPad)
+                    .foregroundColor(Color("Placeholder"))
+//                    .onSubmit {
+//                        if income == false {
+//                            income.toggle()
+//                        }
+//                        // pegar a variável de income
+//                        print("Getting the income")
+//                    }
+                    .focused($keyboardIsFocused)
+                Rectangle()
+                    .frame(height: 1.0, alignment: .bottom)
+                    .foregroundColor(Color("Placeholder"))
+                    
+            }
+            .padding(1.5)
+            Spacer()
+            HStack {
+                Spacer()
+                Image(self.onboarding.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: UIScreen.screenWidth * 0.7)
+                    .clipped()
+                Spacer()
+            }
+            Spacer()
+        }
+        .onReceive(viewModel.$onboardingPage, perform: { _ in
+            keyboardIsFocused = false
+        })
+        
+        .frame(width: UIScreen.screenWidth/1.2, height: UIScreen.screenHeight/1.6)
+    }
+}
+
+//struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingStateViewModel()), incomeTextField: <#Binding<Float?>#>
+//    }
+//}

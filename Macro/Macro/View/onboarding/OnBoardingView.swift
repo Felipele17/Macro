@@ -8,45 +8,57 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @State private var onboardingPage: Int = 0
-    @ObservedObject private var viewModel = OnBoardingStateModelView()
+    
+    @State var incomeTextField: Float? = 0.0
+    @State var text = ButtonText.nextButton.rawValue
+    @ObservedObject var viewModel = OnBoardingStateViewModel()
+    
+    @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
-    var textButton: String = ButtonText.nextButton.rawValue
     
     var body: some View {
         
         NavigationView {
             
             VStack {
-                TabView(selection: $onboardingPage) {
-                    ForEach(viewModel.pages) { page in
-                        VStack {
-                            ImageView(onboarding: page)
-                            Spacer()
-                        }
-                        .tag(page.tag)
-                    }
+                TabView(selection: $viewModel.onboardingPage) {
+                    OnBoardingPageTypeOneView(onboarding: pages[0])
+                        .tag(0)
+                    OnBoardingPageTypeOneView(onboarding: pages[1])
+                        .tag(1)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: $incomeTextField)
+                        .tag(2)
+                    OnBoardingPageTypeOneView(onboarding: pages[3])
+                        .tag(3)
+
+//                    ForEach(pages) { page in
+//                        VStack {
+//                            ImageView(onboarding: page, viewModel: viewModel)
+//                                .onAppear {
+//                                    if let viewPageTextField = page as? OnBoardingPageTypeTwoView {
+//                                        viewModel.checkTextField = viewPageTextField.income
+//                                    }
+//                                }
+//                            Spacer()
+//                        }
+//                        .tag(page.tag)
+//                    }
                 }
-                .animation(.easeInOut, value: onboardingPage)
+                .animation(.easeInOut, value: viewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(PageTabViewStyle())
                 .onAppear {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(Color("dotShowing"))
                     dotAppearance.pageIndicatorTintColor = UIColor(Color("dotNotShowing"))
                 }
-                viewModel.buttonOnBoarding(onboardingPage: onboardingPage) {
-                    onboardingPage += 1
-                } actionCompartilhar: {
-                    print("compartilhar")
-                    viewModel.finishOnBoarding()
-                }
                 
+                NextButton(text: viewModel.checkButton(), onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    if onboardingPage < 2 {
-                        SkipButton(onboardingPage: $onboardingPage, skipButton: ButtonText.skip.rawValue)
-                    } else if onboardingPage == 2 {
+                    if viewModel.onboardingPage < 2 {
+                        SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: ButtonText.skip.rawValue)
+                    } else if viewModel.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                     }
                 }
@@ -61,6 +73,7 @@ struct OnBoardingView: View {
 }
 
 struct OnBoardingView_Previews: PreviewProvider {
+    
     static var previews: some View {
         OnBoardingView()
     }

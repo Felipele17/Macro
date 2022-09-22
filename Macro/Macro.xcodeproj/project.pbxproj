@@ -46,12 +46,17 @@
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		5511936A28D24D63008A0486 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511936928D24D63008A0486 /* ImageView.swift */; };
-		5511936E28D26273008A0486 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511936D28D26273008A0486 /* Button.swift */; };
-		5511937128D26893008A0486 /* OnBoardingStateModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511937028D26893008A0486 /* OnBoardingStateModelView.swift */; };
+		5511937128D26893008A0486 /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511937028D26893008A0486 /* OnBoardingStateViewModel.swift */; };
 		5511937728D269C8008A0486 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511937628D269C7008A0486 /* ImageName.swift */; };
+		5539205328DB9E5D0008E77E /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539205228DB9E5D0008E77E /* InfoButton.swift */; };
+		5539205528DB9EB20008E77E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539205428DB9EB20008E77E /* SkipButton.swift */; };
+		5539205728DB9F020008E77E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539205628DB9F020008E77E /* NextButton.swift */; };
+		5539205928DB9F600008E77E /* OnBoardingPageTypeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539205828DB9F600008E77E /* OnBoardingPageTypeOneView.swift */; };
+		5539205B28DBA0700008E77E /* OnBoardingPageTypeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5539205A28DBA0700008E77E /* OnBoardingPageTypeTwoView.swift */; };
 		5584A45628D38FFD00EE33E5 /* OnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584A45528D38FFD00EE33E5 /* OnBoardingText.swift */; };
 		5584A45828D392A100EE33E5 /* ButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584A45728D392A100EE33E5 /* ButtonText.swift */; };
 		5584A45C28D3949600EE33E5 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584A45B28D3949600EE33E5 /* OnBoarding.swift */; };
+		55BBCD5128DCF97B0024E513 /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BBCD5028DCF97B0024E513 /* OnBoardingPageTypeTwoViewModel.swift */; };
 		55E77B1428D9134E000F40B2 /* ExpensesMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E77B1328D9134E000F40B2 /* ExpensesMethodView.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,12 +122,17 @@
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		5511936928D24D63008A0486 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		5511936D28D26273008A0486 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		5511937028D26893008A0486 /* OnBoardingStateModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateModelView.swift; sourceTree = "<group>"; };
+		5511937028D26893008A0486 /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5511937628D269C7008A0486 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
+		5539205228DB9E5D0008E77E /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		5539205428DB9EB20008E77E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
+		5539205628DB9F020008E77E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		5539205828DB9F600008E77E /* OnBoardingPageTypeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeOneView.swift; sourceTree = "<group>"; };
+		5539205A28DBA0700008E77E /* OnBoardingPageTypeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoView.swift; sourceTree = "<group>"; };
 		5584A45528D38FFD00EE33E5 /* OnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingText.swift; sourceTree = "<group>"; };
 		5584A45728D392A100EE33E5 /* ButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonText.swift; sourceTree = "<group>"; };
 		5584A45B28D3949600EE33E5 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		55BBCD5028DCF97B0024E513 /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
 		55E77B1328D9134E000F40B2 /* ExpensesMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesMethodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,7 +192,7 @@
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
 				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				06449C1928C2994800035324 /* Model */,
-				06449C1828C2993C00035324 /* ModelView */,
+				06449C1828C2993C00035324 /* ViewModel */,
 				06449C1728C2993300035324 /* View */,
 				06449BF028C2921F00035324 /* Preview Content */,
 			);
@@ -230,7 +240,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		06449C1828C2993C00035324 /* ModelView */ = {
+		06449C1828C2993C00035324 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				5511936F28D2687A008A0486 /* OnBoarding */,
@@ -241,7 +251,7 @@
 				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
 				06449C3F28C29E8300035324 /* SettingsViewModel.swift */,
 			);
-			path = ModelView;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		06449C1928C2994800035324 /* Model */ = {
@@ -359,6 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				5511936928D24D63008A0486 /* ImageView.swift */,
+				5539205828DB9F600008E77E /* OnBoardingPageTypeOneView.swift */,
+				5539205A28DBA0700008E77E /* OnBoardingPageTypeTwoView.swift */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -420,7 +432,7 @@
 		5511936C28D2622C008A0486 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				5511936D28D26273008A0486 /* Button.swift */,
+				5539205128DB9E450008E77E /* Buttons */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -428,9 +440,20 @@
 		5511936F28D2687A008A0486 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				5511937028D26893008A0486 /* OnBoardingStateModelView.swift */,
+				5511937028D26893008A0486 /* OnBoardingStateViewModel.swift */,
+				55BBCD5028DCF97B0024E513 /* OnBoardingPageTypeTwoViewModel.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		5539205128DB9E450008E77E /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				5539205228DB9E5D0008E77E /* InfoButton.swift */,
+				5539205428DB9EB20008E77E /* SkipButton.swift */,
+				5539205628DB9F020008E77E /* NextButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		55E77B1228D912BF000F40B2 /* Methodology */ = {
@@ -597,14 +620,15 @@
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
-				5511936E28D26273008A0486 /* Button.swift in Sources */,
 				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
-				5511937128D26893008A0486 /* OnBoardingStateModelView.swift in Sources */,
+				5511937128D26893008A0486 /* OnBoardingStateViewModel.swift in Sources */,
 				5584A45828D392A100EE33E5 /* ButtonText.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				5584A45C28D3949600EE33E5 /* OnBoarding.swift in Sources */,
+				55BBCD5128DCF97B0024E513 /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
+				5539205728DB9F020008E77E /* NextButton.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
@@ -620,14 +644,18 @@
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
+				5539205928DB9F600008E77E /* OnBoardingPageTypeOneView.swift in Sources */,
 				5584A45628D38FFD00EE33E5 /* OnBoardingText.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
+				5539205528DB9EB20008E77E /* SkipButton.swift in Sources */,
+				5539205B28DBA0700008E77E /* OnBoardingPageTypeTwoView.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
+				5539205328DB9E5D0008E77E /* InfoButton.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
