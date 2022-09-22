@@ -12,10 +12,10 @@ struct GoalCardView: View, Identifiable {
     var id: Int
     let goal: Goal
     var body: some View {
-        HStack {
             VStack(alignment: .leading) {
-                Text(goal.title)
+                Image("\(viewModel.setImagebyPriority(goal: goal))")
                 
+                Text(goal.title)
                     .font(.custom("SFProText-Semibold", size: 22))
                     .padding(.bottom, 2)
             
@@ -45,7 +45,6 @@ struct GoalCardView: View, Identifiable {
             .foregroundColor(.white)
             .background(Color("CardGoalsColor"))
             .cornerRadius(8)
-        }
     }
 }
 

@@ -17,5 +17,14 @@ class GoalCardViewModel: ObservableObject {
         return percentsProgress
     }
     
-    
+    func setImagebyPriority(goal: Goal) -> String {
+        let priority = goal.priority
+        if priority == 1 {
+            return "Noz1"
+        } else if priority == 2 {
+            return "Noz2"
+        } else {
+            return "Noz3"
+        }
+    }
 }
