@@ -56,7 +56,7 @@ struct GoalsView: View {
                             .listRowBackground(Color.red)
                             .colorInvert()
                             .onTapGesture {
-                                print("Acao de Check")
+                                viewModel.checkWeekGoal(goal: goal)
                             }
                         
                         ForEach(goal.weeks+1..<(goal.methodologyGoal?.weeks ?? 0)) { week in
