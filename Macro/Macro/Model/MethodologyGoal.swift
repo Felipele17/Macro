@@ -44,7 +44,7 @@ class MethodologyGoal: DataModelProtocol {
         return ["weeks", "crescent"]
     }
     
-    func getData() -> [String: Any] {
+    func getData() -> [String: Any?] {
         return ["weeks": weeks, "crescent": crescent]
     }
     

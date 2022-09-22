@@ -44,7 +44,7 @@ class MethodologySpent: DataModelProtocol {
         return ["valuesPercent", "nameCategory"]
     }
     
-    func getData() -> [String : Any] {
+    func getData() -> [String : Any?] {
         return ["valuesPercent": valuesPercent, "nameCategory": nameCategory]
     }
     

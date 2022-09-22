@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct GoalsView: View {
-    
-    @State private var selectFilter = 0
+    var goal: Goal
+    @ObservedObject private var viewModel = GoalViewModel()
+    @State private var selectFilter = 1
     
     var body: some View {
         VStack {
@@ -18,28 +19,22 @@ struct GoalsView: View {
                     .cornerRadius(cornerRadiusNumber())
                     .shadow(radius: cornerRadiusNumber())
                     .padding([.leading, .trailing, .bottom])
-                GraphView(chartPieViewModel: ChartPieViewModel(
-                    chartDatas: [ChartData(color: .green, value: 100),
-                                ChartData(color: .cyan, value: 50)]
-                    )
-                )
-                    .offset(x: 0, y: UIScreen.screenHeight/20)
-
-            }
-            .frame(height: UIScreen.screenHeight/3)
-            ZStack {
-                Color.white
-                    .cornerRadius(cornerRadiusNumber())
-                    .shadow(radius: cornerRadiusNumber())
                 VStack {
-                    Text("Faltam R$19500,00")
-                        .font(.title3)
-                        .bold()
-                    Text("de R$20000,00")
+                    Text("\(goal.weeks) semanas")
+                        .font(.title2)
+                        .padding()
+                    GraphView(chartPieViewModel: ChartPieViewModel(
+                        chartDatas: [
+                            ChartData(color: .green, value: CGFloat(goal.getAllMoneySave())),
+                            ChartData(color: .cyan, value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
+                            ]
+                        )
+                    )
+                    .offset(x: 0, y: UIScreen.screenHeight/20)
                 }
             }
-            .frame(height: UIScreen.screenHeight/8)
-            .padding([.leading, .trailing, .bottom])
+            .frame(height: UIScreen.screenHeight/2.5)
+            .padding(.bottom)
             VStack {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
                     Text("Todos").tag(0)
@@ -49,16 +44,29 @@ struct GoalsView: View {
                 .pickerStyle(.segmented)
                 .padding([.leading, .trailing])
                 List {
-                    WeakGoalsView()
-                        .listRowBackground(Color.indigo)
-                        .colorInvert()
-                    WeakGoalsView()
-                    WeakGoalsView()
-                    WeakGoalsView()
+                    if selectFilter != 1 {
+                        ForEach(1..<goal.weeks) { week in
+                            WeakGoalsView(title: "semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                                .listRowBackground(Color.indigo)
+                                .colorInvert()
+                        }
+                    }
+                    if selectFilter != 2 {
+                        WeakGoalsView(title: "semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
+                            .listRowBackground(Color.red)
+                            .colorInvert()
+                            .onTapGesture {
+                                print("Acao de Check")
+                            }
+                        
+                        ForEach(goal.weeks+1..<(goal.methodologyGoal?.weeks ?? 0)) { week in
+                            WeakGoalsView(title: "semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                        }
+                    }
                 }
             }
         }
-        .navigationTitle("Carro Novo")
+        .navigationTitle(goal.title)
         .toolbar {
             Button(role: nil) {
                 print("add configuração")
@@ -78,6 +86,8 @@ extension GoalsView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalsView()
+        GoalsView(goal:
+                    Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivaton: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
+        )
     }
 }
