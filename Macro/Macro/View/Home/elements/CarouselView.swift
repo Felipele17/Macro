@@ -16,12 +16,11 @@ struct CarouselView: View {
     var body: some View {
         ZStack {
             ForEach(viewsCells) { cell in
-                NavigationLink(destination: GoalsView(goal: Goal(title: "OI", value: 20, weeks: 12, motivation: "CHJFBHIEW", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))) {
+                NavigationLink(destination: GoalsView(goal: cell.goal)) {
                     cell
                         .frame(width: viewModel.width, height: viewModel.heigth)
                         .offset(x: viewModel.myXOffset(cell.id), y: 0)
                 }
-
             }
         }
         .highPriorityGesture(

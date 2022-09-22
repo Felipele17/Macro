@@ -13,12 +13,16 @@ struct GoalCardView: View, Identifiable {
     let goal: Goal
     var body: some View {
             VStack(alignment: .leading) {
-                Image("\(viewModel.setImagebyPriority(goal: goal))")
                 
-                Text(goal.title)
-                    .font(.custom("SFProText-Semibold", size: 22))
-                    .padding(.bottom, 2)
-            
+                HStack {
+                    Text(goal.title)
+                        .font(.custom("SFProText-Semibold", size: 22))
+                        .padding(.bottom, 2)
+                    Spacer()
+                    Image("\(viewModel.setImagebyPriority(goal: goal))")
+                        .padding(.trailing)
+                }
+                
                 Text("Motivação:").font(.custom("SFProText-Medium", size: 13)) + Text(goal.motivation ?? "").font(.custom("SFProText-Regular", size: 13))
                 Spacer()
                 
