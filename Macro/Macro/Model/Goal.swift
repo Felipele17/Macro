@@ -61,7 +61,7 @@ class Goal: DataModelProtocol {
     }
     
     func getProperties() -> [String] {
-        return["title", "value", "check", "category"]
+        return["title", "value", "weeks", "category"]
     }
     
     func getData() -> [String: Any?] {

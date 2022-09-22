@@ -8,33 +8,32 @@
 import SwiftUI
 
 struct GoalCardView: View, Identifiable {
+    @ObservedObject var viewModel: GoalCardViewModel
     var id: Int
     let goal: Goal
-    let progress: ProgressBarCardView
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(goal.title)
                 
-                    .font(.system(.title2))
-                    .fontWeight(.semibold)
+                    .font(.custom("SFProText-Semibold", size: 22))
                     .padding(.bottom, 2)
             
-                Text("Motivação:").font(.footnote).fontWeight(.medium) + Text(goal.motivation ?? "").font(.footnote)
+                Text("Motivação:").font(.custom("SFProText-Medium", size: 13)) + Text(goal.motivation ?? "").font(.custom("SFProText-Regular", size: 13))
                 Spacer()
                 
-                progress
+                ProgressBarCardView(percentsProgress: viewModel.calc(goal: goal))
                     .padding(.top, 2)
                     .padding(.bottom, 2)
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         
-                        Text("R$\(goal.value/10) ")
-                            .font(.body).bold()
-                            + Text("de R$\(goal.value)").font(.body .weight(.light))
+                        Text("R$\(goal.getAllMoneySave()) ")
+                            .font(.custom("SFProText-Medium", size: 17))
+                            + Text("de R$\(goal.value)").font(.custom("SFProText-Light", size: 17))
                         
-                        Text("Faltam \(52 - goal.weeks) semanas").font(.footnote)
+                        Text("Faltam \(52 - goal.weeks) semanas").font(.custom("SFProText-Regular", size: 13))
                             
                         Spacer()
                     }
@@ -52,7 +51,7 @@ struct GoalCardView: View, Identifiable {
 
 struct GoalCardView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalCardView(id: 1, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), progress: ProgressBarCardView())
+        GoalCardView(viewModel: GoalCardViewModel(), id: 1, goal: Goal(title: "Carro Novo", value: 5000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
             .previewInterfaceOrientation(.portrait)
     }
 }

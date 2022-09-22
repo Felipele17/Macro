@@ -87,7 +87,7 @@ extension GoalsView {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         GoalsView(goal:
-                    Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivaton: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
+                    Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
         )
     }
 }

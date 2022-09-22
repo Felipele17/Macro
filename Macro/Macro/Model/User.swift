@@ -18,7 +18,7 @@ class User: DataModelProtocol {
     var notification: [Int]
     var methodologySpent: MethodologySpent?
     
-    init(idName: UUID, name: String, income: Int, dueData: Int, partner:String, notification:[Int], methodologySpent: MethodologySpent) {
+    init(idName: UUID, name: String, income: Int, dueData: Int, partner: String, notification: [Int], methodologySpent: MethodologySpent) {
         self.idName = idName
         self.name = name
         self.income = income
@@ -65,7 +65,7 @@ class User: DataModelProtocol {
     }
     
     func getData() -> [String: Any?] {
-        return ["name": name, "income": income, "partner": partner, "dueData":dueData, "notification": notification, "methodologySpent": methodologySpent]
+        return ["name": name, "income": income, "partner": partner, "dueData": dueData, "notification": notification, "methodologySpent": methodologySpent]
     }
     
 }
