@@ -38,8 +38,11 @@ struct GoalsView: View {
             VStack {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
                     Text("Todos").tag(0)
+                        .font(.custom(EnumFonts.medium.rawValue, size: 13))
                     Text("Á fazer").tag(1)
+                        .font(.custom(EnumFonts.medium.rawValue, size: 13))
                     Text("Concluído").tag(2)
+                        .font(.custom(EnumFonts.medium.rawValue, size: 13))
                 }
                 .pickerStyle(.segmented)
                 .padding([.leading, .trailing])
@@ -72,6 +75,7 @@ struct GoalsView: View {
                 print("add configuração")
             } label: {
                 Text("editar")
+                    .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .tint(.blue)
             }
         }

@@ -13,13 +13,12 @@ struct WeakGoalsView: View {
     var body: some View {
         HStack {
             Label("", systemImage: "circle")
-                .font(.system(size: 36))
+                .font(.custom(EnumFonts.medium.rawValue, size: 17))
                 .padding(.leading)
             Text(title)
             Spacer()
             Text("R$\(valor)")
-                .bold()
-                .font(.title3)
+                .font(.custom(EnumFonts.medium.rawValue, size: 20))
                 .padding()
         }
     }
