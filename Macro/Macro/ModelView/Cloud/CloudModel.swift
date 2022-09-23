@@ -44,7 +44,7 @@ class CloudKitModel {
         }
     }
     
-    func populateRecord(record: CKRecord, model: DataModelProtocol) -> CKRecord{
+    func populateRecord(record: CKRecord, model: DataModelProtocol) -> CKRecord {
         let properties = model.getProperties()
         let propertiesdata = model.getData()
         for  propertie in properties {
@@ -66,13 +66,22 @@ class CloudKitModel {
     
     // MARK: Update
     func upadte(model: DataModelProtocol) async throws {
-        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID:  SharedZone.ZoneID)
+        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
         let fecthRecord = try? await databasePrivate.record(for: recordId)
         guard let record = fecthRecord else { return  }
         let recordPopulated = populateRecord(record: record, model: model)
         
         do {
             try await container.privateCloudDatabase.save(recordPopulated)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func delete(model: DataModelProtocol) async {
+        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
+        do {
+            try await container.privateCloudDatabase.deleteRecord(withID: recordId)
         } catch {
             print(error.localizedDescription)
         }
