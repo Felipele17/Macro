@@ -21,4 +21,14 @@ class GoalViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteGoal(goal: Goal) {
+        Task.init {
+            do {
+                try await cloud.delete(model: goal)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
