@@ -44,6 +44,7 @@
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
+		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -113,6 +114,7 @@
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
+		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
+				06D80F2C28DE3FDF006B3E0B /* elements */,
 				06449C2F28C29CF300035324 /* onboarding */,
 				06449C2E28C29CE700035324 /* input */,
 				06449C2D28C29CC700035324 /* Settings */,
@@ -407,6 +410,14 @@
 			path = Protocolo;
 			sourceTree = "<group>";
 		};
+		06D80F2C28DE3FDF006B3E0B /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
 		99B676B528DCCFC5007C8BC6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +593,7 @@
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
 				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
+				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
