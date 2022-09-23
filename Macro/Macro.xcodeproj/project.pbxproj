@@ -45,6 +45,13 @@
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
+		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
+		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
+		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
+		99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */; };
+		99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */; };
+		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
+		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +115,13 @@
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
+		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
+		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +175,7 @@
 		06449BE928C2921E00035324 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
+				99B676B528DCCFC5007C8BC6 /* Fonts */,
 				06449C5228C2A65B00035324 /* Info.plist */,
 				06449C5128C2A65500035324 /* Macro.entitlements */,
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
@@ -246,6 +261,7 @@
 				06449C2728C29C4700035324 /* GoalCardView.swift */,
 				06449C2928C29C5D00035324 /* SpentsCardView.swift */,
 				061FFD6228CBD66C003F9FDA /* CarouselView.swift */,
+				997C81B328DA584500C2229D /* ProgressBarCardView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -381,6 +397,7 @@
 			children = (
 				06449C3D28C29E5D00035324 /* GoalViewModel.swift */,
 				063C8AA528D2661C0053054B /* ChartPieViewModel.swift */,
+				99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -391,6 +408,18 @@
 				0688A9D328C7D628001044A6 /* DataModelProtocol.swift */,
 			);
 			path = Protocolo;
+			sourceTree = "<group>";
+		};
+		99B676B528DCCFC5007C8BC6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */,
+				99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */,
+				99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */,
+				99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */,
+				99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -500,6 +529,11 @@
 			files = (
 				06449C1628C2957F00035324 /* .swiftlint.yml in Resources */,
 				06449BF228C2921F00035324 /* Preview Assets.xcassets in Resources */,
+				99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */,
+				99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */,
+				99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */,
+				99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */,
+				99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */,
 				06449BEF28C2921F00035324 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +598,7 @@
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
+				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
@@ -571,6 +606,7 @@
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
+				99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
@@ -735,7 +771,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = NHY67K6358;
+				DEVELOPMENT_TEAM = 7Y74F655Y8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
@@ -766,7 +802,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = NHY67K6358;
+				DEVELOPMENT_TEAM = 7Y74F655Y8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;

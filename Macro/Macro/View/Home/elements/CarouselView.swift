@@ -16,14 +16,11 @@ struct CarouselView: View {
     var body: some View {
         ZStack {
             ForEach(viewsCells) { cell in
-                NavigationLink( destination:
-                                    GoalsView(goal: Goal(title: "Novo Carro", value: 2000.00, weeks: 30, motivaton: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
-                ) {
+                NavigationLink(destination: GoalsView(goal: cell.goal)) {
                     cell
                         .frame(width: viewModel.width, height: viewModel.heigth)
                         .offset(x: viewModel.myXOffset(cell.id), y: 0)
                 }
-
             }
         }
         .highPriorityGesture(
@@ -41,9 +38,9 @@ struct CarouselView: View {
 struct CarouselView_Previews: PreviewProvider {
     static var previews: some View {
         CarouselView(viewModel: CarouselViewModel( width: 325.0, heigth: 200.0), viewsCells: [
-            GoalCardView(id: 1),
-            GoalCardView(id: 2),
-            GoalCardView(id: 3)
+            GoalCardView(viewModel: GoalCardViewModel(), id: 1, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))),
+            GoalCardView(viewModel: GoalCardViewModel(), id: 2, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))),
+            GoalCardView(viewModel: GoalCardViewModel(), id: 3, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
         ])
     }
 }
