@@ -26,6 +26,9 @@ struct TextFiledLine: View {
                 .foregroundColor(Color("Placeholder"))
                 
         }
+        .onReceive(viewModel.$onboardingPage, perform: { _ in
+            keyboardIsFocused = false
+        })
     }
 }
 
