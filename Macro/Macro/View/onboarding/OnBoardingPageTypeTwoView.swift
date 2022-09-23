@@ -11,7 +11,7 @@ struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
     @ObservedObject var viewModel: OnBoardingStateViewModel
-    @Binding var incomeTextField: Float?
+    @Binding var incomeTextField: Float
 //    @State var income: Bool
     @FocusState var keyboardIsFocused: Bool
     let formatter: NumberFormatter = {

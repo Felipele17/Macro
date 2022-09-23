@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    
-    @State var incomeTextField: Float? = 0.0
+    @State var incomeTextField: Float = 0.0
     @State var text = ButtonText.nextButton.rawValue
-    @ObservedObject var viewModel = OnBoardingStateViewModel()
+    @StateObject var viewModel = OnBoardingStateViewModel()
     
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
@@ -73,7 +72,6 @@ struct OnBoardingView: View {
 }
 
 struct OnBoardingView_Previews: PreviewProvider {
-    
     static var previews: some View {
         OnBoardingView()
     }
