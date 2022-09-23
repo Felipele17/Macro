@@ -35,7 +35,16 @@ class CloudKitModel {
     func post(recordType: String, model: DataModelProtocol) async throws {
 
         let recordId = CKRecord.ID(recordName: model.getID().description, zoneID: SharedZone.ZoneID)
-        let record = CKRecord(recordType: recordType, recordID: recordId)
+        let record = populateRecord(record: CKRecord(recordType: recordType, recordID: recordId), model: model)
+        
+        do {
+            try await container.privateCloudDatabase.save(record)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func populateRecord(record: CKRecord, model: DataModelProtocol) -> CKRecord{
         let properties = model.getProperties()
         let propertiesdata = model.getData()
         for  propertie in properties {
@@ -43,10 +52,27 @@ class CloudKitModel {
                 record[propertie] =  dataInt as CKRecordValue
             } else if let dataString = propertiesdata[propertie] as? String {
                 record[propertie] =  dataString as CKRecordValue
+            } else if let dataFloat = propertiesdata[propertie] as? Float {
+                record[propertie] =  dataFloat as CKRecordValue
+            } else if let dataBool = propertiesdata[propertie] as? Bool {
+                record[propertie] =  dataBool as CKRecordValue
+            } else if let dataDate = propertiesdata[propertie] as? Date {
+                record[propertie] =  dataDate as CKRecordValue
             }
+            
         }
+        return record
+    }
+    
+    // MARK: Update
+    func upadte(model: DataModelProtocol) async throws {
+        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID:  SharedZone.ZoneID)
+        let fecthRecord = try? await databasePrivate.record(for: recordId)
+        guard let record = fecthRecord else { return  }
+        let recordPopulated = populateRecord(record: record, model: model)
+        
         do {
-            try await container.privateCloudDatabase.save(record)
+            try await container.privateCloudDatabase.save(recordPopulated)
         } catch {
             print(error.localizedDescription)
         }
@@ -73,7 +99,6 @@ class CloudKitModel {
             return share
         }
         return share
-            
     }
     
     func makeUIViewController() -> UICloudSharingController? {
@@ -97,7 +122,7 @@ class CloudKitModel {
             for zone in sharedZones {
                 group.addTask { [self] in
                     do {
-                        let fecthShared = try await self.fetchRecords( in: zone.zoneID, from: self.databaseShared, recordType: recordType, predicate: predicate)
+                        let fecthShared = try await self.fetchRecords( in: getSharedZone(), from: self.databaseShared, recordType: recordType, predicate: predicate)
                         let fecthPrivate = try await self.fetchRecords( in: zone.zoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
                         return fecthShared + fecthPrivate
                     } catch {
@@ -126,6 +151,12 @@ class CloudKitModel {
         return response.matchResults.compactMap { results in
             try? results.1.get()
         }
+    }
+    
+    func getSharedZone()  async throws -> CKRecordZone.ID?{
+        let sharedData = container.sharedCloudDatabase
+        let records = try? await sharedData.allRecordZones()
+        return records?[0].zoneID
     }
     
     func fetchByID(id: String, tipe: String) async throws -> CKRecord? {
