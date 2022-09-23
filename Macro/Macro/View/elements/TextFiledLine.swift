@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct TextFiledLine: View {
+    @Binding var incomeTextField: Float
+    @FocusState var keyboardIsFocused: Bool
+    let formatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return formatter
+        }()
     var body: some View {
         VStack {
             TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
