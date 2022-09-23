@@ -41,7 +41,7 @@ struct HomeView: View {
 
                 }
                 .padding(.top)
-                CarouselView(viewModel: CarouselViewModel( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5), viewsCells: viewsCells)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, viewsCells: viewsCells)
                 HStack {
                     Text("Nossas Gastos")
                         .font(.title2)
