@@ -52,6 +52,8 @@
 		5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773B28E2324A000C892E /* EnumButtonText.swift */; };
 		5544773E28E2330C000C892E /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773D28E2330C000C892E /* OnBoarding.swift */; };
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
+		5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */; };
+		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -129,6 +131,8 @@
 		5544773B28E2324A000C892E /* EnumButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumButtonText.swift; sourceTree = "<group>"; };
 		5544773D28E2330C000C892E /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
+		5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
+		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		06449C1828C2993C00035324 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
 				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
@@ -437,6 +442,15 @@
 				5544772B28E2307E000C892E /* InfoButton.swift */,
 			);
 			path = elements;
+			sourceTree = "<group>";
+		};
+		5544774128E233DA000C892E /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */,
+				5544774428E23415000C892E /* OnBoardingStateViewModel.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		99B676B528DCCFC5007C8BC6 /* Fonts */ = {
@@ -633,9 +647,11 @@
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
+				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
+				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
