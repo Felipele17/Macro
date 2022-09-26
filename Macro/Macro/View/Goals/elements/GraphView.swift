@@ -24,13 +24,14 @@ struct GraphView: View {
             }
             VStack {
                 Text("\((chartPieViewModel.percents.first ?? 0)*100)%")
-                    .font(.title)
+                    .font(.custom(EnumFonts.semibold.rawValue, size: 22))
                 Text("completo")
+                    .font(.custom(EnumFonts.regular.rawValue, size: 20))
                     .padding(.bottom)
                 Text("Faltam R$\(chartPieViewModel.chartDatas[0].value)")
-                    .font(.title3)
-                    .bold()
+                    .font(.custom(EnumFonts.semibold.rawValue, size: 20))
                 Text("de R$\(chartPieViewModel.chartDatas[1].value)")
+                    .font(.custom(EnumFonts.light.rawValue, size: 20))
             }.offset(y: 0)
         }
     }
