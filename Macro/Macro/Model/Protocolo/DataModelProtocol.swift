@@ -11,6 +11,6 @@ protocol DataModelProtocol {
     static func getType() -> String
     func getID() -> UUID
     func getProperties() -> [String]
-    func getData() -> [String: Any]
+    func getData() -> [String: Any?]
     init?(record: CKRecord)
 }
