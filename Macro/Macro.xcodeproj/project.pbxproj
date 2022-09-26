@@ -54,6 +54,7 @@
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
 		5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
+		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -133,6 +134,7 @@
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
 		5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
+		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				0688A9D128C7B7B2001044A6 /* SharedZone.swift */,
 				5544773B28E2324A000C892E /* EnumButtonText.swift */,
 				5544773F28E23335000C892E /* EnumOnBoardingText.swift */,
+				5544774628E23483000C892E /* EnumImageName.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
+				5544774728E23483000C892E /* EnumImageName.swift in Sources */,
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
