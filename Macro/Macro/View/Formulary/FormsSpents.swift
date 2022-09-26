@@ -62,7 +62,8 @@ struct FormView: View {
                     .foregroundColor(.green)
             }
             
-        }
+        } .navigationTitle("Gasto")
+            .navigationBarTitleDisplayMode(.inline)
         
     }
 }
