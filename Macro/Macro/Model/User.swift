@@ -14,11 +14,10 @@ class User: DataModelProtocol {
     var income: Int
     var partner: String
     var dueData: Int
-    // (→ Array de index mostrando qual notificação foi ligada, [1,2] nesse caso a segunda e terceira notificação foram ligadas)
-    var notification: [Int]
+    var notification: [Int] //(→ array de index mostrando qual notificação foi ligada, [1,2] nesse caso a segunda e terceira notificação foram ligadas)
     var methodologySpent: MethodologySpent?
     
-    init(idName: UUID, name: String, income: Int, dueData: Int, partner: String, notification: [Int], methodologySpent: MethodologySpent) {
+    init(idName: UUID, name: String, income: Int, dueData:Int, partner:String, notification:[Int], methodologySpent: MethodologySpent) {
         self.idName = idName
         self.name = name
         self.income = income
@@ -65,7 +64,7 @@ class User: DataModelProtocol {
     }
     
     func getData() -> [String: Any?] {
-        return ["name": name, "income": income, "partner": partner, "dueData": dueData, "notification": notification, "methodologySpent": methodologySpent]
+        return ["name": name, "income": income, "partner": partner, "dueData":dueData, "notification": notification, "methodologySpent": methodologySpent]
     }
     
 }

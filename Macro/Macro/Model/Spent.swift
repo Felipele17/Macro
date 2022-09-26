@@ -57,6 +57,6 @@ class Spent: DataModelProtocol {
     }
     
     func getData() -> [String: Any?] {
-        return ["title": title, "value": value, "icon": icon, "date": date, "categoryPercent": categoryPercent.rawValue]
+        return ["title": title, "value": value, "icon":icon, "date":date, "categoryPercent": categoryPercent.rawValue]
     }
 }

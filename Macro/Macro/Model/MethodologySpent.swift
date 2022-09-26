@@ -10,11 +10,11 @@ import CloudKit
 class MethodologySpent: DataModelProtocol {
     var idName: UUID
     
-    var valuesPercent: Int // (→ Referente à porcentagem da quantidade de dinheiro total)
+    var valuesPercent: Int //(→ referente à porcentagem da quantidade de dinheiro total)
     
-    var nameCategory: String // (→ Template categorias com porcentagens diferentes add futuramente, AKA: nome; haverão vários templates no futuro)
+    var nameCategory: String //(→template categorias com porcentagens diferentes add futuramente, AKA: nome; haverão vários templates no futuro)
     
-    init(valuesPercent: Int, nameCategory: String) {
+    init(valuesPercent: Int, nameCategory: String){
         self.idName = UUID()
         self.valuesPercent = valuesPercent
         self.nameCategory = nameCategory
@@ -44,7 +44,7 @@ class MethodologySpent: DataModelProtocol {
         return ["valuesPercent", "nameCategory"]
     }
     
-    func getData() -> [String: Any?] {
+    func getData() -> [String : Any?] {
         return ["valuesPercent": valuesPercent, "nameCategory": nameCategory]
     }
     
