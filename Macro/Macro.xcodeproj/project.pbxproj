@@ -45,6 +45,8 @@
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
+		5544772A28E23050000C892E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772928E23050000C892E /* SkipButton.swift */; };
+		5544772C28E2307E000C892E /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772B28E2307E000C892E /* InfoButton.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -115,6 +117,8 @@
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		5544772928E23050000C892E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
+		5544772B28E2307E000C892E /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -414,6 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
+				5544772928E23050000C892E /* SkipButton.swift */,
+				5544772B28E2307E000C892E /* InfoButton.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -587,12 +593,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5544772C28E2307E000C892E /* InfoButton.swift in Sources */,
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
 				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
+				5544772A28E23050000C892E /* SkipButton.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
