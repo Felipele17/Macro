@@ -26,8 +26,7 @@ struct HomeView: View {
             VStack {
                 HStack {
                     Text("Nossas metas")
-                        .font(.title2)
-                        .bold()
+                        .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding([.bottom, .leading, .trailing])
                     Spacer()
                     Button(role: nil) {
@@ -44,8 +43,7 @@ struct HomeView: View {
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, viewsCells: viewsCells)
                 HStack {
                     Text("Nossas Gastos")
-                        .font(.title2)
-                        .bold()
+                        .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding([.top, .leading])
                     Spacer()
                 }
@@ -60,6 +58,7 @@ struct HomeView: View {
 
             }
             .navigationTitle("Bom dia!")
+            .font(.custom(EnumFonts.bold.rawValue, size: 34))
             .toolbar {
                 Button(role: nil) {
                     print("add configuração")
