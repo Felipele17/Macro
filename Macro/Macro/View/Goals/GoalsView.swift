@@ -21,7 +21,7 @@ struct GoalsView: View {
                     .padding([.leading, .trailing, .bottom])
                 VStack {
                     Text("\(goal.weeks) semanas")
-                        .font(.title2)
+                        .font(.custom(EnumFonts.semibold.rawValue, size: 22))
                         .padding()
                     GraphView(chartPieViewModel: ChartPieViewModel(
                         chartDatas: [

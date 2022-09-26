@@ -24,7 +24,7 @@ struct GraphView: View {
             }
             VStack {
                 Text("\((chartPieViewModel.percents.first ?? 0)*100)%")
-                    .font(.custom(EnumFonts.semibold.rawValue, size: 22))
+                    .font(.custom(EnumFonts.regular.rawValue, size: 20))
                 Text("completo")
                     .font(.custom(EnumFonts.regular.rawValue, size: 20))
                     .padding(.bottom)
