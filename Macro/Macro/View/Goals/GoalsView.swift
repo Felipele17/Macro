@@ -14,6 +14,20 @@ struct GoalsView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                Text(goal.title)
+                    .font(.title)
+                    .bold()
+                    .padding()
+                Spacer()
+                Button(role: nil) {
+                    viewModel.deleteGoal(goal: goal)
+                } label: {
+                    Label("", systemImage: "trash")
+                        .tint(.blue)
+                }
+                .padding()
+            }
             ZStack {
                 Color.white
                     .cornerRadius(cornerRadiusNumber())
@@ -59,7 +73,7 @@ struct GoalsView: View {
                             .listRowBackground(Color.red)
                             .colorInvert()
                             .onTapGesture {
-                                print("Acao de Check")
+                                viewModel.checkWeekGoal(goal: goal)
                             }
                         
                         ForEach(goal.weeks+1..<(goal.methodologyGoal?.weeks ?? 0)) { week in
@@ -69,7 +83,7 @@ struct GoalsView: View {
                 }
             }
         }
-        .navigationTitle(goal.title)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button(role: nil) {
                 print("add configuração")
