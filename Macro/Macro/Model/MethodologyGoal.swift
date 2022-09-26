@@ -12,7 +12,7 @@ class MethodologyGoal: DataModelProtocol {
     
     var weeks: Int // → (true → o dinheiro entra em forma de PA [necessariamente crescente], false → o dinheiro entra de forma linear [constante])
     
-    var crescent: Bool  //(→template categorias com porcentagens diferentes add futuramente, AKA: nome; haverão vários templates no futuro)
+    var crescent: Bool  // (→Template categorias com porcentagens diferentes add futuramente, AKA: nome; haverão vários templates no futuro)
     
     init( weeks: Int, crescent: Bool) {
         self.idName = UUID()
