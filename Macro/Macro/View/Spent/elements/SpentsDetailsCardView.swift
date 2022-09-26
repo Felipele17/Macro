@@ -17,10 +17,13 @@ struct SpentsDetailsCardView: View {
             }.frame(width: UIScreen.screenWidth/9, height: UIScreen.screenWidth/9, alignment: .leading)
             VStack {
                 Text("Roda carro")
+                    .font(.custom(EnumFonts.medium.rawValue, size: 17))
                 Text("25/09/2021")
+                    .font(.custom(EnumFonts.light.rawValue, size: 13))
             }
             Spacer()
             Text("R$199,99")
+                .font(.custom(EnumFonts.medium.rawValue, size: 20))
                 .padding()
         }
     }

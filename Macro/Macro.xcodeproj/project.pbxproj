@@ -44,6 +44,7 @@
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
+		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
@@ -114,6 +115,7 @@
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
+		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				06449C4A28C2A19000035324 /* EnumCategoryPercent.swift */,
 				0688A9D128C7B7B2001044A6 /* SharedZone.swift */,
+				4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
+				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
