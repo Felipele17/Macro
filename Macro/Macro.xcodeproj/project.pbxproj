@@ -50,6 +50,8 @@
 		5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */; };
 		5544773A28E23216000C892E /* OnBoardingPageTypeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */; };
 		5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773B28E2324A000C892E /* EnumButtonText.swift */; };
+		5544773E28E2330C000C892E /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773D28E2330C000C892E /* OnBoarding.swift */; };
+		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -125,6 +127,8 @@
 		5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeOneView.swift; sourceTree = "<group>"; };
 		5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoView.swift; sourceTree = "<group>"; };
 		5544773B28E2324A000C892E /* EnumButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumButtonText.swift; sourceTree = "<group>"; };
+		5544773D28E2330C000C892E /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
+				5544773D28E2330C000C892E /* OnBoarding.swift */,
 				06449C4C28C2A2DC00035324 /* MethodologySpent.swift */,
 				06449C4F28C2A45C00035324 /* MethodologyGoal.swift */,
 				06449C4328C29EB400035324 /* Spent.swift */,
@@ -385,6 +390,7 @@
 				06449C4A28C2A19000035324 /* EnumCategoryPercent.swift */,
 				0688A9D128C7B7B2001044A6 /* SharedZone.swift */,
 				5544773B28E2324A000C892E /* EnumButtonText.swift */,
+				5544773F28E23335000C892E /* EnumOnBoardingText.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -621,10 +627,12 @@
 				06449C3828C29E1800035324 /* InputViewModel.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
+				5544773E28E2330C000C892E /* OnBoarding.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
+				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
