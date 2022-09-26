@@ -31,18 +31,11 @@ struct OnBoardingPageTypeTwoView: View {
             VStack {
                 TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
                     .keyboardType(.decimalPad)
-                    .foregroundColor(Color("Placeholder"))
-//                    .onSubmit {
-//                        if income == false {
-//                            income.toggle()
-//                        }
-//                        // pegar a variável de income
-//                        print("Getting the income")
-//                    }
+                    .foregroundColor(.gray)
                     .focused($keyboardIsFocused)
                 Rectangle()
                     .frame(height: 1.0, alignment: .bottom)
-                    .foregroundColor(Color("Placeholder"))
+                    .foregroundColor(.gray)
                     
             }
             .padding(1.5)

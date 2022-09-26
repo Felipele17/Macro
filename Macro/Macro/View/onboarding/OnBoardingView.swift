@@ -47,8 +47,8 @@ struct OnBoardingView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(PageTabViewStyle())
                 .onAppear {
-                    dotAppearance.currentPageIndicatorTintColor = UIColor(Color("dotShowing"))
-                    dotAppearance.pageIndicatorTintColor = UIColor(Color("dotNotShowing"))
+                    dotAppearance.currentPageIndicatorTintColor = UIColor(.gray)
+                    dotAppearance.pageIndicatorTintColor = UIColor(Color(.darkGray))
                 }
                 
                 NextButton(text: viewModel.checkButton(), onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)

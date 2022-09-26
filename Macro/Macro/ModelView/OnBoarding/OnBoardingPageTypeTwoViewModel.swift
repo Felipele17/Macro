@@ -9,7 +9,7 @@ import SwiftUI
 
 class OnBoardingPageTypeTwoViewModel: ObservableObject {
     @Published var onboardingPage: Int
-    init(onboardingPage: Int){
+    init(onboardingPage: Int) {
         self.onboardingPage = onboardingPage
     }
 }

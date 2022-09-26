@@ -26,7 +26,7 @@ struct NextButton: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(income != 0.0 ? Color("Button") : Color("Placeholder"))
+                .background(income != 0.0 ? .blue : .gray)
                 .cornerRadius(13)
         }
     }
