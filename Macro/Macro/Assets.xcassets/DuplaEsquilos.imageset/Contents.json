@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "UmaNozForms1x.png",
+      "filename" : "DuplaEsquilos1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "UmaNozForms2x.png",
+      "filename" : "DuplaEsquilos2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "UmaNozForms3x.png",
+      "filename" : "DuplaEsquilos3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
