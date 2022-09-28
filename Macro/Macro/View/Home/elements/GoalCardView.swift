@@ -15,15 +15,15 @@ struct GoalCardView: View, Identifiable {
             VStack(alignment: .leading) {
                 
                 HStack {
-                    Text(goal.title)
-                        .font(.custom("SFProText-Semibold", size: 22))
+                    Text(goal.title).font(.custom(EnumFonts.semibold.rawValue, size: 22))
                         .padding(.bottom, 2)
                     Spacer()
                     Image("\(viewModel.setImagebyPriority(goal: goal))")
                         .padding(.trailing)
                 }
                 
-                Text("Motivação:").font(.custom("SFProText-Medium", size: 13)) + Text(goal.motivation ?? "").font(.custom("SFProText-Regular", size: 13))
+                Text("Motivação:")
+                    .font(.custom(EnumFonts.medium.rawValue, size: 13)) + Text(goal.motivation ?? "").font(.custom(EnumFonts.regular.rawValue, size: 22))
                 Spacer()
                 
                 ProgressBarCardView(percentsProgress: viewModel.calc(goal: goal))
@@ -34,10 +34,10 @@ struct GoalCardView: View, Identifiable {
                     VStack(alignment: .leading, spacing: 4) {
                         
                         Text("R$\(goal.getAllMoneySave()) ")
-                            .font(.custom("SFProText-Medium", size: 17))
-                            + Text("de R$\(goal.value)").font(.custom("SFProText-Light", size: 17))
+                            .font(.custom(EnumFonts.medium.rawValue, size: 17))
+                            + Text("de R$\(goal.value)").font(.custom(EnumFonts.light.rawValue, size: 17))
                         
-                        Text("Faltam \(52 - goal.weeks) semanas").font(.custom("SFProText-Regular", size: 13))
+                        Text("Faltam \(52 - goal.weeks) semanas").font(.custom(EnumFonts.regular.rawValue, size: 13))
                             
                         Spacer()
                     }

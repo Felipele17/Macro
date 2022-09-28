@@ -11,23 +11,20 @@ struct SpentView: View {
     var body: some View {
             VStack {
                 Text("Gasto atual")
-                    .font(.title)
-                    .bold()
+                    .font(.custom(EnumFonts.bold.rawValue, size: 22))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top])
                 Text("R$ 1470,00")
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading)
                 Text("Limite disponivel R$ 530,00")
-                    .font(.system(size: 20, weight: .light, design: .default))
+                    .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 HStack {
                     Text("Gasto Essenciais")
-                        .font(.largeTitle)
-                        .bold()
+                        .font(.custom(EnumFonts.bold.rawValue, size: 28))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     Spacer()
@@ -47,15 +44,17 @@ struct SpentView: View {
                 }
             }
             .navigationTitle("Essencial")
+            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                Button(role: nil) {
-                    print("editar")
-                } label: {
-                    Text("editar")
-                        .tint(.blue)
-                }
-            }
+//            .toolbar {
+//                Button(role: nil) {
+//                    print("editar")
+//                } label: {
+//                    Text("editar")
+//                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
+//                        .tint(.blue)
+//                }
+//            }
     }
 }
 
