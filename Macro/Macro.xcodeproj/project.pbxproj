@@ -56,6 +56,10 @@
 		5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
+		554B101F28E4C7E1003DEE7C /* LabelNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B101E28E4C7E1003DEE7C /* LabelNextButton.swift */; };
+		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
+		554B102328E4D703003DEE7C /* MotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* MotivationView.swift */; };
+		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B2EF4028DE573D00657C53 /* FormsSpents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpents.swift */; };
 		99B2EF4228DE576200657C53 /* FormsGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF4128DE576200657C53 /* FormsGoals.swift */; };
@@ -140,6 +144,10 @@
 		5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
+		554B101E28E4C7E1003DEE7C /* LabelNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNextButton.swift; sourceTree = "<group>"; };
+		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
+		554B102228E4D703003DEE7C /* MotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationView.swift; sourceTree = "<group>"; };
+		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B2EF3F28DE573D00657C53 /* FormsSpents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpents.swift; sourceTree = "<group>"; };
 		99B2EF4128DE576200657C53 /* FormsGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoals.swift; sourceTree = "<group>"; };
@@ -450,6 +458,8 @@
 		06D80F2C28DE3FDF006B3E0B /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				554B101E28E4C7E1003DEE7C /* LabelNextButton.swift */,
+				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
 				5544772928E23050000C892E /* SkipButton.swift */,
 				5544772B28E2307E000C892E /* InfoButton.swift */,
@@ -471,6 +481,8 @@
 			children = (
 				99B2EF3F28DE573D00657C53 /* FormsSpents.swift */,
 				99B2EF4128DE576200657C53 /* FormsGoals.swift */,
+				554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */,
+				554B102228E4D703003DEE7C /* MotivationView.swift */,
 				99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */,
 			);
 			path = Formulary;
@@ -646,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5544772C28E2307E000C892E /* InfoButton.swift in Sources */,
+				554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */,
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
@@ -654,7 +667,9 @@
 				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
 				5544772A28E23050000C892E /* SkipButton.swift in Sources */,
+				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
+				554B101F28E4C7E1003DEE7C /* LabelNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
@@ -677,6 +692,7 @@
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
+				554B102328E4D703003DEE7C /* MotivationView.swift in Sources */,
 				99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
