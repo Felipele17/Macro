@@ -24,7 +24,6 @@
 		06449C2028C29BCC00035324 /* SpentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C1F28C29BCC00035324 /* SpentView.swift */; };
 		06449C2228C29BFB00035324 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2128C29BFB00035324 /* SettingsView.swift */; };
 		06449C2428C29C1800035324 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2328C29C1800035324 /* InputView.swift */; };
-		06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2528C29C2B00035324 /* OnBoardingView.swift */; };
 		06449C2828C29C4700035324 /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2728C29C4700035324 /* GoalCardView.swift */; };
 		06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2928C29C5D00035324 /* SpentsCardView.swift */; };
 		06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */; };
@@ -46,6 +45,17 @@
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
+		5544772A28E23050000C892E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772928E23050000C892E /* SkipButton.swift */; };
+		5544772C28E2307E000C892E /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772B28E2307E000C892E /* InfoButton.swift */; };
+		5544773628E231C3000C892E /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773528E231C3000C892E /* OnBoardingView.swift */; };
+		5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */; };
+		5544773A28E23216000C892E /* OnBoardingPageTypeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */; };
+		5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773B28E2324A000C892E /* EnumButtonText.swift */; };
+		5544773E28E2330C000C892E /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773D28E2330C000C892E /* OnBoarding.swift */; };
+		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
+		5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */; };
+		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
+		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -93,7 +103,6 @@
 		06449C1F28C29BCC00035324 /* SpentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentView.swift; sourceTree = "<group>"; };
 		06449C2128C29BFB00035324 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		06449C2328C29C1800035324 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
-		06449C2528C29C2B00035324 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		06449C2728C29C4700035324 /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		06449C2928C29C5D00035324 /* SpentsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCardView.swift; sourceTree = "<group>"; };
 		06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsDetailsCardView.swift; sourceTree = "<group>"; };
@@ -117,6 +126,17 @@
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		5544772928E23050000C892E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
+		5544772B28E2307E000C892E /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		5544773528E231C3000C892E /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeOneView.swift; sourceTree = "<group>"; };
+		5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoView.swift; sourceTree = "<group>"; };
+		5544773B28E2324A000C892E /* EnumButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumButtonText.swift; sourceTree = "<group>"; };
+		5544773D28E2330C000C892E /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
+		5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
+		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
+		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -233,6 +253,7 @@
 		06449C1828C2993C00035324 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
 				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
@@ -249,6 +270,7 @@
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
+				5544773D28E2330C000C892E /* OnBoarding.swift */,
 				06449C4C28C2A2DC00035324 /* MethodologySpent.swift */,
 				06449C4F28C2A45C00035324 /* MethodologyGoal.swift */,
 				06449C4328C29EB400035324 /* Spent.swift */,
@@ -317,8 +339,8 @@
 		06449C2F28C29CF300035324 /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				5544773528E231C3000C892E /* OnBoardingView.swift */,
 				06449C3628C29D9E00035324 /* elements */,
-				06449C2528C29C2B00035324 /* OnBoardingView.swift */,
 			);
 			path = onboarding;
 			sourceTree = "<group>";
@@ -357,6 +379,8 @@
 		06449C3628C29D9E00035324 /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */,
+				5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -374,6 +398,9 @@
 			children = (
 				06449C4A28C2A19000035324 /* EnumCategoryPercent.swift */,
 				0688A9D128C7B7B2001044A6 /* SharedZone.swift */,
+				5544773B28E2324A000C892E /* EnumButtonText.swift */,
+				5544773F28E23335000C892E /* EnumOnBoardingText.swift */,
+				5544774628E23483000C892E /* EnumImageName.swift */,
 				4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */,
 			);
 			path = Enum;
@@ -417,8 +444,19 @@
 			isa = PBXGroup;
 			children = (
 				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
+				5544772928E23050000C892E /* SkipButton.swift */,
+				5544772B28E2307E000C892E /* InfoButton.swift */,
 			);
 			path = elements;
+			sourceTree = "<group>";
+		};
+		5544774128E233DA000C892E /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */,
+				5544774428E23415000C892E /* OnBoardingStateViewModel.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		99B676B528DCCFC5007C8BC6 /* Fonts */ = {
@@ -590,31 +628,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5544772C28E2307E000C892E /* InfoButton.swift in Sources */,
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
+				5544773A28E23216000C892E /* OnBoardingPageTypeTwoView.swift in Sources */,
 				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
+				5544772A28E23050000C892E /* SkipButton.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
+				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
-				06449C2628C29C2B00035324 /* OnBoardingView.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				06449C3828C29E1800035324 /* InputViewModel.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
+				5544773E28E2330C000C892E /* OnBoarding.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
 				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
+				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
+				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				06449C2428C29C1800035324 /* InputView.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
+				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
+				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
+				5544774728E23483000C892E /* EnumImageName.swift in Sources */,
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
@@ -622,6 +669,7 @@
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
+				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
 				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
 			);
