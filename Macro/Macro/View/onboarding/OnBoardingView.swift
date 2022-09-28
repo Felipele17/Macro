@@ -29,19 +29,6 @@ struct OnBoardingView: View {
                         .tag(2)
                     OnBoardingPageTypeOneView(onboarding: pages[3])
                         .tag(3)
-
-//                    ForEach(pages) { page in
-//                        VStack {
-//                            ImageView(onboarding: page, viewModel: viewModel)
-//                                .onAppear {
-//                                    if let viewPageTextField = page as? OnBoardingPageTypeTwoView {
-//                                        viewModel.checkTextField = viewPageTextField.income
-//                                    }
-//                                }
-//                            Spacer()
-//                        }
-//                        .tag(page.tag)
-//                    }
                 }
                 .animation(.easeInOut, value: viewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))

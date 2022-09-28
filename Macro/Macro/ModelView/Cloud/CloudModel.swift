@@ -22,13 +22,8 @@ class CloudKitModel {
         databasePrivate = container.privateCloudDatabase
         databaseShared = container.sharedCloudDatabase
         Task.init {
-            do {
-                share = try await getShare()
-            } catch {
-                print(error.localizedDescription)
-            }
+            share = try? await getShare()
         }
-        
     }
     
     // MARK: Post
@@ -100,7 +95,7 @@ class CloudKitModel {
         return self.share
     }
     
-    func getShare() async throws -> CKShare? {
+    func fetchShare() async throws -> CKShare? {
                     
         let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
         guard let share = try await databasePrivate.record(for: recordID) as? CKShare else {
@@ -110,10 +105,20 @@ class CloudKitModel {
         return share
     }
     
-    func makeUIViewController() -> UICloudSharingController? {
-        
+    func getShare() async throws -> CKShare? {
+        do {
+            share = try await fetchShare()
+        } catch {
+            share = try? await createShare()
+            print(error.localizedDescription)
+        }
+        return share
+    }
+    
+    func makeUIViewControllerShare() -> UICloudSharingController? {
+
         guard let share = share else { return nil }
-        
+
         let sharingController = UICloudSharingController(
             share: share,
             container: container
@@ -162,7 +167,7 @@ class CloudKitModel {
         }
     }
     
-    func getSharedZone()  async throws -> CKRecordZone.ID?{
+    func getSharedZone()  async throws -> CKRecordZone.ID? {
         let sharedData = container.sharedCloudDatabase
         let records = try? await sharedData.allRecordZones()
         return records?[0].zoneID
