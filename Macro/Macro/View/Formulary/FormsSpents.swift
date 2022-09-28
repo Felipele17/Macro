@@ -34,17 +34,21 @@ struct FormView: View {
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
                     TextField("Ex: Luz", text: $textFieldSelection)
                         .listRowBackground(Color.clear)
+                        .keyboardType(.decimalPad)
                         .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                        DatePicker("", selection: $datePickerSelection, displayedComponents: [.date])
-                            .listRowBackground(Color.clear)
-                            .labelsHidden()
-                        // .underlineTextField()
+                    DatePicker("", selection: $datePickerSelection, displayedComponents: [.date])
+                        .listRowBackground(Color.clear)
+                        .labelsHidden()
+                    // .underlineTextField()
                 }.textCase(.none)
             }.navigationBarTitle("Gastos", displayMode: .inline)
-            
+                .toolbar {
+                    Button("Salvar") {
+                    }
+                }
         }
     }
 }
