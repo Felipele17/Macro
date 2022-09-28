@@ -11,7 +11,8 @@ import SwiftUI
 struct MacroApp: App {
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            //OnBoardingView()
+            FormsGoals()
         }
     }
 }
