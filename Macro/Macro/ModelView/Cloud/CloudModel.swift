@@ -45,6 +45,8 @@ class CloudKitModel {
         for  propertie in properties {
             if let dataInt = propertiesdata[propertie] as? Int {
                 record[propertie] =  dataInt as CKRecordValue
+            } else if let dataIntList = propertiesdata[propertie] as? [Int] {
+                record[propertie] =  dataIntList as CKRecordValue
             } else if let dataString = propertiesdata[propertie] as? String {
                 record[propertie] =  dataString as CKRecordValue
             } else if let dataFloat = propertiesdata[propertie] as? Float {
