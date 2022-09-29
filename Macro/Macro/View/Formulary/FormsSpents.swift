@@ -37,6 +37,7 @@ struct FormsSpents: View {
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
                     TextField("Ex: R$200,00", value: $viewModel.valueSpent, formatter: formatter)
                         .listRowBackground(Color.clear)
+                        .keyboardType(.decimalPad)
                         .underlineTextField()
                 }.textCase(.none)
                 

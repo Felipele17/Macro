@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MacroApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            //OnBoardingView()
+            FormsGoals()
         }
     }
 }
