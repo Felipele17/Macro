@@ -25,23 +25,25 @@ struct SpentView: View {
                 HStack {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading)
-                    Spacer()
                     Button {
                         print("add gasto")
                     } label: {
                         Label("", systemImage: "plus")
-                            .padding(.trailing)
+                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                            .padding(.leading, 48)
                     }
 
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
                 List {
                     SpentsDetailsCardView()
                     SpentsDetailsCardView()
                     SpentsDetailsCardView()
                     SpentsDetailsCardView()
                 }
+                .padding(.trailing)
+                .offset(y: -24)
             }
             .navigationTitle("Essencial")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))

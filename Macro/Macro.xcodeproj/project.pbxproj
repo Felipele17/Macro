@@ -43,8 +43,9 @@
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
-		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
+		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
+		4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */; };
 		5544772A28E23050000C892E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772928E23050000C892E /* SkipButton.swift */; };
 		5544772C28E2307E000C892E /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772B28E2307E000C892E /* InfoButton.swift */; };
 		5544773628E231C3000C892E /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773528E231C3000C892E /* OnBoardingView.swift */; };
@@ -124,8 +125,9 @@
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
-		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
+		4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumColors.swift; sourceTree = "<group>"; };
 		5544772928E23050000C892E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
 		5544772B28E2307E000C892E /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		5544773528E231C3000C892E /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				5544773F28E23335000C892E /* EnumOnBoardingText.swift */,
 				5544774628E23483000C892E /* EnumImageName.swift */,
 				4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */,
+				4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
+				4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
@@ -828,10 +832,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = 7Y74F655Y8;
+				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
@@ -847,6 +852,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = vitorCheung.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -859,10 +865,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = 7Y74F655Y8;
+				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
@@ -878,6 +885,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = vitorCheung.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

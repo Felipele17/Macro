@@ -13,10 +13,10 @@ struct ProgressBarCardView: View {
         VStack {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(Color("BackgroundProgressColor"))
+                    .foregroundColor(Color(EnumColors.BackgroundProgressColor.rawValue))
                     .frame(width: 220, height: 8)
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(Color("ForegroundProgressColor"))
+                    .foregroundColor(Color(EnumColors.ForegroundProgressColor.rawValue))
                     .frame(width:  percentsProgress, height: 8)
             }
         }

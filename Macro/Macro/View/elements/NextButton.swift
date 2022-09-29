@@ -26,7 +26,7 @@ struct NextButton: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(income != 0.0 ? .blue : .gray)
+                .background(income != 0.0 ? .blue : Color(EnumColors.ButtonColor.rawValue))
                 .cornerRadius(13)
         }
     }

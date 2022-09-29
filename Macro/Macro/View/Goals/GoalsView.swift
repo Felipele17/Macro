@@ -16,15 +16,14 @@ struct GoalsView: View {
         VStack {
             HStack {
                 Text(goal.title)
-                    .font(.title)
-                    .bold()
+                    .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding()
                 Spacer()
                 Button(role: nil) {
                     viewModel.deleteGoal(goal: goal)
                 } label: {
                     Label("", systemImage: "trash")
-                        .tint(.blue)
+                        .foregroundColor(Color(EnumColors.ForegroundGraphMetaColor.rawValue))
                 }
                 .padding()
             }
@@ -33,14 +32,16 @@ struct GoalsView: View {
                     .cornerRadius(cornerRadiusNumber())
                     .shadow(radius: cornerRadiusNumber())
                     .padding([.leading, .trailing, .bottom])
+                Color(EnumColors.BackgroundCardMetaColor.rawValue)
+                
                 VStack {
                     Text("\(goal.weeks) semanas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 22))
                         .padding()
                     GraphView(chartPieViewModel: ChartPieViewModel(
                         chartDatas: [
-                            ChartData(color: .green, value: CGFloat(goal.getAllMoneySave())),
-                            ChartData(color: .cyan, value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
+                            ChartData(color: Color(EnumColors.ForegroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
+                            ChartData(color: Color(EnumColors.BackgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
                             ]
                         )
                     )
