@@ -11,14 +11,14 @@ import CloudKit
 class User: DataModelProtocol {
     var idName: UUID
     var name: String
-    var income: Int
+    var income: Float
     var partner: String
     var dueData: Int
     // (→ Array de index mostrando qual notificação foi ligada, [1,2] nesse caso a segunda e terceira notificação foram ligadas)
     var notification: [Int]
     var methodologySpent: MethodologySpent?
     
-    init(idName: UUID, name: String, income: Int, dueData: Int, partner: String, notification: [Int], methodologySpent: MethodologySpent) {
+    init(idName: UUID, name: String, income: Float, dueData: Int, partner: String, notification: [Int], methodologySpent: MethodologySpent) {
         self.idName = idName
         self.name = name
         self.income = income
@@ -31,7 +31,7 @@ class User: DataModelProtocol {
     required init?(record: CKRecord) {
         guard let  idName = record["idName"] as? String else { return nil }
         guard let  name = record["name"] as? String else { return nil }
-        guard let  income = record["income"] as? Int else { return nil }
+        guard let  income = record["income"] as? Float else { return nil }
         guard let  partner = record["partner"] as? String else { return nil }
         guard let  dueData = record["dueData"] as? Int else { return nil }
         guard let  notification = record["notification"] as? [Int] else { return nil }
