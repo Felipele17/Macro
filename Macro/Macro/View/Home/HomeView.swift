@@ -42,7 +42,7 @@ struct HomeView: View {
                 .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, viewsCells: viewsCells)
                 HStack {
-                    Text("Nossas Gastos")
+                    Text("Nossos Gastos")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding([.top, .leading])
                     Spacer()

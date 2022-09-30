@@ -12,12 +12,14 @@ class Spent: DataModelProtocol {
     
     var idName: UUID
     var title: String
-    var value: Int
+    var value: Float
     var icon: String
     var date: Date
     var categoryPercent: EnumCategoryPercent
     
-    init(title: String, value: Int, icon: String, date: Date, categoryPercent: EnumCategoryPercent) {
+    init(title: String, value: Float, icon: String,
+         date: Date,
+         categoryPercent: EnumCategoryPercent) {
         self.idName = UUID()
         self.title = title
         self.value = value
@@ -29,7 +31,7 @@ class Spent: DataModelProtocol {
     required init?(record: CKRecord) {
         guard let  idName = record["recordName"] as? String else { return nil }
         guard let  title = record["title"] as? String else { return nil }
-        guard let  value = record["value"] as? Int else { return nil }
+        guard let  value = record["value"] as? Float else { return nil }
         guard let  icon = record["icon"] as? String else { return nil }
         guard let  date = record["date"] as? Date else { return nil }
         guard let  category = record["category"] as? String else { return nil }
@@ -57,6 +59,8 @@ class Spent: DataModelProtocol {
     }
     
     func getData() -> [String: Any?] {
-        return ["title": title, "value": value, "icon": icon, "date": date, "categoryPercent": categoryPercent.rawValue]
+        return ["title": title, "value": value, "icon": icon,
+                "date": date,
+                "categoryPercent": categoryPercent.rawValue]
     }
 }

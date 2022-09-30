@@ -9,55 +9,53 @@ import SwiftUI
 
 struct SpentView: View {
     var body: some View {
-        VStack (alignment: .leading){
-            Text("Gasto atual")
-                .font(.custom(EnumFonts.bold.rawValue, size: 22))
-            //.frame(maxWidth: .infinity, alignment: .leading)
-            //.padding([.leading, .top])
-            Text("R$ 1470,00")
-                .font(.custom(EnumFonts.bold.rawValue, size: 28))
-            //.frame(maxWidth: .infinity, alignment: .leading)
-            //.padding(.leading)
-            Text("Limite disponivel R$ 530,00")
-                .font(.custom(EnumFonts.regular.rawValue, size: 17))
-            //.frame(maxWidth: .infinity, alignment: .leading)
-            //.padding(.top)
-            HStack {
-                Text("Gasto Essenciais")
+        NavigationView {
+            VStack {
+                Text("Gasto atual")
+                    .font(.custom(EnumFonts.bold.rawValue, size: 22))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding([.leading, .top])
+                Text("R$ 1470,00")
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
-                Button {
-                    print("add gasto")
-                } label: {
-                    Label("", systemImage: "plus")
-                        .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
-                    //.padding(.leading, 48)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                Text("Limite disponivel R$ 530,00")
+                    .font(.custom(EnumFonts.regular.rawValue, size: 17))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                HStack {
+                    Text("Gasto Essenciais")
+                        .font(.custom(EnumFonts.bold.rawValue, size: 28))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                    Spacer()
+                    NavigationLink(destination: FormsSpents(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
+                        Label("", systemImage: "plus")
+                            .padding(.trailing)
+                    }
+                }
+                List {
+                    SpentsDetailsCardView()
+                    SpentsDetailsCardView()
+                    SpentsDetailsCardView()
+                    SpentsDetailsCardView()
                 }
                 
             }
-            //.frame(maxWidth: .infinity, alignment: .leading)
-            //.padding(.leading)
-            List {
-                SpentsDetailsCardView()
-                SpentsDetailsCardView()
-                SpentsDetailsCardView()
-                SpentsDetailsCardView()
-            }
-            .padding(.trailing)
+            .navigationTitle("Essencial")
+            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
+            .navigationBarTitleDisplayMode(.inline)
+            //            .toolbar {
+            //                Button(role: nil) {
+            //                    print("editar")
+            //                } label: {
+            //                    Text("editar")
+            //                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
+            //                        .tint(.blue)
+            //                }
+            //            }
         }
-        .padding(.leading, 20)
-        .navigationTitle("Essencial")
-        .font(.custom(EnumFonts.semibold.rawValue, size: 17))
-        .navigationBarTitleDisplayMode(.inline)
-        .background(Color(EnumColors.ButtonUnselect.rawValue))
-        //            .toolbar {
-        //                Button(role: nil) {
-        //                    print("editar")
-        //                } label: {
-        //                    Text("editar")
-        //                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
-        //                        .tint(.blue)
-        //                }
-        //            }
+        
     }
         
 }

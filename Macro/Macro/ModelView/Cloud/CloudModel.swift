@@ -22,13 +22,46 @@ class CloudKitModel {
         databasePrivate = container.privateCloudDatabase
         databaseShared = container.sharedCloudDatabase
         Task.init {
-            do {
-                share = try await getShare()
-            } catch {
+            share = try? await getShare()
+        }
+    }
+    
+    //MARK: PushNotification
+    func saveNotification(recordType: String) async {
+        // Only proceed if the subscription doesn't already exist.
+        guard !UserDefaults.standard.bool(forKey: "didCreateFeedSubscription\(recordType)")
+            else { return }
+                
+        // Create a subscription with an ID that's unique within the scope of
+        // the user's private database.
+        let subscription = CKDatabaseSubscription(subscriptionID: "\(recordType)-changes")
+
+        // Scope the subscription to just the 'FeedItem' record type.
+        subscription.recordType = "\(recordType)"
+                
+        // Configure the notification so that the system delivers it silently
+        // and, therefore, doesn't require permission from the user.
+        let notificationInfo = CKSubscription.NotificationInfo()
+        notificationInfo.shouldSendContentAvailable = true
+        subscription.notificationInfo = notificationInfo
+                
+        // Create an operation that saves the subscription to the server.
+        let operation = CKModifySubscriptionsOperation(
+            subscriptionsToSave: [subscription], subscriptionIDsToDelete: nil)
+        
+        operation.modifySubscriptionsResultBlock = { result in
+            switch result{
+            case .success():
+                UserDefaults.standard.setValue(true, forKey: "didCreateFeedSubscription\(recordType)")
+            case .failure(let error):
                 print(error.localizedDescription)
             }
         }
         
+        // Set an appropriate QoS and add the operation to the private
+        // database's operation queue to execute it.
+        operation.qualityOfService = .utility
+        container.sharedCloudDatabase.add(operation)
     }
     
     // MARK: Post
@@ -50,6 +83,8 @@ class CloudKitModel {
         for  propertie in properties {
             if let dataInt = propertiesdata[propertie] as? Int {
                 record[propertie] =  dataInt as CKRecordValue
+            } else if let dataIntList = propertiesdata[propertie] as? [Int] {
+                record[propertie] =  dataIntList as CKRecordValue
             } else if let dataString = propertiesdata[propertie] as? String {
                 record[propertie] =  dataString as CKRecordValue
             } else if let dataFloat = propertiesdata[propertie] as? Float {
@@ -100,7 +135,7 @@ class CloudKitModel {
         return self.share
     }
     
-    func getShare() async throws -> CKShare? {
+    func fetchShare() async throws -> CKShare? {
                     
         let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
         guard let share = try await databasePrivate.record(for: recordID) as? CKShare else {
@@ -110,10 +145,20 @@ class CloudKitModel {
         return share
     }
     
-    func makeUIViewController() -> UICloudSharingController? {
-        
+    func getShare() async throws -> CKShare? {
+        do {
+            share = try await fetchShare()
+        } catch {
+            share = try? await createShare()
+            print(error.localizedDescription)
+        }
+        return share
+    }
+    
+    func makeUIViewControllerShare() -> UICloudSharingController? {
+
         guard let share = share else { return nil }
-        
+
         let sharingController = UICloudSharingController(
             share: share,
             container: container
@@ -162,7 +207,7 @@ class CloudKitModel {
         }
     }
     
-    func getSharedZone()  async throws -> CKRecordZone.ID?{
+    func getSharedZone()  async throws -> CKRecordZone.ID? {
         let sharedData = container.sharedCloudDatabase
         let records = try? await sharedData.allRecordZones()
         return records?[0].zoneID

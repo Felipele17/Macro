@@ -23,11 +23,9 @@
 		06449C1E28C29B6600035324 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C1D28C29B6600035324 /* HomeView.swift */; };
 		06449C2028C29BCC00035324 /* SpentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C1F28C29BCC00035324 /* SpentView.swift */; };
 		06449C2228C29BFB00035324 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2128C29BFB00035324 /* SettingsView.swift */; };
-		06449C2428C29C1800035324 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2328C29C1800035324 /* InputView.swift */; };
 		06449C2828C29C4700035324 /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2728C29C4700035324 /* GoalCardView.swift */; };
 		06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2928C29C5D00035324 /* SpentsCardView.swift */; };
 		06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */; };
-		06449C3828C29E1800035324 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3728C29E1800035324 /* InputViewModel.swift */; };
 		06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3928C29E2200035324 /* HomeViewModel.swift */; };
 		06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3B28C29E4100035324 /* SpentViewModel.swift */; };
 		06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalViewModel.swift */; };
@@ -41,6 +39,7 @@
 		06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* MethodologyGoal.swift */; };
 		06449C5528C2A66800035324 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06449C5428C2A66800035324 /* CloudKit.framework */; };
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
+		065F765A28E60A09003526CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F765928E60A09003526CF /* AppDelegate.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -57,13 +56,21 @@
 		5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
+		554B101F28E4C7E1003DEE7C /* LabelNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B101E28E4C7E1003DEE7C /* LabelNextButton.swift */; };
+		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
+		554B102328E4D703003DEE7C /* MotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* MotivationView.swift */; };
+		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
+		99B2EF4028DE573D00657C53 /* FormsSpents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpents.swift */; };
+		99B2EF4228DE576200657C53 /* FormsGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF4128DE576200657C53 /* FormsGoals.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
 		99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */; };
 		99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */; };
 		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
 		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
+		99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */; };
+		99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,11 +110,9 @@
 		06449C1D28C29B6600035324 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		06449C1F28C29BCC00035324 /* SpentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentView.swift; sourceTree = "<group>"; };
 		06449C2128C29BFB00035324 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		06449C2328C29C1800035324 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		06449C2728C29C4700035324 /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		06449C2928C29C5D00035324 /* SpentsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCardView.swift; sourceTree = "<group>"; };
 		06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsDetailsCardView.swift; sourceTree = "<group>"; };
-		06449C3728C29E1800035324 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		06449C3928C29E2200035324 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		06449C3B28C29E4100035324 /* SpentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentViewModel.swift; sourceTree = "<group>"; };
 		06449C3D28C29E5D00035324 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
@@ -123,6 +128,7 @@
 		06449C5228C2A65B00035324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06449C5428C2A66800035324 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		065F765928E60A09003526CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -139,13 +145,21 @@
 		5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
+		554B101E28E4C7E1003DEE7C /* LabelNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNextButton.swift; sourceTree = "<group>"; };
+		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
+		554B102228E4D703003DEE7C /* MotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationView.swift; sourceTree = "<group>"; };
+		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
+		99B2EF3F28DE573D00657C53 /* FormsSpents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpents.swift; sourceTree = "<group>"; };
+		99B2EF4128DE576200657C53 /* FormsGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoals.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
+		99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentCardViewModel.swift; sourceTree = "<group>"; };
+		99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsEditGoals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +217,7 @@
 				06449C5228C2A65B00035324 /* Info.plist */,
 				06449C5128C2A65500035324 /* Macro.entitlements */,
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
+				065F765928E60A09003526CF /* AppDelegate.swift */,
 				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				06449C1928C2994800035324 /* Model */,
 				06449C1828C2993C00035324 /* ModelView */,
@@ -240,10 +255,10 @@
 		06449C1728C2993300035324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				99B2EF4328DE576A00657C53 /* Formulary */,
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				06D80F2C28DE3FDF006B3E0B /* elements */,
 				06449C2F28C29CF300035324 /* onboarding */,
-				06449C2E28C29CE700035324 /* input */,
 				06449C2D28C29CC700035324 /* Settings */,
 				06449C2C28C29CA000035324 /* Home */,
 				06449C2B28C29C9200035324 /* Goals */,
@@ -255,12 +270,11 @@
 		06449C1828C2993C00035324 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				99E4F21328E4D52200AB24FA /* Spent */,
 				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
 				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
-				06449C3728C29E1800035324 /* InputViewModel.swift */,
-				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
 				06449C3F28C29E8300035324 /* SettingsViewModel.swift */,
 			);
 			path = ModelView;
@@ -329,15 +343,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		06449C2E28C29CE700035324 /* input */ = {
-			isa = PBXGroup;
-			children = (
-				06449C2328C29C1800035324 /* InputView.swift */,
-				06449C3528C29D9300035324 /* elements */,
-			);
-			path = input;
-			sourceTree = "<group>";
-		};
 		06449C2F28C29CF300035324 /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,13 +370,6 @@
 			sourceTree = "<group>";
 		};
 		06449C3428C29D8700035324 /* elements */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = elements;
-			sourceTree = "<group>";
-		};
-		06449C3528C29D9300035324 /* elements */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -446,6 +444,8 @@
 		06D80F2C28DE3FDF006B3E0B /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				554B101E28E4C7E1003DEE7C /* LabelNextButton.swift */,
+				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
 				5544772928E23050000C892E /* SkipButton.swift */,
 				5544772B28E2307E000C892E /* InfoButton.swift */,
@@ -462,6 +462,18 @@
 			path = OnBoarding;
 			sourceTree = "<group>";
 		};
+		99B2EF4328DE576A00657C53 /* Formulary */ = {
+			isa = PBXGroup;
+			children = (
+				99B2EF3F28DE573D00657C53 /* FormsSpents.swift */,
+				99B2EF4128DE576200657C53 /* FormsGoals.swift */,
+				554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */,
+				554B102228E4D703003DEE7C /* MotivationView.swift */,
+				99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */,
+			);
+			path = Formulary;
+			sourceTree = "<group>";
+		};
 		99B676B528DCCFC5007C8BC6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +484,15 @@
 				99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		99E4F21328E4D52200AB24FA /* Spent */ = {
+			isa = PBXGroup;
+			children = (
+				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
+				99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */,
+			);
+			path = Spent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,15 +653,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5544772C28E2307E000C892E /* InfoButton.swift in Sources */,
+				554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */,
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
 				5544773A28E23216000C892E /* OnBoardingPageTypeTwoView.swift in Sources */,
 				06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */,
+				065F765A28E60A09003526CF /* AppDelegate.swift in Sources */,
 				06449C4628C29EC000035324 /* User.swift in Sources */,
 				5544772A28E23050000C892E /* SkipButton.swift in Sources */,
+				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
+				554B101F28E4C7E1003DEE7C /* LabelNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
@@ -648,21 +673,23 @@
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
-				06449C3828C29E1800035324 /* InputViewModel.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				5544773E28E2330C000C892E /* OnBoarding.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
+				99B2EF4028DE573D00657C53 /* FormsSpents.swift in Sources */,
 				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
-				06449C2428C29C1800035324 /* InputView.swift in Sources */,
+				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
+				554B102328E4D703003DEE7C /* MotivationView.swift in Sources */,
+				99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
 				06449C2828C29C4700035324 /* GoalCardView.swift in Sources */,
 				5544774728E23483000C892E /* EnumImageName.swift in Sources */,
@@ -671,6 +698,7 @@
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
+				99B2EF4228DE576200657C53 /* FormsGoals.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
 				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
