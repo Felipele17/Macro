@@ -10,54 +10,43 @@ import SwiftUI
 struct SpentView: View {
     var body: some View {
         NavigationView {
-            VStack {
+            VStack (alignment: .leading) {
                 Text("Gasto atual")
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.leading, .top])
+                    .padding(.top)
                 Text("R$ 1470,00")
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading)
                 Text("Limite disponivel R$ 530,00")
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
                 HStack {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading)
                     Spacer()
                     NavigationLink(destination: FormsSpents(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
                         Label("", systemImage: "plus")
-                            .padding(.trailing)
+                            .padding(.trailing, 35)
+                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
                     }
                 }
+                .padding(.top, 10)
                 List {
                     SpentsDetailsCardView()
                     SpentsDetailsCardView()
                     SpentsDetailsCardView()
                     SpentsDetailsCardView()
                 }
+                .offset()
                 
             }
+            .padding(.leading)
+            .background(Color(EnumColors.BackgroundExpenseColor.rawValue))
             .navigationTitle("Essencial")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.inline)
-            //            .toolbar {
-            //                Button(role: nil) {
-            //                    print("editar")
-            //                } label: {
-            //                    Text("editar")
-            //                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
-            //                        .tint(.blue)
-            //                }
-            //            }
         }
         
     }
-        
+    
 }
 
 struct SpentView_Previews: PreviewProvider {

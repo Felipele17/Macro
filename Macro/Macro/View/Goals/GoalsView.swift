@@ -42,8 +42,8 @@ struct GoalsView: View {
                         chartDatas: [
                             ChartData(color: Color(EnumColors.ForegroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
                             ChartData(color: Color(EnumColors.BackgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
-                            ]
-                        )
+                        ]
+                    )
                     )
                     .offset(x: 0, y: UIScreen.screenHeight/20)
                 }
@@ -54,11 +54,12 @@ struct GoalsView: View {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
                     Text("Todos").tag(0)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Á fazer").tag(1)
+                    Text("Á depositar").tag(1)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Concluído").tag(2)
+                    Text("Depositado").tag(2)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
                 }
+                .colorMultiply(Color(EnumColors.ButtonColor.rawValue))
                 .pickerStyle(.segmented)
                 .padding([.leading, .trailing])
                 List {
@@ -71,8 +72,6 @@ struct GoalsView: View {
                     }
                     if selectFilter != 2 {
                         WeakGoalsView(title: "semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
-                            .listRowBackground(Color.red)
-                            .colorInvert()
                             .onTapGesture {
                                 viewModel.checkWeekGoal(goal: goal)
                             }
@@ -93,7 +92,7 @@ struct GoalsView: View {
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .tint(.blue)
             }
-        }
+        }.background(Color(EnumColors.BackgroundExpenseColor.rawValue))
     }
 }
 
