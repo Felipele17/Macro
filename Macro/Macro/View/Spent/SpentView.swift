@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SpentView: View {
     var body: some View {
-        NavigationView {
             VStack {
                 Text("Gasto atual")
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -54,8 +53,6 @@ struct SpentView: View {
             //                }
             //            }
         }
-        
-    }
 }
 
 struct SpentView_Previews: PreviewProvider {
