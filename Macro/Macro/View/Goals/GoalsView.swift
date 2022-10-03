@@ -49,7 +49,8 @@ struct GoalsView: View {
                 }
             }
             .frame(height: UIScreen.screenHeight/2.5)
-            .padding(.bottom)
+            .padding(.horizontal, 15)
+            .cornerRadius(60)
             VStack {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
                     Text("Todos").tag(0)
@@ -61,7 +62,7 @@ struct GoalsView: View {
                 }
                 .colorMultiply(Color(EnumColors.ButtonColor.rawValue))
                 .pickerStyle(.segmented)
-                .padding([.leading, .trailing])
+                .padding([.leading, .trailing, .top])
                 List {
                     if selectFilter != 1 {
                         ForEach(1..<goal.weeks) { week in
