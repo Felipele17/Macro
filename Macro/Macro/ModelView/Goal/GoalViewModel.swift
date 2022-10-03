@@ -32,4 +32,15 @@ class GoalViewModel: ObservableObject {
             }
         }
     }
+    
+    func editGoal(goal: Goal) async {
+        Task.init {
+            do {
+                try await cloud.upadte(model: goal)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
 }

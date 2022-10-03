@@ -20,13 +20,13 @@ class SpentViewModel: ObservableObject {
     }
     
     func createSpent() -> Spent? {
-        if nameSpent == "" {
+        if nameSpent.isEmpty {
             return nil
         }
-        if iconPicker == ""{
+        if iconPicker.isEmpty {
             return nil
         }
-        if valueSpent == 0.0 {
+        if valueSpent.isZero {
             return nil
         }
         return Spent(title: nameSpent, value: valueSpent, icon: iconPicker, date: datePickerSpent, categoryPercent: categoryPercent)
@@ -45,6 +45,16 @@ class SpentViewModel: ObservableObject {
         Task.init {
             do {
                 try await cloud.delete(model: spent)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func editSpent(spent: Spent) {
+        Task.init {
+            do {
+                try await cloud.upadte(model: spent)
             } catch let error {
                 print(error.localizedDescription)
             }

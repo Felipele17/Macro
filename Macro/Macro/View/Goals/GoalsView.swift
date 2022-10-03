@@ -41,8 +41,8 @@ struct GoalsView: View {
                         chartDatas: [
                             ChartData(color: .green, value: CGFloat(goal.getAllMoneySave())),
                             ChartData(color: .cyan, value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
-                            ]
-                        )
+                        ]
+                    )
                     )
                     .offset(x: 0, y: UIScreen.screenHeight/20)
                 }
@@ -85,10 +85,10 @@ struct GoalsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button(role: nil) {
-                print("add configuração")
+            NavigationLink  {
+                FormsEditGoals()
             } label: {
-                Text("editar")
+                Text("Editar")
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .tint(.blue)
             }

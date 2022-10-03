@@ -28,11 +28,18 @@ struct SpentsDetailsCardView: View {
                 .font(.custom(EnumFonts.medium.rawValue, size: 20))
                 .padding()
         }
-        .swipeActions(allowsFullSwipe: false) {
-            Button(role: .destructive) {
+        .swipeActions(edge: .trailing, allowsFullSwipe: false ) {
+            Button {
                 viewModel.deleteSpent(spent: spent)
             } label: {
-                Label("Delete", systemImage: "trash.fill")
+                Label("Deletar", systemImage: "trash.fill")
+            }
+        }
+        .swipeActions(edge: .leading) {
+            NavigationLink {
+                FormsSpents(viewModel: viewModel)
+            } label: {
+                Label("Editar", systemImage: "square.and.pencil")
             }
         }
     }
@@ -43,3 +50,4 @@ struct SpentsDetailsCardView_Previews: PreviewProvider {
         SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
     }
 }
+
