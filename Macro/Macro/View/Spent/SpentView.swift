@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpentView: View {
     var body: some View {
+        NavigationView {
             VStack {
                 Text("Gasto atual")
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -28,13 +29,10 @@ struct SpentView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     Spacer()
-                    Button {
-                        print("add gasto")
-                    } label: {
+                    NavigationLink(destination: FormsSpents(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
                         Label("", systemImage: "plus")
                             .padding(.trailing)
                     }
-
                 }
                 List {
                     SpentsDetailsCardView()
@@ -46,15 +44,17 @@ struct SpentView: View {
             .navigationTitle("Essencial")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                Button(role: nil) {
-//                    print("editar")
-//                } label: {
-//                    Text("editar")
-//                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
-//                        .tint(.blue)
-//                }
-//            }
+            //            .toolbar {
+            //                Button(role: nil) {
+            //                    print("editar")
+            //                } label: {
+            //                    Text("editar")
+            //                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
+            //                        .tint(.blue)
+            //                }
+            //            }
+        }
+        
     }
 }
 

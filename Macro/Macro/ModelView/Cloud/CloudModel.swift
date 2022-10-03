@@ -26,6 +26,44 @@ class CloudKitModel {
         }
     }
     
+    //MARK: PushNotification
+    func saveNotification(recordType: String) async {
+        // Only proceed if the subscription doesn't already exist.
+        guard !UserDefaults.standard.bool(forKey: "didCreateFeedSubscription\(recordType)")
+            else { return }
+                
+        // Create a subscription with an ID that's unique within the scope of
+        // the user's private database.
+        let subscription = CKDatabaseSubscription(subscriptionID: "\(recordType)-changes")
+
+        // Scope the subscription to just the 'FeedItem' record type.
+        subscription.recordType = "\(recordType)"
+                
+        // Configure the notification so that the system delivers it silently
+        // and, therefore, doesn't require permission from the user.
+        let notificationInfo = CKSubscription.NotificationInfo()
+        notificationInfo.shouldSendContentAvailable = true
+        subscription.notificationInfo = notificationInfo
+                
+        // Create an operation that saves the subscription to the server.
+        let operation = CKModifySubscriptionsOperation(
+            subscriptionsToSave: [subscription], subscriptionIDsToDelete: nil)
+        
+        operation.modifySubscriptionsResultBlock = { result in
+            switch result{
+            case .success():
+                UserDefaults.standard.setValue(true, forKey: "didCreateFeedSubscription\(recordType)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        // Set an appropriate QoS and add the operation to the private
+        // database's operation queue to execute it.
+        operation.qualityOfService = .utility
+        container.sharedCloudDatabase.add(operation)
+    }
+    
     // MARK: Post
     func post(recordType: String, model: DataModelProtocol) async throws {
 
@@ -45,6 +83,8 @@ class CloudKitModel {
         for  propertie in properties {
             if let dataInt = propertiesdata[propertie] as? Int {
                 record[propertie] =  dataInt as CKRecordValue
+            } else if let dataIntList = propertiesdata[propertie] as? [Int] {
+                record[propertie] =  dataIntList as CKRecordValue
             } else if let dataString = propertiesdata[propertie] as? String {
                 record[propertie] =  dataString as CKRecordValue
             } else if let dataFloat = propertiesdata[propertie] as? Float {
