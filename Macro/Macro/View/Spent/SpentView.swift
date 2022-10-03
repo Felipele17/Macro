@@ -34,24 +34,12 @@ struct SpentView: View {
                     }
                 }
                 List {
-                    SpentsDetailsCardView()
-                    SpentsDetailsCardView()
-                    SpentsDetailsCardView()
-                    SpentsDetailsCardView()
+                    SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
                 }
             }
             .navigationTitle("Essencial")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.inline)
-            //            .toolbar {
-            //                Button(role: nil) {
-            //                    print("editar")
-            //                } label: {
-            //                    Text("editar")
-            //                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
-            //                        .tint(.blue)
-            //                }
-            //            }
         }
 }
 

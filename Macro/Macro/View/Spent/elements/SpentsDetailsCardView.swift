@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SpentsDetailsCardView: View {
+    var spent: Spent
+    @StateObject var viewModel: SpentViewModel
     var body: some View {
         HStack {
             ZStack {
@@ -26,11 +28,18 @@ struct SpentsDetailsCardView: View {
                 .font(.custom(EnumFonts.medium.rawValue, size: 20))
                 .padding()
         }
+        .swipeActions(allowsFullSwipe: false) {
+            Button(role: .destructive) {
+                viewModel.deleteSpent(spent: spent)
+            } label: {
+                Label("Delete", systemImage: "trash.fill")
+            }
+        }
     }
 }
 
 struct SpentsDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsDetailsCardView()
+        SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
     }
 }

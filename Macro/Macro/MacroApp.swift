@@ -12,8 +12,7 @@ struct MacroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            //OnBoardingView()
-            FormsGoalsNameView()
+            HomeView()
         }
     }
 }
