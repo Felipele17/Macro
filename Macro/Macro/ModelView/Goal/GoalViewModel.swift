@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 class GoalViewModel: ObservableObject {
+    
     private let cloud = CloudKitModel.shared
-    init() {}
+    //init() {}
     
     func checkWeekGoal(goal: Goal) {
         goal.weeks += 1
