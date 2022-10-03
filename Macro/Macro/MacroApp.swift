@@ -12,7 +12,7 @@ struct MacroApp: App {
     var body: some Scene {
         WindowGroup {
             //OnBoardingView()
-            FormsGoals()
+            FormsGoalsNameView()
         }
     }
 }

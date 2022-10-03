@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct FormsGoals: View {
+struct FormsGoalsNameView: View {
     
     @State private var goalField: String = ""
     @State private var pageIndex = 0
+    @State var goal = Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 1, crescent: false))
     
     var body: some View {
         NavigationView {
@@ -21,10 +22,15 @@ struct FormsGoals: View {
                 Text("Coloque um nome que te lembre de alcançar esta meta")
                     .padding(10)
                 TextField("Ex.: Carro novo", text: $goalField)
+                
+                    .foregroundColor(.black)
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                LabelNextButton(text: EnumButtonText.nextButton.rawValue, textField: $goalField, pageIndex: $pageIndex)
+                GoalNextButton(goal: goal, text: EnumButtonText.nextButton.rawValue, textField: $goalField, pageIndex: $pageIndex)
+                    .onTapGesture {
+                       goal.title = goalField
+                    }
             }
             .padding(20)
         }
@@ -33,6 +39,6 @@ struct FormsGoals: View {
 
 struct FormGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsGoals()
+        FormsGoalsNameView()
     }
 }
