@@ -45,7 +45,7 @@ struct GoalsView: View {
                         ]
                     )
                     )
-                    .offset(x: 0, y: UIScreen.screenHeight/20)
+                    .offset(x: 0, y: UIScreen.screenHeight/30)
                 }
             }
             .frame(height: UIScreen.screenHeight/2.5)

@@ -18,7 +18,7 @@ struct WeakGoalsView: View {
                 .padding(.leading)
             Text(title)
             Spacer()
-            Text("R$\(valor)")
+            Text("R$\(valor, specifier: "%.2f")")
                 .font(.custom(EnumFonts.medium.rawValue, size: 20))
                 .padding()
         }
