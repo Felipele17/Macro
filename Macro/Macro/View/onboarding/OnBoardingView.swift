@@ -49,8 +49,22 @@ struct OnBoardingView: View {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(.gray)
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(.darkGray))
                 }
-                
-                NextButton(text: viewModel.checkButton(), onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
+                if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
+                    NavigationLink {
+                        HomeView()
+                    } label: {
+                        Text("Concluir")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .background(.gray)
+                            .cornerRadius(13)
+                    }
+
+                } else {
+                    NextButton(text: viewModel.checkButton(), onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
+                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {

@@ -12,6 +12,7 @@ struct NextButton: View {
     
     var text: String
     var cloud = CloudKitModel.shared
+    let invite = Invite.shared
     @Binding var onboardingPage: Int
     @Binding var income: Float
     
@@ -19,22 +20,26 @@ struct NextButton: View {
         Button {
             if onboardingPage != 3 {
                 onboardingPage += 1
-            if income != 0 {
-                UserDefaults.standard.setValue(income, forKey: "income")
-            }
-            } else {
-                Task {
-                    await cloud.loadShare()
-                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                    let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
-                   DispatchQueue.main.async {
-                       Invite.shared.isReceivedInviteAccepted = isReceivedInviteAccepted
-                       Invite.shared.isSendInviteAccepted = isSendInviteAccepted
-                   }
+                if income != 0 {
+                    UserDefaults.standard.setValue(income, forKey: "income")
                 }
-                guard let sharingController = cloud.makeUIViewControllerShare() else { return }
-                let window = UIApplication.shared.keyWindow
-                window?.rootViewController?.present(sharingController, animated: true)
+            } else {
+                if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
+                    UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen")
+                } else {
+                    Task {
+                        await cloud.loadShare()
+                        let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                        let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
+                        DispatchQueue.main.async {
+                            invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                            invite.isSendInviteAccepted = isSendInviteAccepted
+                        }
+                    }
+                    guard let sharingController = cloud.makeUIViewControllerShare() else { return }
+                    let window = UIApplication.shared.keyWindow
+                    window?.rootViewController?.present(sharingController, animated: true)
+                }
             }
             
         } label: {

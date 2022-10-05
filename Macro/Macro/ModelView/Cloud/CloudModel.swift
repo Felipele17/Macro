@@ -30,7 +30,7 @@ class CloudKitModel {
     //MARK: PushNotification
     func saveNotification(recordType: String) async {
         // Only proceed if the subscription doesn't already exist.
-        guard !UserDefaults.standard.bool(forKey: "didCreateSubscription100\(recordType)")
+        guard !UserDefaults.standard.bool(forKey: "didCreateSubscription\(recordType)")
             else { return }
                 
         // Create a subscription with an ID that's unique within the scope of
@@ -53,7 +53,7 @@ class CloudKitModel {
         operation.modifySubscriptionsResultBlock = { result in
             switch result {
             case .success:
-                UserDefaults.standard.setValue(true, forKey: "didCreateSubscription100\(recordType)")
+                UserDefaults.standard.setValue(true, forKey: "didCreateSubscription\(recordType)")
             case .failure(let error):
                 print(error.localizedDescription)
             }
