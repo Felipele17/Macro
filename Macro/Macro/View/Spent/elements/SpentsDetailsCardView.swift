@@ -10,6 +10,7 @@ import SwiftUI
 struct SpentsDetailsCardView: View {
     var spent: Spent
     @StateObject var viewModel: SpentViewModel
+    @State var isActive: Bool = false
     var body: some View {
         HStack {
             ZStack {
@@ -36,8 +37,8 @@ struct SpentsDetailsCardView: View {
             }
         }
         .swipeActions(edge: .leading) {
-            NavigationLink {
-                FormsSpents(viewModel: viewModel)
+            NavigationLink(isActive: $isActive) {
+                FormsSpentsView(viewModel: viewModel, popToView: $isActive)
             } label: {
                 Label("Editar", systemImage: "square.and.pencil")
             }

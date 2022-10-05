@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SpentView: View {
+    @State var isActive: Bool = false
     var body: some View {
+        NavigationView {
             VStack {
                 Text("Gasto atual")
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -28,7 +30,7 @@ struct SpentView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     Spacer()
-                    NavigationLink(destination: FormsSpents(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), popToView: $isActive), isActive: $isActive) {
                         Label("", systemImage: "plus")
                             .padding(.trailing)
                     }
@@ -40,7 +42,8 @@ struct SpentView: View {
             .navigationTitle("Essencial")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.inline)
-        }
+        }.navigationBarHidden(true)
+    }
 }
 
 struct SpentView_Previews: PreviewProvider {
