@@ -10,7 +10,7 @@ import SwiftUI
 struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
-    @ObservedObject var viewModel: OnBoardingStateViewModel
+    @ObservedObject var viewModel: OnBoardingViewModel
     @Binding var incomeTextField: Float
 //    @State var income: Bool
     @FocusState var keyboardIsFocused: Bool
@@ -31,11 +31,11 @@ struct OnBoardingPageTypeTwoView: View {
             VStack {
                 TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
                     .keyboardType(.decimalPad)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(EnumColors.Subtitle.rawValue))
                     .focused($keyboardIsFocused)
                 Rectangle()
                     .frame(height: 1.0, alignment: .bottom)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(EnumColors.Subtitle.rawValue))
                     
             }
             .padding(1.5)
@@ -59,8 +59,8 @@ struct OnBoardingPageTypeTwoView: View {
     }
 }
 
-//struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingStateViewModel()), incomeTextField: <#Binding<Float?>#>
-//    }
-//}
+struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingViewModel(), incomeTextField: .constant(10))
+    }
+}

@@ -14,9 +14,10 @@ struct SpentsDetailsCardView: View {
     var body: some View {
         HStack {
             ZStack {
-                Color.brown
+                Color(EnumColors.EssenciaisColor.rawValue)
                     .cornerRadius(10)
                 Image(systemName: "car.fill")
+                    .foregroundColor(.white)
             }.frame(width: UIScreen.screenWidth/9, height: UIScreen.screenWidth/9, alignment: .leading)
             VStack {
                 Text("Roda carro")

@@ -22,14 +22,15 @@ class CloudKitModel {
         databasePrivate = container.privateCloudDatabase
         databaseShared = container.sharedCloudDatabase
         Task.init {
-            share = try? await getShare()
+            await loadShare()
+            await saveNotification(recordType: "cloudkit.share")
         }
     }
     
     //MARK: PushNotification
     func saveNotification(recordType: String) async {
         // Only proceed if the subscription doesn't already exist.
-        guard !UserDefaults.standard.bool(forKey: "didCreateFeedSubscription\(recordType)")
+        guard !UserDefaults.standard.bool(forKey: "didCreateSubscription\(recordType)")
             else { return }
                 
         // Create a subscription with an ID that's unique within the scope of
@@ -44,15 +45,15 @@ class CloudKitModel {
         let notificationInfo = CKSubscription.NotificationInfo()
         notificationInfo.shouldSendContentAvailable = true
         subscription.notificationInfo = notificationInfo
-                
+    
         // Create an operation that saves the subscription to the server.
         let operation = CKModifySubscriptionsOperation(
             subscriptionsToSave: [subscription], subscriptionIDsToDelete: nil)
         
         operation.modifySubscriptionsResultBlock = { result in
-            switch result{
-            case .success():
-                UserDefaults.standard.setValue(true, forKey: "didCreateFeedSubscription\(recordType)")
+            switch result {
+            case .success:
+                UserDefaults.standard.setValue(true, forKey: "didCreateSubscription\(recordType)")
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -61,7 +62,7 @@ class CloudKitModel {
         // Set an appropriate QoS and add the operation to the private
         // database's operation queue to execute it.
         operation.qualityOfService = .utility
-        container.sharedCloudDatabase.add(operation)
+        databasePrivate.add(operation)
     }
     
     // MARK: Post
@@ -124,35 +125,43 @@ class CloudKitModel {
     
     // MARK: Share
     private func createShare() async throws -> CKShare? {
+
+        let share = CKShare(recordZoneID: SharedZone.ZoneID)
+        share.publicPermission = .readWrite
+        do {
+            try await databasePrivate.save(share)
+            return share
+        } catch {
+            return nil
+        }
+        
+    }
+    
+    func fetchShare() async throws -> CKShare? {
+        let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
+        do {
+            let share = try await databasePrivate.record(for: recordID) as? CKShare
+            return share
+        } catch let erro {
+            print(erro.localizedDescription)
+            return nil
+        }
+    }
+    
+    func getShare() async throws -> CKShare? {
         _ = try await databasePrivate.modifyRecordZones(
             saving: [CKRecordZone(zoneName: SharedZone.name)],
             deleting: []
         )
-        share = CKShare(recordZoneID: SharedZone.ZoneID)
-        share?.publicPermission = .readWrite
-        guard let share = share else { return nil}
-        _ = try? await databasePrivate.save(share)
-        return self.share
-    }
-    
-    func fetchShare() async throws -> CKShare? {
-                    
-        let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
-        guard let share = try await databasePrivate.record(for: recordID) as? CKShare else {
-            guard let share = try? await createShare() else { return nil }
-            return share
+        guard let share = try await createShare() else {
+            return try? await fetchShare()
         }
         return share
     }
     
-    func getShare() async throws -> CKShare? {
-        do {
-            share = try await fetchShare()
-        } catch {
-            share = try? await createShare()
-            print(error.localizedDescription)
-        }
-        return share
+    func loadShare() async {
+        share = try? await getShare()
+        
     }
     
     func makeUIViewControllerShare() -> UICloudSharingController? {
@@ -163,9 +172,37 @@ class CloudKitModel {
             share: share,
             container: container
         )
-        sharingController.availablePermissions = [.allowReadOnly, .allowPrivate]
+        sharingController.availablePermissions = .allowPublic
         sharingController.modalPresentationStyle = .formSheet
         return sharingController
+    }
+    
+    func getSharedZone() async throws -> CKRecordZone.ID? {
+        let records = try? await databaseShared.allRecordZones()
+        return records?.first?.zoneID
+    }
+    
+    func accept(_ metadata: CKShare.Metadata) async throws {
+        try await container.accept(metadata)
+    }
+    
+    // MARK: Invite
+    func isReceivedInviteAccepted() async -> Bool {
+        if (try? await getSharedZone()) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isSendInviteAccepted() async -> Bool {
+        let shared = try? await getShare()
+        guard let participantes = shared?.participants.count else { return false }
+        if participantes <= 1 {
+            return false
+        } else {
+            return true
+        }
     }
     
     // MARK: fecth
@@ -205,12 +242,6 @@ class CloudKitModel {
         return response.matchResults.compactMap { results in
             try? results.1.get()
         }
-    }
-    
-    func getSharedZone()  async throws -> CKRecordZone.ID? {
-        let sharedData = container.sharedCloudDatabase
-        let records = try? await sharedData.allRecordZones()
-        return records?[0].zoneID
     }
     
     func fetchByID(id: String, tipe: String) async throws -> CKRecord? {

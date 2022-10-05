@@ -23,16 +23,16 @@ struct GraphView: View {
                 }
             }
             VStack {
-                Text("\((chartPieViewModel.percents.first ?? 0)*100)%")
+                Text("\((chartPieViewModel.percents.first ?? 0)*100, specifier: "%.1f")%")
                     .font(.custom(EnumFonts.regular.rawValue, size: 20))
                 Text("completo")
                     .font(.custom(EnumFonts.regular.rawValue, size: 20))
-                    .padding(.bottom)
-                Text("Faltam R$\(chartPieViewModel.chartDatas[0].value)")
+                    .padding(.bottom, 50)
+                Text("Faltam R$\(chartPieViewModel.chartDatas[0].value, specifier: "%.2f")")
                     .font(.custom(EnumFonts.semibold.rawValue, size: 20))
-                Text("de R$\(chartPieViewModel.chartDatas[1].value)")
+                Text("de R$\(chartPieViewModel.chartDatas[1].value, specifier: "%.2f")")
                     .font(.custom(EnumFonts.light.rawValue, size: 20))
-            }.offset(y: 0)
+            }
         }
     }
 }

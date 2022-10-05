@@ -22,8 +22,8 @@ struct SkipButton: View {
             onboardingPage = 2
         } label: {
             Text(skipButton)
-                .font(.custom("SFProText-Light", fixedSize: 17))
-                .foregroundColor(.gray)
+                .font(.custom("SF Pro Text", fixedSize: 17))
+                .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
                 .padding(16)
         }
 
