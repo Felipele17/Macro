@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FormsSpentsView: View {
     @StateObject var viewModel: SpentViewModel
-    @Binding var popToView: Bool
+    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -51,7 +51,7 @@ struct FormsSpentsView: View {
                 .toolbar {
                     Button {
                         viewModel.postSpent()
-                        popToView.toggle()
+                        self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Salvar")
                     }
@@ -70,7 +70,8 @@ extension View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), popToView: .constant(false))
+            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+//            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), popToView: .constant(false))
         }
     }
 }

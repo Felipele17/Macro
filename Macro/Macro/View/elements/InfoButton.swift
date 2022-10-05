@@ -15,7 +15,7 @@ struct InfoButton: View {
             // view
         } label: {
             Label("Informação", systemImage: infoButton)
-                .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                 .padding(.trailing)
             .padding(.top)
         }

@@ -46,9 +46,10 @@ struct GoalCardView: View, Identifiable {
             }
             .padding(.leading, 20)
             .padding(.top, 20)
-            .foregroundColor(.white)
-            .background(Color("CardGoalsColor"))
+            .foregroundColor(Color(.white))
+            .background(Color(EnumColors.backgroundCardMetaColor.rawValue))
             .cornerRadius(8)
+            .shadow(radius: 4)
     }
 }
 

@@ -22,7 +22,7 @@ struct HomeView: View {
     ]
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack {
                 HStack {
                     Text("Nossas metas")
@@ -33,7 +33,7 @@ struct HomeView: View {
                         print("add meta")
                     } label: {
                         Label("", systemImage: "plus")
-                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .padding(.bottom, 15.0)
                             .padding(.trailing)
                     }
@@ -56,21 +56,24 @@ struct HomeView: View {
                 }
 
             }
+            .background(Color(EnumColors.backgroundScreen.rawValue))
             .navigationTitle("Bom dia!")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             .toolbar {
-                Button(role: nil) {
-                    print("add configuração")
-                } label: {
-                    Label("", systemImage: "gearshape")
-                        .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
-                        .padding(.trailing)
-                        .padding(.top)
-                }
+//                Button(role: nil) {
+//                    print("add configuração")
+//                } label: {
+//                    Label("", systemImage: "gearshape")
+//                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+//                        .padding(.trailing)
+//                        .padding(.top)
+//                }
                 
             }
-        }.navigationBarHidden(true)
-    }
+        }
+ //   }
     
 }
 

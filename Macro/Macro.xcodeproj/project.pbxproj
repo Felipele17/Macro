@@ -715,8 +715,7 @@
 				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
-				554B102328E4D703003DEE7C /* MotivationView.swift in Sources */,
-				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
+				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
 				99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,
@@ -928,7 +927,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = NHY67K6358;
+				DEVELOPMENT_TEAM = JJ7A9ZQ7BD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;

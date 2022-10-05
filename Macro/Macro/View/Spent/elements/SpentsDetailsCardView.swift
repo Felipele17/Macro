@@ -14,7 +14,7 @@ struct SpentsDetailsCardView: View {
     var body: some View {
         HStack {
             ZStack {
-                Color(EnumColors.EssenciaisColor.rawValue)
+                Color(EnumColors.essenciaisColor.rawValue)
                     .cornerRadius(10)
                 Image(systemName: "car.fill")
                     .foregroundColor(.white)
@@ -39,7 +39,7 @@ struct SpentsDetailsCardView: View {
         }
         .swipeActions(edge: .leading) {
             NavigationLink(isActive: $isActive) {
-                FormsSpentsView(viewModel: viewModel, popToView: $isActive)
+                FormsSpentsView(viewModel: viewModel)
             } label: {
                 Label("Editar", systemImage: "square.and.pencil")
             }
@@ -52,4 +52,3 @@ struct SpentsDetailsCardView_Previews: PreviewProvider {
         SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
     }
 }
-
