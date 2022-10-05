@@ -12,6 +12,7 @@ struct NextButton: View {
     
     var text: String
     var cloud = CloudKitModel.shared
+    let invite = Invite.shared
     @Binding var onboardingPage: Int
     @Binding var income: Float
     
@@ -19,10 +20,26 @@ struct NextButton: View {
         Button {
             if onboardingPage != 3 {
                 onboardingPage += 1
+                if income != 0 {
+                    UserDefaults.standard.setValue(income, forKey: "income")
+                }
             } else {
-                guard let sharingController = cloud.makeUIViewControllerShare() else { return }
-                let window = UIApplication.shared.keyWindow
-                window?.rootViewController?.present(sharingController, animated: true)
+                if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
+                    UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen")
+                } else {
+                    Task {
+                        await cloud.loadShare()
+                        let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                        let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
+                        DispatchQueue.main.async {
+                            invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                            invite.isSendInviteAccepted = isSendInviteAccepted
+                        }
+                    }
+                    guard let sharingController = cloud.makeUIViewControllerShare() else { return }
+                    let window = UIApplication.shared.keyWindow
+                    window?.rootViewController?.present(sharingController, animated: true)
+                }
             }
             
         } label: {
@@ -34,6 +51,8 @@ struct NextButton: View {
                 .background(income != 0.0 ? .blue : Color(EnumColors.ButtonColor.rawValue))
                 .cornerRadius(13)
         }
+        .disabled(income == 0.0 && onboardingPage == 2)
+    
     }
 }
 

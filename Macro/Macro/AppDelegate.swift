@@ -1,6 +1,7 @@
 import UIKit
 import CoreData
 import CloudKit
+import OSLog
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -9,11 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.registerForRemoteNotifications()
         
         let option: UNAuthorizationOptions = []
-        UNUserNotificationCenter.current().requestAuthorization(options: option) { success, error in
-            if let error = error{
+        UNUserNotificationCenter.current().requestAuthorization(options: option) {_, error in
+            if let error = error {
                 print(error.localizedDescription)
-            }
-            else{
+            } else {
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
                 }
@@ -23,9 +23,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("oi")
-        completionHandler(.newData)
+    func application(_ application: UIApplication, configurationForConnecting
+        connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+
+        // Create a scene configuration object for the
+        // specified session role.
+        let config = UISceneConfiguration(name: nil,
+            sessionRole: connectingSceneSession.role)
+
+        // Set the configuration's delegate class to the
+        // scene delegate that implements the share
+        // acceptance method.
+        config.delegateClass = SceneDelegate.self
+
+        return config
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        completionHandler(.newData)
+        Task {
+            print("isSendInviteAccepted")
+            let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+            DispatchQueue.main.async {
+               Invite.shared.isSendInviteAccepted = isSendInviteAccepted
+           }
+        }
+    }
+       
 }
