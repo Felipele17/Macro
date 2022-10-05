@@ -7,18 +7,35 @@
 
 import SwiftUI
 
-struct SpentsCardView: View, Identifiable {
-    var id: Int
+struct SpentsCardView: View {
+    let spentsCards: SpentsCards
+    
     var body: some View {
-        ZStack {
-            Color.red
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        }
+        VStack(alignment: .leading) {
+            ZStack {
+                Color(self.spentsCards.colorName)
+                HStack {
+                    Text(self.spentsCards.title)
+                        .foregroundColor(.white)
+                    Spacer()
+                    Label("", systemImage: "chevron.right")
+                        .foregroundColor(.white)
+                }
+            }
+            Color(EnumSpentsinfo.backgroundSpentsColor.rawValue)
+            HStack(alignment: .top) {
+                Text("Limite disponível")
+                    .foregroundColor(Color("Title"))
+                //                            Label("", systemImage: "chevron.right")
+                //                                .foregroundColor(.white)
+            }
+        }.cornerRadius(12)
+        
     }
 }
 
 struct SpentsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsCardView(id: 0)
+        SpentsCardView(spentsCards: SpentsCards(id: 1, colorName: "PriorityColor", title: "Prioridades"))
     }
 }

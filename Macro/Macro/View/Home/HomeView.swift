@@ -16,9 +16,9 @@ struct HomeView: View {
     ]
     
     var viewCardSpends = [
-        SpentsCardView(id: 1),
-        SpentsCardView(id: 2),
-        SpentsCardView(id: 3)
+        SpentsCardView(spentsCards: SpentsCards(id: 1, colorName: "PriorityColor", title: "Prioridades")),
+        SpentsCardView(spentsCards: SpentsCards(id: 2, colorName: "PriorityColor", title: "Prioridades")),
+        SpentsCardView(spentsCards: SpentsCards(id: 3, colorName: "PriorityColor", title: "Prioridades"))
     ]
     
     var body: some View {
@@ -48,10 +48,11 @@ struct HomeView: View {
                     Spacer()
                 }
                 VStack {
-                    ForEach(viewCardSpends) { spends in
+                    ForEach(SpentsCards.spentsCards) { spends in
                         NavigationLink(destination: SpentView()) {
-                            spends
+                            SpentsCardView(spentsCards: spends)
                                 .padding()
+                            
                         }
                     }
                 }

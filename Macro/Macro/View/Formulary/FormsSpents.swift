@@ -17,7 +17,6 @@ struct FormsSpents: View {
         }()
     
     var body: some View {
-        NavigationView {
             Form {
                 Section(header: Text("Nome").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
                     TextField("Ex: Luz", text: $viewModel.nameSpent)
@@ -53,8 +52,6 @@ struct FormsSpents: View {
                         viewModel.postSpent()
                     }
                 }
-            
-        }
     }
 }
 extension View {
