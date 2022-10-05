@@ -85,7 +85,7 @@ struct GoalsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            NavigationLink  {
+            NavigationLink {
                 FormsEditGoals()
             } label: {
                 Text("Editar")
