@@ -8,18 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    var viewsCells = [
-        GoalCardView(viewModel: GoalCardViewModel(), id: 1, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))),
-        GoalCardView(viewModel: GoalCardViewModel(), id: 2, goal: Goal(title: "Comprar Ape", value: 159000, weeks: 20, motivation: "Morar juntos", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))),
-        GoalCardView(viewModel: GoalCardViewModel(), id: 3, goal: Goal(title: "Jantar Terraço", value: 1000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
-    ]
-    
-    var viewCardSpends = [
-        SpentsCardView(spentsCards: SpentsCards(id: 1, colorName: "PriorityColor", title: "Prioridades")),
-        SpentsCardView(spentsCards: SpentsCards(id: 2, colorName: "PriorityColor", title: "Prioridades")),
-        SpentsCardView(spentsCards: SpentsCards(id: 3, colorName: "PriorityColor", title: "Prioridades"))
-    ]
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationView {
@@ -33,12 +22,13 @@ struct HomeView: View {
                         print("add meta")
                     } label: {
                         Label("", systemImage: "plus")
-                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .padding(.bottom, 15.0)
                             .padding(.trailing)
                     }
-                } .padding(.top, 48)
-                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, viewsCells: viewsCells)
+                }
+                .padding(.top, 48)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: viewModel.goals)
                 HStack {
                     Text("Nossos Gastos")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
@@ -46,11 +36,11 @@ struct HomeView: View {
                     Spacer()
                 }
                 VStack {
-                    ForEach(SpentsCards.spentsCards) { spends in
-                        NavigationLink(destination: SpentView()) {
-                            SpentsCardView(spentsCards: spends)
-                                .padding()
-                            
+                    ForEach(viewModel.spentsCards) { spentsCard in
+                        NavigationLink {
+                            SpentView()
+                        } label: {
+                            SpentsCardView(spentsCard: spentsCard)
                         }
                     }
                 }
@@ -63,7 +53,7 @@ struct HomeView: View {
                     print("add configuração")
                 } label: {
                     Label("", systemImage: "gearshape")
-                        .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         .padding(.trailing)
                         .padding(.top)
                 }

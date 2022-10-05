@@ -25,7 +25,7 @@ struct SpentView: View {
                     NavigationLink(destination: FormsSpents(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
-                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     }
                 }
                 .padding(.top, 10)
@@ -39,7 +39,7 @@ struct SpentView: View {
                 
             }
             .padding(.leading)
-            .background(Color(EnumColors.BackgroundExpenseColor.rawValue))
+            .background(Color(EnumColors.backgroundExpenseColor.rawValue))
             .navigationTitle("Essencial")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.inline)

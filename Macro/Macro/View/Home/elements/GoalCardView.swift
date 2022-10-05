@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct GoalCardView: View, Identifiable {
-    @ObservedObject var viewModel: GoalCardViewModel
-    var id: Int
+struct GoalCardView: View {
+    @StateObject var viewModel = GoalCardViewModel()
     let goal: Goal
     var body: some View {
             VStack(alignment: .leading) {
@@ -54,7 +53,7 @@ struct GoalCardView: View, Identifiable {
 
 struct GoalCardView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalCardView(viewModel: GoalCardViewModel(), id: 1, goal: Goal(title: "Carro Novo", value: 5000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+        GoalCardView( goal: Goal(title: "Carro Novo", value: 5000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
             .previewInterfaceOrientation(.portrait)
     }
 }

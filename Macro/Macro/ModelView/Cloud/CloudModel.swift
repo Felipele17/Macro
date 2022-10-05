@@ -206,7 +206,7 @@ class CloudKitModel {
     }
     
     // MARK: fecth
-    func fetchSharedPrivatedRecords(recordType: String, predicate: String) async throws -> [CKRecord] {
+    func fetchSharedPrivatedRecords(recordType: String, predicate: String?) async throws -> [CKRecord] {
         let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
         
         return try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in
@@ -229,9 +229,14 @@ class CloudKitModel {
         }
     }
     
-    private func fetchRecords(in zone: CKRecordZone.ID? = SharedZone.ZoneID, from database: CKDatabase, recordType: String, predicate: String ) async throws -> [CKRecord] {
-        let predicate = NSPredicate(format: predicate)
-        let query = CKQuery(recordType: recordType, predicate: predicate)
+    private func fetchRecords(in zone: CKRecordZone.ID? = SharedZone.ZoneID, from database: CKDatabase, recordType: String, predicate: String? ) async throws -> [CKRecord] {
+        let nsPredicate: NSPredicate
+        if let predicate = predicate {
+            nsPredicate = NSPredicate(format: predicate)
+        } else {
+            nsPredicate = NSPredicate(value: true)
+        }
+        let query = CKQuery(recordType: recordType, predicate: nsPredicate)
         let response = try await database.records(
             matching: query,
             inZoneWith: zone,

@@ -11,7 +11,7 @@ struct SpentsDetailsCardView: View {
     var body: some View {
         HStack {
             ZStack {
-                Color(EnumColors.EssenciaisColor.rawValue)
+                Color(EnumColors.essenciaisColor.rawValue)
                     .cornerRadius(10)
                 Image(systemName: "car.fill")
                     .foregroundColor(.white)
