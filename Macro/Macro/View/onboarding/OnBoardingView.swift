@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @State var incomeTextField: Float = 0.0
+    @State var incomeTextField: Float
     @State var text = EnumButtonText.nextButton.rawValue
-    @StateObject var viewModel = OnBoardingStateViewModel()
-    
+    @StateObject var viewModel = OnBoardingViewModel()
+    @StateObject var invite = Invite.shared
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
     
@@ -27,12 +27,24 @@ struct OnBoardingView: View {
                         .tag(1)
                     OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: $incomeTextField)
                         .tag(2)
-                    OnBoardingPageTypeOneView(onboarding: pages[3])
-                        .tag(3)
+                        .gesture(incomeTextField == 0.0 ? DragGesture() : nil)
+                    if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
+                        OnBoardingPageTypeOneView(onboarding: pages[6])
+                            .tag(3)
+                    } else if invite.isSendInviteAccepted {
+                        OnBoardingPageTypeOneView(onboarding: pages[4])
+                            .tag(3)
+                    } else if invite.isReceivedInviteAccepted {
+                        OnBoardingPageTypeOneView(onboarding: pages[5])
+                            .tag(3)
+                    } else {
+                        OnBoardingPageTypeOneView(onboarding: pages[3])
+                            .tag(3)
+                    }
                 }
                 .animation(.easeInOut, value: viewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
-                .tabViewStyle(PageTabViewStyle())
+                .tabViewStyle(.page)
                 .onAppear {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(.gray)
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(.darkGray))
@@ -51,8 +63,8 @@ struct OnBoardingView: View {
                 
             }
             .padding(24)
-            .background(Color("onboardingBackground"))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
     
@@ -60,6 +72,6 @@ struct OnBoardingView: View {
 
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
     }
 }

@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import CloudKit
 import SwiftUI
 
-class OnBoardingStateViewModel: ObservableObject {
+class OnBoardingViewModel: ObservableObject {
     
     @Published var onboardingState: Bool = false /// fazendo o onboarding aparecer apenas uma vez no App
     @Published var onboardingPage: Int = 0
-        
+    var cloud = CloudKitModel.shared
+    
     init() {
         if UserDefaults().bool(forKey: "State") {
             onboardingState = true
@@ -32,5 +34,5 @@ class OnBoardingStateViewModel: ObservableObject {
         }
         return EnumButtonText.nextButton.rawValue
     }
-    
+
 }

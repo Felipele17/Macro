@@ -19,7 +19,19 @@ struct NextButton: View {
         Button {
             if onboardingPage != 3 {
                 onboardingPage += 1
+            if income != 0 {
+                UserDefaults.standard.setValue(income, forKey: "income")
+            }
             } else {
+                Task {
+                    await cloud.loadShare()
+                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                    let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
+                   DispatchQueue.main.async {
+                       Invite.shared.isReceivedInviteAccepted = isReceivedInviteAccepted
+                       Invite.shared.isSendInviteAccepted = isSendInviteAccepted
+                   }
+                }
                 guard let sharingController = cloud.makeUIViewControllerShare() else { return }
                 let window = UIApplication.shared.keyWindow
                 window?.rootViewController?.present(sharingController, animated: true)
@@ -31,9 +43,11 @@ struct NextButton: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(income != 0.0 ? .blue : .gray)
+                .background(income != 0.0 || onboardingPage != 2 ? .blue : .gray)
                 .cornerRadius(13)
         }
+        .disabled(income == 0.0 && onboardingPage == 2)
+    
     }
 }
 
