@@ -16,15 +16,14 @@ struct GoalsView: View {
         VStack {
             HStack {
                 Text(goal.title)
-                    .font(.title)
-                    .bold()
+                    .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding()
                 Spacer()
                 Button(role: nil) {
                     viewModel.deleteGoal(goal: goal)
                 } label: {
                     Label("", systemImage: "trash")
-                        .tint(.blue)
+                        .foregroundColor(Color(EnumColors.ForegroundGraphMetaColor.rawValue))
                 }
                 .padding()
             }
@@ -33,33 +32,37 @@ struct GoalsView: View {
                     .cornerRadius(cornerRadiusNumber())
                     .shadow(radius: cornerRadiusNumber())
                     .padding([.leading, .trailing, .bottom])
+                Color(EnumColors.BackgroundCardMetaColor.rawValue)
+                
                 VStack {
                     Text("\(goal.weeks) semanas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 22))
                         .padding()
                     GraphView(chartPieViewModel: ChartPieViewModel(
                         chartDatas: [
-                            ChartData(color: .green, value: CGFloat(goal.getAllMoneySave())),
-                            ChartData(color: .cyan, value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
-                            ]
-                        )
+                            ChartData(color: Color(EnumColors.ForegroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
+                            ChartData(color: Color(EnumColors.BackgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
+                        ]
                     )
-                    .offset(x: 0, y: UIScreen.screenHeight/20)
+                    )
+                    .offset(x: 0, y: UIScreen.screenHeight/30)
                 }
             }
             .frame(height: UIScreen.screenHeight/2.5)
-            .padding(.bottom)
+            .padding(.horizontal, 15)
+            .cornerRadius(60)
             VStack {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
                     Text("Todos").tag(0)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Á fazer").tag(1)
+                    Text("Á depositar").tag(1)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Concluído").tag(2)
+                    Text("Depositado").tag(2)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
                 }
+                .colorMultiply(Color(EnumColors.ButtonColor.rawValue))
                 .pickerStyle(.segmented)
-                .padding([.leading, .trailing])
+                .padding([.leading, .trailing, .top])
                 List {
                     if selectFilter != 1 {
                         ForEach(1..<goal.weeks) { week in
@@ -70,8 +73,6 @@ struct GoalsView: View {
                     }
                     if selectFilter != 2 {
                         WeakGoalsView(title: "semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
-                            .listRowBackground(Color.red)
-                            .colorInvert()
                             .onTapGesture {
                                 viewModel.checkWeekGoal(goal: goal)
                             }
@@ -92,7 +93,7 @@ struct GoalsView: View {
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .tint(.blue)
             }
-        }
+        }.background(Color(EnumColors.BackgroundExpenseColor.rawValue))
     }
 }
 

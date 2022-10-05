@@ -31,11 +31,11 @@ struct OnBoardingPageTypeTwoView: View {
             VStack {
                 TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
                     .keyboardType(.decimalPad)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(EnumColors.Subtitle.rawValue))
                     .focused($keyboardIsFocused)
                 Rectangle()
                     .frame(height: 1.0, alignment: .bottom)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(EnumColors.Subtitle.rawValue))
                     
             }
             .padding(1.5)

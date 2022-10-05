@@ -33,7 +33,8 @@ struct HomeView: View {
                         print("add meta")
                     } label: {
                         Label("", systemImage: "plus")
-                            .tint(.blue)
+                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                            .padding(.bottom, 15.0)
                             .padding(.trailing)
                     }
                 } .padding(.top, 48)
@@ -62,7 +63,7 @@ struct HomeView: View {
                     print("add configuração")
                 } label: {
                     Label("", systemImage: "gearshape")
-                        .tint(.blue)
+                        .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
                         .padding(.trailing)
                         .padding(.top)
                 }

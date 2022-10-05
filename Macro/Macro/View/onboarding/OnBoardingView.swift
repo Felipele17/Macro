@@ -46,8 +46,8 @@ struct OnBoardingView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
                 .onAppear {
-                    dotAppearance.currentPageIndicatorTintColor = UIColor(.gray)
-                    dotAppearance.pageIndicatorTintColor = UIColor(Color(.darkGray))
+                    dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
+                    dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
                 }
                 if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
                     NavigationLink {
@@ -72,6 +72,7 @@ struct OnBoardingView: View {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
                     } else if viewModel.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
+                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
                     }
                 }
                 

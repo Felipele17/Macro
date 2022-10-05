@@ -8,9 +8,9 @@
 import Foundation
 
 enum EnumFonts: String {
-    case bold = "SF-Pro-Text-Bold"
-    case regular = "SF-Pro-Text-Regular"
-    case medium = "SF-Pro-Text-Medium"
-    case light = "SF-Pro-Text-Light"
-    case semibold = "SF-Pro-Text-Semibold"
+    case bold = "SFProText-Bold"
+    case regular = "SFProText-Regular"
+    case medium = "SFProText-Medium"
+    case light = "SFProText-Light"
+    case semibold = "SFProText-Semibold"
 }

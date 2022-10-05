@@ -23,7 +23,7 @@ struct GoalCardView: View, Identifiable {
                 }
                 
                 Text("Motivação:")
-                    .font(.custom(EnumFonts.medium.rawValue, size: 13)) + Text(goal.motivation ?? "").font(.custom(EnumFonts.regular.rawValue, size: 22))
+                    .font(.custom(EnumFonts.medium.rawValue, size: 13)) + Text(goal.motivation ?? "").font(.custom(EnumFonts.regular.rawValue, size: 13))
                 Spacer()
                 
                 ProgressBarCardView(percentsProgress: viewModel.calc(goal: goal))
