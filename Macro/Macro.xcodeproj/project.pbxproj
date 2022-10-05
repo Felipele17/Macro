@@ -42,6 +42,8 @@
 		065F765A28E60A09003526CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F765928E60A09003526CF /* AppDelegate.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
+		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
+		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
 		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		5544772A28E23050000C892E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772928E23050000C892E /* SkipButton.swift */; };
@@ -52,7 +54,6 @@
 		5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773B28E2324A000C892E /* EnumButtonText.swift */; };
 		5544773E28E2330C000C892E /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773D28E2330C000C892E /* OnBoarding.swift */; };
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
-		5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
 		554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */; };
@@ -134,6 +135,8 @@
 		065F765928E60A09003526CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
+		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		5544772928E23050000C892E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
@@ -144,7 +147,6 @@
 		5544773B28E2324A000C892E /* EnumButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumButtonText.swift; sourceTree = "<group>"; };
 		5544773D28E2330C000C892E /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
-		5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageTypeTwoViewModel.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
 		554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNextButton.swift; sourceTree = "<group>"; };
@@ -222,8 +224,9 @@
 				99B676B528DCCFC5007C8BC6 /* Fonts */,
 				06449C5228C2A65B00035324 /* Info.plist */,
 				06449C5128C2A65500035324 /* Macro.entitlements */,
-				06449BEA28C2921E00035324 /* MacroApp.swift */,
+				06BFF3E928EB83360015C79B /* SceneDelegate.swift */,
 				065F765928E60A09003526CF /* AppDelegate.swift */,
+				06449BEA28C2921E00035324 /* MacroApp.swift */,
 				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				06449C1928C2994800035324 /* Model */,
 				06449C1828C2993C00035324 /* ModelView */,
@@ -300,6 +303,7 @@
 				06449C4328C29EB400035324 /* Spent.swift */,
 				06449C4528C29EC000035324 /* User.swift */,
 				063C8AA728D266410053054B /* ChartData.swift */,
+				06BFF3EB28ECCA870015C79B /* Invite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,7 +469,6 @@
 		5544774128E233DA000C892E /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				5544774228E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift */,
 				5544774428E23415000C892E /* OnBoardingStateViewModel.swift */,
 			);
 			path = OnBoarding;
@@ -703,10 +706,12 @@
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
+				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
+				554B102328E4D703003DEE7C /* MotivationView.swift in Sources */,
 				5544774328E233F5000C892E /* OnBoardingPageTypeTwoViewModel.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
 				99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */,
@@ -715,6 +720,7 @@
 				5544774728E23483000C892E /* EnumImageName.swift in Sources */,
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
+				06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */,
 				9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */,

@@ -27,19 +27,16 @@ struct HomeView: View {
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                        .padding([.bottom, .leading, .trailing])
+                        .padding()
                     Spacer()
                     Button(role: nil) {
                         print("add meta")
                     } label: {
                         Label("", systemImage: "plus")
                             .tint(.blue)
-                            .padding(.bottom, 15.0)
                             .padding(.trailing)
                     }
-
-                }
-                .padding(.top)
+                } .padding(.top, 48)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, viewsCells: viewsCells)
                 HStack {
                     Text("Nossos Gastos")
@@ -71,7 +68,7 @@ struct HomeView: View {
                 }
                 
             }
-        }
+        }.navigationBarHidden(true)
     }
     
 }
