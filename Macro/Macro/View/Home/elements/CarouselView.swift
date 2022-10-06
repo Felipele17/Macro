@@ -12,7 +12,6 @@ struct CarouselView: View {
     let width: CGFloat
     let heigth: CGFloat
     var viewsCells: [GoalCardView]
-    
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
