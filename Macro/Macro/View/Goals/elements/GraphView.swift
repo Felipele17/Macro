@@ -17,17 +17,28 @@ struct GraphView: View {
                 if !(chartPieViewModel.percents.isEmpty) {
                     Circle()
                         .trim(from: index == 0 ? 0.0 : chartPieViewModel.percents[index-1]/2, to: chartPieViewModel.percents[index]/2)
-                        .stroke(chartPieViewModel.chartDatas[index].color, lineWidth: UIScreen.screenWidth/12)
+                        .stroke(chartPieViewModel.chartDatas[index].color, lineWidth: UIScreen.screenWidth/10)
                         .animation(.spring())
                         .rotationEffect(.degrees(-180))
                 }
+            }
+            HStack {
+                Text("0%")
+                    .font(.custom(EnumFonts.light.rawValue, size: 17))
+                    .padding(.leading, 35)
+                    .padding(.top, 25)
+                    Spacer()
+                Text("100%")
+                    .font(.custom(EnumFonts.light.rawValue, size: 17))
+                    .padding(.trailing, 25)
+                    .padding(.top, 25)
             }
             VStack {
                 Text("\((chartPieViewModel.percents.first ?? 0)*100, specifier: "%.1f")%")
                     .font(.custom(EnumFonts.regular.rawValue, size: 20))
                 Text("completo")
                     .font(.custom(EnumFonts.regular.rawValue, size: 20))
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 48)
                 Text("Faltam R$\(chartPieViewModel.chartDatas[0].value, specifier: "%.2f")")
                     .font(.custom(EnumFonts.semibold.rawValue, size: 20))
                 Text("de R$\(chartPieViewModel.chartDatas[1].value, specifier: "%.2f")")

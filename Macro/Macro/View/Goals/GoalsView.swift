@@ -10,8 +10,7 @@ import SwiftUI
 struct GoalsView: View {
     var goal: Goal
     @ObservedObject private var viewModel = GoalViewModel()
-    @State private var selectFilter = 1
-    
+    @State var selectFilter: Int = 1
     var body: some View {
         VStack {
             HStack {
@@ -21,8 +20,10 @@ struct GoalsView: View {
                 Spacer()
                 Button(role: nil) {
                     viewModel.deleteGoal(goal: goal)
+                    
                 } label: {
                     Label("", systemImage: "trash")
+                        .font(.custom(EnumFonts.bold.rawValue, size: 22))
                         .foregroundColor(Color(EnumColors.foregroundGraphMetaColor.rawValue))
                 }
                 .padding()
@@ -32,10 +33,10 @@ struct GoalsView: View {
                     .cornerRadius(cornerRadiusNumber())
                     .shadow(radius: cornerRadiusNumber())
                     .padding([.leading, .trailing, .bottom])
-                Color(EnumColors.backgroundCardMetaColor.rawValue)
+                Color(EnumColors.backgroundExpenseColor.rawValue)
                 
                 VStack {
-                    Text("\(goal.weeks) semanas")
+                    Text("Semana \(goal.weeks)")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 22))
                         .padding()
                     GraphView(chartPieViewModel: ChartPieViewModel(
@@ -45,40 +46,27 @@ struct GoalsView: View {
                         ]
                     )
                     )
-                    .offset(x: 0, y: UIScreen.screenHeight/30)
+                    .offset(x: 0, y: UIScreen.screenHeight/35)
                 }
             }
-            .frame(height: UIScreen.screenHeight/2.5)
-            .padding(.horizontal, 15)
-            .cornerRadius(60)
+            .frame(width: UIScreen.screenHeight/2.3, height: UIScreen.screenHeight/2.5 )
+            .cornerRadius(30)
             VStack {
-                Picker("Qual filtro voce?", selection: $selectFilter) {
-                    Text("Todos").tag(0)
-                        .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Á depositar").tag(1)
-                        .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Depositado").tag(2)
-                        .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                }
-                .colorMultiply(Color(EnumColors.buttonColor.rawValue))
-                .pickerStyle(.segmented)
-                .padding([.leading, .trailing, .top])
+                PickerSegmentedView(selectFilter: $selectFilter)
                 List {
                     if selectFilter != 1 {
                         ForEach(1..<goal.weeks) { week in
-                            WeakGoalsView(title: "semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
-                                .listRowBackground(Color.indigo)
-                                .colorInvert()
-                        }
+                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                     }
                     }
                     if selectFilter != 2 {
-                        WeakGoalsView(title: "semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
+                        WeakGoalsView(title: "Semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
                             .onTapGesture {
                                 viewModel.checkWeekGoal(goal: goal)
                             }
-                        
+
                         ForEach(goal.weeks+1..<(goal.methodologyGoal?.weeks ?? 0)) { week in
-                            WeakGoalsView(title: "semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
                         }
                     }
                 }
@@ -86,14 +74,14 @@ struct GoalsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button(role: nil) {
-                print("add configuração")
+            NavigationLink {
+                FormsEditGoals()
             } label: {
-                Text("editar")
+                Text("Editar")
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
-                    .tint(.blue)
+                    .tint(Color(EnumColors.buttonColor.rawValue))
             }
-        }.background(Color(EnumColors.backgroundExpenseColor.rawValue))
+        }.background(Color(EnumColors.backgroundScreen.rawValue))
     }
 }
 
@@ -106,7 +94,7 @@ extension GoalsView {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         GoalsView(goal:
-                    Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
-        )
+                    Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+        .preferredColorScheme(.dark)
     }
 }

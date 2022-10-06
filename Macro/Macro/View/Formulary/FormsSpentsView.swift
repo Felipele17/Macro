@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct FormsSpents: View {
+struct FormsSpentsView: View {
     @StateObject var viewModel: SpentViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -48,9 +49,13 @@ struct FormsSpents: View {
                 }.textCase(.none)
             }.navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
-                    Button("Salvar") {
+                    Button {
                         viewModel.postSpent()
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("Salvar")
                     }
+
                 }
     }
 }
@@ -64,6 +69,9 @@ extension View {
 
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsSpents(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+        NavigationView {
+            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+//            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), popToView: .constant(false))
+        }
     }
 }

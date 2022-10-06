@@ -66,7 +66,8 @@
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
 		9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974828E77E8F0075866D /* EnumSpentsInfo.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
-		99B2EF4028DE573D00657C53 /* FormsSpents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpents.swift */; };
+		998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */; };
+		99B2EF4028DE573D00657C53 /* FormsSpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */; };
 		99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
 		99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */; };
@@ -160,7 +161,8 @@
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
 		9919974828E77E8F0075866D /* EnumSpentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpentsInfo.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
-		99B2EF3F28DE573D00657C53 /* FormsSpents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpents.swift; sourceTree = "<group>"; };
+		998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSegmentedView.swift; sourceTree = "<group>"; };
+		99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpentsView.swift; sourceTree = "<group>"; };
 		99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsNameView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		99B676B828DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 			children = (
 				063C8A9F28D241DC0053054B /* GraphView.swift */,
 				063C8AA328D249280053054B /* WeakGoalsView.swift */,
+				998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -488,7 +491,7 @@
 		99B2EF4328DE576A00657C53 /* Formulary */ = {
 			isa = PBXGroup;
 			children = (
-				99B2EF3F28DE573D00657C53 /* FormsSpents.swift */,
+				99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */,
 				99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */,
 				554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */,
 				554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */,
@@ -700,12 +703,13 @@
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
+				998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				5544773E28E2330C000C892E /* OnBoarding.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
-				99B2EF4028DE573D00657C53 /* FormsSpents.swift in Sources */,
+				99B2EF4028DE573D00657C53 /* FormsSpentsView.swift in Sources */,
 				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
@@ -927,7 +931,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = NHY67K6358;
+				DEVELOPMENT_TEAM = JJ7A9ZQ7BD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
