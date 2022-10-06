@@ -48,14 +48,13 @@ struct GoalsView: View {
                     .offset(x: 0, y: UIScreen.screenHeight/30)
                 }
             }
-            .frame(width: UIScreen.screenHeight/2.3 , height: UIScreen.screenHeight/2.5 )
-            //.padding(.horizontal, 15)
+            .frame(width: UIScreen.screenHeight/2.3, height: UIScreen.screenHeight/2.5 )
             .cornerRadius(60)
             VStack {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
                     Text("Todos").tag(0)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
-                    Text("Á depositar").tag(1)
+                    Text("À depositar").tag(1)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
                     Text("Depositado").tag(2)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
