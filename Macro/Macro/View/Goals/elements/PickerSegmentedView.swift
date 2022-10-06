@@ -12,7 +12,7 @@ struct PickerSegmentedView: View {
     init(selectFilter: Binding<Int>) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color(EnumColors.buttonColor.rawValue))
            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-           UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color(EnumColors.title.rawValue))], for: .normal)
         self._selectFilter = selectFilter
     }
     var body: some View {
