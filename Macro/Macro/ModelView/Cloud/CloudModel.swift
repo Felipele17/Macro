@@ -88,6 +88,8 @@ class CloudKitModel {
                 record[propertie] =  dataIntList as CKRecordValue
             } else if let dataString = propertiesdata[propertie] as? String {
                 record[propertie] =  dataString as CKRecordValue
+            } else if let dataStringList = propertiesdata[propertie] as? [String] {
+                record[propertie] =  dataStringList as CKRecordValue
             } else if let dataFloat = propertiesdata[propertie] as? Float {
                 record[propertie] =  dataFloat as CKRecordValue
             } else if let dataBool = propertiesdata[propertie] as? Bool {
@@ -251,7 +253,7 @@ class CloudKitModel {
     
     func fetchByID(id: String, tipe: String) async throws -> CKRecord? {
         do {
-            let record = try await self.fetchSharedPrivatedRecords(recordType: tipe, predicate: "idName = \(id)")
+            let record = try await self.fetchSharedPrivatedRecords(recordType: tipe, predicate: "nameCategory='50-35-15'")
             guard let record = record.first else { return nil }
             return record
         } catch let error {

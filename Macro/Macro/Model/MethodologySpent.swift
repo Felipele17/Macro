@@ -22,7 +22,7 @@ class MethodologySpent: DataModelProtocol {
     }
     
     required init?(record: CKRecord) {
-        guard let  idName = record["recordName"] as? String else { return nil }
+        let idName = record.recordID.recordName
         guard let  valuesPercent = record["valuesPercent"] as? [Int] else { return nil }
         guard let  namePercent = record["namePercent"] as? [String] else { return nil }
         guard let  nameCategory = record["nameCategory"] as? String else { return nil }

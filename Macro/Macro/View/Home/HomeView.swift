@@ -28,7 +28,7 @@ struct HomeView: View {
                     }
                 }
                 .padding(.top, 48)
-                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: viewModel.goals)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
                 HStack {
                     Text("Nossos Gastos")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
@@ -36,7 +36,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 VStack {
-                    ForEach (viewModel.spentsCards) { spentsCard in
+                    ForEach ($viewModel.spentsCards) { spentsCard in
                         NavigationLink {
                             SpentView()
                         } label: {
@@ -44,13 +44,13 @@ struct HomeView: View {
                         }
                     }
                 }
-
+                Spacer()
             }
-            .navigationTitle("Bom dia!")
+            .navigationTitle("Bom dia\(viewModel.getUserName())")
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             .toolbar {
                 Button(role: nil) {
-                    print("add configuração")
+                    print(viewModel.users.first?.income)
                 } label: {
                     Label("", systemImage: "gearshape")
                         .foregroundColor(Color(EnumColors.buttonColor.rawValue))

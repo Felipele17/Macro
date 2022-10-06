@@ -25,7 +25,7 @@ class Invite: ObservableObject {
     
     func isReady(income: Float) -> Bool {
         if isSendInviteAccepted && isReceivedInviteAccepted {
-            UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen100")
+            UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen1000")
             Task {
                 var participantsNames:[String] = []
                 if let participants = cloud.share?.participants {

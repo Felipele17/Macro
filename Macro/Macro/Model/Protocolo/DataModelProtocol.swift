@@ -12,5 +12,5 @@ protocol DataModelProtocol {
     func getID() -> UUID
     func getProperties() -> [String]
     func getData() -> [String: Any?]
-    init?(record: CKRecord)
+    init?(record: CKRecord) async
 }

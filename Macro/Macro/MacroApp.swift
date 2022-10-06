@@ -12,7 +12,7 @@ struct MacroApp: App {
     @Environment(\.scenePhase) private var scenePhase
     var body: some Scene {
         WindowGroup {
-            if UserDefaults.standard.bool(forKey: "didOnBoardingHappen100") {
+            if UserDefaults.standard.bool(forKey: "didOnBoardingHappen1000") {
                 HomeView()
             } else {
                 OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))

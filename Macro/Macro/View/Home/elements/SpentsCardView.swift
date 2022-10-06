@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpentsCardView: View {
-    let spentsCard: SpentsCard
+    @Binding var spentsCard: SpentsCard
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -36,6 +36,6 @@ struct SpentsCardView: View {
 
 struct SpentsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsCardView(spentsCard: SpentsCard(id: 1, valuesPercent: 1, namePercent: "oi", avalibleMoney: 100))
+        SpentsCardView(spentsCard: .constant(SpentsCard(id: 1, valuesPercent: 1, namePercent: "oi", avalibleMoney: 100)))
     }
 }
