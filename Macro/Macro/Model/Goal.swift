@@ -53,7 +53,7 @@ class Goal: DataModelProtocol, Identifiable {
     }
     
     static func getType() -> String {
-        return "Meta"
+        return "Goal"
     }
     
     func getID() -> UUID {
@@ -65,7 +65,7 @@ class Goal: DataModelProtocol, Identifiable {
     }
     
     func getData() -> [String: Any?] {
-        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority": priority, "methodologyGoal": methodologyGoal]
+        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority": priority, "methodologyGoal": methodologyGoal?.idName.description]
     }
     
     func getAllMoneySave() -> Float {

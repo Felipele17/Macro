@@ -19,7 +19,7 @@ class HomeViewModel: ObservableObject {
         Task.init {
             await loadUser()
             await loadSpentsCards()
-            await loadSpentsCards()
+            await loadGoals()
         }
     }
     
@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func loadSpentsCards() async {
+    func loadGoals() async {
         do {
             guard let goals = try await fecthGoals() else { return  }
             self.goals = goals
@@ -42,10 +42,10 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func loadGoals() async {
+    func loadSpentsCards() async {
         guard let methodologySpent = getMethodologySpent() else { return }
         for ind in 0 ..< methodologySpent.namePercent.count {
-            if let spentsCard = try? await getSpentsCard(methodologySpent: methodologySpent, index: ind){
+            if let spentsCard = try? await getSpentsCard(methodologySpent: methodologySpent, index: ind) {
                 spentsCards.append(spentsCard)
             }
         }

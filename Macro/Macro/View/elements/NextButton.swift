@@ -24,22 +24,18 @@ struct NextButton: View {
                     UserDefaults.standard.setValue(income, forKey: "income")
                 }
             } else {
-                if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
-                    UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen")
-                } else {
-                    Task {
-                        await cloud.loadShare()
-                        let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                        let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
-                        DispatchQueue.main.async {
-                            invite.isReceivedInviteAccepted = isReceivedInviteAccepted
-                            invite.isSendInviteAccepted = isSendInviteAccepted
+                Task {
+                    await cloud.loadShare()
+                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                    let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
+                    DispatchQueue.main.async {
+                        invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                        invite.isSendInviteAccepted = isSendInviteAccepted
                         }
-                    }
-                    guard let sharingController = cloud.makeUIViewControllerShare() else { return }
-                    let window = UIApplication.shared.keyWindow
-                    window?.rootViewController?.present(sharingController, animated: true)
                 }
+                guard let sharingController = cloud.makeUIViewControllerShare() else { return }
+                let window = UIApplication.shared.keyWindow
+                window?.rootViewController?.present(sharingController, animated: true)
             }
             
         } label: {

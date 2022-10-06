@@ -17,7 +17,7 @@ struct ProgressBarCardView: View {
                     .frame(width: 220, height: 8)
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(EnumColors.foregroundProgressColor.rawValue))
-                    .frame(width:  percentsProgress, height: 8)
+                    .frame(width: percentsProgress, height: 8)
             }
         }
         .frame(width: 220, height: 8, alignment: .leading)

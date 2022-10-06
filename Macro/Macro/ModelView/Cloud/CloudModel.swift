@@ -213,8 +213,8 @@ class CloudKitModel {
             for zone in sharedZones {
                 group.addTask { [self] in
                     do {
-                        let fecthShared = try await self.fetchRecords( in: getSharedZone(), from: self.databaseShared, recordType: recordType, predicate: predicate)
-                        let fecthPrivate = try await self.fetchRecords( in: zone.zoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
+                        let fecthShared = try await self.fetchRecords( in: zone.zoneID, from: self.databaseShared, recordType: recordType, predicate: predicate)
+                        let fecthPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
                         return fecthShared + fecthPrivate
                     } catch {
                         print(error.localizedDescription)

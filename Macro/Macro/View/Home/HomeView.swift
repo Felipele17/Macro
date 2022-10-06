@@ -36,7 +36,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 VStack {
-                    ForEach(viewModel.spentsCards) { spentsCard in
+                    ForEach (viewModel.spentsCards) { spentsCard in
                         NavigationLink {
                             SpentView()
                         } label: {
