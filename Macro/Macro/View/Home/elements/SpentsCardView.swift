@@ -13,9 +13,9 @@ struct SpentsCardView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                Color(self.spentsCards.colorName)
+                Color(spentsCard.colorName)
                 HStack(alignment: .center) {
-                    Text(self.spentsCards.title)
+                    Text(spentsCard.namePercent)
                         .font(.custom(EnumFonts.medium.rawValue, size: 22))
                         .foregroundColor(.white)
                         .padding(.top, 8)
@@ -39,6 +39,10 @@ struct SpentsCardView: View {
                         .padding(.leading, 8)
                         .foregroundColor(Color(EnumColors.title.rawValue))
                     Spacer()
+                    Text("\(spentsCard.avalibleMoney)")
+                        .font(.custom(EnumFonts.light.rawValue, size: 17))
+                        .padding(.trailing, 8)
+                        .foregroundColor(Color(EnumColors.title.rawValue))
                     
                 } .padding(.bottom)
                     .padding(.top)
