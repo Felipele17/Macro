@@ -11,25 +11,42 @@ struct SpentsCardView: View {
     let spentsCards: SpentsCards
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(spacing: 0) {
             ZStack {
                 Color(self.spentsCards.colorName)
-                HStack {
+                HStack(alignment: .center) {
                     Text(self.spentsCards.title)
+                        .font(.custom(EnumFonts.medium.rawValue, size: 22))
                         .foregroundColor(.white)
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
+                        .padding(.leading, 8)
                     Spacer()
                     Label("", systemImage: "chevron.right")
+                        .font(.custom(EnumFonts.medium.rawValue, size: 20))
                         .foregroundColor(.white)
+                        .padding(.trailing, 8)
                 }
             }
-            Color(EnumSpentsinfo.backgroundSpentsColor.rawValue)
-            HStack(alignment: .top) {
-                Text("Limite disponível")
-                    .foregroundColor(Color("Title"))
-                //                            Label("", systemImage: "chevron.right")
-                //                                .foregroundColor(.white)
+            
+            ZStack {
+                Color(EnumSpentsinfo.backgroundSpentsColor.rawValue)
+                
+                HStack(alignment: .center) {
+                    
+                    Text("Limite disponível")
+                        .font(.custom(EnumFonts.light.rawValue, size: 17))
+                        .padding(.leading, 8)
+                        .foregroundColor(Color(EnumColors.title.rawValue))
+                    Spacer()
+                    
+                } .padding(.bottom)
+                    .padding(.top)
+                
             }
-        }.cornerRadius(12)
+        }
+        .cornerRadius(12)
+        .shadow(radius: 8, x: 2, y: 2)
         
     }
 }

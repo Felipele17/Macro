@@ -72,7 +72,7 @@ struct OnBoardingView: View {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
                     } else if viewModel.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
-                            .foregroundColor(Color(EnumColors.ButtonColor.rawValue))
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     }
                 }
                 

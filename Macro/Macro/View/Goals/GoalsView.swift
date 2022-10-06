@@ -23,7 +23,7 @@ struct GoalsView: View {
                     viewModel.deleteGoal(goal: goal)
                 } label: {
                     Label("", systemImage: "trash")
-                        .foregroundColor(Color(EnumColors.ForegroundGraphMetaColor.rawValue))
+                        .foregroundColor(Color(EnumColors.foregroundGraphMetaColor.rawValue))
                 }
                 .padding()
             }
@@ -32,7 +32,7 @@ struct GoalsView: View {
                     .cornerRadius(cornerRadiusNumber())
                     .shadow(radius: cornerRadiusNumber())
                     .padding([.leading, .trailing, .bottom])
-                Color(EnumColors.BackgroundCardMetaColor.rawValue)
+                Color(EnumColors.backgroundCardMetaColor.rawValue)
                 
                 VStack {
                     Text("\(goal.weeks) semanas")
@@ -40,16 +40,16 @@ struct GoalsView: View {
                         .padding()
                     GraphView(chartPieViewModel: ChartPieViewModel(
                         chartDatas: [
-                            ChartData(color: Color(EnumColors.ForegroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
-                            ChartData(color: Color(EnumColors.BackgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
+                            ChartData(color: Color(EnumColors.foregroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
+                            ChartData(color: Color(EnumColors.backgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
                         ]
                     )
                     )
                     .offset(x: 0, y: UIScreen.screenHeight/30)
                 }
             }
-            .frame(height: UIScreen.screenHeight/2.5)
-            .padding(.horizontal, 15)
+            .frame(width: UIScreen.screenHeight/2.3 , height: UIScreen.screenHeight/2.5 )
+            //.padding(.horizontal, 15)
             .cornerRadius(60)
             VStack {
                 Picker("Qual filtro voce?", selection: $selectFilter) {
@@ -60,7 +60,7 @@ struct GoalsView: View {
                     Text("Depositado").tag(2)
                         .font(.custom(EnumFonts.medium.rawValue, size: 13))
                 }
-                .colorMultiply(Color(EnumColors.ButtonColor.rawValue))
+                .colorMultiply(Color(EnumColors.buttonColor.rawValue))
                 .pickerStyle(.segmented)
                 .padding([.leading, .trailing, .top])
                 List {
@@ -86,14 +86,14 @@ struct GoalsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button(role: nil) {
-                print("add configuração")
+            NavigationLink {
+                FormsEditGoals()
             } label: {
-                Text("editar")
+                Text("Editar")
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .tint(.blue)
             }
-        }.background(Color(EnumColors.BackgroundExpenseColor.rawValue))
+        }.background(Color(EnumColors.backgroundExpenseColor.rawValue))
     }
 }
 

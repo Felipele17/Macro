@@ -11,7 +11,7 @@ enum EnumSpentsinfo: String {
     case essencialsColor = "EssenciaisColor"
     case priorityColor = "PrioridadesColor"
     case leisureColor = "LazerColor"
-    case backgroundSpentsColor = "BackgroundSpents"
+    case backgroundSpentsColor = "BackgroundSpents-1"
     case essencialsTitle = "Essenciais"
     case priorityTitle = "Prioridades"
     case leisureTitle = "Lazer"
