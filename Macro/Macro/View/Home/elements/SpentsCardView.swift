@@ -14,20 +14,21 @@ struct SpentsCardView: View {
         VStack(spacing: 0) {
             ZStack {
                 Color(self.spentsCards.colorName)
-                HStack (alignment: .center) {
+                HStack(alignment: .center) {
                     Text(self.spentsCards.title)
                         .font(.custom(EnumFonts.medium.rawValue, size: 22))
                         .foregroundColor(.white)
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
                         .padding(.leading, 8)
                     Spacer()
                     Label("", systemImage: "chevron.right")
-                        .font(.custom(EnumFonts.medium.rawValue, size: 22))
+                        .font(.custom(EnumFonts.medium.rawValue, size: 20))
                         .foregroundColor(.white)
+                        .padding(.trailing, 8)
                 }
-                //                            Label("", systemImage: "chevron.right")
-                //                                .foregroundColor(.white)
             }
-            //.padding(.bottom)
+            
             ZStack {
                 Color(EnumSpentsinfo.backgroundSpentsColor.rawValue)
                 
@@ -36,11 +37,11 @@ struct SpentsCardView: View {
                     Text("Limite disponível")
                         .font(.custom(EnumFonts.light.rawValue, size: 17))
                         .padding(.leading, 8)
-                        .padding(.top, 8)
                         .foregroundColor(Color(EnumColors.title.rawValue))
                     Spacer()
                     
                 } .padding(.bottom)
+                    .padding(.top)
                 
             }
         }
