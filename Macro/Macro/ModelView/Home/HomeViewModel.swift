@@ -44,7 +44,8 @@ class HomeViewModel: ObservableObject {
     
     func loadUser() async -> [User]? {
         do {
-            let records = try await self.cloud.fetchSharedPrivatedRecords(recordType: User.getType(), predicate: nil)
+            let predicate = NSPredicate(value: true)
+            let records = try await self.cloud.fetchSharedPrivatedRecords(recordType: User.getType(), predicate: predicate)
             var users: [User] = []
             for record in records {
                 guard let user = await User(record: record) else { return nil }
@@ -69,7 +70,8 @@ class HomeViewModel: ObservableObject {
     }
     
     func loadSpentsCards() async -> [SpentsCard]? {
-        guard let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: nil) else { return nil}
+        let predicate = NSPredicate(value: true)
+        guard let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: predicate) else { return nil}
         guard let record = records.first else { return nil}
         guard let methodologySpent = MethodologySpent(record: record) else { return nil}
         var spentsCards: [SpentsCard] = []
@@ -98,7 +100,8 @@ class HomeViewModel: ObservableObject {
     
     private func avalibleMoneyCategory(categoryPorcent: Int) async throws -> Float? {
         var value: Float = 0.0
-        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: "categoryPercent='\(categoryPorcent)'")
+        let predicate = NSPredicate(format: "categoryPercent='\(categoryPorcent)'")
+        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: predicate)
         guard let records = records else { return nil }
         for record in records {
             guard let spent = Spent(record: record) else { return nil }
@@ -110,7 +113,8 @@ class HomeViewModel: ObservableObject {
     
     private func fecthGoals() async throws -> [Goal]? {
         var goals: [Goal] = []
-        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Goal.getType(), predicate: nil)
+        let predicate = NSPredicate(value: true)
+        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Goal.getType(), predicate: predicate)
         guard let records = records else { return nil }
         for record in records {
             guard let goal = await Goal(record: record) else { return nil }
