@@ -10,6 +10,7 @@ import SwiftUI
 struct FormsSpentsView: View {
     @StateObject var viewModel: SpentViewModel
     @State private var showingSheet = false
+    @State var selectedIcon: String = "car.fill"
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     let formatter: NumberFormatter = {
@@ -30,8 +31,8 @@ struct FormsSpentsView: View {
                     Button(">") {
                         showingSheet.toggle()
                     }.sheet(isPresented: $showingSheet) {
-                                ModalView()
-                    }.padding(.leading, UIScreen.screenWidth*0.77)
+                        ModalView(selectedIcon: $selectedIcon)
+                    } .padding(.leading, UIScreen.screenWidth*0.77)
                     .listRowBackground(Color.clear)
                             .underlineTextField()
                 }.textCase(.none)
@@ -47,7 +48,6 @@ struct FormsSpentsView: View {
                     DatePicker("", selection: $viewModel.datePickerSpent, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
                             .labelsHidden()
-                        // .underlineTextField()
                 }.textCase(.none)
             }.navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
