@@ -10,12 +10,18 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
-    var income: Float = 0.0
+    var income: Float = UserDefaults.standard.float(forKey: "income")
     @Published var users: [User] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard] = []
     
     init() {
+        Task.init {
+            guard let spentsCards = await loadSpentsCards() else { return }
+            DispatchQueue.main.async {
+                self.spentsCards = spentsCards
+            }
+        }
         Task.init {
             guard let users = await loadUser() else { return }
             DispatchQueue.main.async {
@@ -24,12 +30,6 @@ class HomeViewModel: ObservableObject {
                 for user in users {
                     self.income += user.income
                 }
-            }
-        }
-        Task.init {
-            guard let spentsCards = await loadSpentsCards() else { return }
-            DispatchQueue.main.async {
-                self.spentsCards = spentsCards
             }
         }
         Task.init {
