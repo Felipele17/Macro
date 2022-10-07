@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ModalView: View {
     @Binding var selectedIcon: String
+    var colorIcon: String
     var icons = ["car.fill", "books.vertical.fill", "house.fill", "iphone", "airplane", "pawprint.fill", "cart.fill"]
     let columns = [
             GridItem(.adaptive(minimum: 56))
@@ -26,7 +27,7 @@ struct ModalView: View {
                             .padding(.leading, 8)
                             
                         }.frame(width: UIScreen.screenWidth/7, height: UIScreen.screenWidth/7)
-                            .background(selectedIcon == icon ? Color(EnumColors.buttonColor.rawValue) : Color(EnumColors.essenciaisColor.rawValue))
+                            .background(selectedIcon == icon ? Color(EnumColors.buttonColor.rawValue) : Color(colorIcon))
                             .cornerRadius(10)
                         
                     }
@@ -40,6 +41,6 @@ struct ModalView: View {
 
 struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalView(selectedIcon: .constant("car.fill"))
+        ModalView(selectedIcon: .constant("car.fill"), colorIcon: EnumColors.essenciaisColor.rawValue )
     }
 }

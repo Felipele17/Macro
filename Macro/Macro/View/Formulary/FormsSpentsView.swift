@@ -11,6 +11,7 @@ struct FormsSpentsView: View {
     @StateObject var viewModel: SpentViewModel
     @State private var showingSheet = false
     @State var selectedIcon: String = "car.fill"
+    var colorIcon: String
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     let formatter: NumberFormatter = {
@@ -31,7 +32,7 @@ struct FormsSpentsView: View {
                     Button(">") {
                         showingSheet.toggle()
                     }.sheet(isPresented: $showingSheet) {
-                        ModalView(selectedIcon: $selectedIcon)
+                        ModalView(selectedIcon: $selectedIcon, colorIcon: colorIcon)
                     } .padding(.leading, UIScreen.screenWidth*0.77)
                     .listRowBackground(Color.clear)
                             .underlineTextField()
@@ -72,7 +73,7 @@ extension View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), colorIcon: EnumColors.essenciaisColor.rawValue)
 //            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), popToView: .constant(false))
         }
     }
