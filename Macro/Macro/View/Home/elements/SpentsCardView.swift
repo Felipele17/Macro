@@ -39,7 +39,7 @@ struct SpentsCardView: View {
                         .padding(.leading, 8)
                         .foregroundColor(Color(EnumColors.title.rawValue))
                     Spacer()
-                    Text("\(spentsCard.avalibleMoney)")
+                    Text("\(spentsCard.avalibleMoney)".floatValue.currency)
                         .font(.custom(EnumFonts.light.rawValue, size: 17))
                         .padding(.trailing, 8)
                         .foregroundColor(Color(EnumColors.title.rawValue))

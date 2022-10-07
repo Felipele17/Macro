@@ -38,9 +38,9 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach($viewModel.spentsCards) { spends in
-                        NavigationLink(destination: SpentView()) {
-                            SpentsCardView(spentsCard: spends)
+                    ForEach($viewModel.spentsCards) { spents in
+                        NavigationLink(destination: SpentView(title: spents.namePercent)) {
+                            SpentsCardView(spentsCard: spents)
                                 .padding()
                             
                         }
