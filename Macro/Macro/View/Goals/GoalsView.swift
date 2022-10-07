@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct GoalsView: View {
-    var goal: Goal
-    @ObservedObject private var viewModel = GoalViewModel()
-    @State var selectFilter: Int = 1
+    @Binding var goal: Goal
+    @StateObject private var viewModel = GoalViewModel()
+    @State private var selectFilter = 1
+    
     var body: some View {
         VStack {
             HStack {
@@ -75,7 +76,7 @@ struct GoalsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             NavigationLink {
-                FormsEditGoals()
+                FormsEditGoals(goal: $goal)
             } label: {
                 Text("Editar")
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
@@ -93,8 +94,10 @@ extension GoalsView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalsView(goal:
-                    Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
-        .preferredColorScheme(.dark)
+        NavigationView {
+            GoalsView(goal:
+                    .constant(Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+            )
+        }
     }
 }
