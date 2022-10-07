@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-class Goal: DataModelProtocol {
+class Goal: DataModelProtocol, Identifiable {
 
     var idName: UUID
     var title: String
@@ -28,8 +28,8 @@ class Goal: DataModelProtocol {
         self.methodologyGoal = methodologyGoal
     }
     
-    required init?(record: CKRecord) {
-        guard let  idName = record["recordName"] as? String else { return nil }
+    required init?(record: CKRecord) async {
+        let idName = record.recordID.recordName
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Float else { return nil }
         guard let  weeks = record["weeks"] as? Int else { return nil }
@@ -45,15 +45,13 @@ class Goal: DataModelProtocol {
         self.weeks = weeks
         self.motivation = motivation
         self.priority = priority
-        Task.init {
-            guard let record = try await CloudKitModel.shared.fetchByID(id: methodologyGoal, tipe: MethodologyGoal.getType()) else { return }
-            guard let methodologyGoal = MethodologyGoal(record: record) else { return }
-            self.methodologyGoal = methodologyGoal
-        }
+        guard let record = try? await CloudKitModel.shared.fetchByID(id: methodologyGoal, tipe: MethodologyGoal.getType()) else { return }
+        guard let methodologyGoal = MethodologyGoal(record: record) else { return }
+        self.methodologyGoal = methodologyGoal
     }
     
     static func getType() -> String {
-        return "Meta"
+        return "Goal"
     }
     
     func getID() -> UUID {
@@ -65,7 +63,7 @@ class Goal: DataModelProtocol {
     }
     
     func getData() -> [String: Any?] {
-        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority": priority, "methodologyGoal": methodologyGoal]
+        return["title": title, "value": value, "weeks": weeks, "motivation": motivation ?? "", "priority": priority, "methodologyGoal": methodologyGoal?.idName.description]
     }
     
     func getAllMoneySave() -> Float {

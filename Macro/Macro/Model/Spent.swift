@@ -29,7 +29,7 @@ class Spent: DataModelProtocol {
     }
     
     required init?(record: CKRecord) {
-        guard let  idName = record["recordName"] as? String else { return nil }
+        let idName = record.recordID.recordName
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Float else { return nil }
         guard let  icon = record["icon"] as? String else { return nil }

@@ -88,6 +88,8 @@ class CloudKitModel {
                 record[propertie] =  dataIntList as CKRecordValue
             } else if let dataString = propertiesdata[propertie] as? String {
                 record[propertie] =  dataString as CKRecordValue
+            } else if let dataStringList = propertiesdata[propertie] as? [String] {
+                record[propertie] =  dataStringList as CKRecordValue
             } else if let dataFloat = propertiesdata[propertie] as? Float {
                 record[propertie] =  dataFloat as CKRecordValue
             } else if let dataBool = propertiesdata[propertie] as? Bool {
@@ -101,7 +103,7 @@ class CloudKitModel {
     }
     
     // MARK: Update
-    func upadte(model: DataModelProtocol) async throws {
+    func update(model: DataModelProtocol) async throws {
         let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
         let fecthRecord = try? await databasePrivate.record(for: recordId)
         guard let record = fecthRecord else { return  }
@@ -206,15 +208,15 @@ class CloudKitModel {
     }
     
     // MARK: fecth
-    func fetchSharedPrivatedRecords(recordType: String, predicate: String) async throws -> [CKRecord] {
+    func fetchSharedPrivatedRecords(recordType: String, predicate: String?) async throws -> [CKRecord] {
         let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
         
         return try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in
             for zone in sharedZones {
                 group.addTask { [self] in
                     do {
-                        let fecthShared = try await self.fetchRecords( in: getSharedZone(), from: self.databaseShared, recordType: recordType, predicate: predicate)
-                        let fecthPrivate = try await self.fetchRecords( in: zone.zoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
+                        let fecthShared = try await self.fetchRecords( in: zone.zoneID, from: self.databaseShared, recordType: recordType, predicate: predicate)
+                        let fecthPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
                         return fecthShared + fecthPrivate
                     } catch {
                         print(error.localizedDescription)
@@ -229,9 +231,14 @@ class CloudKitModel {
         }
     }
     
-    private func fetchRecords(in zone: CKRecordZone.ID? = SharedZone.ZoneID, from database: CKDatabase, recordType: String, predicate: String ) async throws -> [CKRecord] {
-        let predicate = NSPredicate(format: predicate)
-        let query = CKQuery(recordType: recordType, predicate: predicate)
+    private func fetchRecords(in zone: CKRecordZone.ID? = SharedZone.ZoneID, from database: CKDatabase, recordType: String, predicate: String? ) async throws -> [CKRecord] {
+        let nsPredicate: NSPredicate
+        if let predicate = predicate {
+            nsPredicate = NSPredicate(format: predicate)
+        } else {
+            nsPredicate = NSPredicate(value: true)
+        }
+        let query = CKQuery(recordType: recordType, predicate: nsPredicate)
         let response = try await database.records(
             matching: query,
             inZoneWith: zone,
@@ -246,7 +253,7 @@ class CloudKitModel {
     
     func fetchByID(id: String, tipe: String) async throws -> CKRecord? {
         do {
-            let record = try await self.fetchSharedPrivatedRecords(recordType: tipe, predicate: "idName = \(id)")
+            let record = try await self.fetchSharedPrivatedRecords(recordType: tipe, predicate: "nameCategory='50-35-15'")
             guard let record = record.first else { return nil }
             return record
         } catch let error {

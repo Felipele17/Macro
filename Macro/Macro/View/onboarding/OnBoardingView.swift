@@ -49,7 +49,7 @@ struct OnBoardingView: View {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
                 }
-                if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
+                if invite.isReady(income: incomeTextField) {
                     NavigationLink {
                         HomeView()
                     } label: {

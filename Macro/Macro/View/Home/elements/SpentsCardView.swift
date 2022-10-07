@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SpentsCardView: View {
-    let spentsCards: SpentsCards
+    @Binding var spentsCard: SpentsCard
     
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                Color(self.spentsCards.colorName)
+                Color(spentsCard.colorName)
                 HStack(alignment: .center) {
-                    Text(self.spentsCards.title)
+                    Text(spentsCard.namePercent)
                         .font(.custom(EnumFonts.medium.rawValue, size: 22))
                         .foregroundColor(.white)
                         .padding(.top, 8)
@@ -39,6 +39,10 @@ struct SpentsCardView: View {
                         .padding(.leading, 8)
                         .foregroundColor(Color(EnumColors.title.rawValue))
                     Spacer()
+                    Text("\(spentsCard.avalibleMoney)".floatValue.currency)
+                        .font(.custom(EnumFonts.light.rawValue, size: 17))
+                        .padding(.trailing, 8)
+                        .foregroundColor(Color(EnumColors.title.rawValue))
                     
                 } .padding(.bottom)
                     .padding(.top)
@@ -53,6 +57,6 @@ struct SpentsCardView: View {
 
 struct SpentsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsCardView(spentsCards: SpentsCards(id: 1, colorName: "PriorityColor", title: "Prioridades"))
+        SpentsCardView(spentsCard: .constant(SpentsCard(id: 1, valuesPercent: 1, namePercent: "oi", avalibleMoney: 100)))
     }
 }

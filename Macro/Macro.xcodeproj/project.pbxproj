@@ -63,7 +63,7 @@
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
 		55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */; };
 		55D19CAE28E76970004F84A8 /* FormsGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */; };
-		9919974728E76AB10075866D /* SpentsCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCards.swift */; };
+		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
 		9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974828E77E8F0075866D /* EnumSpentsInfo.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */; };
@@ -159,7 +159,7 @@
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
 		55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTextButton.swift; sourceTree = "<group>"; };
 		55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalViewModel.swift; sourceTree = "<group>"; };
-		9919974628E76AB10075866D /* SpentsCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCards.swift; sourceTree = "<group>"; };
+		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
 		9919974828E77E8F0075866D /* EnumSpentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpentsInfo.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSegmentedView.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
-				9919974628E76AB10075866D /* SpentsCards.swift */,
+				9919974628E76AB10075866D /* SpentsCard.swift */,
 				5544773D28E2330C000C892E /* OnBoarding.swift */,
 				06449C4C28C2A2DC00035324 /* MethodologySpent.swift */,
 				06449C4F28C2A45C00035324 /* MethodologyGoal.swift */,
@@ -695,7 +695,7 @@
 				5544772A28E23050000C892E /* SkipButton.swift in Sources */,
 				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
-				9919974728E76AB10075866D /* SpentsCards.swift in Sources */,
+				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
 				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
@@ -900,7 +900,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -919,9 +919,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = vitorCheung.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -933,9 +936,9 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
-				DEVELOPMENT_TEAM = JJ7A9ZQ7BD;
+				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
@@ -952,9 +955,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = vitorCheung.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

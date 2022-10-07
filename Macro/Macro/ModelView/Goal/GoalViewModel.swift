@@ -16,7 +16,7 @@ class GoalViewModel: ObservableObject {
         goal.weeks += 1
         Task.init {
             do {
-                try await cloud.upadte(model: goal)
+                try await cloud.update(model: goal)
             } catch let error {
                 print(error.localizedDescription)
             }
@@ -33,10 +33,10 @@ class GoalViewModel: ObservableObject {
         }
     }
     
-    func editGoal(goal: Goal) async {
+    func editGoal(goal: Goal) {
         Task.init {
             do {
-                try await cloud.upadte(model: goal)
+                try await cloud.update(model: goal)
             } catch let error {
                 print(error.localizedDescription)
             }
