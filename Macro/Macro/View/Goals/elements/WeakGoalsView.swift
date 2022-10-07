@@ -11,22 +11,22 @@ struct WeakGoalsView: View {
     var title: String
     var valor: Float
     var body: some View {
-        HStack {
+        HStack(spacing:0) {
             Label("", systemImage: "circle")
                 .foregroundColor(Color(EnumColors.circleMeta.rawValue))
-                .font(.custom(EnumFonts.medium.rawValue, size: 17))
-                .padding(.leading)
+                .font(.custom(EnumFonts.medium.rawValue, size: 22))
             Text(title)
+                .font(.custom(EnumFonts.medium.rawValue, size: 17))
             Spacer()
-            Text("R$\(valor, specifier: "%.2f")")
+            Text("\(valor)".floatValue.currency)
                 .font(.custom(EnumFonts.medium.rawValue, size: 20))
-                .padding()
+                .padding(.vertical)
         }
     }
 }
 
 struct WeakGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        WeakGoalsView(title: "carro", valor: 100.0)
+        WeakGoalsView(title: "Carro", valor: 100.0)
     }
 }

@@ -18,8 +18,8 @@ class User: DataModelProtocol {
     var notification: [Int]
     var methodologySpent: MethodologySpent?
     
-    init(idName: UUID, name: String, income: Float, dueData: Int, partner: String, notification: [Int], methodologySpent: MethodologySpent) {
-        self.idName = idName
+    init( name: String, income: Float, dueData: Int, partner: String, notification: [Int], methodologySpent: MethodologySpent) {
+        self.idName = UUID()
         self.name = name
         self.income = income
         self.partner = partner
@@ -28,8 +28,8 @@ class User: DataModelProtocol {
         self.methodologySpent = methodologySpent
     }
     
-    required init?(record: CKRecord) {
-        guard let  idName = record["idName"] as? String else { return nil }
+    required init?(record: CKRecord) async {
+        let idName = record.recordID.recordName
         guard let  name = record["name"] as? String else { return nil }
         guard let  income = record["income"] as? Float else { return nil }
         guard let  partner = record["partner"] as? String else { return nil }
@@ -45,11 +45,9 @@ class User: DataModelProtocol {
         self.partner = partner
         self.dueData = dueData
         self.notification = notification
-        Task.init {
-            guard let record = try await CloudKitModel.shared.fetchByID(id: methodologySpent, tipe: MethodologySpent.getType()) else { return }
-            guard let methodologySpent = MethodologySpent(record: record) else { return }
-            self.methodologySpent = methodologySpent
-        }
+        guard let record = try? await CloudKitModel.shared.fetchByID(id: methodologySpent, tipe: MethodologySpent.getType()) else { return }
+        guard let methodologySpent = MethodologySpent(record: record) else { return }
+        self.methodologySpent = methodologySpent
     }
     
     static  func getType() -> String {
@@ -65,7 +63,7 @@ class User: DataModelProtocol {
     }
     
     func getData() -> [String: Any?] {
-        return ["name": name, "income": income, "partner": partner, "dueData": dueData, "notification": notification, "methodologySpent": methodologySpent]
+        return ["name": name, "income": income, "partner": partner, "dueData": dueData, "notification": notification, "methodologySpent": methodologySpent?.idName.description]
     }
     
 }

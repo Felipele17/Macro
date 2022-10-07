@@ -21,7 +21,7 @@ class MethodologyGoal: DataModelProtocol {
     }
     
     required init?(record: CKRecord) {
-        guard let  idName = record["recordName"] as? String else { return nil }
+        let idName = record.recordID.recordName
         guard let  weeks = record["weeks"] as? Int else { return nil }
         guard let  crescent = record["crescent"] as? Bool else { return nil }
         

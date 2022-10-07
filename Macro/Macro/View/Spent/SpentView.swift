@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SpentView: View {
+    @Binding var title: String
     @State var isActive: Bool = false
     var body: some View {
             VStack(alignment: .leading) {
@@ -37,7 +38,7 @@ struct SpentView: View {
                 SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
             } .listStyle(.insetGrouped)
         }
-        .navigationTitle("Essencial")
+        .navigationTitle(title)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(EnumColors.backgroundScreen.rawValue))
@@ -46,6 +47,6 @@ struct SpentView: View {
 
 struct SpentView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentView()
+        SpentView(title: .constant("Essencial"))
     }
 }
