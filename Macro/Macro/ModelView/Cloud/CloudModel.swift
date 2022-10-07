@@ -101,7 +101,7 @@ class CloudKitModel {
     }
     
     // MARK: Update
-    func upadte(model: DataModelProtocol) async throws {
+    func update(model: DataModelProtocol) async throws {
         let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
         let fecthRecord = try? await databasePrivate.record(for: recordId)
         guard let record = fecthRecord else { return  }

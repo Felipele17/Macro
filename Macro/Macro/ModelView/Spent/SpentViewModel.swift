@@ -54,7 +54,7 @@ class SpentViewModel: ObservableObject {
     func editSpent(spent: Spent) {
         Task.init {
             do {
-                try await cloud.upadte(model: spent)
+                try await cloud.update(model: spent)
             } catch let error {
                 print(error.localizedDescription)
             }

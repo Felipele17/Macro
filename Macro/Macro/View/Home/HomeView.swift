@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    var viewsCells = [
-        GoalCardView(viewModel: GoalCardViewModel(), id: 1, goal: Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))),
-        GoalCardView(viewModel: GoalCardViewModel(), id: 2, goal: Goal(title: "Comprar Ape", value: 159000, weeks: 20, motivation: "Morar juntos", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))),
-        GoalCardView(viewModel: GoalCardViewModel(), id: 3, goal: Goal(title: "Jantar Terraço", value: 1000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
-    ]
+    @State var bool = false
+    @State var goals = [Goal(title: "Carro Novo", value: 5000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))]
+    @StateObject var vm = GoalCardViewModel()
     
     var viewCardSpends = [
         SpentsCardView(spentsCards: SpentsCards(id: 1, colorName: "PriorityColor", title: "Prioridades")),
@@ -38,7 +36,7 @@ struct HomeView: View {
                         .padding(.trailing)
                 }
             } .padding(.top, 48)
-            CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, viewsCells: viewsCells)
+            CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $goals)
             
             VStack(spacing: 0) {
                 HStack {
