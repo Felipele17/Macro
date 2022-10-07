@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FormsSpentsView: View {
     @StateObject var viewModel: SpentViewModel
+    @State private var showingSheet = false
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     let formatter: NumberFormatter = {
@@ -26,12 +27,13 @@ struct FormsSpentsView: View {
                 }.textCase(.none)
                 
                 Section(header: Text("Ícone").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    Picker(selection: $viewModel.iconPicker, label: Text("")) {
-                        ForEach(["One", "Two", "Three"], id: \.self) {
-                            Text($0).tag($0)
-                        }
-                    } .listRowBackground(Color.clear)
-                        .underlineTextField()
+                    Button(">") {
+                        showingSheet.toggle()
+                    }.sheet(isPresented: $showingSheet) {
+                                ModalView()
+                    }.padding(.leading, UIScreen.screenWidth*0.77)
+                    .listRowBackground(Color.clear)
+                            .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {

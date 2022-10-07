@@ -67,6 +67,7 @@
 		9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974828E77E8F0075866D /* EnumSpentsInfo.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */; };
+		998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAE28F094EF000791D9 /* ModalView.swift */; };
 		99B2EF4028DE573D00657C53 /* FormsSpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */; };
 		99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */; };
 		99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */; };
@@ -162,6 +163,7 @@
 		9919974828E77E8F0075866D /* EnumSpentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpentsInfo.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSegmentedView.swift; sourceTree = "<group>"; };
+		998C6AAE28F094EF000791D9 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpentsView.swift; sourceTree = "<group>"; };
 		99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsNameView.swift; sourceTree = "<group>"; };
 		99B676B628DCD019007C8BC6 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */,
 				554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */,
 				99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */,
+				998C6AAE28F094EF000791D9 /* ModalView.swift */,
 			);
 			path = Formulary;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
+				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
 				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
 				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
