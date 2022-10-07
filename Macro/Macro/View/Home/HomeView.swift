@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    @Binding var spents: [Spent]
     
     var body: some View {
         NavigationView {
@@ -38,9 +39,10 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach($viewModel.spentsCards) { spents in
-                        NavigationLink(destination: SpentView(title: spents.namePercent)) {
-                            SpentsCardView(spentsCard: spents)
+                    // $viewModel.spentsCards
+                    ForEach($spents) { spent in
+                        NavigationLink(destination: SpentView(title: spent.namePercent, spent: spent)) {
+                            SpentsCardView(spentsCard: spent)
                                 .padding()
                             
                         }

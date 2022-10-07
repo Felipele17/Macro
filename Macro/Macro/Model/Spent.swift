@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-class Spent: DataModelProtocol {
+class Spent: DataModelProtocol, Identifiable {
     
     var idName: UUID
     var title: String
