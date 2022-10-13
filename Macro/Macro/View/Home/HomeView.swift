@@ -18,9 +18,7 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    Button(role: nil) {
-                        print("add meta")
-                    } label: {
+                    NavigationLink(destination: FormsGoalsNameView()) {
                         Label("", systemImage: "plus")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .font(.custom(EnumFonts.semibold.rawValue, size: 28))
@@ -38,8 +36,8 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach($viewModel.spentsCards) { spents in
-                        NavigationLink(destination: SpentView(title: spents.namePercent)) {
+                    ForEach(viewModel.spentsCards) { spents in
+                        NavigationLink(destination: SpentView(title: spents.namePercent, colorIcon: spents.colorName )) {
                             SpentsCardView(spentsCard: spents)
                                 .padding()
                             

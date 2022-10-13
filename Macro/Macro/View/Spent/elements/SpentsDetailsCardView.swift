@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SpentsDetailsCardView: View {
     var spent: Spent
+    var colorIcon: String
     @StateObject var viewModel: SpentViewModel
     @State var isActive: Bool = false
     var body: some View {
         HStack {
             ZStack {
-                Color(EnumColors.essenciaisColor.rawValue)
+                Color(colorIcon)
                     .cornerRadius(10)
                 Image(systemName: "car.fill")
                     .foregroundColor(.white)
@@ -39,7 +40,7 @@ struct SpentsDetailsCardView: View {
         }
         .swipeActions(edge: .leading) {
             NavigationLink(isActive: $isActive) {
-                FormsSpentsView(viewModel: viewModel)
+                FormsSpentsView(viewModel: viewModel, colorIcon: colorIcon)
             } label: {
                 Label("Editar", systemImage: "square.and.pencil")
             }
@@ -49,6 +50,6 @@ struct SpentsDetailsCardView: View {
 
 struct SpentsDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+        SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), colorIcon: EnumColors.essenciaisColor.rawValue, viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
     }
 }

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SpentView: View {
-    @Binding var title: String
+    var title: String
     @State var isActive: Bool = false
+    var colorIcon: String
     var body: some View {
             VStack(alignment: .leading) {
                 Text("Gasto atual")
@@ -26,7 +27,7 @@ struct SpentView: View {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work)), isActive: $isActive) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), colorIcon: colorIcon), isActive: $isActive) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -35,7 +36,7 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+                SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), colorIcon: colorIcon, viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
             } .listStyle(.insetGrouped)
         }
         .navigationTitle(title)
@@ -47,6 +48,6 @@ struct SpentView: View {
 
 struct SpentView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentView(title: .constant("Essencial"))
+        SpentView(title: "Essencial", colorIcon: EnumColors.essenciaisColor.rawValue)
     }
 }
