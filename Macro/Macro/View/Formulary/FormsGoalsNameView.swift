@@ -12,9 +12,9 @@ struct FormsGoalsNameView: View {
     @State private var goalField: String = ""
     @State private var pageIndex = 0
     @State var goal = Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 1, crescent: false))
+    @Binding var popToRoot: Bool
     
     var body: some View {
-        NavigationView {
             VStack(alignment: .leading) {
                 Text("Qual o nome da sua meta?")
                     .font(.custom("SFProText-Medium", size: 34))
@@ -27,18 +27,18 @@ struct FormsGoalsNameView: View {
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                GoalNextButton(goal: goal, text: EnumButtonText.nextButton.rawValue, textField: $goalField, pageIndex: $pageIndex)
+                GoalNextButton(goal: goal, text: EnumButtonText.nextButton.rawValue, textField: $goalField, pageIndex: $pageIndex, popToRoot: $popToRoot)
                     .onTapGesture {
                        goal.title = goalField
+
                     }
             }
             .padding(20)
-        }
     }
 }
 
 struct FormGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsGoalsNameView()
+        FormsGoalsNameView(popToRoot: .constant(true))
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    @State var isActive: Bool = false
     var spentNum = [Spent(title: "gas", value: 100, icon: "car", date: Date.now, categoryPercent: EnumCategoryPercent.work.rawValue)]
     
     var body: some View {
@@ -19,12 +20,13 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    NavigationLink(destination: FormsGoalsNameView()) {
+                    NavigationLink(destination: FormsGoalsNameView( popToRoot: $isActive), isActive: $isActive) {
                         Label("", systemImage: "plus")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                             .padding()
                     }
+                    .isDetailLink(false)
                 }
                 .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
@@ -61,6 +63,7 @@ struct HomeView: View {
                 //                }
                 
             }
+           // .foregroundColor(Color(EnumColors.buttonColor.rawValue))
         }
         .navigationBarBackButtonHidden(true)
     }
