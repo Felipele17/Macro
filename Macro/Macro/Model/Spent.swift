@@ -15,11 +15,11 @@ class Spent: DataModelProtocol, Identifiable {
     var value: Float
     var icon: String
     var date: Date
-    var categoryPercent: String
+    var categoryPercent: Int
     
     init(title: String, value: Float, icon: String,
          date: Date,
-         categoryPercent: String) {
+         categoryPercent: Int) {
         self.idName = UUID()
         self.title = title
         self.value = value
@@ -34,7 +34,7 @@ class Spent: DataModelProtocol, Identifiable {
         guard let  value = record["value"] as? Float else { return nil }
         guard let  icon = record["icon"] as? String else { return nil }
         guard let  date = record["date"] as? Date else { return nil }
-        guard let  categoryPercent = record["category"] as? String else { return nil }
+        guard let  categoryPercent = record["categoryPercent"] as? Int else { return nil }
         guard let idName = UUID(uuidString: idName) else { return nil }
         self.idName = idName
         self.title = title
@@ -53,7 +53,7 @@ class Spent: DataModelProtocol, Identifiable {
     }
     
     func getProperties() -> [String] {
-        return ["title", "value", "category"]
+        return ["title", "value", "icon", "date", "categoryPercent"]
     }
     
     func getData() -> [String: Any?] {
@@ -62,7 +62,7 @@ class Spent: DataModelProtocol, Identifiable {
                 "categoryPercent": categoryPercent]
     }
     
-    static func emptyMock(category: String) -> Spent{
+    static func emptyMock(category: Int) -> Spent {
         return Spent(title: "", value: 0.0, icon: "", date: Date.now, categoryPercent: category)
     }
 }

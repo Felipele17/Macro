@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
-    var spentNum = [Spent(title: "gas", value: 100, icon: "car", date: Date.now, categoryPercent: EnumCategoryPercent.work.rawValue)]
     
     var body: some View {
         NavigationView {
@@ -46,7 +45,7 @@ struct HomeView: View {
                     ForEach(viewModel.spentsCards) { spentCard in
                         NavigationLink(destination: SpentView(
                             spentsCard: spentCard,
-                            spents: spentNum)) {
+                            spents: viewModel.dictionarySpent[spentCard.valuesPercent] ?? [])) {
                             SpentsCardView(spentsCard: spentCard)
                                 .padding()
                         }

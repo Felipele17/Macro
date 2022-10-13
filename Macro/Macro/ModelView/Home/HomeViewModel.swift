@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
     var income: Float = UserDefaults.standard.float(forKey: "income")
     var methodologyGoals: MethodologyGoal?
+    var dictionarySpent: [Int: [Spent]] = [:]
     @Published var users: [User] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard] = []
@@ -115,13 +116,16 @@ class HomeViewModel: ObservableObject {
     
     private func spentedMoneyCategory(categoryPorcent: Int) async throws -> Float {
         var value: Float = 0.0
-        let predicate = NSPredicate(format: "categoryPercent='\(categoryPorcent)'")
+        var spents: [Spent] = []
+        let predicate = NSPredicate(format: "categoryPercent == \(categoryPorcent) ")
         let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: predicate)
         guard let records = records else { return 0.0 }
         for record in records {
             guard let spent = Spent(record: record) else { return 0.0 }
             value += spent.value
+            spents.append(spent)
         }
+        dictionarySpent[categoryPorcent] = spents
         return value
     }
     

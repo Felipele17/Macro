@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SpentsDetailsCardView: View {
-    var categoty: String
+    var categoty: Int
     @State var isActive = false
     var colorIcon: String
     @StateObject var viewModel: SpentViewModel
 
     var body: some View {
         NavigationLink(isActive: $isActive) {
-            FormsSpentsView(viewModel: viewModel, colorIcon: colorIcon, isPost: false, categoty: categoty)
+            FormsSpentsView(viewModel: viewModel, colorIcon: colorIcon, isPost: false)
         } label: {
             HStack {
                 ZStack {
@@ -31,7 +31,7 @@ struct SpentsDetailsCardView: View {
                         .font(.custom(EnumFonts.light.rawValue, size: 13))
                 }.padding(.leading, 4)
                 Spacer()
-                Text("R$\(viewModel.spent.value)".floatValue.currency)
+                Text("\(viewModel.spent.value)".floatValue.currency)
                     .font(.custom(EnumFonts.medium.rawValue, size: 20))
                     .padding(.vertical)
             }
@@ -56,9 +56,9 @@ struct SpentsDetailsCardView: View {
 struct SpentsDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
         SpentsDetailsCardView(
-            categoty: EnumCategoryPercent.work.rawValue,
+            categoty: 50,
             colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
-            viewModel: SpentViewModel(spent: Spent.emptyMock(category: EnumCategoryPercent.work.rawValue))
+            viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50))
         )
     }
 }

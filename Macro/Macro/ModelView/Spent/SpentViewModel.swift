@@ -15,7 +15,7 @@ class SpentViewModel: ObservableObject {
         self.spent = spent
     }
 
-    func createSpent(categoryPercent: String) -> Spent? {
+    func createSpent() -> Spent? {
         if spent.title.isEmpty {
             return nil
         }
@@ -28,9 +28,9 @@ class SpentViewModel: ObservableObject {
         return spent
     }
     
-    func postSpent(categoryPercent: String) {
+    func postSpent() {
         Task.init {
-            guard let spent = createSpent( categoryPercent: categoryPercent ) else { return }
+            guard let spent = createSpent() else { return }
             try? await cloud.post(recordType: Spent.getType(), model: spent)
         }
     }
