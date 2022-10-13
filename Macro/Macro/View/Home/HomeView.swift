@@ -26,7 +26,7 @@ struct HomeView: View {
                             .padding()
                     }
                 }
-                .padding(.top, 48)
+                .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
                 
                 VStack(spacing: 0) {
