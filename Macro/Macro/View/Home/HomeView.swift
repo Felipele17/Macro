@@ -37,12 +37,10 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    // $viewModel.spentsCards
-                    ForEach( $viewModel.spentsCards) { spent in
-                        NavigationLink(destination: SpentView(title: spent.namePercent, spents: spentNum)) {
-                            SpentsCardView(spentsCard: spent)
+                    ForEach(viewModel.spentsCards) { spentCard in
+                        NavigationLink(destination: SpentView(title: spentCard.namePercent, colorIcon: spentCard.colorName, spents: spentNum)) {
+                            SpentsCardView(spentsCard: spentCard)
                                 .padding()
-                            
                         }
                     }
                 }

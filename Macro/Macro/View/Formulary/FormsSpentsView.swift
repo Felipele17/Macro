@@ -10,6 +10,8 @@ import SwiftUI
 struct FormsSpentsView: View {
     @ObservedObject var viewModel : SpentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
+    @State var showingSheet: Bool = false
+    var colorIcon: String
     var isPost: Bool
     var categoty: String
     let formatter: NumberFormatter = {
@@ -30,7 +32,7 @@ struct FormsSpentsView: View {
                     Button(">") {
                         showingSheet.toggle()
                     }.sheet(isPresented: $showingSheet) {
-                        ModalView(selectedIcon: $selectedIcon, colorIcon: colorIcon)
+                        ModalView(selectedIcon: $viewModel.spent.icon, colorIcon: colorIcon)
                     } .padding(.leading, UIScreen.screenWidth*0.77)
                     .listRowBackground(Color.clear)
                             .underlineTextField()
@@ -79,7 +81,12 @@ extension View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: EnumCategoryPercent.work.rawValue)), isPost: true, categoty: EnumCategoryPercent.work.rawValue)
+            FormsSpentsView(
+                viewModel: SpentViewModel(spent: Spent.emptyMock(category: EnumCategoryPercent.work.rawValue)),
+                colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
+                isPost: true,
+                categoty: EnumCategoryPercent.work.rawValue
+            )
         }
     }
 }

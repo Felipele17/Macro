@@ -11,6 +11,7 @@ struct SpentView: View {
     var title: String
     @State var isActive: Bool = false
     var colorIcon: String
+    @State var spents: [Spent]
     var body: some View {
             VStack(alignment: .leading) {
                 Text("Gasto atual")
@@ -27,7 +28,7 @@ struct SpentView: View {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: title)), isPost: true, categoty: title)) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: title)), colorIcon: colorIcon, isPost: true, categoty: title)) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -37,7 +38,7 @@ struct SpentView: View {
                 .padding(.top, 20)
             List {
                 ForEach(0 ..< $spents.count) { ind in
-                    SpentsDetailsCardView(categoty: title, viewModel: SpentViewModel(spent: spents[ind]))
+                    SpentsDetailsCardView(categoty: title, colorIcon: colorIcon, viewModel: SpentViewModel(spent: spents[ind]))
                 }
             } .listStyle(.insetGrouped)
         }
@@ -51,7 +52,7 @@ struct SpentView: View {
 struct SpentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SpentView(title: .constant("tá de palhaçada"), spents: [Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work.rawValue)])
+            SpentView(title: "tá de palhaçada", colorIcon: EnumColors.backgroundCardMetaColor.rawValue, spents: [Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work.rawValue)])
         }
     }
 }
