@@ -19,11 +19,17 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    NavigationLink(destination: FormsGoalsNameView()) {
-                        Label("", systemImage: "plus")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                            .padding()
+                    if let  methodologyGoals = viewModel.methodologyGoals {
+                        NavigationLink(destination:
+                                        FormsGoalsNameView(
+                                            goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: methodologyGoals)
+                                        )
+                        ) {
+                            Label("", systemImage: "plus")
+                                .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                .font(.custom(EnumFonts.semibold.rawValue, size: 28))
+                                .padding()
+                        }
                     }
                 }
                 .padding(.top)
@@ -38,7 +44,9 @@ struct HomeView: View {
                         Spacer()
                     }
                     ForEach(viewModel.spentsCards) { spentCard in
-                        NavigationLink(destination: SpentView(title: spentCard.namePercent, colorIcon: spentCard.colorName, spents: spentNum)) {
+                        NavigationLink(destination: SpentView(
+                            spentsCard: spentCard,
+                            spents: spentNum)) {
                             SpentsCardView(spentsCard: spentCard)
                                 .padding()
                         }

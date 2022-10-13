@@ -10,7 +10,7 @@ import SwiftUI
 struct FormsGoalsNameView: View {
     
     @State private var pageIndex = 0
-    @State var goal = Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
+    @State var goal: Goal
     
     var body: some View {
         NavigationView {
@@ -35,6 +35,6 @@ struct FormsGoalsNameView: View {
 
 struct FormGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsGoalsNameView()
+        FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
     }
 }
