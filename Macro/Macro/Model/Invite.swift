@@ -27,7 +27,7 @@ class Invite: ObservableObject {
         if isSendInviteAccepted && isReceivedInviteAccepted {
             UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen1000")
             Task {
-                var participantsNames:[String] = []
+                var participantsNames: [String] = []
                 if let participants = cloud.share?.participants {
                     for participant in participants {
                         guard let name = participant.userIdentity.nameComponents?.description else { return  }

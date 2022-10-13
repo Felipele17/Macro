@@ -10,12 +10,21 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
-    var income: Float = 0.0
+    var income: Float = UserDefaults.standard.float(forKey: "income")
     @Published var users: [User] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard] = []
     
     init() {
+        Task {
+            let namePercent = (UserDefaults.standard.array(forKey: "methodologySpent.namePercent") as? [String] ?? [])
+            let valuesPercent = (UserDefaults.standard.array(forKey: "methodologySpent.valuesPercent") as? [Int] ?? [])
+            await getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+        }
+
+        Task.init {
+            await loadGoals()
+        }
         Task.init {
             guard let users = await loadUser() else { return }
             DispatchQueue.main.async {
@@ -27,14 +36,9 @@ class HomeViewModel: ObservableObject {
             }
         }
         Task.init {
-            guard let spentsCards = await loadSpentsCards() else { return }
-            DispatchQueue.main.async {
-                self.spentsCards = spentsCards
-            }
+            await loadMethodologySpent()
         }
-        Task.init {
-            await loadGoals()
-        }
+
     }
     
     func getUserName() -> String {
@@ -44,7 +48,8 @@ class HomeViewModel: ObservableObject {
     
     func loadUser() async -> [User]? {
         do {
-            let records = try await self.cloud.fetchSharedPrivatedRecords(recordType: User.getType(), predicate: nil)
+            let predicate = NSPredicate(value: true)
+            let records = try await self.cloud.fetchSharedPrivatedRecords(recordType: User.getType(), predicate: predicate)
             var users: [User] = []
             for record in records {
                 guard let user = await User(record: record) else { return nil }
@@ -68,27 +73,28 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func loadSpentsCards() async -> [SpentsCard]? {
-        guard let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: nil) else { return nil}
-        guard let record = records.first else { return nil}
-        guard let methodologySpent = MethodologySpent(record: record) else { return nil}
-        var spentsCards: [SpentsCard] = []
-        for ind in 0 ..< methodologySpent.namePercent.count {
-            if let spentsCard = try? await getSpentsCard(methodologySpent: methodologySpent, index: ind) {
-                spentsCards.append(spentsCard)
-            }
-        }
-        return spentsCards
+    func loadMethodologySpent() async {
+        let predicate = NSPredicate(value: true)
+        guard let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: predicate) else { return }
+        guard let record = records.first else { return }
+        guard let methodologySpent = MethodologySpent(record: record) else { return }
+        UserDefaults.standard.set(methodologySpent.valuesPercent, forKey: "methodologySpent.valuesPercent")
+        UserDefaults.standard.set(methodologySpent.namePercent, forKey: "methodologySpent.namePercent")
     }
     
-    private func getSpentsCard(methodologySpent: MethodologySpent, index: Int) async throws -> SpentsCard? {
-        do {
-            guard let avalibleMoney = try await avalibleMoneyCategory(categoryPorcent: methodologySpent.valuesPercent[index]) else { return nil }
-            let spentsCard = SpentsCard(id: index, valuesPercent: methodologySpent.valuesPercent[index], namePercent: methodologySpent.namePercent[index], avalibleMoney: avalibleMoney )
-            return spentsCard
-        } catch let error {
-            print(error.localizedDescription)
-            return nil
+    private func getSpentsCards(namePercent: [String], valuesPercent: [Int]) async {
+        for index in 0 ..< namePercent.count {
+            Task {
+                do {
+                    guard let avalibleMoney = try await avalibleMoneyCategory(categoryPorcent: valuesPercent[index]) else { return}
+                    let spentsCard = SpentsCard(id: index, valuesPercent: valuesPercent[index], namePercent: namePercent[index], avalibleMoney: avalibleMoney )
+                    DispatchQueue.main.async {
+                        self.spentsCards.append(spentsCard)
+                    }
+                } catch let error {
+                        print(error.localizedDescription)
+                }
+            }
         }
     }
     
@@ -98,7 +104,8 @@ class HomeViewModel: ObservableObject {
     
     private func avalibleMoneyCategory(categoryPorcent: Int) async throws -> Float? {
         var value: Float = 0.0
-        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: "categoryPercent='\(categoryPorcent)'")
+        let predicate = NSPredicate(format: "categoryPercent='\(categoryPorcent)'")
+        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: predicate)
         guard let records = records else { return nil }
         for record in records {
             guard let spent = Spent(record: record) else { return nil }
@@ -110,7 +117,8 @@ class HomeViewModel: ObservableObject {
     
     private func fecthGoals() async throws -> [Goal]? {
         var goals: [Goal] = []
-        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Goal.getType(), predicate: nil)
+        let predicate = NSPredicate(value: true)
+        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Goal.getType(), predicate: predicate)
         guard let records = records else { return nil }
         for record in records {
             guard let goal = await Goal(record: record) else { return nil }
