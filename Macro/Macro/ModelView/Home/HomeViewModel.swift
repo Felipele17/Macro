@@ -16,11 +16,14 @@ class HomeViewModel: ObservableObject {
     @Published var spentsCards: [SpentsCard] = []
     
     init() {
+        Task {
+            let namePercent = (UserDefaults.standard.array(forKey: "methodologySpent.namePercent") as? [String] ?? [])
+            let valuesPercent = (UserDefaults.standard.array(forKey: "methodologySpent.valuesPercent") as? [Int] ?? [])
+            await getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+        }
+
         Task.init {
-            guard let spentsCards = await loadSpentsCards() else { return }
-            DispatchQueue.main.async {
-                self.spentsCards = spentsCards
-            }
+            await loadGoals()
         }
         Task.init {
             guard let users = await loadUser() else { return }
@@ -33,8 +36,9 @@ class HomeViewModel: ObservableObject {
             }
         }
         Task.init {
-            await loadGoals()
+            await loadMethodologySpent()
         }
+
     }
     
     func getUserName() -> String {
@@ -69,28 +73,28 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func loadSpentsCards() async -> [SpentsCard]? {
+    func loadMethodologySpent() async {
         let predicate = NSPredicate(value: true)
-        guard let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: predicate) else { return nil}
-        guard let record = records.first else { return nil}
-        guard let methodologySpent = MethodologySpent(record: record) else { return nil}
-        var spentsCards: [SpentsCard] = []
-        for ind in 0 ..< methodologySpent.namePercent.count {
-            if let spentsCard = try? await getSpentsCard(methodologySpent: methodologySpent, index: ind) {
-                spentsCards.append(spentsCard)
-            }
-        }
-        return spentsCards
+        guard let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: predicate) else { return }
+        guard let record = records.first else { return }
+        guard let methodologySpent = MethodologySpent(record: record) else { return }
+        UserDefaults.standard.set(methodologySpent.valuesPercent, forKey: "methodologySpent.valuesPercent")
+        UserDefaults.standard.set(methodologySpent.namePercent, forKey: "methodologySpent.namePercent")
     }
     
-    private func getSpentsCard(methodologySpent: MethodologySpent, index: Int) async throws -> SpentsCard? {
-        do {
-            guard let avalibleMoney = try await avalibleMoneyCategory(categoryPorcent: methodologySpent.valuesPercent[index]) else { return nil }
-            let spentsCard = SpentsCard(id: index, valuesPercent: methodologySpent.valuesPercent[index], namePercent: methodologySpent.namePercent[index], avalibleMoney: avalibleMoney )
-            return spentsCard
-        } catch let error {
-            print(error.localizedDescription)
-            return nil
+    private func getSpentsCards(namePercent: [String], valuesPercent: [Int]) async {
+        for index in 0 ..< namePercent.count {
+            Task {
+                do {
+                    guard let avalibleMoney = try await avalibleMoneyCategory(categoryPorcent: valuesPercent[index]) else { return}
+                    let spentsCard = SpentsCard(id: index, valuesPercent: valuesPercent[index], namePercent: namePercent[index], avalibleMoney: avalibleMoney )
+                    DispatchQueue.main.async {
+                        self.spentsCards.append(spentsCard)
+                    }
+                } catch let error {
+                        print(error.localizedDescription)
+                }
+            }
         }
     }
     
