@@ -16,7 +16,7 @@ struct FormsEditGoals: View {
             return formatter
         }()
     
-    @ObservedObject private var viewModel = GoalViewModel()
+    @ObservedObject private var viewModel = GoalViewModel(methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
     @Binding var goal: Goal
     
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>

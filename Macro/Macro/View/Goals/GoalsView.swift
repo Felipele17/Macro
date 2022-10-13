@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalsView: View {
     @Binding var goal: Goal
-    @StateObject private var viewModel = GoalViewModel()
+    @StateObject private var viewModel = GoalViewModel(methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
     @State private var selectFilter = 1
     
     var body: some View {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    var spentNum = [Spent(title: "gas", value: 100, icon: "car", date: Date.now, categoryPercent: EnumCategoryPercent.work.rawValue)]
     
     var body: some View {
         NavigationView {
@@ -25,7 +26,7 @@ struct HomeView: View {
                             .padding()
                     }
                 }
-                .padding(.top, 48)
+                .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
                 
                 VStack(spacing: 0) {
@@ -36,11 +37,10 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach(viewModel.spentsCards) { spents in
-                        NavigationLink(destination: SpentView(title: spents.namePercent, colorIcon: spents.colorName )) {
-                            SpentsCardView(spentsCard: spents)
+                    ForEach(viewModel.spentsCards) { spentCard in
+                        NavigationLink(destination: SpentView(title: spentCard.namePercent, colorIcon: spentCard.colorName, spents: spentNum)) {
+                            SpentsCardView(spentsCard: spentCard)
                                 .padding()
-                            
                         }
                     }
                 }

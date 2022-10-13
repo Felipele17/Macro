@@ -8,18 +8,18 @@
 import Foundation
 import CloudKit
 
-class Spent: DataModelProtocol {
+class Spent: DataModelProtocol, Identifiable {
     
     var idName: UUID
     var title: String
     var value: Float
     var icon: String
     var date: Date
-    var categoryPercent: EnumCategoryPercent
+    var categoryPercent: String
     
     init(title: String, value: Float, icon: String,
          date: Date,
-         categoryPercent: EnumCategoryPercent) {
+         categoryPercent: String) {
         self.idName = UUID()
         self.title = title
         self.value = value
@@ -34,10 +34,8 @@ class Spent: DataModelProtocol {
         guard let  value = record["value"] as? Float else { return nil }
         guard let  icon = record["icon"] as? String else { return nil }
         guard let  date = record["date"] as? Date else { return nil }
-        guard let  category = record["category"] as? String else { return nil }
+        guard let  categoryPercent = record["category"] as? String else { return nil }
         guard let idName = UUID(uuidString: idName) else { return nil }
-        guard let categoryPercent = EnumCategoryPercent.init(rawValue: category) else { return nil }
-        
         self.idName = idName
         self.title = title
         self.value = value
@@ -61,6 +59,10 @@ class Spent: DataModelProtocol {
     func getData() -> [String: Any?] {
         return ["title": title, "value": value, "icon": icon,
                 "date": date,
-                "categoryPercent": categoryPercent.rawValue]
+                "categoryPercent": categoryPercent]
+    }
+    
+    static func emptyMock(category: String) -> Spent{
+        return Spent(title: "", value: 0.0, icon: "", date: Date.now, categoryPercent: category)
     }
 }
