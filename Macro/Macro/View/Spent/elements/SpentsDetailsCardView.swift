@@ -10,6 +10,8 @@ import SwiftUI
 struct SpentsDetailsCardView: View {
     var categoty: String
     @State var isActive = false
+    var spent: Spent
+    var colorIcon: String
     @StateObject var viewModel: SpentViewModel
 
     var body: some View {

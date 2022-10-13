@@ -19,9 +19,7 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    Button(role: nil) {
-                        print("add meta")
-                    } label: {
+                    NavigationLink(destination: FormsGoalsNameView()) {
                         Label("", systemImage: "plus")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .font(.custom(EnumFonts.semibold.rawValue, size: 28))

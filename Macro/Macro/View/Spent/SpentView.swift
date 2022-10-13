@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SpentView: View {
-    @Binding var title: String
-    @State var spents: [Spent]
+    var title: String
+    @State var isActive: Bool = false
+    var colorIcon: String
     var body: some View {
             VStack(alignment: .leading) {
                 Text("Gasto atual")

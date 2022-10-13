@@ -27,12 +27,13 @@ struct FormsSpentsView: View {
                 }.textCase(.none)
                 
                 Section(header: Text("Ícone").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    Picker(selection: $viewModel.spent.icon, label: Text("")) {
-                        ForEach(["One", "Two", "Three"], id: \.self) {
-                            Text($0).tag($0)
-                        }
-                    } .listRowBackground(Color.clear)
-                        .underlineTextField()
+                    Button(">") {
+                        showingSheet.toggle()
+                    }.sheet(isPresented: $showingSheet) {
+                        ModalView(selectedIcon: $selectedIcon, colorIcon: colorIcon)
+                    } .padding(.leading, UIScreen.screenWidth*0.77)
+                    .listRowBackground(Color.clear)
+                            .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
@@ -46,7 +47,6 @@ struct FormsSpentsView: View {
                     DatePicker("", selection: $viewModel.spent.date, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
                             .labelsHidden()
-                        // .underlineTextField()
                 }.textCase(.none)
             }.navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
