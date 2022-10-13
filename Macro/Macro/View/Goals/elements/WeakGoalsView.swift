@@ -11,7 +11,7 @@ struct WeakGoalsView: View {
     var title: String
     var valor: Float
     var body: some View {
-        HStack(spacing:0) {
+        HStack(spacing: 0) {
             Label("", systemImage: "circle")
                 .foregroundColor(Color(EnumColors.circleMeta.rawValue))
                 .font(.custom(EnumFonts.medium.rawValue, size: 22))

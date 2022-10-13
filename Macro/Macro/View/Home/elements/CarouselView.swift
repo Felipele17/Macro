@@ -19,8 +19,8 @@ struct CarouselView: View {
                     VStack {
                         Text("Oh não, você não tem nenhuma meta com o seu parceiro ainda. Clique no '+' para criar uma.")
                             .font(.custom(EnumFonts.regular.rawValue, size: 17))
-                            .padding()
-                            .frame(width: 400, height: 150, alignment: .center)
+                            .padding([.leading, .bottom])
+                            .frame(width: UIScreen.screenWidth, alignment: .center)
                         Image(EnumImageName.doubleSquirrels.rawValue)
 
                     }

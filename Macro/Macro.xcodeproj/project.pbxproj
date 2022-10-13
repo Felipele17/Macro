@@ -270,9 +270,8 @@
 		06449C1728C2993300035324 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				99B2EF4328DE576A00657C53 /* Formulary */,
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
-				06D80F2C28DE3FDF006B3E0B /* elements */,
+				99B2EF4328DE576A00657C53 /* Formulary */,
 				06449C2F28C29CF300035324 /* onboarding */,
 				06449C2D28C29CC700035324 /* Settings */,
 				06449C2C28C29CA000035324 /* Home */,
@@ -398,6 +397,9 @@
 		06449C3628C29D9E00035324 /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
+				5544772928E23050000C892E /* SkipButton.swift */,
+				5544772B28E2307E000C892E /* InfoButton.swift */,
 				5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */,
 				5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */,
 			);
@@ -461,15 +463,12 @@
 			path = Protocolo;
 			sourceTree = "<group>";
 		};
-		06D80F2C28DE3FDF006B3E0B /* elements */ = {
+		06CB395328F0A51000CDEC0B /* elements */ = {
 			isa = PBXGroup;
 			children = (
-				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 				55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */,
 				554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */,
-				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
-				5544772928E23050000C892E /* SkipButton.swift */,
-				5544772B28E2307E000C892E /* InfoButton.swift */,
+				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -493,6 +492,7 @@
 		99B2EF4328DE576A00657C53 /* Formulary */ = {
 			isa = PBXGroup;
 			children = (
+				06CB395328F0A51000CDEC0B /* elements */,
 				99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */,
 				99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */,
 				554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */,
@@ -906,6 +906,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Noz;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -942,6 +944,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macro/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Noz;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
