@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct FormsGoalsValueView: View {
-    var goal: Goal
-    @State var priority = 1
-    @State var moneyField: String = ""
+    @Binding var goal: Goal
     @State private var pageIndex = 1
     @FocusState var keyboardIsFocused: Bool
     let formatter: NumberFormatter = {
@@ -26,7 +24,7 @@ struct FormsGoalsValueView: View {
                 .padding(1)
             Text("Depositando R$ 1 por semana de forma gradual, em 52 semanas você irá ter em sua conta R$ 1.378,00")
                 .padding(10)
-            TextField("Ex.: R$ 1.378,00", text: $moneyField)
+            TextField("Ex.: R$ 1.378,00", value: $goal.value, formatter: formatter)
                 .foregroundColor(.black)
                 .keyboardType(.decimalPad)
                 .focused($keyboardIsFocused)
@@ -37,7 +35,7 @@ struct FormsGoalsValueView: View {
                 .padding(.top, 30)
             HStack {
                 Button {
-                    priority = 1
+                    goal.priority = 1
                     
                 } label: {
                     VStack {
@@ -47,12 +45,12 @@ struct FormsGoalsValueView: View {
                             .hoverEffect(.automatic)
                     }
                 }
-                .opacity(priority == 1 ? 1.0 : 0.5)
+                .opacity(goal.priority == 1 ? 1.0 : 0.5)
                 
                 Spacer()
                 
                 Button {
-                    priority = 2
+                    goal.priority = 2
       
                 } label: {
                     VStack {
@@ -62,12 +60,12 @@ struct FormsGoalsValueView: View {
                             .hoverEffect(.automatic)
                     }
                 }
-                .opacity(priority == 2 ? 1.0 : 0.5)
+                .opacity(goal.priority == 2 ? 1.0 : 0.5)
                 
                 Spacer()
                 
                 Button {
-                    priority = 3
+                    goal.priority = 3
          
                 } label: {
                     VStack {
@@ -76,15 +74,11 @@ struct FormsGoalsValueView: View {
                             .tint(.black)
                             .hoverEffect(.automatic)
                     }
-                }.opacity(priority == 3 ? 1.0 : 0.5)
+                }.opacity(goal.priority == 3 ? 1.0 : 0.5)
             }
             .padding(10)
             Spacer()
-            GoalNextButton(goal: goal, text: EnumButtonText.nextButton.rawValue, textField: $moneyField, pageIndex: $pageIndex)
-                .onTapGesture {
-                    goal.value = Float(moneyField) ?? 0.0
-                    goal.priority = priority
-                }
+            GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex)
         }
         .padding(20)
     }
@@ -92,6 +86,6 @@ struct FormsGoalsValueView: View {
 
 struct FormsGoalsValueView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsGoalsValueView(goal: Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true)))
+        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))))
     }
 }

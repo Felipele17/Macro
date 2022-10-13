@@ -59,7 +59,7 @@ class Goal: DataModelProtocol, Identifiable {
     }
     
     func getProperties() -> [String] {
-        return["title", "value", "weeks", "category"]
+        return["title", "value", "weeks", "motivation", "priority", "methodologyGoal"]
     }
     
     func getData() -> [String: Any?] {

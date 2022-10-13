@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct GoalNextButton: View {
-    var goal: Goal
+    @Binding var goal: Goal
     var text: String
-    @Binding var textField: String
+    var isEmptyTextField: Bool
     @Binding var pageIndex: Int
     
     var body: some View {
@@ -19,15 +19,15 @@ struct GoalNextButton: View {
                 // changing the view
                 switch pageIndex {
                 case 0:
-                    FormsGoalsValueView(goal: goal)
+                    FormsGoalsValueView(goal: $goal)
                 default:
-                    FormsGoalMotivationView(goal: goal)
+                    FormsGoalMotivationView(goal: $goal)
                 }
             
         } label: {
-            TemplateTextButton(text: text, isTextFieldEmpty: textField.isEmpty)
+            TemplateTextButton(text: text, isTextFieldEmpty: isEmptyTextField)
         }
-        .disabled(textField.isEmpty)
+        .disabled(isEmptyTextField)
 
     }
 }
