@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FormsGoalMotivationView: View {
-    var goal: Goal
+    @Binding var goal: Goal
     var motivations: [String] = ["Guardar dinheiro", "Realização de um sonho", "Sempre quis conquistar essa meta"]
     @State var index = 0
     @State var motivation = ""
@@ -25,7 +25,7 @@ struct FormsGoalMotivationView: View {
             
             Button {
                 index = 1
-                motivation = motivations[index - 1]
+                goal.motivation = motivations[index - 1]
             } label: {
                 MotivationCard(text: motivations[0])
                     .foregroundColor(index == 1 ? Color("ButtonColor") : Color("ButtonUnselect"))
@@ -33,8 +33,8 @@ struct FormsGoalMotivationView: View {
             
             Button {
                 index = 2
-                motivation = motivations[index - 1]
-                
+                goal.motivation = motivations[index - 1]
+
             } label: {
                 MotivationCard(text: motivations[1])
                     .foregroundColor(index == 2 ? Color("ButtonColor") : Color("ButtonUnselect"))
@@ -42,8 +42,8 @@ struct FormsGoalMotivationView: View {
             
             Button {
                 index = 3
-                motivation = motivations[index - 1]
-                
+                goal.motivation = motivations[index - 1]
+
             } label: {
                 MotivationCard(text: motivations[2])
                     .foregroundColor(index == 3 ? Color("ButtonColor") : Color("ButtonUnselect"))
@@ -55,7 +55,6 @@ struct FormsGoalMotivationView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
-                    goal.motivation = motivation
                     Task.init {
                         try? await CloudKitModel.shared.post(recordType: Goal.getType(), model: goal)
                     }
@@ -74,7 +73,7 @@ struct FormsGoalMotivationView: View {
 struct MotivationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsGoalMotivationView(goal: Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true)), popToRoot: .constant(true))
+            FormsGoalMotivationView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
         }
     }
 }

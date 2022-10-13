@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct SpentView: View {
-    var title: String
-    @State var isActive: Bool = false
-    var colorIcon: String
+    var spentsCard: SpentsCard
     @State var spents: [Spent]
+    @State var isActive: Bool = false
     var body: some View {
             VStack(alignment: .leading) {
                 Text("Gasto atual")
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
                     .padding(.top)
                     .padding(.leading)
-                Text("R$ 1470,00")
+                Text("\(spentsCard.moneySpented)".floatValue.currency)
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     .padding(.leading)
-                Text("Limite disponivel R$ 530,00")
+                Text("Limite disponivel "+"\(spentsCard.avalibleMoney)".floatValue.currency)
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .padding(.leading)
                 HStack {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: title)), colorIcon: colorIcon, isPost: true, categoty: title)) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: spentsCard.valuesPercent)), colorIcon: spentsCard.colorName, isPost: true)) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -38,21 +37,22 @@ struct SpentView: View {
                 .padding(.top, 20)
             List {
                 ForEach(0 ..< $spents.count) { ind in
-                    SpentsDetailsCardView(categoty: title, colorIcon: colorIcon, viewModel: SpentViewModel(spent: spents[ind]))
+                    SpentsDetailsCardView(categoty: spentsCard.valuesPercent, colorIcon: spentsCard.colorName, viewModel: SpentViewModel(spent: spents[ind]))
                 }
             } .listStyle(.insetGrouped)
         }
-        .navigationTitle(title)
+        .navigationTitle(spentsCard.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(EnumColors.backgroundScreen.rawValue))
     }
 }
 
-struct SpentView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            SpentView(title: "tá de palhaçada", colorIcon: EnumColors.backgroundCardMetaColor.rawValue, spents: [Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work.rawValue)])
-        }
-    }
-}
+//struct SpentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            SpentView(title: "tá de palhaçada", colorIcon: EnumColors.backgroundCardMetaColor.rawValue, moneySpented: 100
+//                      ,moneyAvalible: 2, spents: [Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work.rawValue)])
+//        }
+//    }
+//}

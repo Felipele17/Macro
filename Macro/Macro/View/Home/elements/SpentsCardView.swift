@@ -57,6 +57,6 @@ struct SpentsCardView: View {
 
 struct SpentsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsCardView(spentsCard: SpentsCard(id: 1, valuesPercent: 1, namePercent: "oi", avalibleMoney: 100))
+        SpentsCardView(spentsCard: SpentsCard(id: 1, valuesPercent: 1, namePercent: "oi", moneySpented: 100, avalibleMoney: 100))
     }
 }

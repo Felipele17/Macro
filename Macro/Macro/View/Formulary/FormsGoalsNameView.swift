@@ -9,9 +9,8 @@ import SwiftUI
 
 struct FormsGoalsNameView: View {
     
-    @State private var goalField: String = ""
     @State private var pageIndex = 0
-    @State var goal = Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 1, crescent: false))
+    @State var goal: Goal
     @Binding var popToRoot: Bool
     
     var body: some View {
@@ -21,17 +20,13 @@ struct FormsGoalsNameView: View {
                     .padding(1)
                 Text("Coloque um nome que te lembre de alcançar esta meta")
                     .padding(10)
-                TextField("Ex.: Carro novo", text: $goalField)
+                TextField("Ex.: Carro novo", text: $goal.title)
                 
                     .foregroundColor(.black)
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                GoalNextButton(goal: goal, text: EnumButtonText.nextButton.rawValue, textField: $goalField, pageIndex: $pageIndex, popToRoot: $popToRoot)
-                    .onTapGesture {
-                       goal.title = goalField
-
-                    }
+                GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title == "" ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
             }
             .padding(20)
     }
@@ -39,6 +34,6 @@ struct FormsGoalsNameView: View {
 
 struct FormGoalsView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsGoalsNameView(popToRoot: .constant(true))
+        FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), popToRoot: .constant(true))
     }
 }

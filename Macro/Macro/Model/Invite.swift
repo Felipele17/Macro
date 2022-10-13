@@ -40,6 +40,8 @@ class Invite: ObservableObject {
                 try? await cloud.post(recordType: MethodologySpent.getType(), model: methodologySpent)
                 let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
                 try? await cloud.post(recordType: User.getType(), model: user)
+                let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
+                try? await cloud.post(recordType: MethodologyGoal.getType(), model: methodologyGoal)
             }
             return true
         } else {

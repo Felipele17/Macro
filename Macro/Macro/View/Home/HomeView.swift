@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     @State var isActive: Bool = false
-    var spentNum = [Spent(title: "gas", value: 100, icon: "car", date: Date.now, categoryPercent: EnumCategoryPercent.work.rawValue)]
     
     var body: some View {
         NavigationView {
@@ -20,13 +19,18 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    NavigationLink(destination: FormsGoalsNameView( popToRoot: $isActive), isActive: $isActive) {
-                        Label("", systemImage: "plus")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                            .padding()
+                    if let  methodologyGoals = viewModel.methodologyGoals {
+                        NavigationLink(destination:
+                                        FormsGoalsNameView(
+                                            goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: methodologyGoals)
+                                        ,popToRoot: $isActive), isActive: $isActive
+                        ) {
+                            Label("", systemImage: "plus")
+                                .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                .font(.custom(EnumFonts.semibold.rawValue, size: 28))
+                                .padding()
+                        }
                     }
-                    .isDetailLink(false)
                 }
                 .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
@@ -40,7 +44,9 @@ struct HomeView: View {
                         Spacer()
                     }
                     ForEach(viewModel.spentsCards) { spentCard in
-                        NavigationLink(destination: SpentView(title: spentCard.namePercent, colorIcon: spentCard.colorName, spents: spentNum)) {
+                        NavigationLink(destination: SpentView(
+                            spentsCard: spentCard,
+                            spents: viewModel.dictionarySpent[spentCard.valuesPercent] ?? [])) {
                             SpentsCardView(spentsCard: spentCard)
                                 .padding()
                         }

@@ -13,7 +13,6 @@ struct FormsSpentsView: View {
     @State var showingSheet: Bool = false
     var colorIcon: String
     var isPost: Bool
-    var categoty: String
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
@@ -54,7 +53,7 @@ struct FormsSpentsView: View {
                 .toolbar {
                     Button {
                         if isPost {
-                            viewModel.postSpent(categoryPercent: categoty)
+                            viewModel.postSpent()
                         } else {
                             viewModel.editSpent(spent: viewModel.spent)
                         }
@@ -82,10 +81,9 @@ struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             FormsSpentsView(
-                viewModel: SpentViewModel(spent: Spent.emptyMock(category: EnumCategoryPercent.work.rawValue)),
+                viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50)),
                 colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
-                isPost: true,
-                categoty: EnumCategoryPercent.work.rawValue
+                isPost: true
             )
         }
     }
