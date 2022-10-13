@@ -12,4 +12,5 @@ enum EnumImageName: String {
     case squirrels = "esquilos"
     case squirrel = "esquilo"
     case invitePhone = "celular"
+    case doubleSquirrels = "DuplaEsquilos"
 }

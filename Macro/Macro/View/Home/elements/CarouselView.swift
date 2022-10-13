@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CarouselView: View {
-    
+    @State var isEmpty = true
     let width: CGFloat
     let heigth: CGFloat
    @Binding var goals: [Goal]
@@ -16,13 +16,25 @@ struct CarouselView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach($goals) { goal in
-                    NavigationLink(destination: GoalsView(goal: goal)) {
-                        GoalCardView(goal: goal)
-                            .frame(width: width, height: heigth)
-                            .padding([.leading, .bottom])
+                if isEmpty {
+                    VStack {
+                        Text("Oh não, você não tem nenhuma meta com o seu parceiro ainda. Clique no '+' para criar uma.")
+                            .font(.custom(EnumFonts.regular.rawValue, size: 22))
+                            .padding()
+                            .frame(width: 400, height: 150, alignment: .center)
+                        Image(EnumImageName.doubleSquirrels.rawValue)
+
+                    }
+                } else {
+                    ForEach($goals) { goal in
+                        NavigationLink(destination: GoalsView(goal: goal)) {
+                            GoalCardView(goal: goal)
+                                .frame(width: width, height: heigth)
+                                .padding([.leading, .bottom])
+                        }
                     }
                 }
+                
             }
         }
     }
