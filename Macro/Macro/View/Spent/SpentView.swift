@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SpentView: View {
     @Binding var title: String
-    @Binding var spent: Spent
-
+    @Binding var spends: [Spent]
     var body: some View {
             VStack(alignment: .leading) {
                 Text("Gasto atual")
@@ -27,7 +26,7 @@ struct SpentView: View {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), spent: spent)) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -36,7 +35,9 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                SpentsDetailsCardView(spent: $spent, viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+                ForEach($spends) { spent in
+                    SpentsDetailsCardView(spent: spent, viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+                }
 //                SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
             } .listStyle(.insetGrouped)
         }
@@ -47,10 +48,10 @@ struct SpentView: View {
     }
 }
 
-//struct SpentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            SpentView(title: .constant("Essencial"), spent: Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work))
-//        }
-//    }
-//}
+struct SpentView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            SpentView(title: .constant("tá de palhaçada"), spends: .constant([Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work)]))
+        }
+    }
+}

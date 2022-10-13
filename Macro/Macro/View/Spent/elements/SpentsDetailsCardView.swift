@@ -39,7 +39,7 @@ struct SpentsDetailsCardView: View {
         }
         .swipeActions(edge: .leading) {
             NavigationLink {
-                FormsSpentsView(viewModel: viewModel, spent: spent)
+                FormsSpentsView(viewModel: viewModel)
             } label: {
                 Label("Editar", systemImage: "square.and.pencil")
             }
@@ -47,8 +47,8 @@ struct SpentsDetailsCardView: View {
     }
 }
 
-//struct SpentsDetailsCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
-//    }
-//}
+struct SpentsDetailsCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        SpentsDetailsCardView(spent: .constant(Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work)), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+    }
+}
