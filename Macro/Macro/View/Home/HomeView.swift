@@ -31,7 +31,6 @@ struct HomeView: View {
                                 .padding()
                         }
                     }
-                    .isDetailLink(false)
                 }
                 .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)

@@ -20,16 +20,16 @@ struct GoalNextButton: View {
                 // changing the view
                 switch pageIndex {
                 case 0:
-                    FormsGoalsValueView(goal: goal, popToRoot: $popToRoot)
+                    FormsGoalsValueView(goal: $goal, popToRoot: $popToRoot)
                 default:
-                    FormsGoalMotivationView(goal: goal, popToRoot: $popToRoot)
+                    FormsGoalMotivationView(goal: $goal, popToRoot: $popToRoot)
                 }
             
         } label: {
             TemplateTextButton(text: text, isTextFieldEmpty: isEmptyTextField)
         }
         .isDetailLink(false)
-        .disabled(textField.isEmpty)
+        .disabled(isEmptyTextField)
 
     }
 }

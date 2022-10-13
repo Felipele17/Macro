@@ -73,7 +73,7 @@ struct FormsGoalMotivationView: View {
 struct MotivationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsGoalMotivationView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))))
+            FormsGoalMotivationView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
         }
     }
 }
