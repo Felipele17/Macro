@@ -13,11 +13,11 @@ class GoalViewModel: ObservableObject {
     @Published var moneyField: Float = 0.0
     @Published var priority: Int = 0
     @Published var motivation = ""
-    var methodologyGoal: MethodologyGoal
+    //var methodologyGoal: MethodologyGoal
     
-    init(methodologyGoal: MethodologyGoal) {
-        self.methodologyGoal = methodologyGoal
-    }
+//    init(methodologyGoal: MethodologyGoal) {
+//        self.methodologyGoal = methodologyGoal
+//    }
     
     func checkWeekGoal(goal: Goal) {
         goal.weeks += 1
@@ -30,21 +30,21 @@ class GoalViewModel: ObservableObject {
         }
     }
     
-    func createGoal() -> Goal? {
-        if motivation.isEmpty {
-            return nil
-        }
-        return Goal(title: goalField, value: moneyField, weeks: 0, motivation: motivation, priority: priority, methodologyGoal: methodologyGoal)
-    }
-    
-    func postGoals() {
-        Task.init {
-            guard let goal = createGoal() else {
-                return
-            }
-            try? await cloud.post(recordType: Goal.getType(), model: goal)
-        }
-    }
+//    func createGoal() -> Goal? {
+//        if motivation.isEmpty {
+//            return nil
+//        }
+//        return Goal(title: goalField, value: moneyField, weeks: 0, motivation: motivation, priority: priority, methodologyGoal: methodologyGoal)
+//    }
+//    
+//    func postGoals() {
+//        Task.init {
+//            guard let goal = createGoal() else {
+//                return
+//            }
+//            try? await cloud.post(recordType: Goal.getType(), model: goal)
+//        }
+//    }
     
     func deleteGoal(goal: Goal) {
         Task.init {

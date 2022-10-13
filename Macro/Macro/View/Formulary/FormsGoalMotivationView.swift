@@ -12,6 +12,8 @@ struct FormsGoalMotivationView: View {
     var motivations: [String] = ["Guardar dinheiro", "Realização de um sonho", "Sempre quis conquistar essa meta"]
     @State var index = 0
     @State var motivation = ""
+    @Binding var popToRoot: Bool
+    //    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,25 +30,25 @@ struct FormsGoalMotivationView: View {
                 MotivationCard(text: motivations[0])
                     .foregroundColor(index == 1 ? Color("ButtonColor") : Color("ButtonUnselect"))
             }
-
+            
             Button {
                 index = 2
                 motivation = motivations[index - 1]
-
+                
             } label: {
                 MotivationCard(text: motivations[1])
                     .foregroundColor(index == 2 ? Color("ButtonColor") : Color("ButtonUnselect"))
             }
-
+            
             Button {
                 index = 3
                 motivation = motivations[index - 1]
-
+                
             } label: {
                 MotivationCard(text: motivations[2])
                     .foregroundColor(index == 3 ? Color("ButtonColor") : Color("ButtonUnselect"))
             }
-
+            
             Spacer()
         }
         .padding(20)
@@ -55,22 +57,24 @@ struct FormsGoalMotivationView: View {
                 Button {
                     goal.motivation = motivation
                     Task.init {
-                       try? await CloudKitModel.shared.post(recordType: Goal.getType(), model: goal)
+                        try? await CloudKitModel.shared.post(recordType: Goal.getType(), model: goal)
                     }
-                    print("saving...")
+                    popToRoot.toggle()
                 } label: {
                     Text("Salvar")
-                }
-
+                }.foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                
             }
+            
         }
+        
     }
 }
 
 struct MotivationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsGoalMotivationView(goal: Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true)))
+            FormsGoalMotivationView(goal: Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true)), popToRoot: .constant(true))
         }
     }
 }
