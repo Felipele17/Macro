@@ -9,6 +9,9 @@ import SwiftUI
 
 struct FormsSpentsView: View {
     @StateObject var viewModel: SpentViewModel
+    @State private var showingSheet = false
+    @State var selectedIcon: String = "car.fill"
+    var colorIcon: String
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     let formatter: NumberFormatter = {
@@ -26,12 +29,13 @@ struct FormsSpentsView: View {
                 }.textCase(.none)
                 
                 Section(header: Text("Ícone").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    Picker(selection: $viewModel.iconPicker, label: Text("")) {
-                        ForEach(["One", "Two", "Three"], id: \.self) {
-                            Text($0).tag($0)
-                        }
-                    } .listRowBackground(Color.clear)
-                        .underlineTextField()
+                    Button(">") {
+                        showingSheet.toggle()
+                    }.sheet(isPresented: $showingSheet) {
+                        ModalView(selectedIcon: $selectedIcon, colorIcon: colorIcon)
+                    } .padding(.leading, UIScreen.screenWidth*0.77)
+                    .listRowBackground(Color.clear)
+                            .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
@@ -45,7 +49,6 @@ struct FormsSpentsView: View {
                     DatePicker("", selection: $viewModel.datePickerSpent, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
                             .labelsHidden()
-                        // .underlineTextField()
                 }.textCase(.none)
             }.navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
@@ -70,7 +73,7 @@ extension View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), colorIcon: EnumColors.essenciaisColor.rawValue)
 //            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work), popToView: .constant(false))
         }
     }

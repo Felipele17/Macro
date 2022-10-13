@@ -8,9 +8,16 @@
 import Foundation
 import SwiftUI
 class GoalViewModel: ObservableObject {
-    
     private let cloud = CloudKitModel.shared
-    //init() {}
+    @Published var goalField = ""
+    @Published var moneyField: Float = 0.0
+    @Published var priority: Int = 0
+    @Published var motivation = ""
+    var methodologyGoal: MethodologyGoal
+    
+    init(methodologyGoal: MethodologyGoal) {
+        self.methodologyGoal = methodologyGoal
+    }
     
     func checkWeekGoal(goal: Goal) {
         goal.weeks += 1
@@ -20,6 +27,22 @@ class GoalViewModel: ObservableObject {
             } catch let error {
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func createGoal() -> Goal? {
+        if motivation.isEmpty {
+            return nil
+        }
+        return Goal(title: goalField, value: moneyField, weeks: 0, motivation: motivation, priority: priority, methodologyGoal: methodologyGoal)
+    }
+    
+    func postGoals() {
+        Task.init {
+            guard let goal = createGoal() else {
+                return
+            }
+            try? await cloud.post(recordType: Goal.getType(), model: goal)
         }
     }
     
