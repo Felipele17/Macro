@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @StateObject var viewModel: SpentViewModel
-    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>    
+    @ObservedObject var viewModel : SpentViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
+    var isPost: Bool
+    var categoty: String
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
@@ -19,13 +21,13 @@ struct FormsSpentsView: View {
     var body: some View {
             Form {
                 Section(header: Text("Nome").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField("Ex: Luz", text: $viewModel.nameSpent)
+                    TextField( "Ex: Luz", text: $viewModel.spent.title)
                         .underlineTextField()
                         .listRowBackground(Color.clear)
                 }.textCase(.none)
                 
                 Section(header: Text("Ícone").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    Picker(selection: $viewModel.iconPicker, label: Text("")) {
+                    Picker(selection: $viewModel.spent.icon, label: Text("")) {
                         ForEach(["One", "Two", "Three"], id: \.self) {
                             Text($0).tag($0)
                         }
@@ -34,14 +36,14 @@ struct FormsSpentsView: View {
                 }.textCase(.none)
                 
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField("Ex: R$200,00", value: $viewModel.valueSpent, formatter: formatter)
+                    TextField("Ex: R$200,00", value: $viewModel.spent.value, formatter: formatter)
                         .listRowBackground(Color.clear)
                         .keyboardType(.decimalPad)
                         .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    DatePicker("", selection: $viewModel.datePickerSpent, displayedComponents: [.date])
+                    DatePicker("", selection: $viewModel.spent.date, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
                             .labelsHidden()
                         // .underlineTextField()
@@ -49,11 +51,18 @@ struct FormsSpentsView: View {
             }.navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
                     Button {
-                        viewModel.postSpent()
-                        
+                        if isPost {
+                            viewModel.postSpent(categoryPercent: categoty)
+                        } else {
+                            viewModel.editSpent(spent: viewModel.spent)
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Text("Salvar")
+                        if isPost {
+                            Text("Salvar")
+                        } else {
+                            Text("Edit")
+                        }
                     }
 
                 }
@@ -70,7 +79,7 @@ extension View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+            FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: EnumCategoryPercent.work.rawValue)), isPost: true, categoty: EnumCategoryPercent.work.rawValue)
         }
     }
 }

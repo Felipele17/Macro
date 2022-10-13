@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpentView: View {
     @Binding var title: String
-    @Binding var spends: [Spent]
+    @State var spents: [Spent]
     var body: some View {
             VStack(alignment: .leading) {
                 Text("Gasto atual")
@@ -26,7 +26,7 @@ struct SpentView: View {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: title)), isPost: true, categoty: title)) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -35,10 +35,9 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach($spends) { spent in
-                    SpentsDetailsCardView(spent: spent, viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+                ForEach(0 ..< $spents.count) { ind in
+                    SpentsDetailsCardView(categoty: title, viewModel: SpentViewModel(spent: spents[ind]))
                 }
-//                SpentsDetailsCardView(spent: Spent(title: "Carro", value: 33.0, icon: "carro", date: Date(), categoryPercent: EnumCategoryPercent.work), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
             } .listStyle(.insetGrouped)
         }
         .navigationTitle(title)
@@ -51,7 +50,7 @@ struct SpentView: View {
 struct SpentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SpentView(title: .constant("tá de palhaçada"), spends: .constant([Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work)]))
+            SpentView(title: .constant("tá de palhaçada"), spents: [Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work.rawValue)])
         }
     }
 }

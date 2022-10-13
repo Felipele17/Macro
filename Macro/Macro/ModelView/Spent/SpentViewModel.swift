@@ -9,45 +9,35 @@ import Foundation
 
 class SpentViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
-    @Published var nameSpent = ""
-    @Published var iconPicker = "One"
-    @Published var valueSpent: Float = 0.0
-    @Published var datePickerSpent = Date()
-    var categoryPercent: EnumCategoryPercent
+    @Published var spent : Spent
     
-    init(categoryPercent: EnumCategoryPercent) {
-        self.categoryPercent = categoryPercent
+    init(spent: Spent) {
+        self.spent = spent
+    }
+
+    func createSpent(categoryPercent: String) -> Spent? {
+        if spent.title.isEmpty {
+            return nil
+        }
+        if spent.icon.isEmpty {
+            return nil
+        }
+        if spent.value.isZero {
+            return nil
+        }
+        return spent
     }
     
-    func createSpent() -> Spent? {
-        if nameSpent.isEmpty {
-            return nil
-        }
-        if iconPicker.isEmpty {
-            return nil
-        }
-        if valueSpent.isZero {
-            return nil
-        }
-        return Spent(title: nameSpent, value: valueSpent, icon: iconPicker, date: datePickerSpent, categoryPercent: categoryPercent)
-    }
-    
-    func postSpent() {
+    func postSpent(categoryPercent: String) {
         Task.init {
-            guard let spent = createSpent() else {
-                return 
-            }
+            guard let spent = createSpent( categoryPercent: categoryPercent ) else { return }
             try? await cloud.post(recordType: Spent.getType(), model: spent)
         }
     }
     
     func deleteSpent(spent: Spent) {
         Task.init {
-            do {
-                try await cloud.delete(model: spent)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            await cloud.delete(model: spent)
         }
     }
     

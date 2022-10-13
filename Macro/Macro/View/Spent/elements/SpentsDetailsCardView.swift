@@ -8,38 +8,43 @@
 import SwiftUI
 
 struct SpentsDetailsCardView: View {
-    @Binding var spent: Spent
+    var categoty: String
+    @State var isActive = false
     @StateObject var viewModel: SpentViewModel
 
     var body: some View {
-        HStack {
-            ZStack {
-                Color(EnumColors.essenciaisColor.rawValue)
-                    .cornerRadius(10)
-                Image(systemName: "car.fill")
-                    .foregroundColor(.white)
-            }.frame(width: UIScreen.screenWidth/9, height: UIScreen.screenWidth/9)
-            VStack(alignment: .leading) {
-                Text("Roda carro")
-                    .font(.custom(EnumFonts.medium.rawValue, size: 17))
-                Text("25/09/2021")
-                    .font(.custom(EnumFonts.light.rawValue, size: 13))
-            }.padding(.leading, 4)
-            Spacer()
-            Text("R$199,99")
-                .font(.custom(EnumFonts.medium.rawValue, size: 20))
-                .padding(.vertical)
+        NavigationLink(isActive: $isActive) {
+            FormsSpentsView(viewModel: viewModel, isPost: false, categoty: categoty)
+        } label: {
+            HStack {
+                ZStack {
+                    Color(EnumColors.essenciaisColor.rawValue)
+                        .cornerRadius(10)
+                    Image(systemName: viewModel.spent.icon)
+                        .foregroundColor(.white)
+                }.frame(width: UIScreen.screenWidth/9, height: UIScreen.screenWidth/9)
+                VStack(alignment: .leading) {
+                    Text(viewModel.spent.title)
+                        .font(.custom(EnumFonts.medium.rawValue, size: 17))
+                    Text(viewModel.spent.date.description)
+                        .font(.custom(EnumFonts.light.rawValue, size: 13))
+                }.padding(.leading, 4)
+                Spacer()
+                Text("R$\(viewModel.spent.value)")
+                    .font(.custom(EnumFonts.medium.rawValue, size: 20))
+                    .padding(.vertical)
+            }
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: false ) {
             Button {
-                viewModel.deleteSpent(spent: spent)
+                viewModel.deleteSpent(spent: viewModel.spent)
             } label: {
                 Label("Deletar", systemImage: "trash.fill")
             }
         }
-        .swipeActions(edge: .leading) {
-            NavigationLink {
-                FormsSpentsView(viewModel: viewModel)
+        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+            Button {
+                isActive.toggle()
             } label: {
                 Label("Editar", systemImage: "square.and.pencil")
             }
@@ -49,6 +54,6 @@ struct SpentsDetailsCardView: View {
 
 struct SpentsDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SpentsDetailsCardView(spent: .constant(Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work)), viewModel: SpentViewModel(categoryPercent: EnumCategoryPercent.work))
+        SpentsDetailsCardView(categoty: EnumCategoryPercent.work.rawValue, viewModel: SpentViewModel(spent: Spent.emptyMock(category: EnumCategoryPercent.work.rawValue)))
     }
 }
