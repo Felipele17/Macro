@@ -12,6 +12,7 @@ struct GoalNextButton: View {
     var text: String
     var isEmptyTextField: Bool
     @Binding var pageIndex: Int
+    @Binding var popToRoot: Bool
     
     var body: some View {
         
@@ -19,15 +20,16 @@ struct GoalNextButton: View {
                 // changing the view
                 switch pageIndex {
                 case 0:
-                    FormsGoalsValueView(goal: $goal)
+                    FormsGoalsValueView(goal: goal, popToRoot: $popToRoot)
                 default:
-                    FormsGoalMotivationView(goal: $goal)
+                    FormsGoalMotivationView(goal: goal, popToRoot: $popToRoot)
                 }
             
         } label: {
             TemplateTextButton(text: text, isTextFieldEmpty: isEmptyTextField)
         }
-        .disabled(isEmptyTextField)
+        .isDetailLink(false)
+        .disabled(textField.isEmpty)
 
     }
 }

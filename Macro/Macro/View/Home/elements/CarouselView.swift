@@ -18,7 +18,7 @@ struct CarouselView: View {
                 if goals.isEmpty {
                     VStack {
                         Text("Oh não, você não tem nenhuma meta com o seu parceiro ainda. Clique no '+' para criar uma.")
-                            .font(.custom(EnumFonts.regular.rawValue, size: 22))
+                            .font(.custom(EnumFonts.regular.rawValue, size: 17))
                             .padding([.leading, .bottom])
                             .frame(width: UIScreen.screenWidth, alignment: .center)
                         Image(EnumImageName.doubleSquirrels.rawValue)

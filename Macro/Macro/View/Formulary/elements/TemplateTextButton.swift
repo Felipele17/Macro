@@ -18,7 +18,7 @@ struct TemplateTextButton: View {
             .foregroundColor(.white)
             .frame(height: 55)
             .frame(maxWidth: .infinity)
-            .background(isTextFieldEmpty ? .gray : .blue)
+            .background(isTextFieldEmpty ? .gray : Color(EnumColors.buttonColor.rawValue))
             .cornerRadius(13)
     }
 }

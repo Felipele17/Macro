@@ -11,6 +11,7 @@ struct FormsGoalsValueView: View {
     @Binding var goal: Goal
     @State private var pageIndex = 1
     @FocusState var keyboardIsFocused: Bool
+    @Binding var popToRoot: Bool
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -78,7 +79,7 @@ struct FormsGoalsValueView: View {
             }
             .padding(10)
             Spacer()
-            GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex)
+            GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
         }
         .padding(20)
     }
@@ -86,6 +87,6 @@ struct FormsGoalsValueView: View {
 
 struct FormsGoalsValueView_Previews: PreviewProvider {
     static var previews: some View {
-        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))))
+        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
     }
 }
