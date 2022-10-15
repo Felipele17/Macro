@@ -34,7 +34,6 @@
 		06449C4428C29EB400035324 /* Spent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4328C29EB400035324 /* Spent.swift */; };
 		06449C4628C29EC000035324 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4528C29EC000035324 /* User.swift */; };
 		06449C4828C29F1100035324 /* CloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4728C29F1100035324 /* CloudModel.swift */; };
-		06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4A28C2A19000035324 /* EnumCategoryPercent.swift */; };
 		06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4C28C2A2DC00035324 /* MethodologySpent.swift */; };
 		06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* MethodologyGoal.swift */; };
 		06449C5528C2A66800035324 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06449C5428C2A66800035324 /* CloudKit.framework */; };
@@ -128,7 +127,6 @@
 		06449C4328C29EB400035324 /* Spent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spent.swift; sourceTree = "<group>"; };
 		06449C4528C29EC000035324 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		06449C4728C29F1100035324 /* CloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudModel.swift; sourceTree = "<group>"; };
-		06449C4A28C2A19000035324 /* EnumCategoryPercent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumCategoryPercent.swift; sourceTree = "<group>"; };
 		06449C4C28C2A2DC00035324 /* MethodologySpent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologySpent.swift; sourceTree = "<group>"; };
 		06449C4F28C2A45C00035324 /* MethodologyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyGoal.swift; sourceTree = "<group>"; };
 		06449C5128C2A65500035324 /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 		06449C4E28C2A2E000035324 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				06449C4A28C2A19000035324 /* EnumCategoryPercent.swift */,
 				0688A9D128C7B7B2001044A6 /* SharedZone.swift */,
 				5544773B28E2324A000C892E /* EnumButtonText.swift */,
 				5544773F28E23335000C892E /* EnumOnBoardingText.swift */,
@@ -737,7 +734,6 @@
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
-				06449C4B28C2A19000035324 /* EnumCategoryPercent.swift in Sources */,
 				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
 				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
@@ -900,7 +896,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -938,7 +934,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
