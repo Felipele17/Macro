@@ -44,7 +44,7 @@ struct NextButton: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(income != 0.0 ?  Color(EnumColors.buttonColor.rawValue) : .gray )
+                .background(income != 0.0 ?  .gray : Color(EnumColors.buttonColor.rawValue) )
                 .cornerRadius(13)
         }
         .disabled(income == 0.0 && onboardingPage == 2)
