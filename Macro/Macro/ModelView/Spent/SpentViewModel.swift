@@ -9,7 +9,7 @@ import Foundation
 
 class SpentViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
-    @Published var spent : Spent
+    @Published var spent: Spent
     
     init(spent: Spent) {
         self.spent = spent
@@ -29,13 +29,15 @@ class SpentViewModel: ObservableObject {
     }
     
     func postSpent() {
+        guard let spent = createSpent() else { return }
         Task.init {
-            guard let spent = createSpent() else { return }
             try? await cloud.post(recordType: Spent.getType(), model: spent)
         }
+        
     }
     
     func deleteSpent(spent: Spent) {
+        guard let spent = createSpent() else { return }
         Task.init {
             await cloud.delete(model: spent)
         }

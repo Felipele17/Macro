@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @ObservedObject var viewModel : SpentViewModel
+    @ObservedObject var viewModel: SpentViewModel
+    @Binding var arraySpents: [Spent]
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @State var showingSheet: Bool = false
+    @State var title: String
+    @State var Icon: String
+    @State var value: Float
+    @State var date: Date
     var colorIcon: String
     var isPost: Bool
     let formatter: NumberFormatter = {
@@ -18,6 +23,8 @@ struct FormsSpentsView: View {
             formatter.numberStyle = .decimal
             return formatter
         }()
+    
+    ini
     
     var body: some View {
             Form {
@@ -54,6 +61,7 @@ struct FormsSpentsView: View {
                     Button {
                         if isPost {
                             viewModel.postSpent()
+                            arraySpents.append(viewModel.spent)
                         } else {
                             viewModel.editSpent(spent: viewModel.spent)
                         }
@@ -82,6 +90,7 @@ struct FormView_Previews: PreviewProvider {
         NavigationView {
             FormsSpentsView(
                 viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50)),
+                arraySpents: .constant([Spent.emptyMock(category: 50),Spent.emptyMock(category: 50)]),
                 colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
                 isPost: true
             )

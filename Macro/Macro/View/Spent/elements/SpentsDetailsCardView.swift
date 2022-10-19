@@ -11,11 +11,12 @@ struct SpentsDetailsCardView: View {
     var categoty: Int
     @State var isActive = false
     var colorIcon: String
+    @Binding var arraySpents: [Spent]
     @StateObject var viewModel: SpentViewModel
 
     var body: some View {
         NavigationLink(isActive: $isActive) {
-            FormsSpentsView(viewModel: viewModel, colorIcon: colorIcon, isPost: false)
+            FormsSpentsView(viewModel: viewModel, arraySpents: $arraySpents, colorIcon: colorIcon, isPost: false)
         } label: {
             HStack {
                 ZStack {
@@ -39,6 +40,9 @@ struct SpentsDetailsCardView: View {
         .swipeActions(edge: .trailing, allowsFullSwipe: false ) {
             Button {
                 viewModel.deleteSpent(spent: viewModel.spent)
+                arraySpents.removeAll { spent in
+                    spent.idName == viewModel.spent.idName
+                }
             } label: {
                 Label("Deletar", systemImage: "trash.fill")
             }
@@ -56,9 +60,8 @@ struct SpentsDetailsCardView: View {
 struct SpentsDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
         SpentsDetailsCardView(
-            categoty: 50,
-            colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
-            viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50))
+            categoty: 50, colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
+            arraySpents: .constant([Spent.emptyMock(category: 50), Spent.emptyMock(category: 50)]), viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50))
         )
     }
 }

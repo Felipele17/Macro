@@ -27,7 +27,7 @@ struct SpentView: View {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: spentsCard.valuesPercent)), colorIcon: spentsCard.colorName, isPost: true)) {
+                    NavigationLink(destination: FormsSpentsView(viewModel: SpentViewModel(spent: Spent.emptyMock(category: spentsCard.valuesPercent)), arraySpents: $spents, colorIcon: spentsCard.colorName, isPost: true)) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -36,8 +36,8 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach(0 ..< $spents.count) { ind in
-                    SpentsDetailsCardView(categoty: spentsCard.valuesPercent, colorIcon: spentsCard.colorName, viewModel: SpentViewModel(spent: spents[ind]))
+                ForEach(spents) { spent in
+                    SpentsDetailsCardView(categoty: spentsCard.valuesPercent, colorIcon: spentsCard.colorName, arraySpents: $spents, viewModel: SpentViewModel(spent: spent))
                 }
             } .listStyle(.insetGrouped)
         }
