@@ -9,7 +9,7 @@ import Foundation
 
 class SpentViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
-    @Published var spent : Spent
+    @Published var spent: Spent
     
     init(spent: Spent) {
         self.spent = spent

@@ -47,7 +47,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func getUserName() -> String {
-        let nameFamily = users.first?.name.replacingOccurrences(of: "givenName:", with: "") ?? ""
+        let nameFamily = users.last?.name.replacingOccurrences(of: "givenName:", with: "") ?? ""
         return nameFamily.replacingOccurrences(of: "familyName: ", with: "")
     }
     
@@ -65,6 +65,11 @@ class HomeViewModel: ObservableObject {
             print(error.localizedDescription)
             return nil
         }
+    }
+    
+    func getName() -> String {
+        UserDefaults.standard.set(getUserName(), forKey: "name")
+        return UserDefaults.standard.string(forKey: "name") ?? ""
     }
     
     func loadGoals() async {

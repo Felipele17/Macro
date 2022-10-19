@@ -55,7 +55,7 @@ struct HomeView: View {
                 
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
-            .navigationTitle("Bom dia!")
+            .navigationTitle("Bom dia! \(viewModel.getName())")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             .toolbar {
