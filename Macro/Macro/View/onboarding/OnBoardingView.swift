@@ -58,7 +58,7 @@ struct OnBoardingView: View {
                             .foregroundColor(.white)
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
-                            .background(.gray)
+                            .background(Color(EnumColors.buttonColor.rawValue))
                             .cornerRadius(13)
                     }
 
@@ -71,14 +71,14 @@ struct OnBoardingView: View {
                     if viewModel.onboardingPage < 2 {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
                     } else if viewModel.onboardingPage == 2 {
-                        InfoButton(infoButton: "info.circle")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+//                        InfoButton(infoButton: "info.circle")
+//                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     }
                 }
                 
             }
             .padding(24)
-        }
+        }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationViewStyle(StackNavigationViewStyle())
         
     }

@@ -69,8 +69,7 @@ struct HomeView: View {
                 //                }
                 
             }
-           // .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-        }
+        }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationBarBackButtonHidden(true)
     }
 }
