@@ -35,6 +35,10 @@ class MethodologySpent: DataModelProtocol {
         self.nameCategory = nameCategory
     }
     
+    func getType() -> String {
+        return "MethodologySpent"
+    }
+    
     static func getType() -> String {
         return "MethodologySpent"
     }

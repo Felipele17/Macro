@@ -50,6 +50,10 @@ class Goal: DataModelProtocol, Identifiable {
         self.methodologyGoal = methodologyGoal
     }
     
+    func getType() -> String {
+        return "Goal"
+    }
+    
     static func getType() -> String {
         return "Goal"
     }

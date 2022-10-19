@@ -32,6 +32,10 @@ class MethodologyGoal: DataModelProtocol {
         self.crescent = crescent
     }
     
+    func getType() -> String {
+        return "MethodologyGoal"
+    }
+    
     static func getType() -> String {
         return "MethodologyGoal"
     }

@@ -56,7 +56,7 @@ struct FormsGoalMotivationView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
                     Task.init {
-                        try? await CloudKitModel.shared.post(recordType: Goal.getType(), model: goal)
+                        try? await CloudKitModel.shared.post( model: goal)
                     }
                     popToRoot.toggle()
                 } label: {

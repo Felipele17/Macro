@@ -67,10 +67,10 @@ class CloudKitModel {
     }
     
     // MARK: Post
-    func post(recordType: String, model: DataModelProtocol) async throws {
+    func post( model: DataModelProtocol) async throws {
 
         let recordId = CKRecord.ID(recordName: model.getID().description, zoneID: SharedZone.ZoneID)
-        let record = populateRecord(record: CKRecord(recordType: recordType, recordID: recordId), model: model)
+        let record = populateRecord(record: CKRecord(recordType: model.getType(), recordID: recordId), model: model)
         
         do {
             try await container.privateCloudDatabase.save(record)
@@ -104,25 +104,74 @@ class CloudKitModel {
     }
     
     // MARK: Update
-    func update(model: DataModelProtocol) async throws {
-        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
-        let fecthRecord = try? await databasePrivate.record(for: recordId)
-        guard let record = fecthRecord else { return  }
+    func update(model: DataModelProtocol) async {
+        var record: CKRecord?
+        do {
+            record = try await fetchByID(id: model.getID().description, tipe: model.getType())
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        guard let record = record else { return }
         let recordPopulated = populateRecord(record: record, model: model)
         
         do {
             try await container.privateCloudDatabase.save(recordPopulated)
         } catch {
+            do {
+                try await container.sharedCloudDatabase.save(recordPopulated)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func updateShared(model: DataModelProtocol) async throws -> [CKRecord] {
+        do {
+            let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
+            return try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in
+                for zone in sharedZones {
+                    group.addTask { [self] in
+                        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: zone.zoneID)
+                        do {
+                            let fecthRecord = try await databasePrivate.record(for: recordId)
+                            return [fecthRecord]
+                        } catch {
+                                print(error.localizedDescription)
+                            return []
+                        }
+                    }
+                }
+                
+                var results: [CKRecord] = []
+                for try await history in group { results.append(contentsOf: history) }
+                return results
+            }
+        } catch {
             print(error.localizedDescription)
+            return []
         }
     }
     
     func delete(model: DataModelProtocol) async {
-        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
+        var record: CKRecord?
         do {
-            try await container.privateCloudDatabase.deleteRecord(withID: recordId)
+            record = try await fetchByID(id: model.getID().description, tipe: model.getType())
         } catch {
             print(error.localizedDescription)
+        }
+        
+        guard let record = record else { return }
+        let recordPopulated = populateRecord(record: record, model: model)
+        
+        do {
+            try await container.privateCloudDatabase.deleteRecord(withID: recordPopulated.recordID)
+        } catch {
+            do {
+                try await container.sharedCloudDatabase.deleteRecord(withID: recordPopulated.recordID)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -134,7 +183,8 @@ class CloudKitModel {
         do {
             try await databasePrivate.save(share)
             return share
-        } catch {
+        } catch let erro {
+            print(erro.localizedDescription)
             return nil
         }
         

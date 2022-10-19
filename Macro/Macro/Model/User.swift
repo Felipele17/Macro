@@ -54,6 +54,10 @@ class User: DataModelProtocol {
         return "User"
     }
     
+    func getType() -> String {
+        return "User"
+    }
+    
     func getID() -> UUID {
         return idName
     }

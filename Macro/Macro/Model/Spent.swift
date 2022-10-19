@@ -44,6 +44,10 @@ class Spent: DataModelProtocol, Identifiable {
         self.categoryPercent = categoryPercent
     }
     
+    func getType() -> String {
+        return "Spent"
+    }
+    
     static func getType() -> String {
         return "Spent"
     }

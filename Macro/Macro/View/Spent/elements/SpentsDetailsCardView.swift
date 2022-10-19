@@ -16,7 +16,7 @@ struct SpentsDetailsCardView: View {
 
     var body: some View {
         NavigationLink(isActive: $isActive) {
-            FormsSpentsView(viewModel: viewModel, arraySpents: $arraySpents, colorIcon: colorIcon, isPost: false)
+            FormsSpentsView(viewModel: viewModel, arraySpents: $arraySpents, title: viewModel.spent.title, icon: viewModel.spent.icon, value: viewModel.spent.value, date: viewModel.spent.date, colorIcon: colorIcon, isPost: false)
         } label: {
             HStack {
                 ZStack {
