@@ -36,8 +36,8 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach(spents) { spent in
-                    SpentsDetailsCardView(categoty: spentsCard.valuesPercent, colorIcon: spentsCard.colorName, arraySpents: $spents, viewModel: SpentViewModel(spent: spent))
+                ForEach($spents) { spent in
+                    SpentsDetailsCardView(categoty: spentsCard.valuesPercent, colorIcon: spentsCard.colorName, arraySpents: $spents, spent: spent)
                 }
             } .listStyle(.insetGrouped)
         }

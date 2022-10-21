@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @ObservedObject var viewModel: SpentViewModel
+    @StateObject var viewModel: SpentViewModel
     @Binding var arraySpents: [Spent]
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @State var showingSheet: Bool = false
@@ -59,12 +59,15 @@ struct FormsSpentsView: View {
                     Button {
                         let spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: viewModel.spent.categoryPercent)
                         if isPost {
-                            viewModel.postSpent(spent: spent)
-                            arraySpents.append(viewModel.spent)
+                            if let spent = viewModel.postSpent(spent: spent){
+                                arraySpents.append(spent)
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
                         } else {
-                            viewModel.editSpent(spent: spent)
+                            if viewModel.editSpent(spent: spent){
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
                         }
-                        self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         if isPost {
                             Text("Salvar")

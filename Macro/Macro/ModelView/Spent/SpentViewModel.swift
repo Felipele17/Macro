@@ -28,12 +28,12 @@ class SpentViewModel: ObservableObject {
         return spent
     }
     
-    func postSpent(spent: Spent) {
-        guard let spent = createSpent(spent: spent) else { return }
+    func postSpent(spent: Spent) -> Spent? {
+        guard let spent = createSpent(spent: spent) else { return nil }
         Task.init {
             try? await cloud.post(model: spent)
         }
-        
+        return spent
     }
     
     func deleteSpent(spent: Spent) {
@@ -42,17 +42,15 @@ class SpentViewModel: ObservableObject {
         }
     }
     
-    func editSpent(spent: Spent) {
-        guard let spent = createSpent(spent: spent) else { return }
+    func editSpent(spent: Spent) -> Bool {
+        guard let spent = createSpent(spent: spent) else { return false}
         self.spent.title = spent.title
         self.spent.date = spent.date
         self.spent.icon = spent.icon
+        self.spent.value = spent.value
         Task.init {
-            do {
-                try await cloud.update(model: self.spent)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            await cloud.update(model: self.spent)
         }
+        return true
     }
 }
