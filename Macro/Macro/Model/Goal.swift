@@ -90,4 +90,22 @@ struct Goal: DataModelProtocol, Identifiable {
         let num = Float(methodologyGoal?.weeks ?? 0)
         return (value*2.0)/(num*(num+1.0))
     }
+    
+    func getArrayWeeksCheck() -> [Int] {
+        var arrayWeek: [Int] = []
+        for week in 1..<weeks {
+            arrayWeek.append(week)
+        }
+        return arrayWeek
+    }
+    
+    func getArrayWeeksNotCheck() -> [Int] {
+        var arrayWeek: [Int] = []
+        guard let methodologyGoalWeeks = methodologyGoal?.weeks else { return arrayWeek }
+        for week in weeks+1 ..< methodologyGoalWeeks {
+            arrayWeek.append(week)
+        }
+        return arrayWeek
+    }
+    
 }

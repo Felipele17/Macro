@@ -59,7 +59,7 @@ struct GoalsView: View {
                 PickerSegmentedView(selectFilter: $selectFilter)
                 List {
                     if selectFilter != 1 {
-                        ForEach(1 ..< goal.weeks) { week in
+                        ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
                             WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
                      }
                     }
@@ -70,7 +70,7 @@ struct GoalsView: View {
                                 viewModel.checkWeekGoal(goal: goal)
                             }
 
-                        ForEach(goal.weeks+1..<(goal.methodologyGoal?.weeks ?? 0)) { week in
+                        ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
                             WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
                         }
                     }
