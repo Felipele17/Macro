@@ -8,6 +8,7 @@
 import Foundation
 
 enum OnBoardingText: String {
+    
     case titleFirstScreen = "Conquiste os seus objetivos"
     case firstScreen = "Crie metas e controle gastos com quem você ama"
     
@@ -20,4 +21,12 @@ enum OnBoardingText: String {
     case titleInviteScreen = "Envie um convite"
     case inviteScreen = "Compartilhe o link com quem ama para dividirem seus gastos e metas juntos"
     
+    case titleShareScreen = "Aguarde o convite do seu parceiro"
+    case shareScreen = "Agora o seu parceiro deve te enviar um convite semelhante ao que você enviou"
+    
+    case titleConfirmationScreen = "Envie um convite de confirmação ao seu parceiro"
+    case confirmationScreen = "Após o envio do convite, vocês estarão conectados"
+    
+    case titleConnectedScreen = "Agora vocês estão conectados"
+    case connectedScreen = "Já podem iniciar as suas metas e dividirem seus gastos"
 }
