@@ -24,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, configurationForConnecting
-        connectingSceneSession: UISceneSession,
-        options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 
         // Create a scene configuration object for the
         // specified session role.

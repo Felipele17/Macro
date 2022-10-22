@@ -16,7 +16,7 @@ struct MotivationCard: View {
             Rectangle()
                 .frame(height: 50)
                 .cornerRadius(13)
-                //.foregroundColor(Color(.blue))
+                // .foregroundColor(Color(.blue))
             
             Text(text)
                 .font(.headline)

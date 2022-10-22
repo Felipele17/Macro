@@ -27,7 +27,8 @@ class CloudKitModel {
         }
     }
     
-    //MARK: PushNotification
+    // MARK: PushNotification
+    
     func saveNotification(recordType: String) async {
         // Only proceed if the subscription doesn't already exist.
         guard !UserDefaults.standard.bool(forKey: "didCreateSubscription\(recordType)")

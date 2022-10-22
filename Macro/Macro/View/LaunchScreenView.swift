@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LaunchScreenView: View {
+    @Environment (\.presentationMode) var presentationMode: Binding <PresentationMode>
     @State private var scaleFactor: CGFloat = 1.0
+    @State var show = false
     var body: some View {
         ZStack {
             Color(EnumColors.backgroundLaunchScreen.rawValue) .ignoresSafeArea()
@@ -23,6 +25,10 @@ struct LaunchScreenView: View {
                     Animation.easeInOut(duration: 3)
                         .repeatForever(autoreverses: true))
                 
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }
