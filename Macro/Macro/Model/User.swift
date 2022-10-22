@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-class User: DataModelProtocol {
+struct User: DataModelProtocol {
     var idName: UUID
     var name: String
     var income: Float
@@ -28,7 +28,7 @@ class User: DataModelProtocol {
         self.methodologySpent = methodologySpent
     }
     
-    required init?(record: CKRecord) async {
+    init?(record: CKRecord) async {
         let idName = record.recordID.recordName
         guard let  name = record["name"] as? String else { return nil }
         guard let  income = record["income"] as? Float else { return nil }

@@ -8,16 +8,22 @@
 import SwiftUI
 
 struct SpentsDetailsCardView: View {
-    @State var viewModel = SpentCarViewModel()
-    var categoty: Int
+    @EnvironmentObject var viewModel: SpentViewModel
     @State var isActive = false
-    var colorIcon: String
-    @Binding var arraySpents: [Spent]
     @Binding var spent: Spent
+    var colorIcon: String
 
     var body: some View {
         NavigationLink(isActive: $isActive) {
-            FormsSpentsView(viewModel: SpentViewModel(spent: spent), arraySpents: $arraySpents, title: spent.title, icon: spent.icon, value: spent.value, date: spent.date, colorIcon: colorIcon, isPost: false)
+            FormsSpentsView( spent: $spent,
+                             title: spent.title,
+                             icon: spent.icon,
+                             value: spent.value,
+                             date: spent.date,
+                             colorIcon: colorIcon,
+                             isPost: false
+            )
+                .environmentObject(viewModel)
         } label: {
             HStack {
                 ZStack {
@@ -40,10 +46,7 @@ struct SpentsDetailsCardView: View {
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: false ) {
             Button {
-                viewModel.deleteSpent(spent: spent)
-                arraySpents.removeAll { spent in
-                    spent.idName == self.spent.idName
-                }
+                viewModel.deleteSpent(spent: spent)  
             } label: {
                 Label("Deletar", systemImage: "trash.fill")
             }
@@ -58,12 +61,12 @@ struct SpentsDetailsCardView: View {
     }
 }
 
-struct SpentsDetailsCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpentsDetailsCardView(
-            categoty: 50, colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
-            arraySpents: .constant([Spent.emptyMock(category: 50), Spent.emptyMock(category: 50)]),
-            spent: .constant(Spent.emptyMock(category: 50))
-        )
-    }
-}
+//struct SpentsDetailsCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpentsDetailsCardView(
+//            categoty: 50, colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
+//            arraySpents: .constant([Spent.emptyMock(category: 50), Spent.emptyMock(category: 50)]),
+//            spent: .constant(Spent.emptyMock(category: 50))
+//        )
+//    }
+//}

@@ -8,9 +8,9 @@
 import Foundation
 import CloudKit
 
-class Spent: DataModelProtocol, Identifiable {
+struct Spent: DataModelProtocol, Identifiable {
     
-    var idName: UUID
+    var id: UUID
     var title: String
     var value: Float
     var icon: String
@@ -20,7 +20,7 @@ class Spent: DataModelProtocol, Identifiable {
     init(title: String, value: Float, icon: String,
          date: Date,
          categoryPercent: Int) {
-        self.idName = UUID()
+        self.id = UUID()
         self.title = title
         self.value = value
         self.icon = icon
@@ -28,15 +28,15 @@ class Spent: DataModelProtocol, Identifiable {
         self.categoryPercent = categoryPercent
     }
     
-    required init?(record: CKRecord) {
-        let idName = record.recordID.recordName
+    init?(record: CKRecord) {
+        let id = record.recordID.recordName
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Float else { return nil }
         guard let  icon = record["icon"] as? String else { return nil }
         guard let  date = record["date"] as? Date else { return nil }
         guard let  categoryPercent = record["categoryPercent"] as? Int else { return nil }
-        guard let idName = UUID(uuidString: idName) else { return nil }
-        self.idName = idName
+        guard let id = UUID(uuidString: id) else { return nil }
+        self.id = id
         self.title = title
         self.value = value
         self.icon = icon
@@ -53,7 +53,7 @@ class Spent: DataModelProtocol, Identifiable {
     }
     
     func getID() -> UUID {
-        return idName
+        return id
     }
     
     func getProperties() -> [String] {

@@ -7,7 +7,7 @@
 
 import Foundation
 import CloudKit
-class MethodologySpent: DataModelProtocol {
+struct MethodologySpent: DataModelProtocol {
     var idName: UUID
     
     var valuesPercent: [Int] // (→ Referente à porcentagem da quantidade de dinheiro total)
@@ -21,7 +21,7 @@ class MethodologySpent: DataModelProtocol {
         self.namePercent = namePercent
     }
     
-    required init?(record: CKRecord) {
+    init?(record: CKRecord) {
         let idName = record.recordID.recordName
         guard let  valuesPercent = record["valuesPercent"] as? [Int] else { return nil }
         guard let  namePercent = record["namePercent"] as? [String] else { return nil }

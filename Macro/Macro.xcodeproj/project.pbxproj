@@ -77,7 +77,6 @@
 		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
 		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
 		99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */; };
-		99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,7 +172,6 @@
 		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
 		99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsEditGoals.swift; sourceTree = "<group>"; };
-		99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
-				99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */,
 			);
 			path = Spent;
 			sourceTree = "<group>";
@@ -719,7 +716,6 @@
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
-				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,

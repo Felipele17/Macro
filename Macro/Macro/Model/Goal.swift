@@ -8,9 +8,9 @@
 import Foundation
 import CloudKit
 
-class Goal: DataModelProtocol, Identifiable {
+struct Goal: DataModelProtocol, Identifiable {
 
-    var idName: UUID
+    var id: UUID
     var title: String
     var value: Float
     var weeks: Int // Reference to the weeks that are completed to complet the goal
@@ -18,8 +18,8 @@ class Goal: DataModelProtocol, Identifiable {
     var priority: Int // Reference the priority of the goal
     var methodologyGoal: MethodologyGoal? // On iCloud this is store as a UUID
     
-    init(title: String, value: Float, weeks: Int, motivation: String?, priority: Int, methodologyGoal: MethodologyGoal) {
-        self.idName = UUID()
+    init(title: String, value: Float, weeks: Int, motivation: String?, priority: Int, methodologyGoal: MethodologyGoal?) {
+        self.id = UUID()
         self.title = title
         self.value = value
         self.weeks = weeks
@@ -28,8 +28,8 @@ class Goal: DataModelProtocol, Identifiable {
         self.methodologyGoal = methodologyGoal
     }
     
-    required init?(record: CKRecord) async {
-        let idName = record.recordID.recordName
+    init? (record: CKRecord) async {
+        let id = record.recordID.recordName
         guard let  title = record["title"] as? String else { return nil }
         guard let  value = record["value"] as? Float else { return nil }
         guard let  weeks = record["weeks"] as? Int else { return nil }
@@ -37,9 +37,9 @@ class Goal: DataModelProtocol, Identifiable {
         guard let  methodologyGoal = record["methodologyGoal"] as? String else { return nil } // Its necessary to fecth the UUID
         guard let  priority = record["priority"] as? Int else { return nil }
         
-        guard let idName = UUID(uuidString: idName) else { return nil }
+        guard let id = UUID(uuidString: id) else { return nil }
         
-        self.idName = idName
+        self.id = id
         self.title = title
         self.value = value
         self.weeks = weeks
@@ -59,7 +59,7 @@ class Goal: DataModelProtocol, Identifiable {
     }
     
     func getID() -> UUID {
-        return idName
+        return id
     }
     
     func getProperties() -> [String] {

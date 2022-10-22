@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct FormsGoalsValueView: View {
-    @Binding var goal: Goal
+    @State var goal: Goal
+    @Binding var goals: [Goal]
     @State private var pageIndex = 1
+    @State var priority = 1
     @FocusState var keyboardIsFocused: Bool
     @Binding var popToRoot: Bool
     let formatter: NumberFormatter = {
@@ -36,8 +38,8 @@ struct FormsGoalsValueView: View {
                 .padding(.top, 30)
             HStack {
                 Button {
-                    goal.priority = 1
-                    
+                    priority = 1
+                    goal.priority = priority
                 } label: {
                     VStack {
                         Image("Noz1")
@@ -46,13 +48,11 @@ struct FormsGoalsValueView: View {
                             .hoverEffect(.automatic)
                     }
                 }
-                .opacity(goal.priority == 1 ? 1.0 : 0.5)
-                
+                .opacity(priority == 1 ? 1.0 : 0.5)
                 Spacer()
-                
                 Button {
-                    goal.priority = 2
-      
+                    priority = 2
+                    goal.priority = priority
                 } label: {
                     VStack {
                         Image("Noz2")
@@ -61,13 +61,11 @@ struct FormsGoalsValueView: View {
                             .hoverEffect(.automatic)
                     }
                 }
-                .opacity(goal.priority == 2 ? 1.0 : 0.5)
-                
+                .opacity(priority == 2 ? 1.0 : 0.5)
                 Spacer()
-                
                 Button {
-                    goal.priority = 3
-         
+                    priority = 3
+                    goal.priority = priority
                 } label: {
                     VStack {
                         Image("Noz3")
@@ -75,18 +73,18 @@ struct FormsGoalsValueView: View {
                             .tint(.black)
                             .hoverEffect(.automatic)
                     }
-                }.opacity(goal.priority == 3 ? 1.0 : 0.5)
+                }.opacity(priority == 3 ? 1.0 : 0.5)
             }
             .padding(10)
             Spacer()
-            GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
+            GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
         }
         .padding(20)
     }
 }
 
-struct FormsGoalsValueView_Previews: PreviewProvider {
-    static var previews: some View {
-        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
-    }
-}
+//struct FormsGoalsValueView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
+//    }
+//}

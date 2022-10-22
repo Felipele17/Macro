@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoalsView: View {
     @Binding var goal: Goal
+    @Binding var goals: [Goal]
     @StateObject private var viewModel = GoalViewModel()
     @State private var selectFilter = 1
     
@@ -21,7 +22,9 @@ struct GoalsView: View {
                 Spacer()
                 Button(role: nil) {
                     viewModel.deleteGoal(goal: goal)
-                    
+                    goals.removeAll { goal in
+                        goal.id == self.goal.id
+                    }
                 } label: {
                     Label("", systemImage: "trash")
                         .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -56,13 +59,14 @@ struct GoalsView: View {
                 PickerSegmentedView(selectFilter: $selectFilter)
                 List {
                     if selectFilter != 1 {
-                        ForEach(1..<goal.weeks) { week in
+                        ForEach(1 ..< goal.weeks) { week in
                             WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
                      }
                     }
                     if selectFilter != 2 {
                         WeakGoalsView(title: "Semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
                             .onTapGesture {
+                                goal.weeks += 1
                                 viewModel.checkWeekGoal(goal: goal)
                             }
 
@@ -93,12 +97,12 @@ extension GoalsView {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            GoalsView(goal:
-                    .constant(Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
-            )
-        }
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            GoalsView(goal:
+//                    .constant(Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))), goals: .constant([Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))])
+//            )
+//        }
+//    }
+//}

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @StateObject var viewModel: SpentViewModel
-    @Binding var arraySpents: [Spent]
+    @EnvironmentObject var viewModel: SpentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @State var showingSheet: Bool = false
-    @State var title: String = ""
-    @State var icon: String = ""
-    @State var value: Float = 0.0
-    @State var date: Date = Date.now
+    @Binding var spent: Spent
+    
+    @State var title = ""
+    @State var icon = ""
+    @State var value: Float
+    @State var date = Date.now
+    
     var colorIcon: String
     var isPost: Bool
     let formatter: NumberFormatter = {
@@ -54,18 +56,21 @@ struct FormsSpentsView: View {
                             .listRowBackground(Color.clear)
                             .labelsHidden()
                 }.textCase(.none)
-            }.navigationBarTitle("Gastos", displayMode: .inline)
+            }
+            .navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
                     Button {
-                        let spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: viewModel.spent.categoryPercent)
+                        var spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: self.spent.categoryPercent)
+                        spent.id = self.spent.id
                         if isPost {
-                            if let spent = viewModel.postSpent(spent: spent){
-                                arraySpents.append(spent)
+                            if viewModel.postSpent(spent: spent) {
                                 self.presentationMode.wrappedValue.dismiss()
+                                self.spent = spent
                             }
                         } else {
-                            if viewModel.editSpent(spent: spent){
+                            if viewModel.editSpent(spent: spent) {
                                 self.presentationMode.wrappedValue.dismiss()
+                                self.spent = spent
                             }
                         }
                     } label: {
@@ -77,6 +82,7 @@ struct FormsSpentsView: View {
                     }
 
                 }
+                
     }
 }
 extension View {

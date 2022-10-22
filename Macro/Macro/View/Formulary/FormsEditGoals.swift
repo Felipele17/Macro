@@ -38,10 +38,8 @@ struct FormsEditGoals: View {
         }.navigationBarTitle("Editar", displayMode: .inline)
             .toolbar {
                 Button("Salvar") {
-                    let goalAux = goal
-                    goalAux.title = nameGoal
-                    goalAux.value = Float(valueGoal)
-                    goal = goalAux
+                    goal.title = nameGoal
+                    goal.value = Float(valueGoal)
                     viewModel.editGoal(goal: goal)
                     
                     self.presentationMode.wrappedValue.dismiss()
