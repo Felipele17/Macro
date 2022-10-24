@@ -28,4 +28,5 @@ enum EnumColors: String {
     case title = "Title"
     case lixo = "Lixinho"
     case backgroundExpenseColor = "BackgroundExpenseColor"
+    case backgroundLaunchScreen = "LaunchScreenColor"
 }

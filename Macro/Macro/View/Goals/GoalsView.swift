@@ -86,7 +86,7 @@ struct GoalsView: View {
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .tint(Color(EnumColors.buttonColor.rawValue))
             }
-        }.foregroundColor(Color(EnumColors.buttonColor.rawValue))
+        }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .background(Color(EnumColors.backgroundScreen.rawValue))
     }
 }

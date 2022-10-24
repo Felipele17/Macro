@@ -59,6 +59,7 @@ struct HomeView: View {
             .navigationTitle("Bom dia!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
+            
             .toolbar {
                 //                Button(role: nil) {
                 //                    print("add configuração")
@@ -70,8 +71,7 @@ struct HomeView: View {
                 //                }
                 
             }
-           // .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-        }
+        }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationBarBackButtonHidden(true)
     }
 }

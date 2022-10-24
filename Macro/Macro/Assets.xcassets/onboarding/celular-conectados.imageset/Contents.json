@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "esquilo.png",
+      "filename" : "celular-conectados.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "esquilo-2x.png",
+      "filename" : "celular-conectados-2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "esquilo-3x.png",
+      "filename" : "celular-conectados-3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

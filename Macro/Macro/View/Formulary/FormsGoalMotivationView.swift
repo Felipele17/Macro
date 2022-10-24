@@ -67,7 +67,7 @@ struct FormsGoalMotivationView: View {
                 
             }
             
-        }
+        }.accentColor(Color(EnumColors.buttonColor.rawValue))
         
     }
 }

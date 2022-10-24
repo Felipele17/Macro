@@ -52,11 +52,11 @@ struct SpentView: View {
     }
 }
 
-//struct SpentView_Previews: PreviewProvider {
+// struct SpentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            SpentView(title: "tá de palhaçada", colorIcon: EnumColors.backgroundCardMetaColor.rawValue, moneySpented: 100
 //                      ,moneyAvalible: 2, spents: [Spent(title: "", value: 1, icon: "", date: Date(), categoryPercent: EnumCategoryPercent.work.rawValue)])
 //        }
 //    }
-//}
+// }

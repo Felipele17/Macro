@@ -16,7 +16,7 @@ struct SpentsCard: Identifiable, Hashable {
     var avalibleMoney: Float
     
     init(id: Int, valuesPercent: Int, namePercent: String, moneySpented: Float, avalibleMoney: Float) {
-        let color = [EnumSpentsinfo.essencialsColor.rawValue, EnumSpentsinfo.priorityColor.rawValue,  EnumSpentsinfo.leisureColor.rawValue]
+        let color = [EnumSpentsinfo.essencialsColor.rawValue, EnumSpentsinfo.priorityColor.rawValue, EnumSpentsinfo.leisureColor.rawValue]
         self.id = id
         self.colorName = color[id]
         self.valuesPercent = valuesPercent

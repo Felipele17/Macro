@@ -35,8 +35,9 @@ struct SpentsDetailsCardView: View {
                 VStack(alignment: .leading) {
                     Text(spent.title)
                         .font(.custom(EnumFonts.medium.rawValue, size: 17))
-                    Text(spent.date.description)
+                    Text(viewModel.spent.date.formatted(date: .numeric, time: .omitted).description)
                         .font(.custom(EnumFonts.light.rawValue, size: 13))
+                        
                 }.padding(.leading, 4)
                 Spacer()
                 Text("\(spent.value)".floatValue.currency)

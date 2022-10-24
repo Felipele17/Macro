@@ -17,7 +17,7 @@ class CloudKitModel {
     
     static var shared = CloudKitModel()
     
-    init() {
+    private init() {
         container = CKContainer(identifier: "iCloud.vitorCheung.Macro")
         databasePrivate = container.privateCloudDatabase
         databaseShared = container.sharedCloudDatabase
@@ -27,7 +27,8 @@ class CloudKitModel {
         }
     }
     
-    //MARK: PushNotification
+    // MARK: PushNotification
+    
     func saveNotification(recordType: String) async {
         
         // Only proceed if the subscription doesn't already exist.
@@ -79,7 +80,7 @@ class CloudKitModel {
         }
     }
     
-    func populateRecord(record: CKRecord, model: DataModelProtocol) -> CKRecord {
+    private func populateRecord(record: CKRecord, model: DataModelProtocol) -> CKRecord {
         let properties = model.getProperties()
         let propertiesdata = model.getData()
         for  propertie in properties {
