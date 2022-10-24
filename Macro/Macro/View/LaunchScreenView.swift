@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct LaunchScreenView: View {
     @Environment (\.presentationMode) var presentationMode: Binding <PresentationMode>
