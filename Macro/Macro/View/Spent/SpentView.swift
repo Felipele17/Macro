@@ -41,11 +41,9 @@ struct SpentView: View {
                 ForEach(viewModel.arraySpents) { spent in
                     SpentsDetailsCardView(spent: spent, colorIcon: viewModel.spentsCard.wrappedValue.colorName)
                         .environmentObject(viewModel)
-
                 }
             } .listStyle(.insetGrouped)
         }
-        .environmentObject(viewModel)
         .navigationTitle(viewModel.spentsCard.wrappedValue.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
         .navigationBarTitleDisplayMode(.inline)

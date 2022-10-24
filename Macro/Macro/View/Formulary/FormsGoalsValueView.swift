@@ -77,7 +77,7 @@ struct FormsGoalsValueView: View {
             }
             .padding(10)
             Spacer()
-            GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
+            GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? true : false, pageIndex: $pageIndex, popToRoot: $popToRoot)
         }
         .padding(20)
     }
