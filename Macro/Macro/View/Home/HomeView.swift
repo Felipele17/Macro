@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
     @State var isActive: Bool = false
+    @State var users: [User]
+    @State var dictionarySpent: [[Spent]]
+    @State var goals: [Goal]
+    @State var spentsCards: [SpentsCard]
+    var methodologyGoals: MethodologyGoal
     
     var body: some View {
         NavigationView {
@@ -19,11 +23,10 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    if let  methodologyGoals = viewModel.methodologyGoals {
                         NavigationLink(destination:
                             FormsGoalsNameView(
                                 goal: Goal.startGoals(methodologyGoals: methodologyGoals)
-                                ,goals: $viewModel.goals
+                                ,goals: $goals
                                 ,popToRoot: $isActive)
                             ,isActive: $isActive
                         ) {
@@ -32,10 +35,9 @@ struct HomeView: View {
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                                 .padding()
                         }
-                    }
                 }
                 .padding(.top)
-                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $goals)
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -45,9 +47,9 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach($viewModel.spentsCards) { spentsCard in
+                    ForEach($spentsCards) { spentsCard in
                         NavigationLink(destination:
-                                        SpentView(viewModel: SpentViewModel(spentsCard: spentsCard, arraySpents: $viewModel.dictionarySpent[spentsCard.id]))
+                                        SpentView(viewModel: SpentViewModel(spentsCard: spentsCard, arraySpents: $dictionarySpent[spentsCard.id]))
                         ) {
                             SpentsCardView(spentsCard: spentsCard)
                                 .padding()
@@ -77,8 +79,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+// struct HomeUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+// }
