@@ -26,7 +26,7 @@ struct FormsGoalsNameView: View {
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title == "" ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
+                GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title.isEmpty ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
             }
             .padding(20)
     }

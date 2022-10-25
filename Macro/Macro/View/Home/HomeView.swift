@@ -20,11 +20,7 @@ struct HomeView: View {
                         .padding()
                     Spacer()
                     if let  methodologyGoals = viewModel.methodologyGoals {
-                        NavigationLink(destination:
-                                        FormsGoalsNameView(
-                                            goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: methodologyGoals)
-                                        ,popToRoot: $isActive), isActive: $isActive
-                        ) {
+                        NavigationLink(destination: FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: methodologyGoals), popToRoot: $isActive), isActive: $isActive) {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 28))
@@ -55,7 +51,7 @@ struct HomeView: View {
                 
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
-            .navigationTitle("Bom dia! \(viewModel.getName())")
+            .navigationTitle("Bom dia\(viewModel.getName())!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             .toolbar {

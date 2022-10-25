@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @ObservedObject var viewModel : SpentViewModel
+    @ObservedObject var viewModel: SpentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @State var showingSheet: Bool = false
     var colorIcon: String

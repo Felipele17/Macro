@@ -23,6 +23,14 @@ class Invite: ObservableObject {
         }
     }
     
+    func cleanName(name: String?) -> String? {
+        guard let cleanName = name?.replacingOccurrences(of: "givenName:", with: "") else {
+            return nil
+        }
+        let cleanFamilyName = cleanName.replacingOccurrences(of: "familyName: ", with: "")
+        return cleanFamilyName
+    }
+    
     func isReady(income: Float) -> Bool {
         if isSendInviteAccepted && isReceivedInviteAccepted {
             UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen")
@@ -34,12 +42,18 @@ class Invite: ObservableObject {
                         participantsNames.append( name )
                     }
                 }
-                guard let username = participantsNames.first else { return }
-                guard let partenername = participantsNames.last else { return }
+                guard let username = cleanName(name: participantsNames.first) else { return }
+                guard let partenername = cleanName(name: participantsNames.last) else { return }
+
+                UserDefaults.standard.setValue(username, forKey: "username")
+                
                 let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
                 try? await cloud.post(recordType: MethodologySpent.getType(), model: methodologySpent)
+                
                 let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
                 try? await cloud.post(recordType: User.getType(), model: user)
+            }
+            Task {
                 let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
                 try? await cloud.post(recordType: MethodologyGoal.getType(), model: methodologyGoal)
             }

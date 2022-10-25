@@ -13,7 +13,7 @@ class GoalViewModel: ObservableObject {
     @Published var moneyField: Float = 0.0
     @Published var priority: Int = 0
     @Published var motivation = ""
-    //var methodologyGoal: MethodologyGoal
+    // var methodologyGoal: MethodologyGoal
     
 //    init(methodologyGoal: MethodologyGoal) {
 //        self.methodologyGoal = methodologyGoal
@@ -48,11 +48,7 @@ class GoalViewModel: ObservableObject {
     
     func deleteGoal(goal: Goal) {
         Task.init {
-            do {
-                try await cloud.delete(model: goal)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            await cloud.delete(model: goal)
         }
     }
     

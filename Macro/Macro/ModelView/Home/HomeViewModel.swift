@@ -46,11 +46,6 @@ class HomeViewModel: ObservableObject {
 
     }
     
-    func getUserName() -> String {
-        let nameFamily = users.last?.name.replacingOccurrences(of: "givenName:", with: "") ?? ""
-        return nameFamily.replacingOccurrences(of: "familyName: ", with: "")
-    }
-    
     func loadUser() async -> [User]? {
         do {
             let predicate = NSPredicate(value: true)
@@ -68,8 +63,8 @@ class HomeViewModel: ObservableObject {
     }
     
     func getName() -> String {
-        UserDefaults.standard.set(getUserName(), forKey: "name")
-        return UserDefaults.standard.string(forKey: "name") ?? ""
+        let name = UserDefaults.standard.string(forKey: "username") ?? ""
+        return " "+name
     }
     
     func loadGoals() async {
