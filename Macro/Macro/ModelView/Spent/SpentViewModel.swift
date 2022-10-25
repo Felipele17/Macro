@@ -10,12 +10,12 @@ import SwiftUI
 
 class SpentViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
-    @Published var spentsCard: Binding<SpentsCard>
-    @Published var arraySpents: Binding<[Spent]>
+    @Binding var spentsCard: SpentsCard
+    @Binding var arraySpents: [Spent]
     
     init(spentsCard: Binding<SpentsCard>, arraySpents: Binding<[Spent]>) {
-        self.spentsCard = spentsCard
-        self.arraySpents = arraySpents
+        self._spentsCard = spentsCard
+        self._arraySpents = arraySpents
     }
     
     func createSpent(spent: Spent) -> Spent? {
@@ -36,9 +36,9 @@ class SpentViewModel: ObservableObject {
         Task.init {
             try? await cloud.post(model: spent)
         }
-        arraySpents.wrappedValue.append(spent)
-        spentsCard.wrappedValue.moneySpented += spent.value
-        spentsCard.wrappedValue.avalibleMoney -= spent.value
+        arraySpents.append(spent)
+        spentsCard.moneySpented += spent.value
+        spentsCard.avalibleMoney -= spent.value
         return true
     }
     
@@ -46,11 +46,11 @@ class SpentViewModel: ObservableObject {
         Task.init {
             await cloud.delete(model: spent)
         }
-        arraySpents.wrappedValue.removeAll { elemSpent in
+        arraySpents.removeAll { elemSpent in
             elemSpent.id == spent.id
         }
-        spentsCard.wrappedValue.moneySpented -= spent.value
-        spentsCard.wrappedValue.avalibleMoney += spent.value
+        spentsCard.moneySpented -= spent.value
+        spentsCard.avalibleMoney += spent.value
     }
     
     func editSpent(spent: Spent) -> Bool {
@@ -58,14 +58,14 @@ class SpentViewModel: ObservableObject {
         Task.init {
             await cloud.update(model: spent)
         }
-        let origSpentValue: Float = arraySpents.wrappedValue.first { elemSpent in
+        let origSpentValue: Float = arraySpents.first { elemSpent in
             elemSpent.id == spent.id
         }?.value ?? 0.0
         
-        spentsCard.wrappedValue.moneySpented -= origSpentValue
-        spentsCard.wrappedValue.moneySpented += spent.value
-        spentsCard.wrappedValue.avalibleMoney += origSpentValue
-        spentsCard.wrappedValue.avalibleMoney -= spent.value
+        spentsCard.moneySpented -= origSpentValue
+        spentsCard.moneySpented += spent.value
+        spentsCard.avalibleMoney += origSpentValue
+        spentsCard.avalibleMoney -= spent.value
         return true
     }
 }
