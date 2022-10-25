@@ -66,6 +66,7 @@
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
 		9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974828E77E8F0075866D /* EnumSpentsInfo.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
+		998B2A2B29075A5800D9C6BD /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 998B2A2A29075A5800D9C6BD /* launchScreen.json */; };
 		998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */; };
 		998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAE28F094EF000791D9 /* ModalView.swift */; };
 		99B2EF4028DE573D00657C53 /* FormsSpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */; };
@@ -81,6 +82,7 @@
 		99F7E3BF290085EC009534ED /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E3BE290085EC009534ED /* LaunchScreenView.swift */; };
 		99F7E4A529072107009534ED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99F7E4A429072107009534ED /* Lottie */; };
 		99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E4A629072680009534ED /* MacroViewModel.swift */; };
+		99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E4AB29073050009534ED /* LaunchScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,7 @@
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
 		9919974828E77E8F0075866D /* EnumSpentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpentsInfo.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
+		998B2A2A29075A5800D9C6BD /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
 		998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSegmentedView.swift; sourceTree = "<group>"; };
 		998C6AAE28F094EF000791D9 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpentsView.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 		99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentCardViewModel.swift; sourceTree = "<group>"; };
 		99F7E3BE290085EC009534ED /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		99F7E4A629072680009534ED /* MacroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroViewModel.swift; sourceTree = "<group>"; };
+		99F7E4AB29073050009534ED /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +237,6 @@
 		06449BE928C2921E00035324 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				99B676B528DCCFC5007C8BC6 /* Fonts */,
 				06449C5228C2A65B00035324 /* Info.plist */,
 				06449C5128C2A65500035324 /* Macro.entitlements */,
 				06BFF3E928EB83360015C79B /* SceneDelegate.swift */,
@@ -241,6 +244,8 @@
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
 				99F7E4A629072680009534ED /* MacroViewModel.swift */,
 				06449BEE28C2921F00035324 /* Assets.xcassets */,
+				99B676B528DCCFC5007C8BC6 /* Fonts */,
+				99F7E4AA29073036009534ED /* Lottie */,
 				06449C1928C2994800035324 /* Model */,
 				06449C1828C2993C00035324 /* ModelView */,
 				06449C1728C2993300035324 /* View */,
@@ -279,7 +284,6 @@
 			children = (
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				4A2844632900793200D1DD08 /* NoNetView.swift */,
-				99F7E3BE290085EC009534ED /* LaunchScreenView.swift */,
 				99B2EF4328DE576A00657C53 /* Formulary */,
 				06449C2F28C29CF300035324 /* onboarding */,
 				06449C2D28C29CC700035324 /* Settings */,
@@ -532,6 +536,16 @@
 			path = Spent;
 			sourceTree = "<group>";
 		};
+		99F7E4AA29073036009534ED /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				998B2A2A29075A5800D9C6BD /* launchScreen.json */,
+				99F7E3BE290085EC009534ED /* LaunchScreenView.swift */,
+				99F7E4AB29073050009534ED /* LaunchScreen.swift */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -644,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06449C1628C2957F00035324 /* .swiftlint.yml in Resources */,
+				998B2A2B29075A5800D9C6BD /* launchScreen.json in Resources */,
 				06449BF228C2921F00035324 /* Preview Assets.xcassets in Resources */,
 				99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */,
 				99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */,
@@ -735,6 +750,7 @@
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
+				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
 				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
