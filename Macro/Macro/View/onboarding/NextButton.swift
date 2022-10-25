@@ -25,7 +25,7 @@ struct NextButton: View {
                 }
             } else {
                 Task {
-                    await cloud.loadShare()
+                    CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
                     let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
                     let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
                     DispatchQueue.main.async {

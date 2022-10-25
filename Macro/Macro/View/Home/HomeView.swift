@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
     @State var isActive: Bool = false
+    @State var users: [User]
+    @State var dictionarySpent: [[Spent]]
+    @State var goals: [Goal]
+    @State var spentsCards: [SpentsCard]
+    var methodologyGoals: MethodologyGoal
     
     var body: some View {
         NavigationView {
@@ -19,17 +23,21 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    if let  methodologyGoals = viewModel.methodologyGoals {
-                        NavigationLink(destination: FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: methodologyGoals), popToRoot: $isActive), isActive: $isActive) {
+                        NavigationLink(destination:
+                            FormsGoalsNameView(
+                                goal: Goal.startGoals(methodologyGoals: methodologyGoals)
+                                ,goals: $goals
+                                ,popToRoot: $isActive)
+                            ,isActive: $isActive
+                        ) {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                                 .padding()
                         }
-                    }
                 }
                 .padding(.top)
-                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $viewModel.goals)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $goals)
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -39,11 +47,11 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach(viewModel.spentsCards) { spentCard in
-                        NavigationLink(destination: SpentView(
-                            spentsCard: spentCard,
-                            spents: viewModel.dictionarySpent[spentCard.valuesPercent] ?? [])) {
-                            SpentsCardView(spentsCard: spentCard)
+                    ForEach($spentsCards) { spentsCard in
+                        NavigationLink(destination:
+                                        SpentView(viewModel: SpentViewModel(spentsCard: spentsCard, arraySpents: $dictionarySpent[spentsCard.id]))
+                        ) {
+                            SpentsCardView(spentsCard: spentsCard)
                                 .padding()
                         }
                     }
@@ -54,6 +62,7 @@ struct HomeView: View {
             .navigationTitle("Bom dia\(viewModel.getName())!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
+            
             .toolbar {
                 //                Button(role: nil) {
                 //                    print("add configuração")
@@ -70,8 +79,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+// struct HomeUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+// }

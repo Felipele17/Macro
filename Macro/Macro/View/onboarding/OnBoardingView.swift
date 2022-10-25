@@ -50,17 +50,17 @@ struct OnBoardingView: View {
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
                 }
                 if invite.isReady(income: incomeTextField) {
-                    NavigationLink {
-                        HomeView()
-                    } label: {
-                        Text("Concluir")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(height: 55)
-                            .frame(maxWidth: .infinity)
-                            .background(Color(EnumColors.buttonColor.rawValue))
-                            .cornerRadius(13)
-                    }
+//                    NavigationLink {
+//                        HomeView(users: <#[User]#>, dictionarySpent: <#[[Spent]]#>, goals: <#[Goal]#>, spentsCards: <#[SpentsCard]#>, methodologyGoals: <#MethodologyGoal#>)
+//                    } label: {
+//                        Text("Concluir")
+//                            .font(.headline)
+//                            .foregroundColor(.white)
+//                            .frame(height: 55)
+//                            .frame(maxWidth: .infinity)
+//                            .background(Color(EnumColors.buttonColor.rawValue))
+//                            .cornerRadius(13)
+//                    }
 
                 } else {
                     NextButton(text: viewModel.checkButton(), onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)

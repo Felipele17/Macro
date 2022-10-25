@@ -10,10 +10,18 @@ import SwiftUI
 struct MacroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
+    @StateObject var viewModel = MacroViewModel()
     var body: some Scene {
         WindowGroup {
             if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
-                HomeView()
+                if viewModel.isReady() {
+                    if let methodologyGoals = viewModel.methodologyGoals {
+                        HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.spentsCards, methodologyGoals: methodologyGoals)
+                    }
+                } else {
+                    LaunchScreenView()
+                }
+                
             } else {
                 OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
             }
@@ -22,7 +30,7 @@ struct MacroApp: App {
                    switch newScenePhase {
                    case .active:
                        Task {
-                           await CloudKitModel.shared.loadShare()
+                           CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
                            let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
                           DispatchQueue.main.async {
                               Invite.shared.isSendInviteAccepted = isSendInviteAccepted

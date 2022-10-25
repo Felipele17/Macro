@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @ObservedObject var viewModel: SpentViewModel
+    @EnvironmentObject var viewModel: SpentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @State var showingSheet: Bool = false
+    @Binding var spent: Spent
+    
+    @State var title = ""
+    @State var icon = ""
+    @State var value: Float
+    @State var date = Date.now
+    
     var colorIcon: String
     var isPost: Bool
     let formatter: NumberFormatter = {
@@ -22,7 +29,7 @@ struct FormsSpentsView: View {
     var body: some View {
             Form {
                 Section(header: Text("Nome").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField( "Ex: Luz", text: $viewModel.spent.title)
+                    TextField( "Ex: Luz", text: $title)
                         .underlineTextField()
                         .listRowBackground(Color.clear)
                 }.textCase(.none)
@@ -31,33 +38,41 @@ struct FormsSpentsView: View {
                     Button(">") {
                         showingSheet.toggle()
                     }.sheet(isPresented: $showingSheet) {
-                        ModalView(selectedIcon: $viewModel.spent.icon, colorIcon: colorIcon)
+                        ModalView(selectedIcon: $icon, colorIcon: colorIcon)
                     } .padding(.leading, UIScreen.screenWidth*0.77)
                     .listRowBackground(Color.clear)
                             .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField("Ex: R$200,00", value: $viewModel.spent.value, formatter: formatter)
+                    TextField("Ex: R$200,00", value: $value, formatter: formatter)
                         .listRowBackground(Color.clear)
                         .keyboardType(.decimalPad)
                         .underlineTextField()
                 }.textCase(.none)
                 
                 Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    DatePicker("", selection: $viewModel.spent.date, displayedComponents: [.date])
+                    DatePicker("", selection: $date, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
                             .labelsHidden()
                 }.textCase(.none)
-            }.navigationBarTitle("Gastos", displayMode: .inline)
+            }
+            .navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
                     Button {
+                        var spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: self.spent.categoryPercent)
+                        spent.id = self.spent.id
                         if isPost {
-                            viewModel.postSpent()
+                            if viewModel.postSpent(spent: spent) {
+                                self.presentationMode.wrappedValue.dismiss()
+                                self.spent = spent
+                            }
                         } else {
-                            viewModel.editSpent(spent: viewModel.spent)
+                            if viewModel.editSpent(spent: spent) {
+                                self.presentationMode.wrappedValue.dismiss()
+                                self.spent = spent
+                            }
                         }
-                        self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         if isPost {
                             Text("Salvar")
@@ -67,6 +82,7 @@ struct FormsSpentsView: View {
                     }
 
                 }
+                
     }
 }
 extension View {
@@ -77,14 +93,15 @@ extension View {
     }
 }
 
-struct FormView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            FormsSpentsView(
-                viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50)),
-                colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
-                isPost: true
-            )
-        }
-    }
-}
+//struct FormView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            FormsSpentsView (
+//                viewModel: SpentViewModel(spent: Spent.emptyMock(category: 50)),
+//                arraySpents: .constant([Spent.emptyMock(category: 50),Spent.emptyMock(category: 50)]),
+//                colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
+//                isPost: true
+//            )
+//        }
+//    }
+//}

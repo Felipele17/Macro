@@ -12,5 +12,8 @@ enum EnumImageName: String {
     case squirrels = "esquilos"
     case squirrel = "esquilo"
     case invitePhone = "celular"
+    case sharedPhone = "celular-compartilhar"
+    case connectedPhone = "celular-conectados"
+    case confirmationPhone = "celular-confirmacao"
     case doubleSquirrels = "DuplaEsquilos"
 }

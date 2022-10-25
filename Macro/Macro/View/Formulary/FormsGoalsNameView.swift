@@ -11,6 +11,7 @@ struct FormsGoalsNameView: View {
     
     @State private var pageIndex = 0
     @State var goal: Goal
+    @Binding var goals: [Goal]
     @Binding var popToRoot: Bool
     
     var body: some View {
@@ -26,14 +27,14 @@ struct FormsGoalsNameView: View {
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title.isEmpty ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
+                GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title == "" ? true : false, pageIndex: $pageIndex, popToRoot: $popToRoot)
             }
             .padding(20)
     }
 }
 
-struct FormGoalsView_Previews: PreviewProvider {
-    static var previews: some View {
-        FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), popToRoot: .constant(true))
-    }
-}
+//struct FormGoalsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), popToRoot: .constant(true))
+//    }
+//}

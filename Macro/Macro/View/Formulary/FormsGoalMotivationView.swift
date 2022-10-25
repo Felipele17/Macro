@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct FormsGoalMotivationView: View {
-    @Binding var goal: Goal
+    @State var goal: Goal
+    @Binding var goals: [Goal]
     var motivations: [String] = ["Guardar dinheiro", "Realização de um sonho", "Sempre quis conquistar essa meta"]
     @State var index = 0
     @State var motivation = ""
@@ -56,8 +57,9 @@ struct FormsGoalMotivationView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
                     Task.init {
-                        try? await CloudKitModel.shared.post(recordType: Goal.getType(), model: goal)
+                        try? await CloudKitModel.shared.post( model: goal)
                     }
+                    goals.append(goal)
                     popToRoot.toggle()
                 } label: {
                     Text("Salvar")
@@ -70,10 +72,10 @@ struct FormsGoalMotivationView: View {
     }
 }
 
-struct MotivationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            FormsGoalMotivationView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
-        }
-    }
-}
+//struct MotivationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            FormsGoalMotivationView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
+//        }
+//    }
+//}

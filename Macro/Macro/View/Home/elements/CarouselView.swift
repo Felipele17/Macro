@@ -26,7 +26,7 @@ struct CarouselView: View {
                     }
                 } else {
                     ForEach($goals) { goal in
-                        NavigationLink(destination: GoalsView(goal: goal)) {
+                        NavigationLink(destination: GoalsView(goal: goal, goals: $goals)) {
                             GoalCardView(goal: goal)
                                 .frame(width: width, height: heigth)
                                 .padding([.leading, .bottom])

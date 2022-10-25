@@ -29,6 +29,7 @@ class CloudKitModel {
     
     // MARK: PushNotification
     func saveNotification(recordType: String) async {
+        
         // Only proceed if the subscription doesn't already exist.
         guard !UserDefaults.standard.bool(forKey: "didCreateSubscription\(recordType)")
             else { return }
@@ -55,6 +56,7 @@ class CloudKitModel {
             case .success:
                 UserDefaults.standard.setValue(true, forKey: "didCreateSubscription\(recordType)")
             case .failure(let error):
+                print("Cloud - saveNotification")
                 print(error.localizedDescription)
             }
         }
@@ -66,14 +68,15 @@ class CloudKitModel {
     }
     
     // MARK: Post
-    func post(recordType: String, model: DataModelProtocol) async throws {
+    func post( model: DataModelProtocol) async throws {
 
         let recordId = CKRecord.ID(recordName: model.getID().description, zoneID: SharedZone.ZoneID)
-        let record = populateRecord(record: CKRecord(recordType: recordType, recordID: recordId), model: model)
+        let record = populateRecord(record: CKRecord(recordType: model.getType(), recordID: recordId), model: model)
         
         do {
             try await container.privateCloudDatabase.save(record)
         } catch {
+            print("Cloud - post")
             print(error.localizedDescription)
         }
     }
@@ -103,37 +106,98 @@ class CloudKitModel {
     }
     
     // MARK: Update
-    func update(model: DataModelProtocol) async throws {
-        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
-        let fecthRecord = try? await databasePrivate.record(for: recordId)
-        guard let record = fecthRecord else { return  }
+    func update(model: DataModelProtocol) async {
+        var record: CKRecord?
+        do {
+            record = try await fetchByID(id: model.getID().description, tipe: model.getType())
+        } catch {
+            print("Cloud - update fetchByID")
+            print(error.localizedDescription)
+        }
+        
+        guard let record = record else { return }
         let recordPopulated = populateRecord(record: record, model: model)
         
         do {
             try await container.privateCloudDatabase.save(recordPopulated)
         } catch {
+            print("Cloud - update private")
             print(error.localizedDescription)
+            do {
+                try await container.sharedCloudDatabase.save(recordPopulated)
+            } catch {
+                print("Cloud - update Shared")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func updateShared(model: DataModelProtocol) async throws -> [CKRecord] {
+        do {
+            let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
+            return try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in
+                for zone in sharedZones {
+                    group.addTask { [self] in
+                        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: zone.zoneID)
+                        do {
+                            let fecthRecord = try await databasePrivate.record(for: recordId)
+                            return [fecthRecord]
+                        } catch {
+                                print(error.localizedDescription)
+                            return []
+                        }
+                    }
+                }
+                
+                var results: [CKRecord] = []
+                for try await history in group { results.append(contentsOf: history) }
+                return results
+            }
+        } catch {
+            print("Cloud - updateShared")
+            print(error.localizedDescription)
+            return []
         }
     }
     
     func delete(model: DataModelProtocol) async {
-        let recordId = CKRecord.ID(recordName: model.getID().uuidString, zoneID: SharedZone.ZoneID)
+        var record: CKRecord?
         do {
-            try await container.privateCloudDatabase.deleteRecord(withID: recordId)
+            record = try await fetchByID(id: model.getID().description, tipe: model.getType())
         } catch {
+            print("Cloud - delete(fetchByID)")
             print(error.localizedDescription)
+        }
+        
+        guard let record = record else { return }
+        let recordPopulated = populateRecord(record: record, model: model)
+        
+        do {
+            try await container.privateCloudDatabase.deleteRecord(withID: recordPopulated.recordID)
+        } catch {
+            do {
+                try await container.sharedCloudDatabase.deleteRecord(withID: recordPopulated.recordID)
+            } catch {
+                print("Cloud - delete")
+                print(error.localizedDescription)
+            }
         }
     }
     
     // MARK: Share
     private func createShare() async throws -> CKShare? {
-
+        _ = try await databasePrivate.modifyRecordZones(
+            saving: [CKRecordZone(zoneName: SharedZone.name)],
+            deleting: []
+        )
         let share = CKShare(recordZoneID: SharedZone.ZoneID)
         share.publicPermission = .readWrite
         do {
             try await databasePrivate.save(share)
             return share
-        } catch {
+        } catch let erro {
+            print("Cloud - createShare")
+            print(erro.localizedDescription)
             return nil
         }
         
@@ -145,24 +209,34 @@ class CloudKitModel {
             let share = try await databasePrivate.record(for: recordID) as? CKShare
             return share
         } catch let erro {
+            print("Cloud - fetchShare")
             print(erro.localizedDescription)
             return nil
         }
     }
     
     func getShare() async throws -> CKShare? {
-        _ = try await databasePrivate.modifyRecordZones(
-            saving: [CKRecordZone(zoneName: SharedZone.name)],
-            deleting: []
-        )
         guard let share = try await createShare() else {
-            return try? await fetchShare()
+            do {
+                return try await fetchShare()
+            } catch let error {
+                print("Cloud - getShare")
+                print(error.localizedDescription)
+                return nil
+            }
         }
         return share
     }
     
     func loadShare() async {
-        share = try? await getShare()
+        do {
+            if share == nil {
+                share = try await getShare()
+            }
+        } catch let error {
+            print("Cloud - loadShare")
+            print(error.localizedDescription)
+        }
         
     }
     
@@ -252,6 +326,7 @@ class CloudKitModel {
             guard let record = record.first else { return nil }
             return record
         } catch let error {
+            print("Cloud - fetchByID")
             print(error.localizedDescription)
         }
         return nil
