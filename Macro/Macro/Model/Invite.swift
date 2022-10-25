@@ -24,11 +24,11 @@ class Invite: ObservableObject {
     }
     
     func cleanName(name: String?) -> String? {
-        guard let cleanName = name?.replacingOccurrences(of: "givenName:", with: "") else {
+        guard let strings = name?.split(separator: " ", omittingEmptySubsequences: false) else {
             return nil
         }
-        let cleanFamilyName = cleanName.replacingOccurrences(of: "familyName: ", with: "")
-        return cleanFamilyName
+        
+        return String(strings[1])
     }
     
     func isReady(income: Float) -> Bool {
