@@ -12,18 +12,18 @@ class HomeViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
     var income: Float = UserDefaults.standard.float(forKey: "income")
     var methodologyGoals: MethodologyGoal?
-    var dictionarySpent: [Int: [Spent]] = [:]
+    @Published var dictionarySpent: [[Spent]] = []
     @Published var users: [User] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard] = []
     
     init() {
-        Task {
-            let namePercent = (UserDefaults.standard.array(forKey: "methodologySpent.namePercent") as? [String] ?? [])
-            let valuesPercent = (UserDefaults.standard.array(forKey: "methodologySpent.valuesPercent") as? [Int] ?? [])
-            await getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+        let namePercent = (UserDefaults.standard.array(forKey: "methodologySpent.namePercent") as? [String] ?? [])
+        let valuesPercent = (UserDefaults.standard.array(forKey: "methodologySpent.valuesPercent") as? [Int] ?? [])
+        for _ in valuesPercent {
+            dictionarySpent.append([])
         }
-
+        getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
         Task.init {
             await loadGoals()
         }
@@ -62,6 +62,7 @@ class HomeViewModel: ObservableObject {
             }
             return users
         } catch let error {
+            print("Home - loadUser")
             print(error.localizedDescription)
             return nil
         }
@@ -74,6 +75,7 @@ class HomeViewModel: ObservableObject {
                 self.goals = goals
             }
         } catch let error {
+            print("Home - loadGoals")
             print(error.localizedDescription)
         }
     }
@@ -87,17 +89,21 @@ class HomeViewModel: ObservableObject {
         UserDefaults.standard.set(methodologySpent.namePercent, forKey: "methodologySpent.namePercent")
     }
     
-    private func getSpentsCards(namePercent: [String], valuesPercent: [Int]) async {
+    private func getSpentsCards(namePercent: [String], valuesPercent: [Int]) {
         for index in 0 ..< namePercent.count {
             Task {
                 do {
-                    guard let avalibleMoney = try await self.avalibleMoneyCategory(categoryPorcent: valuesPercent[index]) else { return }
-                    let moneySpented = try await self.spentedMoneyCategory(categoryPorcent: valuesPercent[index])
-                    let spentsCard = SpentsCard(id: index, valuesPercent: valuesPercent[index], namePercent: namePercent[index], moneySpented: moneySpented, avalibleMoney: avalibleMoney )
+                    let categoryPorcent = valuesPercent[index]
+                    let total = valuePorcentCategory(categoryPorcent: categoryPorcent)
+                    let spents: [Spent] = try await fetchSpent(categoryPorcent: categoryPorcent)
+                    let moneySpented = self.spentedMoneyCategory(spents: spents)
+                    let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, avalibleMoney: total - moneySpented )
                     DispatchQueue.main.async {
+                        self.dictionarySpent[index] = spents
                         self.spentsCards.append(spentsCard)
                     }
                 } catch let error {
+                        print("Home - getSpentsCards")
                         print(error.localizedDescription)
                 }
             }
@@ -107,26 +113,25 @@ class HomeViewModel: ObservableObject {
     private func valuePorcentCategory(categoryPorcent: Int) -> Float {
         return income*(Float(categoryPorcent)/100)
     }
-    
-    private func avalibleMoneyCategory(categoryPorcent: Int) async throws -> Float? {
-        let value = try await spentedMoneyCategory(categoryPorcent: categoryPorcent)
-        let total = valuePorcentCategory(categoryPorcent: categoryPorcent)
-        return  total - value
+
+    private func spentedMoneyCategory(spents: [Spent]) -> Float {
+        var value: Float = 0.0
+        for spent in spents {
+            value += spent.value
+        }
+        return value
     }
     
-    private func spentedMoneyCategory(categoryPorcent: Int) async throws -> Float {
-        var value: Float = 0.0
+    private func fetchSpent(categoryPorcent: Int) async throws -> [Spent] {
         var spents: [Spent] = []
         let predicate = NSPredicate(format: "categoryPercent == \(categoryPorcent) ")
         let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: predicate)
-        guard let records = records else { return 0.0 }
+        guard let records = records else { return [] }
         for record in records {
-            guard let spent = Spent(record: record) else { return 0.0 }
-            value += spent.value
+            guard let spent = Spent(record: record) else { return [] }
             spents.append(spent)
         }
-        dictionarySpent[categoryPorcent] = spents
-        return value
+        return spents
     }
     
     private func fecthGoals() async throws -> [Goal]? {

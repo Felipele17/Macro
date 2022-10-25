@@ -11,22 +11,8 @@ import SwiftUI
 
 class OnBoardingViewModel: ObservableObject {
     
-    @Published var onboardingState: Bool = false /// fazendo o onboarding aparecer apenas uma vez no App
     @Published var onboardingPage: Int = 0
     var cloud = CloudKitModel.shared
-    
-    init() {
-        if UserDefaults().bool(forKey: "State") {
-            onboardingState = true
-        } else {
-            onboardingState = false
-        }
-    }
-    
-    func finishOnBoarding() {
-        onboardingState = true
-        UserDefaults().set(true, forKey: "State")
-    }
     
     func checkButton() -> String {
         if onboardingPage == 3 {

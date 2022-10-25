@@ -7,7 +7,7 @@
 
 import Foundation
 import CloudKit
-class MethodologyGoal: DataModelProtocol {
+struct MethodologyGoal: DataModelProtocol {
     var idName: UUID
     
     var weeks: Int // → (true → o dinheiro entra em forma de PA [necessariamente crescente], false → o dinheiro entra de forma linear [constante])
@@ -20,7 +20,7 @@ class MethodologyGoal: DataModelProtocol {
         self.crescent = crescent
     }
     
-    required init?(record: CKRecord) {
+    init?(record: CKRecord) {
         let idName = record.recordID.recordName
         guard let  weeks = record["weeks"] as? Int else { return nil }
         guard let  crescent = record["crescent"] as? Bool else { return nil }
@@ -30,6 +30,10 @@ class MethodologyGoal: DataModelProtocol {
         self.idName = idName
         self.weeks = weeks
         self.crescent = crescent
+    }
+    
+    func getType() -> String {
+        return "MethodologyGoal"
     }
     
     static func getType() -> String {

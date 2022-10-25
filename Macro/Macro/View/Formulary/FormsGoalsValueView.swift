@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct FormsGoalsValueView: View {
-    @Binding var goal: Goal
+    @State var goal: Goal
+    @Binding var goals: [Goal]
     @State private var pageIndex = 1
     @FocusState var keyboardIsFocused: Bool
     @Binding var popToRoot: Bool
@@ -31,62 +32,16 @@ struct FormsGoalsValueView: View {
                 .focused($keyboardIsFocused)
                 .underlineTextField()
                 .padding(5)
-            Text("Nível de Prioridade")
-                .font(.custom(EnumFonts.medium.rawValue, size: 28))
-                .padding(.top, 30)
-            HStack {
-                Button {
-                    goal.priority = 1
-                    
-                } label: {
-                    VStack {
-                        Image("Noz1")
-                        Text("Pequena")
-                            .tint(.black)
-                            .hoverEffect(.automatic)
-                    }
-                }
-                .opacity(goal.priority == 1 ? 1.0 : 0.5)
-                
-                Spacer()
-                
-                Button {
-                    goal.priority = 2
-      
-                } label: {
-                    VStack {
-                        Image("Noz2")
-                        Text("Média")
-                            .tint(.black)
-                            .hoverEffect(.automatic)
-                    }
-                }
-                .opacity(goal.priority == 2 ? 1.0 : 0.5)
-                
-                Spacer()
-                
-                Button {
-                    goal.priority = 3
-         
-                } label: {
-                    VStack {
-                        Image("Noz3")
-                        Text("Grande")
-                            .tint(.black)
-                            .hoverEffect(.automatic)
-                    }
-                }.opacity(goal.priority == 3 ? 1.0 : 0.5)
-            }
-            .padding(10)
+            PrioritySelector(priority: $goal.priority)
             Spacer()
-            GoalNextButton(goal: $goal, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? false : true, pageIndex: $pageIndex, popToRoot: $popToRoot)
+            GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? true : false, pageIndex: $pageIndex, popToRoot: $popToRoot)
         }
         .padding(20)
     }
 }
 
-struct FormsGoalsValueView_Previews: PreviewProvider {
-    static var previews: some View {
-        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
-    }
-}
+//struct FormsGoalsValueView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
+//    }
+//}
