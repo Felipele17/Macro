@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SpentsCard: Identifiable {
+struct SpentsCard: Identifiable, Hashable {
     var id: Int
     var colorName: String
     var valuesPercent: Int

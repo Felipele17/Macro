@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct GoalNextButton: View {
-    @Binding var goal: Goal
+    var goal: Goal
+    @Binding var goals: [Goal]
     var text: String
     var isEmptyTextField: Bool
     @Binding var pageIndex: Int
@@ -20,9 +21,9 @@ struct GoalNextButton: View {
                 // changing the view
                 switch pageIndex {
                 case 0:
-                    FormsGoalsValueView(goal: $goal, popToRoot: $popToRoot)
+                    FormsGoalsValueView(goal: goal, goals: $goals, popToRoot: $popToRoot)
                 default:
-                    FormsGoalMotivationView(goal: $goal, popToRoot: $popToRoot)
+                    FormsGoalMotivationView(goal: goal, goals: $goals, popToRoot: $popToRoot)
                 }
             
         } label: {

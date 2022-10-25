@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 protocol DataModelProtocol {
-    static func getType() -> String
+    func getType() -> String
     func getID() -> UUID
     func getProperties() -> [String]
     func getData() -> [String: Any?]

@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SpentViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
-    @Published var spent: Spent
+    @Published var spentsCard: Binding<SpentsCard>
+    @Published var arraySpents: Binding<[Spent]>
     
-    init(spent: Spent) {
-        self.spent = spent
+    init(spentsCard: Binding<SpentsCard>, arraySpents: Binding<[Spent]>) {
+        self.spentsCard = spentsCard
+        self.arraySpents = arraySpents
     }
-
-    func createSpent() -> Spent? {
+    
+    func createSpent(spent: Spent) -> Spent? {
         if spent.title.isEmpty {
             return nil
         }
@@ -28,26 +31,41 @@ class SpentViewModel: ObservableObject {
         return spent
     }
     
-    func postSpent() {
+    func postSpent(spent: Spent) -> Bool {
+        guard let spent = createSpent(spent: spent) else { return false }
         Task.init {
-            guard let spent = createSpent() else { return }
-            try? await cloud.post(recordType: Spent.getType(), model: spent)
+            try? await cloud.post(model: spent)
         }
+        arraySpents.wrappedValue.append(spent)
+        spentsCard.wrappedValue.moneySpented += spent.value
+        spentsCard.wrappedValue.avalibleMoney -= spent.value
+        return true
     }
     
     func deleteSpent(spent: Spent) {
         Task.init {
             await cloud.delete(model: spent)
         }
+        arraySpents.wrappedValue.removeAll { elemSpent in
+            elemSpent.id == spent.id
+        }
+        spentsCard.wrappedValue.moneySpented -= spent.value
+        spentsCard.wrappedValue.avalibleMoney += spent.value
     }
     
-    func editSpent(spent: Spent) {
+    func editSpent(spent: Spent) -> Bool {
+        guard let spent = createSpent(spent: spent) else { return false}
         Task.init {
-            do {
-                try await cloud.update(model: spent)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            await cloud.update(model: spent)
         }
+        let origSpentValue: Float = arraySpents.wrappedValue.first { elemSpent in
+            elemSpent.id == spent.id
+        }?.value ?? 0.0
+        
+        spentsCard.wrappedValue.moneySpented -= origSpentValue
+        spentsCard.wrappedValue.moneySpented += spent.value
+        spentsCard.wrappedValue.avalibleMoney += origSpentValue
+        spentsCard.wrappedValue.avalibleMoney -= spent.value
+        return true
     }
 }

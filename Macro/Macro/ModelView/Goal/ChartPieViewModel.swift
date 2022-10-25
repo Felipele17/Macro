@@ -35,7 +35,6 @@ class ChartPieViewModel: ObservableObject {
             let percent = chartDatas[idn].value/totalValue()
             value += percent
             percents.append(value)
-            print(value)
         }
     }
 }

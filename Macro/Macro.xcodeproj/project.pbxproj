@@ -41,6 +41,7 @@
 		065F765A28E60A09003526CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F765928E60A09003526CF /* AppDelegate.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
+		0692ED0629075A4A00B986DF /* PrioritySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692ED0529075A4A00B986DF /* PrioritySelector.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -78,7 +79,6 @@
 		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
 		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
 		99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */; };
-		99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */; };
 		99F7E3BF290085EC009534ED /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E3BE290085EC009534ED /* LaunchScreenView.swift */; };
 		99F7E4A529072107009534ED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99F7E4A429072107009534ED /* Lottie */; };
 		99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E4A629072680009534ED /* MacroViewModel.swift */; };
@@ -142,6 +142,7 @@
 		065F765928E60A09003526CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
+		0692ED0529075A4A00B986DF /* PrioritySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySelector.swift; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -179,7 +180,6 @@
 		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
 		99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsEditGoals.swift; sourceTree = "<group>"; };
-		99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentCardViewModel.swift; sourceTree = "<group>"; };
 		99F7E3BE290085EC009534ED /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		99F7E4A629072680009534ED /* MacroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroViewModel.swift; sourceTree = "<group>"; };
 		99F7E4AB29073050009534ED /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
@@ -481,6 +481,7 @@
 				55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */,
 				554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */,
 				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
+				0692ED0529075A4A00B986DF /* PrioritySelector.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -531,7 +532,6 @@
 			isa = PBXGroup;
 			children = (
 				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
-				99E4F21628E4E13300AB24FA /* SpentCardViewModel.swift */,
 			);
 			path = Spent;
 			sourceTree = "<group>";
@@ -744,6 +744,7 @@
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
 				0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */,
 				99B2EF4028DE573D00657C53 /* FormsSpentsView.swift in Sources */,
+				0692ED0629075A4A00B986DF /* PrioritySelector.swift in Sources */,
 				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
@@ -932,7 +933,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -970,7 +971,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;

@@ -21,8 +21,11 @@ struct HomeView: View {
                     Spacer()
                     if let  methodologyGoals = viewModel.methodologyGoals {
                         NavigationLink(destination:
-                                        FormsGoalsNameView(
-                                            goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: methodologyGoals), popToRoot: $isActive), isActive: $isActive
+                            FormsGoalsNameView(
+                                goal: Goal.startGoals(methodologyGoals: methodologyGoals)
+                                ,goals: $viewModel.goals
+                                ,popToRoot: $isActive)
+                            ,isActive: $isActive
                         ) {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -42,11 +45,11 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach(viewModel.spentsCards) { spentCard in
-                        NavigationLink(destination: SpentView(
-                            spentsCard: spentCard,
-                            spents: viewModel.dictionarySpent[spentCard.valuesPercent] ?? [])) {
-                            SpentsCardView(spentsCard: spentCard)
+                    ForEach($viewModel.spentsCards) { spentsCard in
+                        NavigationLink(destination:
+                                        SpentView(viewModel: SpentViewModel(spentsCard: spentsCard, arraySpents: $viewModel.dictionarySpent[spentsCard.id]))
+                        ) {
+                            SpentsCardView(spentsCard: spentsCard)
                                 .padding()
                         }
                     }

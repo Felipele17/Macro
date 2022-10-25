@@ -19,17 +19,6 @@ class GoalViewModel: ObservableObject {
 //        self.methodologyGoal = methodologyGoal
 //    }
     
-    func checkWeekGoal(goal: Goal) {
-        goal.weeks += 1
-        Task.init {
-            do {
-                try await cloud.update(model: goal)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
 //    func createGoal() -> Goal? {
 //        if motivation.isEmpty {
 //            return nil
@@ -48,21 +37,13 @@ class GoalViewModel: ObservableObject {
     
     func deleteGoal(goal: Goal) {
         Task.init {
-            do {
-                try await cloud.delete(model: goal)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            await cloud.delete(model: goal)
         }
     }
     
     func editGoal(goal: Goal) {
         Task.init {
-            do {
-                try await cloud.update(model: goal)
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            await cloud.update(model: goal)
         }
         
     }

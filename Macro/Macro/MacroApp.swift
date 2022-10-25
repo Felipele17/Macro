@@ -22,7 +22,7 @@ struct MacroApp: App {
                    switch newScenePhase {
                    case .active:
                        Task {
-                           await CloudKitModel.shared.loadShare()
+                           CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
                            let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
                           DispatchQueue.main.async {
                               Invite.shared.isSendInviteAccepted = isSendInviteAccepted

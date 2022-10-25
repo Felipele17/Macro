@@ -12,7 +12,6 @@ class GoalCardViewModel: ObservableObject {
     func calc( goal: Goal) -> CGFloat {
         let percents = CGFloat(goal.getAllMoneySave()/goal.value)
         let percentsProgress = 220 * percents
-        print(percentsProgress)
         return percentsProgress
     }
     
