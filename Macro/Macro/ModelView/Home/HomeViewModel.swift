@@ -62,6 +62,7 @@ class HomeViewModel: ObservableObject {
             }
             return users
         } catch let error {
+            print("Home - loadUser")
             print(error.localizedDescription)
             return nil
         }
@@ -74,6 +75,7 @@ class HomeViewModel: ObservableObject {
                 self.goals = goals
             }
         } catch let error {
+            print("Home - loadGoals")
             print(error.localizedDescription)
         }
     }
@@ -101,6 +103,7 @@ class HomeViewModel: ObservableObject {
                         self.spentsCards.append(spentsCard)
                     }
                 } catch let error {
+                        print("Home - getSpentsCards")
                         print(error.localizedDescription)
                 }
             }

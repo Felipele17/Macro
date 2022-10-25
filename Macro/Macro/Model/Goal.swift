@@ -93,7 +93,8 @@ struct Goal: DataModelProtocol, Identifiable {
     
     func getArrayWeeksCheck() -> [Int] {
         var arrayWeek: [Int] = []
-        for week in 1..<weeks {
+        if weeks <= 0 { return arrayWeek }
+        for week in 1...weeks {
             arrayWeek.append(week)
         }
         return arrayWeek
@@ -102,10 +103,16 @@ struct Goal: DataModelProtocol, Identifiable {
     func getArrayWeeksNotCheck() -> [Int] {
         var arrayWeek: [Int] = []
         guard let methodologyGoalWeeks = methodologyGoal?.weeks else { return arrayWeek }
-        for week in weeks+1 ..< methodologyGoalWeeks {
+        if weeks == methodologyGoalWeeks - 1 { return [methodologyGoalWeeks] }
+        if weeks == methodologyGoalWeeks { return [] }
+        for week in weeks+2 ... methodologyGoalWeeks {
             arrayWeek.append(week)
         }
         return arrayWeek
+    }
+    
+    static func startGoals(methodologyGoals: MethodologyGoal) -> Goal {
+        return Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 1, methodologyGoal: methodologyGoals)
     }
     
 }

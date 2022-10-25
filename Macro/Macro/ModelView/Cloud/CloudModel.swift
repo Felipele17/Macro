@@ -57,6 +57,7 @@ class CloudKitModel {
             case .success:
                 UserDefaults.standard.setValue(true, forKey: "didCreateSubscription\(recordType)")
             case .failure(let error):
+                print("Cloud - saveNotification")
                 print(error.localizedDescription)
             }
         }
@@ -76,6 +77,7 @@ class CloudKitModel {
         do {
             try await container.privateCloudDatabase.save(record)
         } catch {
+            print("Cloud - post")
             print(error.localizedDescription)
         }
     }
@@ -110,6 +112,7 @@ class CloudKitModel {
         do {
             record = try await fetchByID(id: model.getID().description, tipe: model.getType())
         } catch {
+            print("Cloud - update fetchByID")
             print(error.localizedDescription)
         }
         
@@ -119,9 +122,12 @@ class CloudKitModel {
         do {
             try await container.privateCloudDatabase.save(recordPopulated)
         } catch {
+            print("Cloud - update private")
+            print(error.localizedDescription)
             do {
                 try await container.sharedCloudDatabase.save(recordPopulated)
             } catch {
+                print("Cloud - update Shared")
                 print(error.localizedDescription)
             }
         }
@@ -149,6 +155,7 @@ class CloudKitModel {
                 return results
             }
         } catch {
+            print("Cloud - updateShared")
             print(error.localizedDescription)
             return []
         }
@@ -159,6 +166,7 @@ class CloudKitModel {
         do {
             record = try await fetchByID(id: model.getID().description, tipe: model.getType())
         } catch {
+            print("Cloud - delete(fetchByID)")
             print(error.localizedDescription)
         }
         
@@ -171,6 +179,7 @@ class CloudKitModel {
             do {
                 try await container.sharedCloudDatabase.deleteRecord(withID: recordPopulated.recordID)
             } catch {
+                print("Cloud - delete")
                 print(error.localizedDescription)
             }
         }
@@ -178,13 +187,17 @@ class CloudKitModel {
     
     // MARK: Share
     private func createShare() async throws -> CKShare? {
-
+        _ = try await databasePrivate.modifyRecordZones(
+            saving: [CKRecordZone(zoneName: SharedZone.name)],
+            deleting: []
+        )
         let share = CKShare(recordZoneID: SharedZone.ZoneID)
         share.publicPermission = .readWrite
         do {
             try await databasePrivate.save(share)
             return share
         } catch let erro {
+            print("Cloud - createShare")
             print(erro.localizedDescription)
             return nil
         }
@@ -197,24 +210,34 @@ class CloudKitModel {
             let share = try await databasePrivate.record(for: recordID) as? CKShare
             return share
         } catch let erro {
+            print("Cloud - fetchShare")
             print(erro.localizedDescription)
             return nil
         }
     }
     
     func getShare() async throws -> CKShare? {
-        _ = try await databasePrivate.modifyRecordZones(
-            saving: [CKRecordZone(zoneName: SharedZone.name)],
-            deleting: []
-        )
         guard let share = try await createShare() else {
-            return try? await fetchShare()
+            do {
+                return try await fetchShare()
+            } catch let error {
+                print("Cloud - getShare")
+                print(error.localizedDescription)
+                return nil
+            }
         }
         return share
     }
     
     func loadShare() async {
-        share = try? await getShare()
+        do {
+            if share == nil {
+                share = try await getShare()
+            }
+        } catch let error {
+            print("Cloud - loadShare")
+            print(error.localizedDescription)
+        }
         
     }
     
@@ -304,6 +327,7 @@ class CloudKitModel {
             guard let record = record.first else { return nil }
             return record
         } catch let error {
+            print("Cloud - fetchByID")
             print(error.localizedDescription)
         }
         return nil

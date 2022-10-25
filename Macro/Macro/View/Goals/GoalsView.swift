@@ -64,12 +64,13 @@ struct GoalsView: View {
                      }
                     }
                     if selectFilter != 2 {
-                        WeakGoalsView(title: "Semana \(goal.weeks)", valor: goal.getMoneySaveForWeek(week: goal.weeks))
-                            .onTapGesture {
-                                goal.weeks += 1
-                                viewModel.checkWeekGoal(goal: goal)
-                            }
-
+                        if goal.weeks != goal.methodologyGoal?.weeks {
+                            WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1))
+                                .onTapGesture {
+                                    goal.weeks += 1
+                                    viewModel.editGoal(goal: goal)
+                                }
+                        }
                         ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
                             WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
                         }
@@ -80,7 +81,7 @@ struct GoalsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             NavigationLink {
-                FormsEditGoals(goal: $goal)
+                FormsEditGoals(nameGoal: goal.title, priority: goal.priority, goal: $goal)
             } label: {
                 Text("Editar")
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))

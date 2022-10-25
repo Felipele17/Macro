@@ -21,10 +21,11 @@ struct HomeView: View {
                     Spacer()
                     if let  methodologyGoals = viewModel.methodologyGoals {
                         NavigationLink(destination:
-                                        FormsGoalsNameView(
-                                            goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 1, methodologyGoal: methodologyGoals),
-                                            goals: $viewModel.goals
-                                        ,popToRoot: $isActive), isActive: $isActive
+                            FormsGoalsNameView(
+                                goal: Goal.startGoals(methodologyGoals: methodologyGoals)
+                                ,goals: $viewModel.goals
+                                ,popToRoot: $isActive)
+                            ,isActive: $isActive
                         ) {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))

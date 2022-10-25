@@ -19,12 +19,6 @@ class GoalViewModel: ObservableObject {
 //        self.methodologyGoal = methodologyGoal
 //    }
     
-    func checkWeekGoal(goal: Goal) {
-        Task.init {
-            await cloud.update(model: goal)
-        }
-    }
-    
 //    func createGoal() -> Goal? {
 //        if motivation.isEmpty {
 //            return nil
