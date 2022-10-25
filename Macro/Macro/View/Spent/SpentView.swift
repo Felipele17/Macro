@@ -16,10 +16,10 @@ struct SpentView: View {
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
                     .padding(.top)
                     .padding(.leading)
-                Text("\(viewModel.spentsCard.wrappedValue.moneySpented)".floatValue.currency)
+                Text("\(viewModel.spentsCard.moneySpented)".floatValue.currency)
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     .padding(.leading)
-                Text("Limite disponivel "+"\(viewModel.spentsCard.wrappedValue.avalibleMoney)".floatValue.currency)
+                Text("Limite disponivel "+"\(viewModel.spentsCard.avalibleMoney)".floatValue.currency)
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .padding(.leading)
                 HStack {
@@ -27,7 +27,7 @@ struct SpentView: View {
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
                     NavigationLink(destination:
-                                    FormsSpentsView(spent: .constant(Spent.emptyMock(category: viewModel.spentsCard.wrappedValue.valuesPercent)), value: 0.0, colorIcon: viewModel.spentsCard.wrappedValue.colorName, isPost: true)
+                                    FormsSpentsView(spent: .constant(Spent.emptyMock(category: viewModel.spentsCard.valuesPercent)), value: 0.0, colorIcon: viewModel.spentsCard.colorName, isPost: true)
                                         .environmentObject(viewModel)
                     ) {
                         Label("", systemImage: "plus")
@@ -38,13 +38,13 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach(viewModel.arraySpents) { spent in
-                    SpentsDetailsCardView(spent: spent, colorIcon: viewModel.spentsCard.wrappedValue.colorName)
+                ForEach(viewModel.$arraySpents) { spent in
+                    SpentsDetailsCardView(spent: spent, colorIcon: viewModel.spentsCard.colorName)
                         .environmentObject(viewModel)
                 }
             } .listStyle(.insetGrouped)
         }
-        .navigationTitle(viewModel.spentsCard.wrappedValue.namePercent)
+        .navigationTitle(viewModel.spentsCard.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(EnumColors.backgroundScreen.rawValue))
