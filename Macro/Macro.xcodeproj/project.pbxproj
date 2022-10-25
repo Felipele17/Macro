@@ -614,7 +614,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					06449BE628C2921E00035324 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -727,7 +727,6 @@
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
 				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
-				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
@@ -755,7 +754,6 @@
 				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
-				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
 				99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */,
 				06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */,

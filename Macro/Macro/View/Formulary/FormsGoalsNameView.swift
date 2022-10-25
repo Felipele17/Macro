@@ -23,7 +23,7 @@ struct FormsGoalsNameView: View {
                     .padding(10)
                 TextField("Ex.: Carro novo", text: $goal.title)
                 
-                    .foregroundColor(.black)
+                    .foregroundColor(Color(EnumColors.title.rawValue))
                     .underlineTextField()
                     .padding(5)
                 Spacer()
