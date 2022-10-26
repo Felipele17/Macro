@@ -19,7 +19,7 @@ class MacroViewModel: ObservableObject {
     @Published var dictionarySpent: [[Spent]] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard?] = []
-    @Published var checkData: [Bool] = [false, false]
+    @Published var checkData: [String: Bool] = [:]
     
     init() {
         interntMonitorOn()
@@ -31,27 +31,31 @@ class MacroViewModel: ObservableObject {
             guard let methodologySpent = try await loadMethodologySpent() else { return }
             let namePercent = methodologySpent.namePercent
             let valuesPercent = methodologySpent.valuesPercent
-            for _ in namePercent {
+            for value in valuesPercent {
                 DispatchQueue.main.async {
                     self.spentsCards.append(nil)
                     self.dictionarySpent.append([])
-                    self.checkData.append(false)
+                    self.checkData["\(value)spent"] = false
                 }
             }
             loadSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
         }
         Task.init {
+            DispatchQueue.main.async {
+                self.checkData["goal"] = false
+            }
             await loadGoals()
             DispatchQueue.main.async {
-                let last = self.checkData.count-1
-                self.checkData.replaceSubrange( last...last, with: [true])
+                self.checkData["goal"] = true
             }
         }
         Task.init {
+            DispatchQueue.main.async {
+                self.checkData["methodologyGoals"] = false
+            }
             methodologyGoals = try await fecthMethodologyGoal()
             DispatchQueue.main.async {
-                let last = self.checkData.count-2
-                self.checkData.replaceSubrange( last...last, with: [true])
+                self.checkData["methodologyGoals"] = true
             }
         }
         Task.init {
@@ -77,7 +81,7 @@ class MacroViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.isConect = false
                     self.didLoad = false
-                    self.checkData = [false, false]
+                    self.checkData = [:]
                     self.users = []
                     self.dictionarySpent = []
                     self.goals = []
@@ -95,7 +99,7 @@ class MacroViewModel: ObservableObject {
                 loadData()
             }
             var ready = true
-            for check in checkData {
+            for check in checkData.values {
                 ready = ready && check
             }
             return ready
@@ -167,14 +171,14 @@ class MacroViewModel: ObservableObject {
             Task {
                 do {
                     let categoryPorcent = valuesPercent[index]
-                    let total = valuePorcentCategory(categoryPorcent: categoryPorcent)
+                    let total = self.valuePorcentCategory(categoryPorcent: categoryPorcent)
                     let spents: [Spent] = try await fetchSpent(categoryPorcent: categoryPorcent)
                     let moneySpented = self.spentedMoneyCategory(spents: spents)
                     let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, avalibleMoney: total - moneySpented )
                     DispatchQueue.main.async {
                         self.dictionarySpent[index] = spents
                         self.spentsCards[index] = spentsCard
-                        self.checkData[index] = true
+                        self.checkData["\(spentsCard.valuesPercent)spent"] = true
                     }
                 } catch let error {
                     print("Home - getSpentsCards")
