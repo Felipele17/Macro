@@ -242,7 +242,6 @@
 				06BFF3E928EB83360015C79B /* SceneDelegate.swift */,
 				065F765928E60A09003526CF /* AppDelegate.swift */,
 				06449BEA28C2921E00035324 /* MacroApp.swift */,
-				99F7E4A629072680009534ED /* MacroViewModel.swift */,
 				06449BEE28C2921F00035324 /* Assets.xcassets */,
 				99B676B528DCCFC5007C8BC6 /* Fonts */,
 				99F7E4AA29073036009534ED /* Lottie */,
@@ -297,6 +296,7 @@
 		06449C1828C2993C00035324 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				99F7E4A629072680009534ED /* MacroViewModel.swift */,
 				55D19CAC28E7690D004F84A8 /* Formulary */,
 				99E4F21328E4D52200AB24FA /* Spent */,
 				5544774128E233DA000C892E /* OnBoarding */,
@@ -751,7 +751,6 @@
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
-				99E4F21728E4E13300AB24FA /* SpentCardViewModel.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
