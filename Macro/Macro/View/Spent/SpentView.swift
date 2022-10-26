@@ -19,7 +19,7 @@ struct SpentView: View {
                 Text("\(viewModel.spentsCard.moneySpented)".floatValue.currency)
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     .padding(.leading)
-                Text("Limite disponivel "+"\(viewModel.spentsCard.avalibleMoney)".floatValue.currency)
+                Text("Limite disponivel "+"\(viewModel.spentsCard.availableMoney)".floatValue.currency)
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .padding(.leading)
                 HStack {
