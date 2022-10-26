@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Network
 
 class MacroViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
     var methodologyGoals: MethodologyGoal?
     var income: Float = UserDefaults.standard.float(forKey: "income")
+    let monitor = NWPathMonitor()
+    var didLoad = false
+    @Published var isConect = false
     @Published var users: [User] = []
     @Published var dictionarySpent: [[Spent]] = []
     @Published var goals: [Goal] = []
@@ -18,6 +22,11 @@ class MacroViewModel: ObservableObject {
     @Published var checkData: [Bool] = [false, false]
     
     init() {
+        interntMonitorOn()
+    }
+    
+    func loadData() {
+        didLoad = true
         Task.init {
             guard let methodologySpent = try await loadMethodologySpent() else { return }
             let namePercent = methodologySpent.namePercent
@@ -53,17 +62,45 @@ class MacroViewModel: ObservableObject {
                 for user in users {
                     self.income += user.income
                 }
+                UserDefaults.standard.set(self.income, forKey: "income")
             }
         }
     }
     
-    func isReady() -> Bool {
-        for check in checkData {
-            if !check {
-                return false
+    func interntMonitorOn() {
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    self.isConect = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.isConect = false
+                    self.didLoad = false
+                    self.checkData = [false, false]
+                    self.users = []
+                    self.dictionarySpent = []
+                    self.goals = []
+                    self.spentsCards = []
+                }
             }
         }
-        return true
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
+    }
+    
+    func isReady() -> Bool {
+        if isConect {
+            if !didLoad {
+                loadData()
+            }
+            var ready = true
+            for check in checkData {
+                ready = ready && check
+            }
+            return ready
+        }
+        return false
     }
     
     func loadUser() async -> [User]? {
