@@ -48,10 +48,10 @@ class Invite: ObservableObject {
                 UserDefaults.standard.setValue(username, forKey: "username")
                 
                 let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
-                try? await cloud.post(recordType: MethodologySpent.getType(), model: methodologySpent)
+                try? await cloud.post(model: methodologySpent)
                 
                 let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
-                try? await cloud.post(recordType: User.getType(), model: user)
+                try? await cloud.post(model: user)
             }
             Task {
                 let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
