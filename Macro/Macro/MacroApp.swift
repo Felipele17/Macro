@@ -17,7 +17,7 @@ struct MacroApp: App {
                 if viewModel.isConect {
                     if viewModel.isReady() {
                         if let methodologyGoals = viewModel.methodologyGoals {
-                            HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.spentsCards, methodologyGoals: methodologyGoals)
+                            HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.getSpentsCards(), methodologyGoals: methodologyGoals)
                         }
                     } else {
                         LaunchScreenView()
@@ -40,10 +40,10 @@ struct MacroApp: App {
                           }
                        }
                    case .inactive:
-                       print("")
+                       print("ffff")
 //                       print("scene is now inactive!")
                    case .background:
-                       print("")
+                       print("ffff")
 //                       print("scene is now in the background!")
                    @unknown default:
                        print("")

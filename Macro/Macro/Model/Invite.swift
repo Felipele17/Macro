@@ -55,7 +55,7 @@ class Invite: ObservableObject {
             }
             Task {
                 let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
-                try? await cloud.post( model: methodologyGoal)
+                try? await cloud.post(model: methodologyGoal)
             }
             return true
         } else {
