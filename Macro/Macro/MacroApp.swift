@@ -16,7 +16,7 @@ struct MacroApp: App {
             if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
                 if viewModel.isReady() {
                     if let methodologyGoals = viewModel.methodologyGoals {
-                        HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.spentsCards, methodologyGoals: methodologyGoals)
+                        HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.getSpentsCards(), methodologyGoals: methodologyGoals)
                     }
                 } else {
                     LaunchScreenView()
