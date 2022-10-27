@@ -9,7 +9,25 @@ import SwiftUI
 
 struct MethodologyView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            HStack {
+                Image("EssencialsImage")
+                Text("Gastos essenciais")
+            }
+            Text("Foque 50% da sua renda com os gastos que não podem ser adiados.")
+                .padding(.bottom)
+            Text("Ex.: Se sua renda for de R$3000 utilize R$1500 para pagar as contas mensais da sua casa.")
+            HStack {
+                Image("EssencialsImage")
+                Text("Gastos essenciais")
+            }
+            Text("Foque 50% da sua renda com os gastos que não podem ser adiados.")
+                .padding(.bottom)
+            Text("Ex.: Se sua renda for de R$3000 utilize R$1500 para pagar as contas mensais da sua casa.")
+            
+        }.navigationTitle("Método 50-15-35")
+            .font(.custom(EnumFonts.regular.rawValue, size: 17))
+            .navigationBarTitleDisplayMode(.automatic)
     }
 }
 

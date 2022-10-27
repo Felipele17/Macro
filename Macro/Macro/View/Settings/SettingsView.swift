@@ -11,7 +11,6 @@ struct SettingsView: View {
     @State private var toggle: Bool = false
     @State private var selectDate = Date()
     var body: some View {
-        NavigationView {
             List {
                 Section {
                     NavigationLink {
@@ -90,7 +89,6 @@ struct SettingsView: View {
             .font(.custom(EnumFonts.regular.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.automatic)
         }
-    }
 }
 
 struct SettingsView_Previews: PreviewProvider {
