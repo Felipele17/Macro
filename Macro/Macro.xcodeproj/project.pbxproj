@@ -42,6 +42,9 @@
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		0692ED0629075A4A00B986DF /* PrioritySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692ED0529075A4A00B986DF /* PrioritySelector.swift */; };
+		0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE49290AF4570021CF3F /* EnumDatabase.swift */; };
+		0695CE4C290B04050021CF3F /* EnumPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */; };
+		0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -143,6 +146,9 @@
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		0692ED0529075A4A00B986DF /* PrioritySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySelector.swift; sourceTree = "<group>"; };
+		0695CE49290AF4570021CF3F /* EnumDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDatabase.swift; sourceTree = "<group>"; };
+		0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPushNotifications.swift; sourceTree = "<group>"; };
+		0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableDataBase.swift; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -322,6 +328,7 @@
 				06449C4528C29EC000035324 /* User.swift */,
 				063C8AA728D266410053054B /* ChartData.swift */,
 				06BFF3EB28ECCA870015C79B /* Invite.swift */,
+				0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -368,7 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				06449C2128C29BFB00035324 /* SettingsView.swift */,
-				06449C3428C29D8700035324 /* elements */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -396,13 +402,6 @@
 				063C8A9F28D241DC0053054B /* GraphView.swift */,
 				063C8AA328D249280053054B /* WeakGoalsView.swift */,
 				998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */,
-			);
-			path = elements;
-			sourceTree = "<group>";
-		};
-		06449C3428C29D8700035324 /* elements */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -437,6 +436,8 @@
 				4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */,
 				4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */,
 				9919974828E77E8F0075866D /* EnumSpentsInfo.swift */,
+				0695CE49290AF4570021CF3F /* EnumDatabase.swift */,
+				0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -715,6 +716,7 @@
 				554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */,
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
+				0695CE4C290B04050021CF3F /* EnumPushNotifications.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
 				5544773A28E23216000C892E /* OnBoardingPageTypeTwoView.swift in Sources */,
@@ -747,6 +749,7 @@
 				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
+				0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
@@ -767,6 +770,7 @@
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
+				0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */,
 				99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */,
 				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
 				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
@@ -956,7 +960,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -994,7 +998,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

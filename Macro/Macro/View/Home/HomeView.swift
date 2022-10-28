@@ -9,10 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     @State var isActive: Bool = false
-    @State var users: [User]
-    @State var dictionarySpent: [[Spent]]
-    @State var goals: [Goal]
-    @State var spentsCards: [SpentsCard]
+    @Binding var users: [User]
+    @Binding var dictionarySpent: [[Spent]]
+    @Binding var goals: [Goal]
+    @Binding var spentsCards: [SpentsCard]
     var methodologyGoals: MethodologyGoal
     
     var body: some View {

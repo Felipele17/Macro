@@ -24,4 +24,14 @@ struct SpentsCard: Identifiable, Hashable {
         self.moneySpented = moneySpented
         self.avalibleMoney = avalibleMoney
     }
+    
+    init(){
+        let color = [EnumSpentsinfo.essencialsColor.rawValue, EnumSpentsinfo.priorityColor.rawValue, EnumSpentsinfo.leisureColor.rawValue]
+        self.id = -1
+        self.colorName = color[0]
+        self.valuesPercent = -1
+        self.namePercent = ""
+        self.moneySpented = -1
+        self.avalibleMoney = -1
+    }
 }

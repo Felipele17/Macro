@@ -11,6 +11,7 @@ import Network
 class MacroViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
     var methodologyGoals: MethodologyGoal?
+    var methodologySpent: MethodologySpent?
     var income: Float = UserDefaults.standard.float(forKey: "income")
     let monitor = NWPathMonitor()
     var didLoad = false
@@ -18,7 +19,7 @@ class MacroViewModel: ObservableObject {
     @Published var users: [User] = []
     @Published var dictionarySpent: [[Spent]] = []
     @Published var goals: [Goal] = []
-    @Published var spentsCards: [SpentsCard?] = []
+    @Published var spentsCards: [SpentsCard] = []
     @Published var checkData: [String: Bool] = [:]
     
     init() {
@@ -27,48 +28,10 @@ class MacroViewModel: ObservableObject {
     
     func loadData() {
         didLoad = true
-        Task.init {
-            guard let methodologySpent = try await loadMethodologySpent() else { return }
-            let namePercent = methodologySpent.namePercent
-            let valuesPercent = methodologySpent.valuesPercent
-            for value in valuesPercent {
-                DispatchQueue.main.async {
-                    self.spentsCards.append(nil)
-                    self.dictionarySpent.append([])
-                    self.checkData["\(value)spent"] = false
-                }
-            }
-            loadSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
-        }
-        Task.init {
-            DispatchQueue.main.async {
-                self.checkData["goal"] = false
-            }
-            await loadGoals()
-            DispatchQueue.main.async {
-                self.checkData["goal"] = true
-            }
-        }
-        Task.init {
-            DispatchQueue.main.async {
-                self.checkData["methodologyGoals"] = false
-            }
-            methodologyGoals = try await fecthMethodologyGoal()
-            DispatchQueue.main.async {
-                self.checkData["methodologyGoals"] = true
-            }
-        }
-        Task.init {
-            guard let users = await loadUser() else { return }
-            DispatchQueue.main.async {
-                self.users = users
-                self.income = 0
-                for user in users {
-                    self.income += user.income
-                }
-                UserDefaults.standard.set(self.income, forKey: "income")
-            }
-        }
+        loadSpentsCards()
+        loadUser()
+        loadGoals()
+        loadMethodologyGoals()
     }
     
     func interntMonitorOn() {
@@ -107,7 +70,77 @@ class MacroViewModel: ObservableObject {
         return false
     }
     
-    func loadUser() async -> [User]? {
+    // MARK:Load
+    
+    func loadSpentsCards() {
+        Task.init {
+            guard let methodologySpent = try await getMethodologySpent() else { return }
+            let namePercent = methodologySpent.namePercent
+            let valuesPercent = methodologySpent.valuesPercent
+            for value in valuesPercent {
+                DispatchQueue.main.async {
+                    self.methodologySpent = methodologySpent
+                    self.spentsCards.append(SpentsCard())
+                    self.dictionarySpent.append([])
+                    self.checkData["\(value)spent"] = false
+                }
+            }
+            getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+        }
+    }
+    
+    func loadUser() {
+        Task.init {
+            guard let users = await getUser() else { return }
+            DispatchQueue.main.async {
+                self.users = users
+                self.income = 0
+                for user in users {
+                    self.income += user.income
+                }
+                UserDefaults.standard.set(self.income, forKey: "income")
+            }
+        }
+    }
+    
+    func loadGoals(){
+        Task.init {
+            DispatchQueue.main.async {
+                self.checkData["goal"] = false
+            }
+            await getGoals()
+            DispatchQueue.main.async {
+                self.checkData["goal"] = true
+            }
+        }
+    }
+    
+    func loadMethodologyGoals(){
+        Task.init {
+            DispatchQueue.main.async {
+                self.checkData["methodologyGoals"] = false
+            }
+            methodologyGoals = try await fecthMethodologyGoal()
+            DispatchQueue.main.async {
+                self.checkData["methodologyGoals"] = true
+            }
+        }
+    }
+    
+    func reload(tipe: String) {
+        if tipe == Goal.getType() {
+            loadGoals()
+        } else if tipe == Spent.getType() {
+            guard let methodologySpent = methodologySpent else { return }
+            getSpentsCards(namePercent: methodologySpent.namePercent, valuesPercent: methodologySpent.valuesPercent)
+        } else {
+            print("error")
+        }
+    }
+    
+    // MARK:Get
+    
+    func getUser() async -> [User]? {
         do {
             let predicate = NSPredicate(value: true)
             let records = try await self.cloud.fetchSharedPrivatedRecords(recordType: User.getType(), predicate: predicate)
@@ -124,7 +157,7 @@ class MacroViewModel: ObservableObject {
         }
     }
     
-    func loadMethodologySpent() async throws -> MethodologySpent? {
+    func getMethodologySpent() async throws -> MethodologySpent? {
         let predicate = NSPredicate(value: true)
         do {
             let records = try await cloud.fetchSharedPrivatedRecords(recordType: MethodologySpent.getType(), predicate: predicate)
@@ -138,7 +171,7 @@ class MacroViewModel: ObservableObject {
         }
     }
     
-    func loadGoals() async {
+    func getGoals() async {
         do {
             guard let goals = try await fecthGoals() else { return }
             DispatchQueue.main.async {
@@ -149,24 +182,8 @@ class MacroViewModel: ObservableObject {
             print(error.localizedDescription)
         }
     }
-    func getUserName() -> String {
-        let nameFamily = users.first?.name.replacingOccurrences(of: "givenName:", with: "") ?? ""
-        return nameFamily.replacingOccurrences(of: "familyName: ", with: "")
-    }
     
-    private func valuePorcentCategory(categoryPorcent: Int) -> Float {
-        return income*(Float(categoryPorcent)/100)
-    }
-
-    private func spentedMoneyCategory(spents: [Spent]) -> Float {
-        var value: Float = 0.0
-        for spent in spents {
-            value += spent.value
-        }
-        return value
-    }
-    
-    private func loadSpentsCards(namePercent: [String], valuesPercent: [Int]) {
+    private func getSpentsCards(namePercent: [String], valuesPercent: [Int]) {
         for index in 0 ..< namePercent.count {
             Task {
                 do {
@@ -188,16 +205,22 @@ class MacroViewModel: ObservableObject {
         }
     }
     
-    func getSpentsCards() -> [SpentsCard] {
-        var spentsCards: [SpentsCard] = []
-        for spentsCard in self.spentsCards {
-            if let spentsCard = spentsCard {
-                spentsCards.append(spentsCard)
-            }
+    // MARK:convert
+    
+    private func valuePorcentCategory(categoryPorcent: Int) -> Float {
+        return income*(Float(categoryPorcent)/100)
+    }
+
+    private func spentedMoneyCategory(spents: [Spent]) -> Float {
+        var value: Float = 0.0
+        for spent in spents {
+            value += spent.value
         }
-        return spentsCards
+        return value
     }
     
+    // MARK:fecth
+
     private func fetchSpent(categoryPorcent: Int) async throws -> [Spent] {
         var spents: [Spent] = []
         let predicate = NSPredicate(format: "categoryPercent == \(categoryPorcent) ")

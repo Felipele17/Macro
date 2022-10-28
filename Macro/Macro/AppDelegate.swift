@@ -39,14 +39,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return config
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        completionHandler(.newData)
-        Task {
-            print("isSendInviteAccepted")
-            let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-            DispatchQueue.main.async {
-               Invite.shared.isSendInviteAccepted = isSendInviteAccepted
-           }
+        print("pushNotification")
+        if let notification = CKNotification(fromRemoteNotificationDictionary: userInfo) {
+            completionHandler(.newData)
+            if let subscriptionID = notification.subscriptionID {
+                let enumPushNotifications = EnumPushNotifications(rawValue: subscriptionID)
+                switch enumPushNotifications {
+                case .share:
+                    Task {
+                        print("isSendInviteAccepted")
+                        let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                        DispatchQueue.main.async {
+                           Invite.shared.isSendInviteAccepted = isSendInviteAccepted
+                       }
+                    }
+                case .goal:
+                    ObservableDataBase.shared.needFetchGoal = true
+                case .spent:
+                    ObservableDataBase.shared.needFetchSpent = true
+                case .none:
+                    print("none")
+                }
+            }
         }
+        
     }
        
 }
