@@ -11,7 +11,7 @@ import Network
 class MacroViewModel: ObservableObject {
     let cloud = CloudKitModel.shared
     var methodologyGoals: MethodologyGoal?
-    var income: Float = UserDefaults.standard.float(forKey: "income")
+    var income: Float = 0
     let monitor = NWPathMonitor()
     var didLoad = false
     @Published var isConect = false
@@ -23,6 +23,7 @@ class MacroViewModel: ObservableObject {
     
     init() {
         interntMonitorOn()
+        self.income = UserDefault.userMacroIncome()
     }
     
     func loadData() {
@@ -66,7 +67,7 @@ class MacroViewModel: ObservableObject {
                 for user in users {
                     self.income += user.income
                 }
-                UserDefaults.standard.set(self.income, forKey: "income")
+                UserDefault.userMacroSetIncome(income: self.income)
             }
         }
     }

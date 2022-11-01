@@ -11,9 +11,12 @@ struct MacroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var viewModel = MacroViewModel()
+    
+    let userDefault = UserDefault()
+    
     var body: some Scene {
         WindowGroup {
-            if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
+            if userDefault.userOnBoardingBool {
                 if viewModel.isConect {
                     if viewModel.isReady() {
                         if let methodologyGoals = viewModel.methodologyGoals {
@@ -26,7 +29,7 @@ struct MacroApp: App {
                     NoNetView()
                 }
             } else {
-                OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
+                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome)
             }
         }
         .onChange(of: scenePhase) { (newScenePhase) in
