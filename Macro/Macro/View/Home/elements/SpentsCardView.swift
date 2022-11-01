@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpentsCardView: View {
-    @Binding var spentsCard: SpentsCard
+    var spentsCard: SpentsCard
     
     var body: some View {
         VStack(spacing: 0) {

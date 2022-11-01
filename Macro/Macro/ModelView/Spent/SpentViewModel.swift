@@ -10,13 +10,8 @@ import SwiftUI
 
 class SpentViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
-    @Binding var spentsCard: SpentsCard
-    @Binding var arraySpents: [Spent]
-    
-    init(spentsCard: Binding<SpentsCard>, arraySpents: Binding<[Spent]>) {
-        self._spentsCard = spentsCard
-        self._arraySpents = arraySpents
-    }
+    @Published var spentsCards: [SpentsCard] = []
+    @Published var dictionarySpent: [[Spent]] = []
     
     func createSpent(spent: Spent) -> Spent? {
         if spent.title.isEmpty {
@@ -31,29 +26,50 @@ class SpentViewModel: ObservableObject {
         return spent
     }
     
-    func postSpent(spent: Spent) -> Bool {
+    func postSpent(spent: Spent, spentsCard: SpentsCard) -> Bool {
+        let index = spentsCards.firstIndex { sc in
+            sc == spentsCard
+        }
+        guard let index = index else { return false }
+        var arraySpents = dictionarySpent[index]
         guard let spent = createSpent(spent: spent) else { return false }
         Task.init {
             try? await cloud.post(model: spent)
         }
         arraySpents.append(spent)
-        spentsCard.moneySpented += spent.value
-        spentsCard.avalibleMoney -= spent.value
+        spentsCards[index].moneySpented += spent.value
+        spentsCards[index].avalibleMoney -= spent.value
+        dictionarySpent[index] = arraySpents
         return true
     }
     
-    func deleteSpent(spent: Spent) {
+    func deleteSpent(spent: Spent, spentsCard: SpentsCard) {
+        
+        let index = spentsCards.firstIndex { sc in
+            sc == spentsCard
+        }
+        guard let index = index else { return }
+        var arraySpents = dictionarySpent[index]
+        
         Task.init {
             await cloud.delete(model: spent)
         }
         arraySpents.removeAll { elemSpent in
             elemSpent.id == spent.id
         }
-        spentsCard.moneySpented -= spent.value
-        spentsCard.avalibleMoney += spent.value
+        spentsCards[index].moneySpented -= spent.value
+        spentsCards[index].avalibleMoney += spent.value
+        dictionarySpent[index] = arraySpents
     }
     
-    func editSpent(spent: Spent) -> Bool {
+    func editSpent(spent: Spent, spentsCard: SpentsCard) -> Bool {
+        
+        let index = spentsCards.firstIndex { sc in
+            sc == spentsCard
+        }
+        guard let index = index else { return false}
+        var arraySpents = dictionarySpent[index]
+        
         guard let spent = createSpent(spent: spent) else { return false}
         Task.init {
             await cloud.update(model: spent)
@@ -62,22 +78,29 @@ class SpentViewModel: ObservableObject {
             elemSpent.id == spent.id
         }?.value ?? 0.0
         
-        spentsCard.moneySpented -= origSpentValue
-        spentsCard.moneySpented += spent.value
-        spentsCard.avalibleMoney += origSpentValue
-        spentsCard.avalibleMoney -= spent.value
+        spentsCards[index].moneySpented -= origSpentValue
+        spentsCards[index].moneySpented += spent.value
+        spentsCards[index].avalibleMoney += origSpentValue
+        spentsCards[index].avalibleMoney -= spent.value
         return true
     }
     
-    func updateArray(isPost: Bool, newSpent: Spent) -> Bool {
+    func updateArray(isPost: Bool, newSpent: Spent, spentsCard: SpentsCard) -> Bool {
+        
+        let index = spentsCards.firstIndex { sc in
+            sc == spentsCard
+        }
+        guard let index = index else { return false}
+        var arraySpents = dictionarySpent[index]
+        
         if isPost {
-            if postSpent(spent: newSpent) {
+            if postSpent(spent: newSpent, spentsCard: spentsCard) {
                 arraySpents.append(newSpent)
                 return true
             }
             return false
         } else {
-            if editSpent(spent: newSpent) {
+            if editSpent(spent: newSpent, spentsCard: spentsCard) {
                 let range = arraySpents.firstIndex { spent in
                     spent.id == newSpent.id
                 }
@@ -88,4 +111,14 @@ class SpentViewModel: ObservableObject {
             return false
         }
     }
+    
+    func getArraySpents(spentsCard: SpentsCard) -> [Spent] {
+        let index = spentsCards.firstIndex { sc in
+            sc == spentsCard
+        }
+        guard let index = index else { return []}
+        var arraySpents = dictionarySpent[index]
+        return arraySpents
+    }
+    
 }

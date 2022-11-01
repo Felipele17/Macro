@@ -9,22 +9,20 @@ import SwiftUI
 
 struct HomeView: View {
     @State var isActive: Bool = false
-    @Binding var users: [User]
-    @Binding var dictionarySpent: [[Spent]]
-    @Binding var goals: [Goal]
-    @Binding var spentsCards: [SpentsCard]
-    var methodologyGoals: MethodologyGoal
+    @EnvironmentObject var spentViewModel: SpentViewModel
+    @EnvironmentObject var goalViewModel: GoalViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                          .padding()
                     Spacer()
-                    if let goal = Goal.mockGoals(methodologyGoals: methodologyGoals) {
-                        NavigationLink(destination: FormsGoalsNameView(goal: goal, goals: $goals, popToRoot: $isActive)
+                    if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
+                        NavigationLink(destination: FormsGoalsNameView(goal: goal, goals: $goalViewModel.goals, popToRoot: $isActive)
+                            .environmentObject(goalViewModel)
                         ,isActive: $isActive ) {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -34,7 +32,8 @@ struct HomeView: View {
                     }
                 }
                 .padding(.top)
-                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $goals)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5)
+                    .environmentObject(goalViewModel)
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -44,9 +43,10 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach($spentsCards) { spentsCard in
+                    ForEach(spentViewModel.spentsCards) { spentsCard in
                         NavigationLink(destination:
-                                        SpentView(viewModel: SpentViewModel(spentsCard: spentsCard, arraySpents: $dictionarySpent[spentsCard.id]))
+                                SpentView(spentsCard: spentsCard)
+                                    .environmentObject(spentViewModel)
                         ) {
                             SpentsCardView(spentsCard: spentsCard)
                                 .padding()

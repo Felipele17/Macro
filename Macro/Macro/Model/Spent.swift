@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-struct Spent: DataModelProtocol, Identifiable {
+struct Spent: DataModelProtocol, Identifiable, Equatable {
     
     var id: UUID
     var title: String

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CarouselView: View {
+    @EnvironmentObject var goalViewModel: GoalViewModel
     let width: CGFloat
     let heigth: CGFloat
-   @Binding var goals: [Goal]
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                if goals.isEmpty {
+                if goalViewModel.goals.isEmpty {
                     VStack {
                         Text("Oh não, você não tem nenhuma meta com o seu parceiro ainda. Clique no '+' para criar uma.")
                             .font(.custom(EnumFonts.regular.rawValue, size: 17))
@@ -25,8 +25,8 @@ struct CarouselView: View {
 
                     }
                 } else {
-                    ForEach($goals) { goal in
-                        NavigationLink(destination: GoalsView(goal: goal, goals: $goals)) {
+                    ForEach($goalViewModel.goals) { goal in
+                        NavigationLink(destination: GoalsView(goal: goal)) {
                             GoalCardView(goal: goal)
                                 .frame(width: width, height: heigth)
                                 .padding([.leading, .bottom])
@@ -39,12 +39,12 @@ struct CarouselView: View {
     }
 }
 
-struct CarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-        CarouselView(width: 325.0, heigth: 200.0, goals: .constant([
-             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)),
-             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)),
-             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
-                    ]))
-    }
-}
+//struct CarouselView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CarouselView(width: 325.0, heigth: 200.0, goals: .constant([
+//             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)),
+//             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)),
+//             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
+//                    ]))
+//    }
+//}

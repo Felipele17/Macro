@@ -25,7 +25,7 @@ struct SpentsCard: Identifiable, Hashable {
         self.avalibleMoney = avalibleMoney
     }
     
-    init(){
+    init() {
         let color = [EnumSpentsinfo.essencialsColor.rawValue, EnumSpentsinfo.priorityColor.rawValue, EnumSpentsinfo.leisureColor.rawValue]
         self.id = -1
         self.colorName = color[0]

@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 class GoalViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
+    @Published var goals: [Goal] = []
+    var methodologyGoals: MethodologyGoal?
     @Published var goalField = ""
     @Published var moneyField: Float = 0.0
     @Published var priority: Int = 0

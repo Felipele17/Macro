@@ -139,7 +139,7 @@ class MacroViewModel: ObservableObject {
         
     }
 
-    func reload(type: String)  {
+    func reload(type: String) {
         if type == Goal.getType() && ObservableDataBase.shared.needFetchGoal {
             Task {
                 await getGoals()
