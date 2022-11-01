@@ -175,7 +175,7 @@ class MacroViewModel: ObservableObject {
                     let total = self.valuePorcentCategory(categoryPorcent: categoryPorcent)
                     let spents: [Spent] = try await fetchSpent(categoryPorcent: categoryPorcent)
                     let moneySpented = self.spentedMoneyCategory(spents: spents)
-                    let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, avalibleMoney: total - moneySpented )
+                    let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, availableMoney: total - moneySpented )
                     DispatchQueue.main.async {
                         self.dictionarySpent[index] = spents
                         self.spentsCards[index] = spentsCard
