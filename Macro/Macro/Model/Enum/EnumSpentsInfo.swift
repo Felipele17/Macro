@@ -15,5 +15,4 @@ enum EnumSpentsinfo: String {
     case essencialsTitle = "Essenciais"
     case priorityTitle = "Prioridades"
     case leisureTitle = "Lazer"
-    
 }

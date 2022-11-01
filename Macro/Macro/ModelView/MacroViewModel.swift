@@ -87,7 +87,7 @@ class MacroViewModel: ObservableObject {
                     self.checkData["\(value)spent"] = .loading
                 }
             }
-            await getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+            fecthSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
             print("loadSpentsCards")
         }
     }
@@ -242,6 +242,38 @@ class MacroViewModel: ObservableObject {
     
     // MARK: fecth
 
+    private func fecthSpentsCards(namePercent: [String], valuesPercent: [Int]) {
+        for index in 0 ..< namePercent.count {
+            Task {
+                do {
+                    let categoryPorcent = valuesPercent[index]
+                    let total = self.valuePorcentCategory(categoryPorcent: categoryPorcent)
+                    let spents: [Spent] = try await fetchSpent(categoryPorcent: categoryPorcent)
+                    let moneySpented = self.spentedMoneyCategory(spents: spents)
+                    let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, availableMoney: total - moneySpented )
+                    DispatchQueue.main.async {
+                        self.dictionarySpent[index] = spents
+                        self.spentsCards[index] = spentsCard
+                        self.checkData["\(spentsCard.valuesPercent)spent"] = true
+                    }
+                } catch let error {
+                    print("Home - getSpentsCards")
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func getSpentsCards() -> [SpentsCard] {
+        var spentsCards: [SpentsCard] = []
+        for spentsCard in self.spentsCards {
+            if let spentsCard = spentsCard {
+                spentsCards.append(spentsCard)
+            }
+        }
+        return spentsCards
+    }
+    
     private func fetchSpent(categoryPorcent: Int) async throws -> [Spent] {
         var spents: [Spent] = []
         let predicate = NSPredicate(format: "categoryPercent == \(categoryPorcent) ")
