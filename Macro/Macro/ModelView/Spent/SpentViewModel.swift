@@ -38,7 +38,7 @@ class SpentViewModel: ObservableObject {
         }
         arraySpents.append(spent)
         spentsCard.moneySpented += spent.value
-        spentsCard.avalibleMoney -= spent.value
+        spentsCard.availableMoney -= spent.value
         return true
     }
     
@@ -50,7 +50,7 @@ class SpentViewModel: ObservableObject {
             elemSpent.id == spent.id
         }
         spentsCard.moneySpented -= spent.value
-        spentsCard.avalibleMoney += spent.value
+        spentsCard.availableMoney += spent.value
     }
     
     func editSpent(spent: Spent) -> Bool {
@@ -64,8 +64,8 @@ class SpentViewModel: ObservableObject {
         
         spentsCard.moneySpented -= origSpentValue
         spentsCard.moneySpented += spent.value
-        spentsCard.avalibleMoney += origSpentValue
-        spentsCard.avalibleMoney -= spent.value
+        spentsCard.availableMoney += origSpentValue
+        spentsCard.availableMoney -= spent.value
         return true
     }
 }

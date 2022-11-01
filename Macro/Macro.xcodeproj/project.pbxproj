@@ -79,6 +79,8 @@
 		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
 		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
 		99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */; };
+		99F6A9EE290AFEE800925DFD /* HistorySpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */; };
+		99F6A9F0290B23F200925DFD /* MethodologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A9EF290B23F200925DFD /* MethodologyView.swift */; };
 		99F7E3BF290085EC009534ED /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E3BE290085EC009534ED /* LaunchScreenView.swift */; };
 		99F7E4A529072107009534ED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99F7E4A429072107009534ED /* Lottie */; };
 		99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7E4A629072680009534ED /* MacroViewModel.swift */; };
@@ -180,6 +182,8 @@
 		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
 		99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsEditGoals.swift; sourceTree = "<group>"; };
+		99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySpentsView.swift; sourceTree = "<group>"; };
+		99F6A9EF290B23F200925DFD /* MethodologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyView.swift; sourceTree = "<group>"; };
 		99F7E3BE290085EC009534ED /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		99F7E4A629072680009534ED /* MacroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroViewModel.swift; sourceTree = "<group>"; };
 		99F7E4AB29073050009534ED /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
@@ -284,7 +288,7 @@
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				4A2844632900793200D1DD08 /* NoNetView.swift */,
 				99B2EF4328DE576A00657C53 /* Formulary */,
-				06449C2F28C29CF300035324 /* onboarding */,
+				06449C2F28C29CF300035324 /* OnBoarding */,
 				06449C2D28C29CC700035324 /* Settings */,
 				06449C2C28C29CA000035324 /* Home */,
 				06449C2B28C29C9200035324 /* Goals */,
@@ -297,13 +301,13 @@
 			isa = PBXGroup;
 			children = (
 				99F7E4A629072680009534ED /* MacroViewModel.swift */,
+				99F6A9EC290AFEBE00925DFD /* Settings */,
 				55D19CAC28E7690D004F84A8 /* Formulary */,
 				99E4F21328E4D52200AB24FA /* Spent */,
 				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
 				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
-				06449C3F28C29E8300035324 /* SettingsViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -368,18 +372,18 @@
 			isa = PBXGroup;
 			children = (
 				06449C2128C29BFB00035324 /* SettingsView.swift */,
-				06449C3428C29D8700035324 /* elements */,
+				99F6A9EB290AFE6400925DFD /* elements */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		06449C2F28C29CF300035324 /* onboarding */ = {
+		06449C2F28C29CF300035324 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
 				5544773528E231C3000C892E /* OnBoardingView.swift */,
 				06449C3628C29D9E00035324 /* elements */,
 			);
-			path = onboarding;
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		06449C3028C29D0E00035324 /* elements */ = {
@@ -396,13 +400,6 @@
 				063C8A9F28D241DC0053054B /* GraphView.swift */,
 				063C8AA328D249280053054B /* WeakGoalsView.swift */,
 				998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */,
-			);
-			path = elements;
-			sourceTree = "<group>";
-		};
-		06449C3428C29D8700035324 /* elements */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -534,6 +531,23 @@
 				06449C3B28C29E4100035324 /* SpentViewModel.swift */,
 			);
 			path = Spent;
+			sourceTree = "<group>";
+		};
+		99F6A9EB290AFE6400925DFD /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */,
+				99F6A9EF290B23F200925DFD /* MethodologyView.swift */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		99F6A9EC290AFEBE00925DFD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				06449C3F28C29E8300035324 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		99F7E4AA29073036009534ED /* Lottie */ = {
@@ -732,6 +746,7 @@
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */,
+				99F6A9F0290B23F200925DFD /* MethodologyView.swift in Sources */,
 				55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
 				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
@@ -769,6 +784,7 @@
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */,
 				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
+				99F6A9EE290AFEE800925DFD /* HistorySpentsView.swift in Sources */,
 				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
 				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
