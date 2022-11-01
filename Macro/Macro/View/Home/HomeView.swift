@@ -21,20 +21,17 @@ struct HomeView: View {
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                        .padding()
+                         .padding()
                     Spacer()
-                        NavigationLink(destination:
-                            FormsGoalsNameView(
-                                goal: Goal.startGoals(methodologyGoals: methodologyGoals)
-                                ,goals: $goals
-                                ,popToRoot: $isActive)
-                            ,isActive: $isActive
-                        ) {
+                    if let goal = Goal.mockGoals(methodologyGoals: methodologyGoals) {
+                        NavigationLink(destination: FormsGoalsNameView(goal: goal, goals: $goals, popToRoot: $isActive)
+                        ,isActive: $isActive ) {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                                 .padding()
                         }
+                    }
                 }
                 .padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $goals)

@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct FormsSpentsView: View {
-    @EnvironmentObject var viewModel: SpentViewModel
+//    @EnvironmentObject var viewModel: SpentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
-    @State var showingSheet: Bool = false
-    @Binding var spent: Spent
-    
-    @State var title = ""
-    @State var icon = ""
-    @State var value: Float
-    @State var date = Date.now
+    var id = UUID()
+//    @State var showingSheet: Bool = false
+//    @State var title = ""
+//    @State var icon = ""
+//    @State var value: Float
+//    @State var date = Date.now
     
     var colorIcon: String
     var isPost: Bool
@@ -28,51 +27,43 @@ struct FormsSpentsView: View {
     
     var body: some View {
             Form {
-                Section(header: Text("Nome").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField( "Ex: Luz", text: $title)
-                        .underlineTextField()
-                        .listRowBackground(Color.clear)
-                }.textCase(.none)
-                
-                Section(header: Text("Ícone").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    Button(">") {
-                        showingSheet.toggle()
-                    }.sheet(isPresented: $showingSheet) {
-                        ModalView(selectedIcon: $icon, colorIcon: colorIcon)
-                    } .padding(.leading, UIScreen.screenWidth*0.77)
-                    .listRowBackground(Color.clear)
-                            .underlineTextField()
-                }.textCase(.none)
-                
-                Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField("Ex: R$200,00", value: $value, formatter: formatter)
-                        .listRowBackground(Color.clear)
-                        .keyboardType(.decimalPad)
-                        .underlineTextField()
-                }.textCase(.none)
-                
-                Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    DatePicker("", selection: $date, displayedComponents: [.date])
-                            .listRowBackground(Color.clear)
-                            .labelsHidden()
-                }.textCase(.none)
+//                Section(header: Text("Nome").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
+//                    TextField( "Ex: Luz", text: $title)
+//                        .underlineTextField()
+//                        .listRowBackground(Color.clear)
+//                }.textCase(.none)
+//
+//                Section(header: Text("Ícone").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
+//                    Button(">") {
+//                        showingSheet.toggle()
+//                    }.sheet(isPresented: $showingSheet) {
+//                        ModalView(selectedIcon: $icon, colorIcon: colorIcon)
+//                    } .padding(.leading, UIScreen.screenWidth*0.77)
+//                    .listRowBackground(Color.clear)
+//                            .underlineTextField()
+//                }.textCase(.none)
+//
+//                Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
+//                    TextField("Ex: R$200,00", value: $value, formatter: formatter)
+//                        .listRowBackground(Color.clear)
+//                        .keyboardType(.decimalPad)
+//                        .underlineTextField()
+//                }.textCase(.none)
+//
+//                Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
+//                    DatePicker("", selection: $date, displayedComponents: [.date])
+//                            .listRowBackground(Color.clear)
+//                            .labelsHidden()
+//                }.textCase(.none)
             }
             .navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
                     Button {
-                        var spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: self.spent.categoryPercent)
-                        spent.id = self.spent.id
-                        if isPost {
-                            if viewModel.postSpent(spent: spent) {
-                                self.presentationMode.wrappedValue.dismiss()
-                                self.spent = spent
-                            }
-                        } else {
-                            if viewModel.editSpent(spent: spent) {
-                                self.presentationMode.wrappedValue.dismiss()
-                                self.spent = spent
-                            }
-                        }
+//                        let newSpent = Spent(id: id, title: title, value: value, icon: icon, date: date, categoryPercent: viewModel.spentsCard.valuesPercent)
+//                        if viewModel.updateArray(isPost: isPost, newSpent: newSpent) {
+//                            
+//                        }
+                        
                     } label: {
                         if isPost {
                             Text("Salvar")
@@ -93,7 +84,7 @@ extension View {
     }
 }
 
-//struct FormView_Previews: PreviewProvider {
+// struct FormView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            FormsSpentsView (
@@ -104,4 +95,4 @@ extension View {
 //            )
 //        }
 //    }
-//}
+// }

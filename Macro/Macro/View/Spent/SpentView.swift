@@ -27,8 +27,9 @@ struct SpentView: View {
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
                     NavigationLink(destination:
-                                    FormsSpentsView(spent: .constant(Spent.emptyMock(category: viewModel.spentsCard.valuesPercent)), value: 0.0, colorIcon: viewModel.spentsCard.colorName, isPost: true)
-                                        .environmentObject(viewModel)
+                                    FormsSpentsView(
+//                                        value: 0.0,
+                                        colorIcon: viewModel.spentsCard.colorName, isPost: true)
                     ) {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
@@ -38,12 +39,13 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach(viewModel.$arraySpents) { spent in
+                ForEach(viewModel.arraySpents) { spent in
                     SpentsDetailsCardView(spent: spent, colorIcon: viewModel.spentsCard.colorName)
-                        .environmentObject(viewModel)
+                        
                 }
             } .listStyle(.insetGrouped)
         }
+        .environmentObject(viewModel)
         .navigationTitle(viewModel.spentsCard.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
         .navigationBarTitleDisplayMode(.inline)

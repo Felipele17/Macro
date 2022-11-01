@@ -68,4 +68,24 @@ class SpentViewModel: ObservableObject {
         spentsCard.avalibleMoney -= spent.value
         return true
     }
+    
+    func updateArray(isPost: Bool, newSpent: Spent) -> Bool {
+        if isPost {
+            if postSpent(spent: newSpent) {
+                arraySpents.append(newSpent)
+                return true
+            }
+            return false
+        } else {
+            if editSpent(spent: newSpent) {
+                let range = arraySpents.firstIndex { spent in
+                    spent.id == newSpent.id
+                }
+                guard let range = range else { return false }
+                arraySpents.replaceSubrange(range ... range, with: [newSpent])
+                return true
+            }
+            return false
+        }
+    }
 }

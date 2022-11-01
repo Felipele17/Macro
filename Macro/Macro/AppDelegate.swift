@@ -54,8 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        }
                     }
                 case .goal:
+                    print("goal notification")
                     ObservableDataBase.shared.needFetchGoal = true
                 case .spent:
+                    print("spent notification")
                     ObservableDataBase.shared.needFetchSpent = true
                 case .none:
                     print("none")

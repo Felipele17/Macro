@@ -11,7 +11,7 @@ struct MacroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var viewModel = MacroViewModel()
-    @StateObject var observableDataBase = ObservableDataBase.shared
+    var observableDataBase = ObservableDataBase.shared
     var body: some Scene {
         WindowGroup {
             if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
@@ -19,12 +19,12 @@ struct MacroApp: App {
                     if viewModel.isReady() {
                         if let methodologyGoals = viewModel.methodologyGoals {
                             HomeView(users: $viewModel.users, dictionarySpent: $viewModel.dictionarySpent, goals: $viewModel.goals, spentsCards: $viewModel.spentsCards, methodologyGoals: methodologyGoals)
-                                .onChange(of: observableDataBase.needFetchSpent) { needFetchSpent in
-                                    viewModel.reload(tipe: Spent.getType())
+                                .onChange(of: observableDataBase.needFetchSpent) { _ in
+                                    viewModel.reload(type: Spent.getType())
                                     observableDataBase.needFetchSpent = false
                                 }
-                                .onChange(of: observableDataBase.needFetchGoal) { needFetchGoal in
-                                    viewModel.reload(tipe: Goal.getType())
+                                .onChange(of: observableDataBase.needFetchGoal) { _ in
+                                    viewModel.reload(type: Goal.getType())
                                     observableDataBase.needFetchGoal = false
                                 }
                         }
@@ -41,22 +41,21 @@ struct MacroApp: App {
         .onChange(of: scenePhase) { (newScenePhase) in
                    switch newScenePhase {
                    case .active:
-                       Task {
-                           CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
-                           let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                          DispatchQueue.main.async {
-                              Invite.shared.isSendInviteAccepted = isSendInviteAccepted
-                          }
+                       if !Invite.shared.isSendInviteAccepted {
+                           Task {
+                               CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
+                               let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                               DispatchQueue.main.async {
+                                   Invite.shared.isSendInviteAccepted = isSendInviteAccepted
+                               }
+                           }
                        }
                    case .inactive:
-                       print("")
-//                       print("scene is now inactive!")
+                       print("scene is now inactive!")
                    case .background:
-                       print("")
-//                       print("scene is now in the background!")
+                       print("scene is now in the background!")
                    @unknown default:
-                       print("")
-//                       print("Apple must have added something new!")
+                       print("Apple must have added something new!")
                    }
                }
     }

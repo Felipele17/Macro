@@ -20,7 +20,7 @@ class MacroViewModel: ObservableObject {
     @Published var dictionarySpent: [[Spent]] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard] = []
-    @Published var checkData: [String: Bool] = [:]
+    @Published var checkData: [String: EnumStatusFecth] = [:]
     
     init() {
         interntMonitorOn()
@@ -63,14 +63,16 @@ class MacroViewModel: ObservableObject {
             }
             var ready = true
             for check in checkData.values {
-                ready = ready && check
+                 if check != .sucess {
+                     ready = false
+                }
             }
             return ready
         }
         return false
     }
     
-    // MARK:Load
+    // MARK: Load
     
     func loadSpentsCards() {
         Task.init {
@@ -82,10 +84,11 @@ class MacroViewModel: ObservableObject {
                     self.methodologySpent = methodologySpent
                     self.spentsCards.append(SpentsCard())
                     self.dictionarySpent.append([])
-                    self.checkData["\(value)spent"] = false
+                    self.checkData["\(value)spent"] = .loading
                 }
             }
-            getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+            await getSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+            print("loadSpentsCards")
         }
     }
     
@@ -100,37 +103,48 @@ class MacroViewModel: ObservableObject {
                 }
                 UserDefaults.standard.set(self.income, forKey: "income")
             }
+            print("loadUser")
         }
     }
     
-    func loadGoals(){
+    func loadGoals() {
         Task.init {
             DispatchQueue.main.async {
-                self.checkData["goal"] = false
+                self.checkData["goal"] = .loading
             }
             await getGoals()
             DispatchQueue.main.async {
-                self.checkData["goal"] = true
+                if self.checkData["goal"] == .loading {
+                    self.checkData["goal"] = .sucess
+                }
             }
+            print("loadGoals")
         }
     }
     
-    func loadMethodologyGoals(){
+    func loadMethodologyGoals() {
         Task.init {
             DispatchQueue.main.async {
-                self.checkData["methodologyGoals"] = false
+                self.checkData["methodologyGoals"] = .loading
+
             }
             methodologyGoals = try await fecthMethodologyGoal()
             DispatchQueue.main.async {
-                self.checkData["methodologyGoals"] = true
+                if self.checkData["methodologyGoals"] == .loading {
+                    self.checkData["methodologyGoals"] = .sucess
+                }
             }
+            print("loadMethodologyGoals")
         }
+        
     }
-    
-    func reload(tipe: String) {
-        if tipe == Goal.getType() {
-            loadGoals()
-        } else if tipe == Spent.getType() {
+
+    func reload(type: String)  {
+        if type == Goal.getType() && ObservableDataBase.shared.needFetchGoal {
+            Task {
+                await getGoals()
+            }
+        } else if type == Spent.getType() && ObservableDataBase.shared.needFetchSpent {
             guard let methodologySpent = methodologySpent else { return }
             getSpentsCards(namePercent: methodologySpent.namePercent, valuesPercent: methodologySpent.valuesPercent)
         } else {
@@ -138,7 +152,7 @@ class MacroViewModel: ObservableObject {
         }
     }
     
-    // MARK:Get
+    // MARK: Get
     
     func getUser() async -> [User]? {
         do {
@@ -180,6 +194,9 @@ class MacroViewModel: ObservableObject {
         } catch let error {
             print("Home - loadGoals")
             print(error.localizedDescription)
+            DispatchQueue.main.async {
+                self.checkData["goal"] = .error
+            }
         }
     }
     
@@ -195,17 +212,21 @@ class MacroViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.dictionarySpent[index] = spents
                         self.spentsCards[index] = spentsCard
-                        self.checkData["\(spentsCard.valuesPercent)spent"] = true
+                        self.checkData["\(spentsCard.valuesPercent)spent"] = .sucess
                     }
                 } catch let error {
                     print("Home - getSpentsCards")
                     print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.checkData["\(valuesPercent[index])spent"] = .error
+                    }
                 }
+                print("getSpentsCards: \(namePercent[index])")
             }
         }
     }
     
-    // MARK:convert
+    // MARK: convert
     
     private func valuePorcentCategory(categoryPorcent: Int) -> Float {
         return income*(Float(categoryPorcent)/100)
@@ -219,7 +240,7 @@ class MacroViewModel: ObservableObject {
         return value
     }
     
-    // MARK:fecth
+    // MARK: fecth
 
     private func fetchSpent(categoryPorcent: Int) async throws -> [Spent] {
         var spents: [Spent] = []
@@ -249,9 +270,15 @@ class MacroViewModel: ObservableObject {
         var methodologyGoal: MethodologyGoal?
         let predicate = NSPredicate(value: true)
         let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologyGoal.getType(), predicate: predicate)
-        guard let records = records else { return nil }
+        guard let records = records else {
+            self.checkData["methodologyGoals"] = .error
+            return nil
+        }
         for record in records {
-            guard let methodology = MethodologyGoal(record: record) else { return nil }
+            guard let methodology = MethodologyGoal(record: record) else {
+                self.checkData["methodologyGoals"] = .error
+                return nil
+            }
             methodologyGoal = methodology
         }
         return methodologyGoal

@@ -10,20 +10,19 @@ import SwiftUI
 struct SpentsDetailsCardView: View {
     @EnvironmentObject var viewModel: SpentViewModel
     @State var isActive = false
-    @Binding var spent: Spent
+    @State var spent: Spent
     var colorIcon: String
 
     var body: some View {
         NavigationLink(isActive: $isActive) {
-            FormsSpentsView( spent: $spent,
-                             title: spent.title,
-                             icon: spent.icon,
-                             value: spent.value,
-                             date: spent.date,
+            FormsSpentsView( id: spent.id,
+//                             title: spent.title,
+//                             icon: spent.icon,
+//                             value: spent.value,
+//                             date: spent.date,
                              colorIcon: colorIcon,
                              isPost: false
             )
-                .environmentObject(viewModel)
         } label: {
             HStack {
                 ZStack {

@@ -45,6 +45,7 @@
 		0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE49290AF4570021CF3F /* EnumDatabase.swift */; };
 		0695CE4C290B04050021CF3F /* EnumPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */; };
 		0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */; };
+		0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -149,6 +150,7 @@
 		0695CE49290AF4570021CF3F /* EnumDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDatabase.swift; sourceTree = "<group>"; };
 		0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPushNotifications.swift; sourceTree = "<group>"; };
 		0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableDataBase.swift; sourceTree = "<group>"; };
+		0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumStatusFecth.swift; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				9919974828E77E8F0075866D /* EnumSpentsInfo.swift */,
 				0695CE49290AF4570021CF3F /* EnumDatabase.swift */,
 				0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */,
+				0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
+				0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */,
 				55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */,
