@@ -13,22 +13,21 @@ struct MacroApp: App {
     @StateObject var viewModel = MacroViewModel()
     var body: some Scene {
         WindowGroup {
-            SettingsView()
-//            if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
-//                if viewModel.isConect {
-//                    if viewModel.isReady() {
-//                        if let methodologyGoals = viewModel.methodologyGoals {
-//                            HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.spentsCards, methodologyGoals: methodologyGoals)
-//                        }
-//                    } else {
-//                        LaunchScreenView()
-//                    }
-//                } else {
-//                    NoNetView()
-//                }
-//            } else {
-//                OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
-//            }
+            if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
+                if viewModel.isConect {
+                    if viewModel.isReady() {
+                        if let methodologyGoals = viewModel.methodologyGoals {
+                            HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.getSpentsCards(), methodologyGoals: methodologyGoals)
+                        }
+                    } else {
+                        LaunchScreenView()
+                    }
+                } else {
+                    NoNetView()
+                }
+            } else {
+                OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
+            }
         }
         .onChange(of: scenePhase) { (newScenePhase) in
                    switch newScenePhase {
@@ -41,10 +40,10 @@ struct MacroApp: App {
                           }
                        }
                    case .inactive:
-                       print("")
+                       print("ffff")
 //                       print("scene is now inactive!")
                    case .background:
-                       print("")
+                       print("ffff")
 //                       print("scene is now in the background!")
                    @unknown default:
                        print("")
