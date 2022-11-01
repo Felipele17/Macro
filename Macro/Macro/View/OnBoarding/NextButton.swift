@@ -21,7 +21,7 @@ struct NextButton: View {
             if onboardingPage != 3 {
                 onboardingPage += 1
                 if income != 0 {
-                    UserDefaults.standard.setValue(income, forKey: "income")
+                    UserDefault.userNextButton(income: income)
                 }
             } else {
                 Task {
