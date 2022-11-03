@@ -37,7 +37,7 @@ class UserDefault {
 
     // MARK:
     static func userHomeViewString() -> String {
-        return UserDefaults.standard.string(forKey: "username")
+        return UserDefaults.standard.string(forKey: "username") ?? ""
     }
 }
 
