@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FFD6228CBD66C003F9FDA /* CarouselView.swift */; };
+		0621175A29135B9500A1D593 /* String + transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621175929135B9500A1D593 /* String + transformToMoney.swift */; };
 		063C8AA028D241DC0053054B /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8A9F28D241DC0053054B /* GraphView.swift */; };
 		063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8AA328D249280053054B /* WeakGoalsView.swift */; };
 		063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8AA528D2661C0053054B /* ChartPieViewModel.swift */; };
@@ -62,7 +63,6 @@
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
-		554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */; };
 		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
 		554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */; };
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
@@ -81,7 +81,6 @@
 		99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */; };
 		99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */; };
 		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
-		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
 		99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */; };
 		99F6A9EE290AFEE800925DFD /* HistorySpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */; };
 		99F6A9F0290B23F200925DFD /* MethodologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A9EF290B23F200925DFD /* MethodologyView.swift */; };
@@ -110,6 +109,7 @@
 
 /* Begin PBXFileReference section */
 		061FFD6228CBD66C003F9FDA /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0621175929135B9500A1D593 /* String + transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + transformToMoney.swift"; sourceTree = "<group>"; };
 		063C8A9F28D241DC0053054B /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		063C8AA328D249280053054B /* WeakGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakGoalsView.swift; sourceTree = "<group>"; };
 		063C8AA528D2661C0053054B /* ChartPieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPieViewModel.swift; sourceTree = "<group>"; };
@@ -169,7 +169,6 @@
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
-		554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNextButton.swift; sourceTree = "<group>"; };
 		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
 		554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalMotivationView.swift; sourceTree = "<group>"; };
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
@@ -188,7 +187,6 @@
 		99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
-		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
 		99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsEditGoals.swift; sourceTree = "<group>"; };
 		99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySpentsView.swift; sourceTree = "<group>"; };
 		99F6A9EF290B23F200925DFD /* MethodologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyView.swift; sourceTree = "<group>"; };
@@ -224,6 +222,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0621175829135B0200A1D593 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0621175929135B9500A1D593 /* String + transformToMoney.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		06449BDE28C2921E00035324 = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +329,7 @@
 		06449C1928C2994800035324 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0621175829135B0200A1D593 /* Extension */,
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
@@ -381,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				06449C2128C29BFB00035324 /* SettingsView.swift */,
+				99F6A9EB290AFE6400925DFD /* elements */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -470,7 +478,6 @@
 			children = (
 				06449C3D28C29E5D00035324 /* GoalViewModel.swift */,
 				063C8AA528D2661C0053054B /* ChartPieViewModel.swift */,
-				99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -487,7 +494,6 @@
 			isa = PBXGroup;
 			children = (
 				55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */,
-				554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */,
 				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 				0692ED0529075A4A00B986DF /* PrioritySelector.swift */,
 			);
@@ -752,7 +758,6 @@
 				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
-				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
@@ -780,6 +785,7 @@
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
+				0621175A29135B9500A1D593 /* String + transformToMoney.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
@@ -791,7 +797,6 @@
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
 				06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
-				99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */,
 				9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,

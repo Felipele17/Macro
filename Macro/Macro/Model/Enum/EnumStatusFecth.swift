@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum EnumStatusFecth{
+enum EnumStatusFecth {
     case loading
     case sucess
     case error

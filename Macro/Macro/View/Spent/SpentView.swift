@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SpentView: View {
     @EnvironmentObject var viewModel: SpentViewModel
-    @State private var nav = false
     var spentsCard: SpentsCard
     
     var body: some View {
@@ -21,31 +20,28 @@ struct SpentView: View {
                 Text("\(spentsCard.moneySpented)".floatValue.currency)
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     .padding(.leading)
-                Text("Limite disponivel "+"\(viewModel.spentsCard.availableMoney)".floatValue.currency)
+                Text("Limite disponivel "+"\(spentsCard.availableMoney)".floatValue.currency)
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .padding(.leading)
                 HStack {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    
-                    NavigationLink(isActive: $nav) {
+                    NavigationLink {
                         FormsSpentsView(
-                            spentsCard: spentsCard, value: 0.0,
+                            spentsCard: spentsCard,
                             colorIcon: spentsCard.colorName, isPost: true)
                     } label: {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     }
-
                 }
                 .padding(.leading)
                 .padding(.top, 20)
             List {
                 ForEach(viewModel.getArraySpents(spentsCard: spentsCard)) { spent in
                     SpentsDetailsCardView(spent: spent, spentsCard: spentsCard)
-                        
                 }
             } .listStyle(.insetGrouped)
         }

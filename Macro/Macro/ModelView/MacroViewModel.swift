@@ -58,16 +58,10 @@ class MacroViewModel: ObservableObject {
     
     func isReady() -> Bool {
         if isConect {
-            if !didLoad {
-                loadData()
-            }
-            var ready = true
-            for check in checkData.values {
-                 if check != .sucess {
-                     ready = false
-                }
-            }
-            return ready
+            if !didLoad { loadData() }
+            let check = checkData.values.first { $0 == .loading }
+            if check == nil { return true }
+            return false
         }
         return false
     }
@@ -208,7 +202,7 @@ class MacroViewModel: ObservableObject {
                     let total = self.valuePorcentCategory(categoryPorcent: categoryPorcent)
                     let spents: [Spent] = try await fetchSpent(categoryPorcent: categoryPorcent)
                     let moneySpented = self.spentedMoneyCategory(spents: spents)
-                    let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, avalibleMoney: total - moneySpented )
+                    let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, availableMoney: total - moneySpented )
                     DispatchQueue.main.async {
                         self.dictionarySpent[index] = spents
                         self.spentsCards[index] = spentsCard
@@ -254,7 +248,7 @@ class MacroViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.dictionarySpent[index] = spents
                         self.spentsCards[index] = spentsCard
-                        self.checkData["\(spentsCard.valuesPercent)spent"] = true
+                        self.checkData["\(spentsCard.valuesPercent)spent"] = .sucess
                     }
                 } catch let error {
                     print("Home - getSpentsCards")
@@ -262,16 +256,6 @@ class MacroViewModel: ObservableObject {
                 }
             }
         }
-    }
-    
-    func getSpentsCards() -> [SpentsCard] {
-        var spentsCards: [SpentsCard] = []
-        for spentsCard in self.spentsCards {
-            if let spentsCard = spentsCard {
-                spentsCards.append(spentsCard)
-            }
-        }
-        return spentsCards
     }
     
     private func fetchSpent(categoryPorcent: Int) async throws -> [Spent] {
@@ -303,12 +287,16 @@ class MacroViewModel: ObservableObject {
         let predicate = NSPredicate(value: true)
         let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologyGoal.getType(), predicate: predicate)
         guard let records = records else {
-            self.checkData["methodologyGoals"] = .error
+            DispatchQueue.main.async {
+                self.checkData["methodologyGoals"] = .error
+            }
             return nil
         }
         for record in records {
             guard let methodology = MethodologyGoal(record: record) else {
-                self.checkData["methodologyGoals"] = .error
+                DispatchQueue.main.async {
+                    self.checkData["methodologyGoals"] = .error
+                }
                 return nil
             }
             methodologyGoal = methodology

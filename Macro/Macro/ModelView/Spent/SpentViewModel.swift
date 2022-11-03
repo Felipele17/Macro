@@ -27,9 +27,7 @@ class SpentViewModel: ObservableObject {
     }
     
     func postSpent(spent: Spent, spentsCard: SpentsCard) -> Bool {
-        let index = spentsCards.firstIndex { sc in
-            sc == spentsCard
-        }
+        let index = spentsCards.firstIndex { $0.id == spentsCard.id }
         guard let index = index else { return false }
         var arraySpents = dictionarySpent[index]
         guard let spent = createSpent(spent: spent) else { return false }
@@ -38,16 +36,14 @@ class SpentViewModel: ObservableObject {
         }
         arraySpents.append(spent)
         spentsCards[index].moneySpented += spent.value
-        spentsCards[index].avalibleMoney -= spent.value
+        spentsCards[index].availableMoney -= spent.value
         dictionarySpent[index] = arraySpents
         return true
     }
     
     func deleteSpent(spent: Spent, spentsCard: SpentsCard) {
         
-        let index = spentsCards.firstIndex { sc in
-            sc == spentsCard
-        }
+        let index = spentsCards.firstIndex { $0.id == spentsCard.id }
         guard let index = index else { return }
         var arraySpents = dictionarySpent[index]
         
@@ -58,44 +54,37 @@ class SpentViewModel: ObservableObject {
             elemSpent.id == spent.id
         }
         spentsCards[index].moneySpented -= spent.value
-        spentsCards[index].avalibleMoney += spent.value
+        spentsCards[index].availableMoney += spent.value
         dictionarySpent[index] = arraySpents
     }
     
     func editSpent(spent: Spent, spentsCard: SpentsCard) -> Bool {
         
-        let index = spentsCards.firstIndex { sc in
-            sc == spentsCard
-        }
+        let index = spentsCards.firstIndex { $0.id == spentsCard.id }
         guard let index = index else { return false}
-        var arraySpents = dictionarySpent[index]
+        let arraySpents = dictionarySpent[index]
         
         guard let spent = createSpent(spent: spent) else { return false}
-        Task.init {
-            await cloud.update(model: spent)
-        }
-        let origSpentValue: Float = arraySpents.first { elemSpent in
-            elemSpent.id == spent.id
-        }?.value ?? 0.0
+        Task.init { await cloud.update(model: spent) }
+        let origSpentValue: Float = arraySpents.first { $0.id == spent.id }?.value ?? 0.0
         
         spentsCards[index].moneySpented -= origSpentValue
         spentsCards[index].moneySpented += spent.value
-        spentsCards[index].avalibleMoney += origSpentValue
-        spentsCards[index].avalibleMoney -= spent.value
+        spentsCards[index].availableMoney += origSpentValue
+        spentsCards[index].availableMoney -= spent.value
         return true
     }
     
     func updateArray(isPost: Bool, newSpent: Spent, spentsCard: SpentsCard) -> Bool {
         
-        let index = spentsCards.firstIndex { sc in
-            sc == spentsCard
-        }
+        let index = spentsCards.firstIndex { $0.id == spentsCard.id }
         guard let index = index else { return false}
         var arraySpents = dictionarySpent[index]
         
         if isPost {
             if postSpent(spent: newSpent, spentsCard: spentsCard) {
                 arraySpents.append(newSpent)
+                dictionarySpent[index] = arraySpents
                 return true
             }
             return false
@@ -106,6 +95,7 @@ class SpentViewModel: ObservableObject {
                 }
                 guard let range = range else { return false }
                 arraySpents.replaceSubrange(range ... range, with: [newSpent])
+                dictionarySpent[index] = arraySpents
                 return true
             }
             return false
@@ -113,11 +103,9 @@ class SpentViewModel: ObservableObject {
     }
     
     func getArraySpents(spentsCard: SpentsCard) -> [Spent] {
-        let index = spentsCards.firstIndex { sc in
-            sc == spentsCard
-        }
+        let index = spentsCards.firstIndex { $0.id == spentsCard.id }
         guard let index = index else { return []}
-        var arraySpents = dictionarySpent[index]
+        let arraySpents = dictionarySpent[index]
         return arraySpents
     }
     

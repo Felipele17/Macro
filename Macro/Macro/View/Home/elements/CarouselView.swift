@@ -25,7 +25,7 @@ struct CarouselView: View {
 
                     }
                 } else {
-                    ForEach($goalViewModel.goals) { goal in
+                    ForEach(goalViewModel.goals) { goal in
                         NavigationLink(destination: GoalsView(goal: goal)) {
                             GoalCardView(goal: goal)
                                 .frame(width: width, height: heigth)
@@ -39,7 +39,7 @@ struct CarouselView: View {
     }
 }
 
-//struct CarouselView_Previews: PreviewProvider {
+// struct CarouselView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CarouselView(width: 325.0, heigth: 200.0, goals: .constant([
 //             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)),
@@ -47,4 +47,4 @@ struct CarouselView: View {
 //             Goal(title: "Carro Novo", value: 20000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))
 //                    ]))
 //    }
-//}
+// }

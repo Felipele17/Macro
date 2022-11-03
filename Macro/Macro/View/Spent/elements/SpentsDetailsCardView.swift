@@ -13,12 +13,13 @@ struct SpentsDetailsCardView: View {
     var spent: Spent
     var spentsCard: SpentsCard
     var body: some View {
-        NavigationLink(isActive: $isActive) {
+        NavigationLink {
             FormsSpentsView( id: spent.id,
                              spentsCard: spentsCard,
+                             isValidValue: true,
                              title: spent.title,
                              icon: spent.icon,
-                             value: spent.value,
+                             value: String(spent.value).replacingOccurrences(of: ".", with: ",").transformToMoney() ?? "",
                              date: spent.date,
                              colorIcon: spentsCard.colorName,
                              isPost: false
@@ -61,7 +62,7 @@ struct SpentsDetailsCardView: View {
     }
 }
 
-//struct SpentsDetailsCardView_Previews: PreviewProvider {
+// struct SpentsDetailsCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SpentsDetailsCardView(
 //            categoty: 50, colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
@@ -69,4 +70,4 @@ struct SpentsDetailsCardView: View {
 //            spent: .constant(Spent.emptyMock(category: 50))
 //        )
 //    }
-//}
+// }

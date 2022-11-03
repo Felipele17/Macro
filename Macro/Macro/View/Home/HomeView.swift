@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var isActive: Bool = false
+    @State var showingSheet: Bool = false
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
     
@@ -21,13 +21,16 @@ struct HomeView: View {
                          .padding()
                     Spacer()
                     if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
-                        NavigationLink(destination: FormsGoalsNameView(goal: goal, goals: $goalViewModel.goals, popToRoot: $isActive)
-                            .environmentObject(goalViewModel)
-                        ,isActive: $isActive ) {
+                        Button {
+                            showingSheet.toggle()
+                        } label: {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                                 .padding()
+                        }
+                        .sheet(isPresented: $showingSheet) {
+                            FormsGoalsNameView(goal: goal, popToRoot: $showingSheet)
                         }
                     }
                 }

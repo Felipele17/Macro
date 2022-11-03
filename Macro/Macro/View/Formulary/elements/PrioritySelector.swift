@@ -10,7 +10,7 @@ import SwiftUI
 struct PrioritySelector: View {
     @Binding var priority: Int
     var body: some View {
-        VStack{
+        VStack {
             Text("Nível de Prioridade")
                 .font(.custom(EnumFonts.medium.rawValue, size: 28))
                 .padding(.top, 30)
@@ -55,8 +55,8 @@ struct PrioritySelector: View {
     }
 }
 
-//struct PrioritySelector_Previews: PreviewProvider {
+// struct PrioritySelector_Previews: PreviewProvider {
 //    static var previews: some View {
 //        PrioritySelector()
 //    }
-//}
+// }

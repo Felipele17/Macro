@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FormsGoalsNameView: View {
-    
-    @State private var pageIndex = 0
+    @EnvironmentObject var viewModel: GoalViewModel
     @State var goal: Goal
-    @Binding var goals: [Goal]
     @Binding var popToRoot: Bool
     
     var body: some View {
+        NavigationStack {
             VStack(alignment: .leading) {
                 Text("Qual o nome da sua meta?")
                     .font(.custom("SFProText-Medium", size: 34))
@@ -27,9 +26,16 @@ struct FormsGoalsNameView: View {
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title == "" ? true : false, pageIndex: $pageIndex, popToRoot: $popToRoot)
+                NavigationLink {
+                    FormsGoalsValueView(goal: goal, popToRoot: $popToRoot)
+                } label: {
+                    TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: goal.title.isEmpty)
+                }
+                .isDetailLink(false)
+                .disabled(goal.title.isEmpty)
             }
             .padding(20)
+        }
     }
 }
 

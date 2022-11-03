@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct GoalsView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @EnvironmentObject var goalViewModel: GoalViewModel
     @State private var selectFilter = 1
-    @Binding var goal: Goal
+    @State var goal: Goal
     
     var body: some View {
         VStack {
@@ -24,6 +25,7 @@ struct GoalsView: View {
                     goalViewModel.goals.removeAll { goal in
                         goal.id == self.goal.id
                     }
+                    self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     Label("", systemImage: "trash")
                         .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -97,7 +99,7 @@ extension GoalsView {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
+// struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            GoalsView(goal:
@@ -105,4 +107,4 @@ extension GoalsView {
 //            )
 //        }
 //    }
-//}
+// }

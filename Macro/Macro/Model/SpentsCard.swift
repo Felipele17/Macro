@@ -32,6 +32,6 @@ struct SpentsCard: Identifiable, Hashable {
         self.valuesPercent = -1
         self.namePercent = ""
         self.moneySpented = -1
-        self.avalibleMoney = -1
+        self.availableMoney = -1
     }
 }
