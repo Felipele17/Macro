@@ -66,6 +66,7 @@
 		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
 		554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */; };
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
+		55B16D6C29105E6700A7D140 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B16D6B29105E6700A7D140 /* UserDefault.swift */; };
 		55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */; };
 		55D19CAE28E76970004F84A8 /* FormsGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */; };
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
@@ -172,6 +173,7 @@
 		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
 		554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalMotivationView.swift; sourceTree = "<group>"; };
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
+		55B16D6B29105E6700A7D140 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTextButton.swift; sourceTree = "<group>"; };
 		55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalViewModel.swift; sourceTree = "<group>"; };
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				063C8AA728D266410053054B /* ChartData.swift */,
 				06BFF3EB28ECCA870015C79B /* Invite.swift */,
 				0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */,
+				55B16D6B29105E6700A7D140 /* UserDefault.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				5544774728E23483000C892E /* EnumImageName.swift in Sources */,
 				06449C4228C29EA400035324 /* Goal.swift in Sources */,
 				063C8AA828D266410053054B /* ChartData.swift in Sources */,
+				55B16D6C29105E6700A7D140 /* UserDefault.swift in Sources */,
 				06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */,

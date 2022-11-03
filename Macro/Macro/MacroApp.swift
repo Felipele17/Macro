@@ -14,9 +14,11 @@ struct MacroApp: App {
     @StateObject var spentViewModel = SpentViewModel()
     @StateObject var goalViewModel = GoalViewModel()
     @StateObject var observableDataBase = ObservableDataBase.shared
+    let userDefault = UserDefault()
+    
     var body: some Scene {
         WindowGroup {
-            if UserDefaults.standard.bool(forKey: "didOnBoardingHappen") {
+            if userDefault.userOnBoardingBool {
                 if viewModel.isConect {
                     if viewModel.isReady() {
                         HomeView()
@@ -53,7 +55,7 @@ struct MacroApp: App {
                     NoNetView()
                 }
             } else {
-                OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
+                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome)
             }
         }
         .onChange(of: scenePhase) { (newScenePhase) in

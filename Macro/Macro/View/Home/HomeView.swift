@@ -59,7 +59,7 @@ struct HomeView: View {
                 
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
-            .navigationTitle("Bom dia \(UserDefaults.standard.string(forKey: "username") ?? "")!")
+            .navigationTitle("Bom dia \(UserDefault.userHomeViewString())!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             

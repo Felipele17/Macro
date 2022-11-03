@@ -24,6 +24,7 @@ class MacroViewModel: ObservableObject {
     
     init() {
         interntMonitorOn()
+        self.income = UserDefault.userMacroIncome()
     }
     
     func loadData() {
