@@ -10,22 +10,20 @@ import SwiftUI
 struct FormsSpentsView: View {
     @EnvironmentObject var viewModel: SpentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
+    var id = UUID()
+    var spentsCard: SpentsCard
     @State var showingSheet: Bool = false
-    @Binding var spent: Spent
-    
+    @State var isValidValue: Bool = false
     @State var title = ""
     @State var icon = ""
-    @State var value: Float
+    @State var value: String = ""
     @State var date = Date.now
+    
+    @State var validTextField = false
     
     var colorIcon: String
     var isPost: Bool
-    let formatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            return formatter
-        }()
-    
+
     var body: some View {
             Form {
                 Section(header: Text("Nome").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
@@ -39,18 +37,25 @@ struct FormsSpentsView: View {
                         showingSheet.toggle()
                     }.sheet(isPresented: $showingSheet) {
                         ModalView(selectedIcon: $icon, colorIcon: colorIcon)
-                    } .padding(.leading, UIScreen.screenWidth*0.77)
-                    .listRowBackground(Color.clear)
-                            .underlineTextField()
+                    }.padding(.leading, UIScreen.screenWidth*0.77)
+                     .listRowBackground(Color.clear)
+                     .underlineTextField()
                 }.textCase(.none)
-                
+
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField("Ex: R$200,00", value: $value, formatter: formatter)
+                    TextField("Ex: R$200,00", text: $value)
                         .listRowBackground(Color.clear)
                         .keyboardType(.decimalPad)
                         .underlineTextField()
+                        .onChange(of: value) { _ in
+                            if let stringMoney = value.transformToMoney() {
+                                value = stringMoney
+                                isValidValue = true
+                            } else {
+                                isValidValue = false
+                            }
+                        }
                 }.textCase(.none)
-                
                 Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
                     DatePicker("", selection: $date, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
@@ -60,17 +65,11 @@ struct FormsSpentsView: View {
             .navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
                     Button {
-                        var spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: self.spent.categoryPercent)
-                        spent.id = self.spent.id
-                        if isPost {
-                            if viewModel.postSpent(spent: spent) {
-                                self.presentationMode.wrappedValue.dismiss()
-                                self.spent = spent
-                            }
-                        } else {
-                            if viewModel.editSpent(spent: spent) {
-                                self.presentationMode.wrappedValue.dismiss()
-                                self.spent = spent
+                        if isValidValue {
+                            let value = value.replacingOccurrences(of: ".", with: "").floatValue
+                            let newSpent = Spent(id: id, title: title, value: value, icon: icon, date: date, categoryPercent: spentsCard.valuesPercent)
+                            if viewModel.updateArray(isPost: isPost, newSpent: newSpent, spentsCard: spentsCard) {
+                                presentationMode.wrappedValue.dismiss()
                             }
                         }
                     } label: {

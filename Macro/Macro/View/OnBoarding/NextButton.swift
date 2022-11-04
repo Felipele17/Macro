@@ -13,15 +13,17 @@ struct NextButton: View {
     var text: String
     var cloud = CloudKitModel.shared
     let invite = Invite.shared
+    @Binding var validTextField: Bool
     @Binding var onboardingPage: Int
-    @Binding var income: Float
+    @Binding var income: String
     
     var body: some View {
         Button {
             if onboardingPage != 3 {
                 onboardingPage += 1
-                if income != 0 {
-                    UserDefaults.standard.setValue(income, forKey: "income")
+                if !income.isEmpty {
+                    let money = income.floatValue
+                    UserDefault.userNextButton(income: money)
                 }
             } else {
                 Task {
@@ -44,10 +46,10 @@ struct NextButton: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(income != 0.0 ?  .gray : Color(EnumColors.buttonColor.rawValue) )
+                .background((validTextField && onboardingPage == 2) || onboardingPage != 2 ?   Color(EnumColors.buttonColor.rawValue): .gray )
                 .cornerRadius(13)
         }
-        .disabled(income == 0.0 && onboardingPage == 2)
+        .disabled(!validTextField && onboardingPage == 2)
     
     }
 }

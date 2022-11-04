@@ -10,24 +10,24 @@ import SwiftUI
 struct SpentsDetailsCardView: View {
     @EnvironmentObject var viewModel: SpentViewModel
     @State var isActive = false
-    @Binding var spent: Spent
-    var colorIcon: String
-
+    var spent: Spent
+    var spentsCard: SpentsCard
     var body: some View {
-        NavigationLink(isActive: $isActive) {
-            FormsSpentsView( spent: $spent,
+        NavigationLink {
+            FormsSpentsView( id: spent.id,
+                             spentsCard: spentsCard,
+                             isValidValue: true,
                              title: spent.title,
                              icon: spent.icon,
-                             value: spent.value,
+                             value: String(spent.value).replacingOccurrences(of: ".", with: ",").transformToMoney() ?? "",
                              date: spent.date,
-                             colorIcon: colorIcon,
+                             colorIcon: spentsCard.colorName,
                              isPost: false
             )
-                .environmentObject(viewModel)
         } label: {
             HStack {
                 ZStack {
-                    Color(colorIcon)
+                    Color(spentsCard.colorName)
                         .cornerRadius(10)
                     Image(systemName: spent.icon)
                         .foregroundColor(.white)
@@ -47,7 +47,7 @@ struct SpentsDetailsCardView: View {
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: false ) {
             Button {
-                viewModel.deleteSpent(spent: spent)  
+                viewModel.deleteSpent(spent: spent, spentsCard: spentsCard)
             } label: {
                 Label("Deletar", systemImage: "trash.fill")
             }

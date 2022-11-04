@@ -11,15 +11,10 @@ struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
     @ObservedObject var viewModel: OnBoardingViewModel
-    @Binding var incomeTextField: Float
-//    @State var income: Bool
+    @Binding var value: String
+    @Binding var validTextField: Bool
     @FocusState var keyboardIsFocused: Bool
-    let formatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            return formatter
-        }()
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(onboarding.title)
@@ -29,13 +24,20 @@ struct OnBoardingPageTypeTwoView: View {
                 .padding(1.3)
             
             VStack {
-                TextField("Ex.: R$ 3000,00", value: $incomeTextField, formatter: formatter)
+                TextField("Ex.: R$ 3000,00", text: $value)
                     .keyboardType(.decimalPad)
                     .foregroundColor(Color(EnumColors.subtitle.rawValue))
                     .focused($keyboardIsFocused)
                 Rectangle()
                     .frame(height: 1.0, alignment: .bottom)
                     .foregroundColor(Color(EnumColors.subtitle.rawValue))
+                    .onChange(of: value) { _ in
+                        if value.transformToMoney() != nil {
+                            validTextField = true
+                        } else {
+                            validTextField = false
+                        }
+                    }
                     
             }
             .padding(1.5)
@@ -59,8 +61,8 @@ struct OnBoardingPageTypeTwoView: View {
     }
 }
 
-struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingViewModel(), incomeTextField: .constant(10))
-    }
-}
+// struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingViewModel(), incomeTextField: .constant(10))
+//    }
+// }

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct GoalsView: View {
-    @Binding var goal: Goal
-    @Binding var goals: [Goal]
-    @StateObject private var viewModel = GoalViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
+    @EnvironmentObject var goalViewModel: GoalViewModel
     @State private var selectFilter = 1
+    @State var goal: Goal
     
     var body: some View {
         VStack {
@@ -21,10 +21,11 @@ struct GoalsView: View {
                     .padding()
                 Spacer()
                 Button(role: nil) {
-                    viewModel.deleteGoal(goal: goal)
-                    goals.removeAll { goal in
+                    goalViewModel.deleteGoal(goal: goal)
+                    goalViewModel.goals.removeAll { goal in
                         goal.id == self.goal.id
                     }
+                    self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     Label("", systemImage: "trash")
                         .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -68,7 +69,7 @@ struct GoalsView: View {
                             WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1))
                                 .onTapGesture {
                                     goal.weeks += 1
-                                    viewModel.editGoal(goal: goal)
+                                    goalViewModel.editGoal(goal: goal)
                                 }
                         }
                         ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in

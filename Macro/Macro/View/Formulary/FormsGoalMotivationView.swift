@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct FormsGoalMotivationView: View {
+    @EnvironmentObject var viewModel: GoalViewModel
+    
     @State var goal: Goal
-    @Binding var goals: [Goal]
     var motivations: [String] = ["Guardar dinheiro", "Realização de um sonho", "Sempre quis conquistar essa meta"]
-    @State var index = 0
+    
+    @State var index = 1
     @State var motivation = ""
     @Binding var popToRoot: Bool
-    //    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -59,7 +60,7 @@ struct FormsGoalMotivationView: View {
                     Task.init {
                         try? await CloudKitModel.shared.post( model: goal)
                     }
-                    goals.append(goal)
+                    viewModel.goals.append(goal)
                     popToRoot.toggle()
                 } label: {
                     Text("Salvar")

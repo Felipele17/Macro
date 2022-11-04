@@ -11,7 +11,7 @@ class Invite: ObservableObject {
     private var cloud = CloudKitModel.shared
     @Published var isReceivedInviteAccepted: Bool = false
     @Published var isSendInviteAccepted: Bool = false
-    
+        
     private init() {
         Task {
             let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
@@ -33,7 +33,7 @@ class Invite: ObservableObject {
     
     func isReady(income: Float) -> Bool {
         if isSendInviteAccepted && isReceivedInviteAccepted {
-            UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen")
+            UserDefault.userOnBoardingInvite()
             Task {
                 var participantsNames: [String] = []
                 if let participants = cloud.share?.participants {
@@ -45,7 +45,7 @@ class Invite: ObservableObject {
                 guard let username = cleanName(name: participantsNames.first) else { return }
                 guard let partenername = cleanName(name: participantsNames.last) else { return }
 
-                UserDefaults.standard.setValue(username, forKey: "username")
+                UserDefault.userOnBoardingUsername(username: username)
                 
                 let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
                 try? await cloud.post(model: methodologySpent)
@@ -56,6 +56,12 @@ class Invite: ObservableObject {
             Task {
                 let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
                 try? await cloud.post(model: methodologyGoal)
+            }
+            Task {
+                await cloud.saveNotification(recordType: Goal.getType(), database: .dataShare)
+            }
+            Task {
+                await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
             }
             return true
         } else {

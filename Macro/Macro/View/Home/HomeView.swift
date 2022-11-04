@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var isActive: Bool = false
-    @State var users: [User]
-    @State var dictionarySpent: [[Spent]]
-    @State var goals: [Goal]
-    @State var spentsCards: [SpentsCard]
-    var methodologyGoals: MethodologyGoal
+    @State var showingSheet: Bool = false
+    @EnvironmentObject var spentViewModel: SpentViewModel
+    @EnvironmentObject var goalViewModel: GoalViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                        .padding()
+                         .padding()
                     Spacer()
                     NavigationLink(destination:
                                     FormsGoalsNameView(
@@ -31,10 +28,23 @@ struct HomeView: View {
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                             .padding()
+                    if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
+                        Button {
+                            showingSheet.toggle()
+                        } label: {
+                            Label("", systemImage: "plus")
+                                .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                .font(.custom(EnumFonts.semibold.rawValue, size: 28))
+                                .padding()
+                        }
+                        .sheet(isPresented: $showingSheet) {
+                            FormsGoalsNameView(goal: goal, popToRoot: $showingSheet)
+                        }
                     }
                 }
                 .padding(.top)
-                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5, goals: $goals)
+                CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5)
+                    .environmentObject(goalViewModel)
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -44,9 +54,10 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    ForEach($spentsCards) { spentsCard in
+                    ForEach(spentViewModel.spentsCards) { spentsCard in
                         NavigationLink(destination:
-                                        SpentView(viewModel: SpentViewModel(spentsCard: spentsCard, arraySpents: $dictionarySpent[spentsCard.id]))
+                                SpentView(spentsCard: spentsCard)
+                                    .environmentObject(spentViewModel)
                         ) {
                             SpentsCardView(spentsCard: spentsCard)
                                 .padding()
@@ -56,7 +67,7 @@ struct HomeView: View {
                 
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
-            .navigationTitle("Bom dia \(UserDefaults.standard.string(forKey: "username") ?? "")!")
+            .navigationTitle("Bom dia \(UserDefault.userHomeViewString())!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             
