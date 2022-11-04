@@ -93,7 +93,7 @@ extension View {
     }
 }
 
-//struct FormView_Previews: PreviewProvider {
+// struct FormView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            FormsSpentsView (
@@ -104,4 +104,4 @@ extension View {
 //            )
 //        }
 //    }
-//}
+// }

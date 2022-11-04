@@ -62,7 +62,7 @@ struct SpentsDetailsCardView: View {
     }
 }
 
-//struct SpentsDetailsCardView_Previews: PreviewProvider {
+// struct SpentsDetailsCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SpentsDetailsCardView(
 //            categoty: 50, colorIcon: EnumColors.backgroundCardMetaColor.rawValue,
@@ -70,4 +70,4 @@ struct SpentsDetailsCardView: View {
 //            spent: .constant(Spent.emptyMock(category: 50))
 //        )
 //    }
-//}
+// }

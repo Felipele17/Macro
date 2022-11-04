@@ -58,10 +58,10 @@ struct FormsEditGoals: View {
     }
 }
 
-//struct FormsEditGoals_Previews: PreviewProvider {
+// struct FormsEditGoals_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            FormsEditGoals(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 2, crescent: true))))
 //        }
 //    }
-//}
+// }

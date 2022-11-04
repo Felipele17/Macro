@@ -40,8 +40,8 @@ struct FormsGoalsValueView: View {
     }
 }
 
-//struct FormsGoalsValueView_Previews: PreviewProvider {
+// struct FormsGoalsValueView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
 //    }
-//}
+// }

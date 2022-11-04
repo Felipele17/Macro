@@ -98,7 +98,7 @@ extension GoalsView {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
+// struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
 //            GoalsView(goal:
@@ -106,4 +106,4 @@ extension GoalsView {
 //            )
 //        }
 //    }
-//}
+// }

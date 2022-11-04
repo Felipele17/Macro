@@ -33,8 +33,8 @@ struct FormsGoalsNameView: View {
     }
 }
 
-//struct FormGoalsView_Previews: PreviewProvider {
+// struct FormGoalsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), popToRoot: .constant(true))
 //    }
-//}
+// }

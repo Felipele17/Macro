@@ -16,7 +16,6 @@ struct MethodologySpentsView: View {
         ]
 
     var body: some View {
-        NavigationView {
             VStack(alignment: .leading) {
                 ForEach(methodologies, id: \.self) { methodology in
                     VStack(alignment: .leading) {
@@ -58,7 +57,6 @@ struct MethodologySpentsView: View {
                 .navigationBarTitleDisplayMode(.automatic)
                 .background(Color(EnumColors.backgroundScreen.rawValue))
 
-        }
     }
 }
 struct MethodologyView_Previews: PreviewProvider {
