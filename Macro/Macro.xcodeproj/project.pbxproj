@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FFD6228CBD66C003F9FDA /* CarouselView.swift */; };
+		0621175A29135B9500A1D593 /* String + transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621175929135B9500A1D593 /* String + transformToMoney.swift */; };
 		063C8AA028D241DC0053054B /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8A9F28D241DC0053054B /* GraphView.swift */; };
 		063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8AA328D249280053054B /* WeakGoalsView.swift */; };
 		063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8AA528D2661C0053054B /* ChartPieViewModel.swift */; };
@@ -42,6 +43,10 @@
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		0692ED0629075A4A00B986DF /* PrioritySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692ED0529075A4A00B986DF /* PrioritySelector.swift */; };
+		0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE49290AF4570021CF3F /* EnumDatabase.swift */; };
+		0695CE4C290B04050021CF3F /* EnumPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */; };
+		0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */; };
+		0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -58,7 +63,6 @@
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
-		554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */; };
 		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
 		554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */; };
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
@@ -78,7 +82,6 @@
 		99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */; };
 		99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */; };
 		99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */; };
-		99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */; };
 		99E4F21028E4BF0000AB24FA /* FormsEditGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */; };
 		99F6A9EE290AFEE800925DFD /* HistorySpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */; };
 		99F6A9F0290B23F200925DFD /* MethodologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A9EF290B23F200925DFD /* MethodologyView.swift */; };
@@ -107,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		061FFD6228CBD66C003F9FDA /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0621175929135B9500A1D593 /* String + transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + transformToMoney.swift"; sourceTree = "<group>"; };
 		063C8A9F28D241DC0053054B /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		063C8AA328D249280053054B /* WeakGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakGoalsView.swift; sourceTree = "<group>"; };
 		063C8AA528D2661C0053054B /* ChartPieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPieViewModel.swift; sourceTree = "<group>"; };
@@ -146,6 +150,10 @@
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		0692ED0529075A4A00B986DF /* PrioritySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySelector.swift; sourceTree = "<group>"; };
+		0695CE49290AF4570021CF3F /* EnumDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDatabase.swift; sourceTree = "<group>"; };
+		0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPushNotifications.swift; sourceTree = "<group>"; };
+		0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableDataBase.swift; sourceTree = "<group>"; };
+		0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumStatusFecth.swift; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -162,7 +170,6 @@
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
-		554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNextButton.swift; sourceTree = "<group>"; };
 		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
 		554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalMotivationView.swift; sourceTree = "<group>"; };
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
@@ -182,7 +189,6 @@
 		99B676BA28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		99B676BC28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		99B676BE28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
-		99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardViewModel.swift; sourceTree = "<group>"; };
 		99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsEditGoals.swift; sourceTree = "<group>"; };
 		99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySpentsView.swift; sourceTree = "<group>"; };
 		99F6A9EF290B23F200925DFD /* MethodologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyView.swift; sourceTree = "<group>"; };
@@ -218,6 +224,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0621175829135B0200A1D593 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0621175929135B9500A1D593 /* String + transformToMoney.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		06449BDE28C2921E00035324 = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +331,7 @@
 		06449C1928C2994800035324 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0621175829135B0200A1D593 /* Extension */,
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
@@ -328,6 +343,7 @@
 				06449C4528C29EC000035324 /* User.swift */,
 				063C8AA728D266410053054B /* ChartData.swift */,
 				06BFF3EB28ECCA870015C79B /* Invite.swift */,
+				0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */,
 				55B16D6B29105E6700A7D140 /* UserDefault.swift */,
 			);
 			path = Model;
@@ -437,6 +453,9 @@
 				4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */,
 				4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */,
 				9919974828E77E8F0075866D /* EnumSpentsInfo.swift */,
+				0695CE49290AF4570021CF3F /* EnumDatabase.swift */,
+				0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */,
+				0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -462,7 +481,6 @@
 			children = (
 				06449C3D28C29E5D00035324 /* GoalViewModel.swift */,
 				063C8AA528D2661C0053054B /* ChartPieViewModel.swift */,
-				99B676C028DCD57B007C8BC6 /* GoalCardViewModel.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -479,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */,
-				554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */,
 				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 				0692ED0529075A4A00B986DF /* PrioritySelector.swift */,
 			);
@@ -732,6 +749,7 @@
 				554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */,
 				06449C2228C29BFB00035324 /* SettingsView.swift in Sources */,
 				063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */,
+				0695CE4C290B04050021CF3F /* EnumPushNotifications.swift in Sources */,
 				0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */,
 				06449BED28C2921E00035324 /* GoalsView.swift in Sources */,
 				5544773A28E23216000C892E /* OnBoardingPageTypeTwoView.swift in Sources */,
@@ -743,10 +761,10 @@
 				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
-				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
+				0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */,
 				99F6A9F0290B23F200925DFD /* MethodologyView.swift in Sources */,
@@ -765,10 +783,12 @@
 				4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */,
 				06449BEB28C2921E00035324 /* MacroApp.swift in Sources */,
 				997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */,
+				0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
+				0621175A29135B9500A1D593 /* String + transformToMoney.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,
@@ -781,11 +801,11 @@
 				55B16D6C29105E6700A7D140 /* UserDefault.swift in Sources */,
 				06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */,
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
-				99B676C128DCD57B007C8BC6 /* GoalCardViewModel.swift in Sources */,
 				9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
+				0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */,
 				99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */,
 				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
 				99F6A9EE290AFEE800925DFD /* HistorySpentsView.swift in Sources */,
@@ -963,6 +983,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -976,7 +997,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1001,6 +1022,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1014,7 +1036,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

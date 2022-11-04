@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-struct Spent: DataModelProtocol, Identifiable {
+struct Spent: DataModelProtocol, Identifiable, Equatable {
     
     var id: UUID
     var title: String
@@ -17,10 +17,10 @@ struct Spent: DataModelProtocol, Identifiable {
     var date: Date
     var categoryPercent: Int
     
-    init(title: String, value: Float, icon: String,
+    init(id: UUID, title: String, value: Float, icon: String,
          date: Date,
          categoryPercent: Int) {
-        self.id = UUID()
+        self.id = id
         self.title = title
         self.value = value
         self.icon = icon
@@ -67,6 +67,6 @@ struct Spent: DataModelProtocol, Identifiable {
     }
     
     static func emptyMock(category: Int) -> Spent {
-        return Spent(title: "", value: 0.0, icon: "", date: Date.now, categoryPercent: category)
+        return Spent(id: UUID(), title: "", value: 0.0, icon: "", date: Date.now, categoryPercent: category)
     }
 }

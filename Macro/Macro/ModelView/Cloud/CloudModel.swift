@@ -23,12 +23,12 @@ class CloudKitModel {
         databaseShared = container.sharedCloudDatabase
         Task.init {
             await loadShare()
-            await saveNotification(recordType: "cloudkit.share")
+            await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
         }
     }
     
     // MARK: PushNotification
-    func saveNotification(recordType: String) async {
+    func saveNotification(recordType: String, database: EnumDatabase) async {
         
         // Only proceed if the subscription doesn't already exist.
         guard !UserDefaults.standard.bool(forKey: "didCreateSubscription\(recordType)")
@@ -64,7 +64,13 @@ class CloudKitModel {
         // Set an appropriate QoS and add the operation to the private
         // database's operation queue to execute it.
         operation.qualityOfService = .utility
-        databasePrivate.add(operation)
+        switch database {
+        case .dataPrivate:
+            databasePrivate.add(operation)
+        case .dataShare:
+            databaseShared.add(operation)
+        }
+
     }
     
     // MARK: Post
@@ -195,9 +201,7 @@ class CloudKitModel {
         do {
             try await databasePrivate.save(share)
             return share
-        } catch let erro {
-            print("Cloud - createShare")
-            print(erro.localizedDescription)
+        } catch {
             return nil
         }
         

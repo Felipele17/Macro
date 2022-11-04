@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 class GoalViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
+    @Published var goals: [Goal] = []
+    var methodologyGoals: MethodologyGoal?
     @Published var goalField = ""
     @Published var moneyField: Float = 0.0
     @Published var priority: Int = 0
@@ -46,5 +48,22 @@ class GoalViewModel: ObservableObject {
             await cloud.update(model: goal)
         }
         
+    }
+    
+    func calc( goal: Goal) -> CGFloat {
+        let percents = CGFloat(goal.getAllMoneySave()/goal.value)
+        let percentsProgress = 220 * percents
+        return percentsProgress
+    }
+    
+    func setImagebyPriority(goal: Goal) -> String {
+        let priority = goal.priority
+        if priority == 1 {
+            return "Noz1"
+        } else if priority == 2 {
+            return "Noz2"
+        } else {
+            return "Noz3"
+        }
     }
 }

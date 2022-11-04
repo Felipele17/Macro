@@ -11,7 +11,7 @@ struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
     @ObservedObject var viewModel: OnBoardingViewModel
-    @Binding var incomeTextField: Float
+    @State var incomeTextField: Float?
 //    @State var income: Bool
     @FocusState var keyboardIsFocused: Bool
     let formatter: NumberFormatter = {
@@ -59,8 +59,8 @@ struct OnBoardingPageTypeTwoView: View {
     }
 }
 
-struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingViewModel(), incomeTextField: .constant(10))
-    }
-}
+// struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingViewModel(), incomeTextField: .constant(10))
+//    }
+// }

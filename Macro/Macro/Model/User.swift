@@ -8,7 +8,11 @@
 import Foundation
 import CloudKit
 
-struct User: DataModelProtocol {
+struct User: DataModelProtocol, Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.idName == rhs.idName
+    }
+    
     var idName: UUID
     var name: String
     var income: Float

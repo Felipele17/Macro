@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @State var incomeTextField: Float
+    @State var incomeTextField: Float = 0.0
     @State var text = EnumButtonText.nextButton.rawValue
     @StateObject var viewModel = OnBoardingViewModel()
     @StateObject var invite = Invite.shared
@@ -25,7 +25,7 @@ struct OnBoardingView: View {
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: $incomeTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: incomeTextField)
                         .tag(2)
                         .gesture(incomeTextField == 0.0 ? DragGesture() : nil)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {

@@ -11,7 +11,9 @@ struct MacroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var viewModel = MacroViewModel()
-    
+    @StateObject var spentViewModel = SpentViewModel()
+    @StateObject var goalViewModel = GoalViewModel()
+    @StateObject var observableDataBase = ObservableDataBase.shared
     let userDefault = UserDefault()
     
     var body: some Scene {
@@ -19,9 +21,33 @@ struct MacroApp: App {
             if userDefault.userOnBoardingBool {
                 if viewModel.isConect {
                     if viewModel.isReady() {
-                        if let methodologyGoals = viewModel.methodologyGoals {
-                            HomeView(users: viewModel.users, dictionarySpent: viewModel.dictionarySpent, goals: viewModel.goals, spentsCards: viewModel.getSpentsCards(), methodologyGoals: methodologyGoals)
-                        }
+                        HomeView()
+                            .environmentObject(goalViewModel)
+                            .environmentObject(spentViewModel)
+                            .environmentObject(viewModel)
+                            .onAppear {
+                                spentViewModel.dictionarySpent = viewModel.dictionarySpent
+                                spentViewModel.spentsCards = viewModel.spentsCards
+                                goalViewModel.goals = viewModel.goals
+                                goalViewModel.methodologyGoals = viewModel.methodologyGoals
+                            }
+//                            .onChange(of: viewModel.users, perform: { user in
+//                                homeViewModel.users = user
+//                            })
+                            .onReceive(viewModel.$dictionarySpent, perform: { dictionarySpent in
+                                spentViewModel.dictionarySpent = dictionarySpent
+                            })
+                            .onReceive(viewModel.$goals, perform: { goals in
+                                goalViewModel.goals = goals
+                            })
+                            .onChange(of: observableDataBase.needFetchSpent) { _ in
+                                    viewModel.reload(type: Spent.getType())
+                                    observableDataBase.needFetchSpent = false
+                            }
+                            .onChange(of: observableDataBase.needFetchGoal) { _ in
+                                    viewModel.reload(type: Goal.getType())
+                                    observableDataBase.needFetchGoal = false
+                            }
                     } else {
                         LaunchScreenView()
                     }
@@ -35,18 +61,20 @@ struct MacroApp: App {
         .onChange(of: scenePhase) { (newScenePhase) in
                    switch newScenePhase {
                    case .active:
-                       Task {
-                           CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
-                           let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                          DispatchQueue.main.async {
-                              Invite.shared.isSendInviteAccepted = isSendInviteAccepted
-                          }
+                       if !Invite.shared.isSendInviteAccepted {
+                           Task {
+                               CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
+                               let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                               DispatchQueue.main.async {
+                                   Invite.shared.isSendInviteAccepted = isSendInviteAccepted
+                               }
+                           }
                        }
                    case .inactive:
-                       print("ffff")
+                       print("")
 //                       print("scene is now inactive!")
                    case .background:
-                       print("ffff")
+                       print("")
 //                       print("scene is now in the background!")
                    @unknown default:
                        print("")

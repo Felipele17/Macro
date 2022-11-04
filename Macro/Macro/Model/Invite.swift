@@ -57,6 +57,12 @@ class Invite: ObservableObject {
                 let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
                 try? await cloud.post(model: methodologyGoal)
             }
+            Task {
+                await cloud.saveNotification(recordType: Goal.getType(), database: .dataShare)
+            }
+            Task {
+                await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
+            }
             return true
         } else {
             return false
