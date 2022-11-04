@@ -16,18 +16,31 @@ struct HomeView: View {
         NavigationStack {
             VStack {
                 HStack {
+                    Text("Bom dia \(UserDefault.userHomeViewString())!")
+                    .font(.custom(EnumFonts.bold.rawValue, size: 34))
+                    Spacer()
+                    NavigationLink(destination:
+                                    SettingsView()
+                    ) {
+                        Label("", systemImage: "gearshape")
+                            .font(.custom(EnumFonts.bold.rawValue, size: 22))
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                            .padding(.trailing)
+                    }
+                }
+                HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                          .padding()
                     Spacer()
-                    NavigationLink(destination:
-                                    FormsGoalsNameView(
-                                        goal: Goal.startGoals(methodologyGoals: methodologyGoals), goals: $goals, popToRoot: $isActive), isActive: $isActive
-                    ) {
-                        Label("", systemImage: "plus")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                            .padding()
+//                    NavigationLink(destination:
+//                                    FormsGoalsNameView(
+//                                        goal: Goal.startGoals(methodologyGoals: methodologyGoals), goals: $goals, popToRoot: $isActive), isActive: $isActive
+//                    ) {
+//                        Label("", systemImage: "plus")
+//                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+//                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
+//                            .padding()
                     if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
                         Button {
                             showingSheet.toggle()
@@ -64,24 +77,10 @@ struct HomeView: View {
                         }
                     }
                 }
-                
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
-            .navigationTitle("Bom dia \(UserDefault.userHomeViewString())!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
-            
-            .toolbar {
-                NavigationLink(destination:
-                                SettingsView()
-                ) {
-                    Label("", systemImage: "gearshape")
-                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                        .padding(.trailing)
-                        .padding(.top)
-                }
-                
-            }
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
             .navigationBarBackButtonHidden(true)
     }

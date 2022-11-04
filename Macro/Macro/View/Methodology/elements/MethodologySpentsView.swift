@@ -59,7 +59,7 @@ struct MethodologySpentsView: View {
 
     }
 }
-struct MethodologyView_Previews: PreviewProvider {
+struct MethodologySpentsView_Previews: PreviewProvider {
     static var previews: some View {
         MethodologySpentsView()
     }

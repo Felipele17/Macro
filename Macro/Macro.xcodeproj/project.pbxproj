@@ -71,6 +71,8 @@
 		55D19CAE28E76970004F84A8 /* FormsGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */; };
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
 		9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974828E77E8F0075866D /* EnumSpentsInfo.swift */; };
+		993D49952915ACA300229031 /* MethodologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D49942915ACA300229031 /* MethodologyView.swift */; };
+		993D49992915AEF200229031 /* MethodologyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D49982915AEF200229031 /* MethodologyViewModel.swift */; };
 		996E65D32911924B005A4A40 /* MethodologyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D22911924B005A4A40 /* MethodologyValues.swift */; };
 		996E65D5291193A8005A4A40 /* EnumMethodology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D4291193A8005A4A40 /* EnumMethodology.swift */; };
 		996E65DA2911BB65005A4A40 /* MethodologyGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */; };
@@ -181,6 +183,8 @@
 		55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalViewModel.swift; sourceTree = "<group>"; };
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
 		9919974828E77E8F0075866D /* EnumSpentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpentsInfo.swift; sourceTree = "<group>"; };
+		993D49942915ACA300229031 /* MethodologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyView.swift; sourceTree = "<group>"; };
+		993D49982915AEF200229031 /* MethodologyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyViewModel.swift; sourceTree = "<group>"; };
 		996E65D22911924B005A4A40 /* MethodologyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyValues.swift; sourceTree = "<group>"; };
 		996E65D4291193A8005A4A40 /* EnumMethodology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMethodology.swift; sourceTree = "<group>"; };
 		996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyGoalsView.swift; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 		06449C1728C2993300035324 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				993D49922915AC6B00229031 /* Methodology */,
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				4A2844632900793200D1DD08 /* NoNetView.swift */,
 				99B2EF4328DE576A00657C53 /* Formulary */,
@@ -315,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				99F7E4A629072680009534ED /* MacroViewModel.swift */,
+				993D49972915AED600229031 /* Methodology */,
 				99F6A9EC290AFEBE00925DFD /* Settings */,
 				55D19CAC28E7690D004F84A8 /* Formulary */,
 				99E4F21328E4D52200AB24FA /* Spent */,
@@ -527,6 +533,32 @@
 			path = Formulary;
 			sourceTree = "<group>";
 		};
+		993D49922915AC6B00229031 /* Methodology */ = {
+			isa = PBXGroup;
+			children = (
+				993D49942915ACA300229031 /* MethodologyView.swift */,
+				993D49932915AC7B00229031 /* elements */,
+			);
+			path = Methodology;
+			sourceTree = "<group>";
+		};
+		993D49932915AC7B00229031 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */,
+				99F6A9EF290B23F200925DFD /* MethodologySpentsView.swift */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		993D49972915AED600229031 /* Methodology */ = {
+			isa = PBXGroup;
+			children = (
+				993D49982915AEF200229031 /* MethodologyViewModel.swift */,
+			);
+			path = Methodology;
+			sourceTree = "<group>";
+		};
 		99B2EF4328DE576A00657C53 /* Formulary */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,8 +597,6 @@
 			isa = PBXGroup;
 			children = (
 				99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */,
-				99F6A9EF290B23F200925DFD /* MethodologySpentsView.swift */,
-				996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -771,11 +801,11 @@
 				996E65DA2911BB65005A4A40 /* MethodologyGoalsView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
-				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				996E65D32911924B005A4A40 /* MethodologyValues.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
+				993D49952915ACA300229031 /* MethodologyView.swift in Sources */,
 				0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */,
@@ -818,6 +848,7 @@
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
+				993D49992915AEF200229031 /* MethodologyViewModel.swift in Sources */,
 				0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */,
 				99F7E4A729072680009534ED /* MacroViewModel.swift in Sources */,
 				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
