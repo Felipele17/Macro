@@ -20,6 +20,14 @@ struct HomeView: View {
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                          .padding()
                     Spacer()
+                    NavigationLink(destination:
+                                    FormsGoalsNameView(
+                                        goal: Goal.startGoals(methodologyGoals: methodologyGoals), goals: $goals, popToRoot: $isActive), isActive: $isActive
+                    ) {
+                        Label("", systemImage: "plus")
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
+                            .padding()
                     if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
                         Button {
                             showingSheet.toggle()
@@ -64,18 +72,18 @@ struct HomeView: View {
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
             
             .toolbar {
-                //                Button(role: nil) {
-                //                    print("add configuração")
-                //                } label: {
-                //                    Label("", systemImage: "gearshape")
-                //                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                //                        .padding(.trailing)
-                //                        .padding(.top)
-                //                }
+                NavigationLink(destination:
+                                SettingsView()
+                ) {
+                    Label("", systemImage: "gearshape")
+                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                        .padding(.trailing)
+                        .padding(.top)
+                }
                 
             }
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
 }
 
