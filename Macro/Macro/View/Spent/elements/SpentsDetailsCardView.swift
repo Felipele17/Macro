@@ -18,7 +18,7 @@ struct SpentsDetailsCardView: View {
             FormsSpentsView( spent: $spent,
                              title: spent.title,
                              icon: spent.icon,
-                             value: spent.value,
+                             value: String(spent.value),
                              date: spent.date,
                              colorIcon: colorIcon,
                              isPost: false

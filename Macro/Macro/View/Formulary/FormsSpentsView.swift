@@ -15,8 +15,10 @@ struct FormsSpentsView: View {
     
     @State var title = ""
     @State var icon = ""
-    @State var value: Float
+    @State var value = ""
     @State var date = Date.now
+    
+    @State var validTextField = false
     
     var colorIcon: String
     var isPost: Bool
@@ -45,11 +47,19 @@ struct FormsSpentsView: View {
                 }.textCase(.none)
                 
                 Section(header: Text("Valor(R$)").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
-                    TextField("Ex: R$200,00", value: $value, formatter: formatter)
+                    TextField("Ex: R$200,00", text: $value)
                         .listRowBackground(Color.clear)
                         .keyboardType(.decimalPad)
                         .underlineTextField()
                 }.textCase(.none)
+                    .onChange(of: value) { _ in
+                        if let value = value.transformToMoney() {
+                            self.value = value
+                            validTextField = true
+                        } else {
+                            validTextField = false
+                        }
+                    }
                 
                 Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
                     DatePicker("", selection: $date, displayedComponents: [.date])
@@ -60,6 +70,8 @@ struct FormsSpentsView: View {
             .navigationBarTitle("Gastos", displayMode: .inline)
                 .toolbar {
                     Button {
+                        if !validTextField { return }
+                        let value = value.floatValue
                         var spent = Spent(title: title, value: value, icon: icon, date: date, categoryPercent: self.spent.categoryPercent)
                         spent.id = self.spent.id
                         if isPost {

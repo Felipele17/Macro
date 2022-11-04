@@ -29,7 +29,7 @@ struct MacroApp: App {
                     NoNetView()
                 }
             } else {
-                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome)
+                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome))
             }
         }
         .onChange(of: scenePhase) { (newScenePhase) in

@@ -42,6 +42,7 @@
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
 		0688A9D428C7D628001044A6 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D328C7D628001044A6 /* DataModelProtocol.swift */; };
 		0692ED0629075A4A00B986DF /* PrioritySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692ED0529075A4A00B986DF /* PrioritySelector.swift */; };
+		06AD62B52915801800C02D8C /* String+transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AD62B42915801800C02D8C /* String+transformToMoney.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -58,7 +59,6 @@
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
 		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
-		554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */; };
 		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
 		554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */; };
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
@@ -146,6 +146,7 @@
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
 		0688A9D328C7D628001044A6 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
 		0692ED0529075A4A00B986DF /* PrioritySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySelector.swift; sourceTree = "<group>"; };
+		06AD62B42915801800C02D8C /* String+transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+transformToMoney.swift"; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
 		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
-		554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNextButton.swift; sourceTree = "<group>"; };
 		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
 		554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalMotivationView.swift; sourceTree = "<group>"; };
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
@@ -317,6 +317,7 @@
 		06449C1928C2994800035324 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06AD62B32915800100C02D8C /* Extension */,
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
@@ -475,11 +476,18 @@
 			path = Protocolo;
 			sourceTree = "<group>";
 		};
+		06AD62B32915800100C02D8C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				06AD62B42915801800C02D8C /* String+transformToMoney.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		06CB395328F0A51000CDEC0B /* elements */ = {
 			isa = PBXGroup;
 			children = (
 				55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */,
-				554B101E28E4C7E1003DEE7C /* GoalNextButton.swift */,
 				554B102428E4E40F003DEE7C /* MotivationCard.swift */,
 				0692ED0529075A4A00B986DF /* PrioritySelector.swift */,
 			);
@@ -743,7 +751,6 @@
 				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
 				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
-				554B101F28E4C7E1003DEE7C /* GoalNextButton.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
@@ -756,6 +763,7 @@
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
+				06AD62B52915801800C02D8C /* String+transformToMoney.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				5544773E28E2330C000C892E /* OnBoarding.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,

@@ -27,7 +27,7 @@ struct SpentView: View {
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
                     NavigationLink(destination:
-                                    FormsSpentsView(spent: .constant(Spent.emptyMock(category: viewModel.spentsCard.valuesPercent)), value: 0.0, colorIcon: viewModel.spentsCard.colorName, isPost: true)
+                                    FormsSpentsView(spent: .constant(Spent.emptyMock(category: viewModel.spentsCard.valuesPercent)), colorIcon: viewModel.spentsCard.colorName, isPost: true)
                                         .environmentObject(viewModel)
                     ) {
                         Label("", systemImage: "plus")

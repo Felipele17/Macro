@@ -10,14 +10,10 @@ import SwiftUI
 struct FormsGoalsValueView: View {
     @State var goal: Goal
     @Binding var goals: [Goal]
-    @State private var pageIndex = 1
+    @State var value = ""
+    @State var validTextField = false
     @FocusState var keyboardIsFocused: Bool
     @Binding var popToRoot: Bool
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,15 +22,30 @@ struct FormsGoalsValueView: View {
                 .padding(1)
             Text("Depositando R$ 1 por semana de forma gradual, em 52 semanas você irá ter em sua conta R$ 1.378,00")
                 .padding(10)
-            TextField("Ex.: R$ 1.378,00", value: $goal.value, formatter: formatter)
+            TextField("Ex.: R$ 1.378,00", text: $value)
                 .foregroundColor(.black)
                 .keyboardType(.decimalPad)
                 .focused($keyboardIsFocused)
                 .underlineTextField()
                 .padding(5)
+                .onChange(of: value) { _ in
+                    if let value = value.transformToMoney() {
+                        self.value = value
+                        goal.value = value.floatValue
+                        validTextField = true
+                    } else {
+                        validTextField = false
+                    }
+                }
             PrioritySelector(priority: $goal.priority)
             Spacer()
-            GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.value == 0.0 ? true : false, pageIndex: $pageIndex, popToRoot: $popToRoot)
+            NavigationLink {
+                FormsGoalMotivationView(goal: goal, goals: $goals, popToRoot: $popToRoot)
+            } label: {
+                TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: validTextField)
+            }
+            .isDetailLink(false)
+            .disabled(validTextField)
         }
         .padding(20)
     }

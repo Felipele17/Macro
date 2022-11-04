@@ -27,7 +27,13 @@ struct FormsGoalsNameView: View {
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                GoalNextButton(goal: goal, goals: $goals, text: EnumButtonText.nextButton.rawValue, isEmptyTextField: goal.title == "" ? true : false, pageIndex: $pageIndex, popToRoot: $popToRoot)
+                NavigationLink {
+                    FormsGoalsValueView(goal: goal, goals: $goals, popToRoot: $popToRoot)
+                } label: {
+                    TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: goal.title.isEmpty)
+                }
+                .isDetailLink(false)
+                .disabled(goal.title.isEmpty)
             }
             .padding(20)
     }
