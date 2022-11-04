@@ -15,7 +15,7 @@ struct FormsGoalsValueView: View {
     
     @State private var value: String = ""
     @FocusState var keyboardIsFocused: Bool
-    @State var validTextField = false
+    @State var isValidValue = false
 
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -40,9 +40,9 @@ struct FormsGoalsValueView: View {
                     if let stringMoney = value.transformToMoney() {
                         value = stringMoney
                         goal.value = stringMoney.replacingOccurrences(of: ".", with: "").floatValue
-                        validTextField = true
+                        isValidValue = true
                     } else {
-                        validTextField = false
+                        isValidValue = false
                     }
                 }
             PrioritySelector(priority: $goal.priority)
