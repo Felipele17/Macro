@@ -71,9 +71,24 @@ struct OnBoardingView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if viewModel.onboardingPage < 2 {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if viewModel.onboardingPage == 2 {
+                    } else if viewModel.onboardingPage == 3 {
 //                        InfoButton(infoButton: "info.circle")
 //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                        Button {
+                            CloudKitModel.shared.deleteShare()
+                            Task {
+                                CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
+                                let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                                let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
+                                DispatchQueue.main.async {
+                                    invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                                    invite.isSendInviteAccepted = isSendInviteAccepted
+                                    }
+                            }
+                        } label: {
+                            Text("deletar")
+                        }
+
                     }
                 }
                 
