@@ -10,7 +10,7 @@ import SwiftUI
 struct OnBoardingView: View {
     @State var incomeTextField: String
     @State var text = EnumButtonText.nextButton.rawValue
-    @StateObject var viewModel = OnBoardingViewModel()
+    @StateObject var onboardingViewModel = OnBoardingViewModel()
     @StateObject var invite = Invite.shared
     @State var validTextField = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
@@ -19,14 +19,13 @@ struct OnBoardingView: View {
     var body: some View {
         
         NavigationView {
-            
             VStack {
-                TabView(selection: $viewModel.onboardingPage) {
+                TabView(selection: $onboardingViewModel.onboardingPage) {
                     OnBoardingPageTypeOneView(onboarding: pages[0])
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, value: $incomeTextField, validTextField: $validTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: onboardingViewModel, value: $incomeTextField, validTextField: $validTextField)
                         .tag(2)
                         .gesture(incomeTextField.isEmpty ? DragGesture() : nil)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
@@ -43,7 +42,7 @@ struct OnBoardingView: View {
                             .tag(3)
                     }
                 }
-                .animation(.easeInOut, value: viewModel.onboardingPage)
+                .animation(.easeInOut, value: onboardingViewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
                 .onAppear {
@@ -51,29 +50,16 @@ struct OnBoardingView: View {
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
                 }
                 if invite.isReady(income: incomeTextField.floatValue) {
-//                    NavigationLink {
-//                        HomeView(users: <#[User]#>, dictionarySpent: <#[[Spent]]#>, goals: <#[Goal]#>, spentsCards: <#[SpentsCard]#>, methodologyGoals: <#MethodologyGoal#>)
-//                    } label: {
-//                        Text("Concluir")
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .frame(height: 55)
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color(EnumColors.buttonColor.rawValue))
-//                            .cornerRadius(13)
-//                    }
-
-                } else {
-                    NextButton(text: viewModel.checkButton(), validTextField: $validTextField, onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
+                    NextButton(text: onboardingViewModel.checkButton(), validTextField: $validTextField, onboardingPage: $onboardingViewModel.onboardingPage, income: $incomeTextField)
                 }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    if viewModel.onboardingPage < 2 {
-                        SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if viewModel.onboardingPage == 2 {
-//                        InfoButton(infoButton: "info.circle")
-//                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                    if onboardingViewModel.onboardingPage < 2 {
+                        SkipButton(onboardingPage: $onboardingViewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
+                    } else if onboardingViewModel.onboardingPage == 2 {
+                        InfoButton(infoButton: "info.circle")
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     }
                 }
                 
@@ -81,13 +67,5 @@ struct OnBoardingView: View {
             .padding(24)
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationViewStyle(StackNavigationViewStyle())
-        
     }
-    
 }
-
-// struct OnBoardingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
-//    }
-// }

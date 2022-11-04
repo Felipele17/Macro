@@ -11,8 +11,7 @@ import SwiftUI
 struct NextButton: View {
     
     var text: String
-    var cloud = CloudKitModel.shared
-    let invite = Invite.shared
+    @ObservedObject var onboardingViewModel = OnBoardingViewModel()
     @Binding var validTextField: Bool
     @Binding var onboardingPage: Int
     @Binding var income: String
@@ -26,18 +25,7 @@ struct NextButton: View {
                     UserDefault.userNextButton(income: money)
                 }
             } else {
-                Task {
-                    CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
-                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                    let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
-                    DispatchQueue.main.async {
-                        invite.isReceivedInviteAccepted = isReceivedInviteAccepted
-                        invite.isSendInviteAccepted = isSendInviteAccepted
-                        }
-                }
-                guard let sharingController = cloud.makeUIViewControllerShare() else { return }
-                let window = UIApplication.shared.keyWindow
-                window?.rootViewController?.present(sharingController, animated: true)
+                onboardingViewModel.sharingInvite()
             }
             
         } label: {

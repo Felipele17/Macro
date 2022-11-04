@@ -61,7 +61,7 @@
 		5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773B28E2324A000C892E /* EnumButtonText.swift */; };
 		5544773E28E2330C000C892E /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773D28E2330C000C892E /* OnBoarding.swift */; };
 		5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773F28E23335000C892E /* EnumOnBoardingText.swift */; };
-		5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingStateViewModel.swift */; };
+		5544774528E23415000C892E /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774428E23415000C892E /* OnBoardingViewModel.swift */; };
 		5544774728E23483000C892E /* EnumImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544774628E23483000C892E /* EnumImageName.swift */; };
 		554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */; };
 		554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */; };
@@ -168,7 +168,7 @@
 		5544773B28E2324A000C892E /* EnumButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumButtonText.swift; sourceTree = "<group>"; };
 		5544773D28E2330C000C892E /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		5544773F28E23335000C892E /* EnumOnBoardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOnBoardingText.swift; sourceTree = "<group>"; };
-		5544774428E23415000C892E /* OnBoardingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStateViewModel.swift; sourceTree = "<group>"; };
+		5544774428E23415000C892E /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		5544774628E23483000C892E /* EnumImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumImageName.swift; sourceTree = "<group>"; };
 		554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalsValueView.swift; sourceTree = "<group>"; };
 		554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalMotivationView.swift; sourceTree = "<group>"; };
@@ -506,7 +506,7 @@
 		5544774128E233DA000C892E /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				5544774428E23415000C892E /* OnBoardingStateViewModel.swift */,
+				5544774428E23415000C892E /* OnBoardingViewModel.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -787,7 +787,7 @@
 				0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
-				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
+				5544774528E23415000C892E /* OnBoardingViewModel.swift in Sources */,
 				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
