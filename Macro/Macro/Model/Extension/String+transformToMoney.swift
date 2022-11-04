@@ -16,6 +16,7 @@ extension String {
         var number = self
         
         let subStrings = number.split { $0 == "," }
+        if subStrings.isEmpty { return nil}
         if let subStringFirt = subStrings.first {
             let numPoint = Int(floor(Double(subStringFirt.count / 4)))
             var stringFirt = String(subStringFirt).replacingOccurrences(of: ".", with: "")
