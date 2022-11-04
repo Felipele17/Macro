@@ -25,7 +25,7 @@ struct OnBoardingView: View {
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: incomeTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: $incomeTextField)
                         .tag(2)
                         .gesture(incomeTextField == 0.0 ? DragGesture() : nil)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
@@ -70,9 +70,24 @@ struct OnBoardingView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if viewModel.onboardingPage < 2 {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if viewModel.onboardingPage == 2 {
+                    } else if viewModel.onboardingPage == 3 {
 //                        InfoButton(infoButton: "info.circle")
 //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                        Button {
+                            CloudKitModel.shared.deleteShare()
+                            Task {
+                                CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
+                                let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                                let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
+                                DispatchQueue.main.async {
+                                    invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                                    invite.isSendInviteAccepted = isSendInviteAccepted
+                                    }
+                            }
+                        } label: {
+                            Text("deletar")
+                        }
+
                     }
                 }
                 

@@ -11,12 +11,13 @@ struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
     @ObservedObject var viewModel: OnBoardingViewModel
-    @State var incomeTextField: Float?
+    @Binding var incomeTextField: Float
 //    @State var income: Bool
     @FocusState var keyboardIsFocused: Bool
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
+        formatter.zeroSymbol = ""
             return formatter
         }()
     

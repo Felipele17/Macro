@@ -63,7 +63,7 @@ struct MacroApp: App {
                    case .active:
                        if !Invite.shared.isSendInviteAccepted {
                            Task {
-                               CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
+                               CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
                                let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
                                DispatchQueue.main.async {
                                    Invite.shared.isSendInviteAccepted = isSendInviteAccepted

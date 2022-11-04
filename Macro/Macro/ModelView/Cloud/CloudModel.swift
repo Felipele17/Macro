@@ -204,14 +204,32 @@ class CloudKitModel {
         } catch {
             return nil
         }
-        
     }
     
-    func fetchShare() async throws -> CKShare? {
+    func deleteShare() {
+        Task {
+            let predicate = NSPredicate(value: true)
+            do {
+                let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
+                for share in ckShares {
+                    do {
+                        try await databasePrivate.deleteRecord(withID: share.recordID)
+                    } catch {
+                        try await databaseShared.deleteRecord(withID: share.recordID)
+                    }
+                    
+                }
+            } catch let erro {
+                print("deleteShare")
+                print(erro.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchShare(database: EnumDatabase) async throws -> CKShare? {
         let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
         do {
-            let share = try await databasePrivate.record(for: recordID) as? CKShare
-            return share
+            return try await databasePrivate.record(for: recordID) as? CKShare
         } catch let erro {
             print("Cloud - fetchShare")
             print(erro.localizedDescription)
@@ -222,7 +240,7 @@ class CloudKitModel {
     func getShare() async throws -> CKShare? {
         guard let share = try await createShare() else {
             do {
-                return try await fetchShare()
+                return try await fetchShare(database: .dataPrivate)
             } catch let error {
                 print("Cloud - getShare")
                 print(error.localizedDescription)
@@ -289,13 +307,14 @@ class CloudKitModel {
     func fetchSharedPrivatedRecords(recordType: String, predicate: NSPredicate) async throws -> [CKRecord] {
         let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
         
-        return try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in
+        let fecthPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
+        
+        let fecthShared = try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in
             for zone in sharedZones {
                 group.addTask { [self] in
                     do {
                         let fecthShared = try await self.fetchRecords( in: zone.zoneID, from: self.databaseShared, recordType: recordType, predicate: predicate)
-                        let fecthPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
-                        return fecthShared + fecthPrivate
+                        return fecthShared
                     } catch {
                         print(error.localizedDescription)
                         return []
@@ -307,6 +326,7 @@ class CloudKitModel {
             for try await history in group { results.append(contentsOf: history) }
             return results
         }
+        return fecthPrivate + fecthShared
     }
     
     private func fetchRecords(in zone: CKRecordZone.ID? = SharedZone.ZoneID, from database: CKDatabase, recordType: String, predicate: NSPredicate ) async throws -> [CKRecord] {
