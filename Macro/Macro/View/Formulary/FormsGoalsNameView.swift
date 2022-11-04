@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FormsGoalsNameView: View {
-    
-    @State private var pageIndex = 0
+    @EnvironmentObject var viewModel: GoalViewModel
     @State var goal: Goal
-    @Binding var goals: [Goal]
     @Binding var popToRoot: Bool
     
     var body: some View {
+        NavigationStack {
             VStack(alignment: .leading) {
                 Text("Qual o nome da sua meta?")
                     .font(.custom("SFProText-Medium", size: 34))
@@ -28,7 +27,7 @@ struct FormsGoalsNameView: View {
                     .padding(5)
                 Spacer()
                 NavigationLink {
-                    FormsGoalsValueView(goal: goal, goals: $goals, popToRoot: $popToRoot)
+                    FormsGoalsValueView(goal: goal, popToRoot: $popToRoot)
                 } label: {
                     TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: goal.title.isEmpty)
                 }
@@ -36,11 +35,12 @@ struct FormsGoalsNameView: View {
                 .disabled(goal.title.isEmpty)
             }
             .padding(20)
+        }
     }
 }
 
-//struct FormGoalsView_Previews: PreviewProvider {
+// struct FormGoalsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FormsGoalsNameView(goal: Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 0, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), popToRoot: .constant(true))
 //    }
-//}
+// }

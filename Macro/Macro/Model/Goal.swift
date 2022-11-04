@@ -111,7 +111,8 @@ struct Goal: DataModelProtocol, Identifiable {
         return arrayWeek
     }
     
-    static func startGoals(methodologyGoals: MethodologyGoal) -> Goal {
+    static func mockGoals(methodologyGoals: MethodologyGoal?) -> Goal? {
+        guard let methodologyGoals = methodologyGoals else { return nil }
         return Goal(title: "", value: 0.0, weeks: 0, motivation: "", priority: 1, methodologyGoal: methodologyGoals)
     }
     

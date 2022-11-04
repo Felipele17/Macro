@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SpentView: View {
-    @ObservedObject var viewModel: SpentViewModel
+    @EnvironmentObject var viewModel: SpentViewModel
+    var spentsCard: SpentsCard
     
     var body: some View {
             VStack(alignment: .leading) {
@@ -16,20 +17,21 @@ struct SpentView: View {
                     .font(.custom(EnumFonts.bold.rawValue, size: 22))
                     .padding(.top)
                     .padding(.leading)
-                Text("\(viewModel.spentsCard.moneySpented)".floatValue.currency)
+                Text("\(spentsCard.moneySpented)".floatValue.currency)
                     .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     .padding(.leading)
-                Text("Limite disponivel "+"\(viewModel.spentsCard.availableMoney)".floatValue.currency)
+                Text("Limite disponivel "+"\(spentsCard.availableMoney)".floatValue.currency)
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .padding(.leading)
                 HStack {
                     Text("Gasto Essenciais")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
-                    NavigationLink(destination:
-                                    FormsSpentsView(spent: .constant(Spent.emptyMock(category: viewModel.spentsCard.valuesPercent)), colorIcon: viewModel.spentsCard.colorName, isPost: true)
-                                        .environmentObject(viewModel)
-                    ) {
+                    NavigationLink {
+                        FormsSpentsView(
+                            spentsCard: spentsCard,
+                            colorIcon: spentsCard.colorName, isPost: true)
+                    } label: {
                         Label("", systemImage: "plus")
                             .padding(.trailing, 35)
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -38,13 +40,12 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach(viewModel.$arraySpents) { spent in
-                    SpentsDetailsCardView(spent: spent, colorIcon: viewModel.spentsCard.colorName)
-                        .environmentObject(viewModel)
+                ForEach(viewModel.getArraySpents(spentsCard: spentsCard)) { spent in
+                    SpentsDetailsCardView(spent: spent, spentsCard: spentsCard)
                 }
             } .listStyle(.insetGrouped)
         }
-        .navigationTitle(viewModel.spentsCard.namePercent)
+        .navigationTitle(spentsCard.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(EnumColors.backgroundScreen.rawValue))

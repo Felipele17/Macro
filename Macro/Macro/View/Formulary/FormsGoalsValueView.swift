@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct FormsGoalsValueView: View {
+    @EnvironmentObject var viewModel: GoalViewModel
+    
     @State var goal: Goal
-    @Binding var goals: [Goal]
-    @State var value = ""
-    @State var validTextField = false
-    @FocusState var keyboardIsFocused: Bool
     @Binding var popToRoot: Bool
+    
+    @State private var value: String = ""
+    @FocusState var keyboardIsFocused: Bool
+    @State var validTextField = false
+
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,9 +37,9 @@ struct FormsGoalsValueView: View {
                 .underlineTextField()
                 .padding(5)
                 .onChange(of: value) { _ in
-                    if let value = value.transformToMoney() {
-                        self.value = value
-                        goal.value = value.floatValue
+                    if let stringMoney = value.transformToMoney() {
+                        value = stringMoney
+                        goal.value = stringMoney.replacingOccurrences(of: ".", with: "").floatValue
                         validTextField = true
                     } else {
                         validTextField = false
@@ -40,19 +48,19 @@ struct FormsGoalsValueView: View {
             PrioritySelector(priority: $goal.priority)
             Spacer()
             NavigationLink {
-                FormsGoalMotivationView(goal: goal, goals: $goals, popToRoot: $popToRoot)
+                FormsGoalMotivationView(goal: goal, popToRoot: $popToRoot)
             } label: {
-                TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: validTextField)
+                TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: !isValidValue)
             }
             .isDetailLink(false)
-            .disabled(validTextField)
+            .disabled(!isValidValue)
         }
         .padding(20)
     }
 }
 
-//struct FormsGoalsValueView_Previews: PreviewProvider {
+// struct FormsGoalsValueView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FormsGoalsValueView(goal: .constant(Goal(title: "", value: 1, weeks: 1, motivation: "", priority: 1, methodologyGoal: MethodologyGoal(weeks: 1, crescent: true))), popToRoot: .constant(true))
 //    }
-//}
+// }

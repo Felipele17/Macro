@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpentsCardView: View {
-    @Binding var spentsCard: SpentsCard
+    var spentsCard: SpentsCard
     
     var body: some View {
         VStack(spacing: 0) {
@@ -55,8 +55,8 @@ struct SpentsCardView: View {
     }
 }
 
-//struct SpentsCardView_Previews: PreviewProvider {
+// struct SpentsCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SpentsCardView(spentsCard: SpentsCard(id: 1, valuesPercent: 1, namePercent: "oi", moneySpented: 100, avalibleMoney: 100))
 //    }
-//}
+// }
