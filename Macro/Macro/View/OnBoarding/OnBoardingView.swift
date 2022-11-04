@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @State var incomeTextField: Float = 0.0
+    @State var incomeTextField: String
     @State var text = EnumButtonText.nextButton.rawValue
     @StateObject var viewModel = OnBoardingViewModel()
     @StateObject var invite = Invite.shared
+    @State var validTextField = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
     
@@ -25,9 +26,9 @@ struct OnBoardingView: View {
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, incomeTextField: incomeTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, value: $incomeTextField, validTextField: $validTextField)
                         .tag(2)
-                        .gesture(incomeTextField == 0.0 ? DragGesture() : nil)
+                        .gesture(incomeTextField.isEmpty ? DragGesture() : nil)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[6])
                             .tag(3)
@@ -49,7 +50,7 @@ struct OnBoardingView: View {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
                 }
-                if invite.isReady(income: incomeTextField) {
+                if invite.isReady(income: incomeTextField.floatValue) {
 //                    NavigationLink {
 //                        HomeView(users: <#[User]#>, dictionarySpent: <#[[Spent]]#>, goals: <#[Goal]#>, spentsCards: <#[SpentsCard]#>, methodologyGoals: <#MethodologyGoal#>)
 //                    } label: {
@@ -63,7 +64,7 @@ struct OnBoardingView: View {
 //                    }
 
                 } else {
-                    NextButton(text: viewModel.checkButton(), onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
+                    NextButton(text: viewModel.checkButton(), validTextField: $validTextField, onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
                 }
             }
             .toolbar {
@@ -85,8 +86,8 @@ struct OnBoardingView: View {
     
 }
 
-struct OnBoardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
-    }
-}
+// struct OnBoardingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
+//    }
+// }

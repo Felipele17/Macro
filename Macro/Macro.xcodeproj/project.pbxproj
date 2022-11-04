@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FFD6228CBD66C003F9FDA /* CarouselView.swift */; };
-		0621175A29135B9500A1D593 /* String + transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621175929135B9500A1D593 /* String + transformToMoney.swift */; };
 		063C8AA028D241DC0053054B /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8A9F28D241DC0053054B /* GraphView.swift */; };
 		063C8AA428D249280053054B /* WeakGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8AA328D249280053054B /* WeakGoalsView.swift */; };
 		063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C8AA528D2661C0053054B /* ChartPieViewModel.swift */; };
@@ -47,6 +46,7 @@
 		0695CE4C290B04050021CF3F /* EnumPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */; };
 		0695CE4E290B16AC0021CF3F /* ObservableDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */; };
 		0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */; };
+		06AD62B52915801800C02D8C /* String+transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AD62B42915801800C02D8C /* String+transformToMoney.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
 		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
@@ -110,7 +110,6 @@
 
 /* Begin PBXFileReference section */
 		061FFD6228CBD66C003F9FDA /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
-		0621175929135B9500A1D593 /* String + transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + transformToMoney.swift"; sourceTree = "<group>"; };
 		063C8A9F28D241DC0053054B /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		063C8AA328D249280053054B /* WeakGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakGoalsView.swift; sourceTree = "<group>"; };
 		063C8AA528D2661C0053054B /* ChartPieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPieViewModel.swift; sourceTree = "<group>"; };
@@ -154,6 +153,7 @@
 		0695CE4B290B04050021CF3F /* EnumPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPushNotifications.swift; sourceTree = "<group>"; };
 		0695CE4D290B16AC0021CF3F /* ObservableDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableDataBase.swift; sourceTree = "<group>"; };
 		0695CE4F290C69120021CF3F /* EnumStatusFecth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumStatusFecth.swift; sourceTree = "<group>"; };
+		06AD62B42915801800C02D8C /* String+transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+transformToMoney.swift"; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -224,14 +224,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0621175829135B0200A1D593 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				0621175929135B9500A1D593 /* String + transformToMoney.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		06449BDE28C2921E00035324 = {
 			isa = PBXGroup;
 			children = (
@@ -331,7 +323,7 @@
 		06449C1928C2994800035324 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0621175829135B0200A1D593 /* Extension */,
+				06AD62B32915800100C02D8C /* Extension */,
 				0688A9D528C7D62F001044A6 /* Protocolo */,
 				06449C4E28C2A2E000035324 /* Enum */,
 				06449C4128C29EA400035324 /* Goal.swift */,
@@ -491,6 +483,14 @@
 				0688A9D328C7D628001044A6 /* DataModelProtocol.swift */,
 			);
 			path = Protocolo;
+			sourceTree = "<group>";
+		};
+		06AD62B32915800100C02D8C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				06AD62B42915801800C02D8C /* String+transformToMoney.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		06CB395328F0A51000CDEC0B /* elements */ = {
@@ -774,6 +774,7 @@
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
+				06AD62B52915801800C02D8C /* String+transformToMoney.swift in Sources */,
 				06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */,
 				5544773E28E2330C000C892E /* OnBoarding.swift in Sources */,
 				06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */,
@@ -788,7 +789,6 @@
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingStateViewModel.swift in Sources */,
 				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
-				0621175A29135B9500A1D593 /* String + transformToMoney.swift in Sources */,
 				06449C4428C29EB400035324 /* Spent.swift in Sources */,
 				5544773628E231C3000C892E /* OnBoardingView.swift in Sources */,
 				554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */,

@@ -31,7 +31,6 @@ struct FormsGoalsValueView: View {
             Text("Depositando R$ 1 por semana de forma gradual, em 52 semanas você irá ter em sua conta R$ 1.378,00")
                 .padding(10)
             TextField("Ex.: R$ 1.378,00", text: $value)
-//            TextField("Ex.: R$ 1.378,00", text: $value)
                 .foregroundColor(.black)
                 .keyboardType(.decimalPad)
                 .focused($keyboardIsFocused)
@@ -41,6 +40,7 @@ struct FormsGoalsValueView: View {
                     if let stringMoney = value.transformToMoney() {
                         value = stringMoney
                         goal.value = stringMoney.replacingOccurrences(of: ".", with: "").floatValue
+                        isValidValue = true
                     } else {
                         isValidValue = false
                     }

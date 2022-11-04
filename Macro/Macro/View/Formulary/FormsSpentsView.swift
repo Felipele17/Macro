@@ -19,6 +19,8 @@ struct FormsSpentsView: View {
     @State var value: String = ""
     @State var date = Date.now
     
+    @State var validTextField = false
+    
     var colorIcon: String
     var isPost: Bool
 
@@ -54,7 +56,6 @@ struct FormsSpentsView: View {
                             }
                         }
                 }.textCase(.none)
-
                 Section(header: Text("Data").foregroundColor(Color("Title")).font(.custom("SFProText-Regular", size: 22))) {
                     DatePicker("", selection: $date, displayedComponents: [.date])
                             .listRowBackground(Color.clear)
