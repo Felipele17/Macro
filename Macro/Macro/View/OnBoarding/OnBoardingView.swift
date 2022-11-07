@@ -13,6 +13,7 @@ struct OnBoardingView: View {
     @StateObject var viewModel = OnBoardingViewModel()
     @StateObject var invite = Invite.shared
     @State var validTextField = false
+    @State var showingAlert = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
     
@@ -75,18 +76,29 @@ struct OnBoardingView: View {
 //                        InfoButton(infoButton: "info.circle")
 //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         Button {
-                            CloudKitModel.shared.deleteShare()
-                            Task {
-                                CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
-                                let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                                let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
-                                DispatchQueue.main.async {
-                                    invite.isReceivedInviteAccepted = isReceivedInviteAccepted
-                                    invite.isSendInviteAccepted = isSendInviteAccepted
-                                    }
-                            }
+                            showingAlert.toggle()
                         } label: {
-                            Text("deletar")
+                            Text("Deletar")
+                        }
+                        .alert("Deseja deletar o compartilhamento?", isPresented: $showingAlert) {
+                            Button(role: .cancel){
+                            }
+                            label: {
+                                Text("Não")
+                            }
+
+                            Button("Sim") {
+                                CloudKitModel.shared.deleteShare()
+                                Task {
+                                    CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
+                                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                                    let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
+                                    DispatchQueue.main.async {
+                                        invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                                        invite.isSendInviteAccepted = isSendInviteAccepted
+                                        }
+                                }
+                            }
                         }
 
                     }
@@ -96,6 +108,9 @@ struct OnBoardingView: View {
             .padding(24)
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            validTextField = incomeTextField.isEmpty ? false : true
+        }
         
     }
     

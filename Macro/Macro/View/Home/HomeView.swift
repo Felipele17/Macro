@@ -32,16 +32,8 @@ struct HomeView: View {
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                         .padding()
+                        .padding()
                     Spacer()
-//                    NavigationLink(destination:
-//                                    FormsGoalsNameView(
-//                                        goal: Goal.startGoals(methodologyGoals: methodologyGoals), goals: $goals, popToRoot: $isActive), isActive: $isActive
-//                    ) {
-//                        Label("", systemImage: "plus")
-//                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-//                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-//                            .padding()
                     if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
                         Button {
                             showingSheet.toggle()
