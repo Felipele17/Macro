@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    @EnvironmentObject var vm: OnBoardingViewModel
+    @StateObject var invite = Invite.shared
     @State var incomeTextField: String
     @State var text = EnumButtonText.nextButton.rawValue
-    @StateObject var onboardingViewModel = OnBoardingViewModel()
-    @StateObject var invite = Invite.shared
     @State var validTextField = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
@@ -20,21 +20,21 @@ struct OnBoardingView: View {
         
         NavigationView {
             VStack {
-                TabView(selection: $onboardingViewModel.onboardingPage) {
+                TabView(selection: $vm.onboardingPage) {
                     OnBoardingPageTypeOneView(onboarding: pages[0])
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: onboardingViewModel, value: $incomeTextField, validTextField: $validTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], value: $incomeTextField, validTextField: $validTextField)
                         .tag(2)
                         .gesture(incomeTextField.isEmpty ? DragGesture() : nil)
-                    if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
+                    if Invite.shared.isSendInviteAccepted && Invite.shared.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[6])
                             .tag(3)
-                    } else if invite.isSendInviteAccepted {
+                    } else if Invite.shared.isSendInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[4])
                             .tag(3)
-                    } else if invite.isReceivedInviteAccepted {
+                    } else if Invite.shared.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[5])
                             .tag(3)
                     } else {
@@ -42,22 +42,47 @@ struct OnBoardingView: View {
                             .tag(3)
                     }
                 }
-                .animation(.easeInOut, value: onboardingViewModel.onboardingPage)
+                .animation(.easeInOut, value: vm.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
                 .onAppear {
                     dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
                     dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
+                    validTextField = incomeTextField.isEmpty ? false : true
                 }
-                if invite.isReady(income: incomeTextField.floatValue) {
-                    NextButton(text: onboardingViewModel.checkButton(), validTextField: $validTextField, onboardingPage: $onboardingViewModel.onboardingPage, income: $incomeTextField)
+                Button {
+                    if vm.onboardingPage != 3 {
+                        vm.onboardingPage += 1
+                        if !incomeTextField.isEmpty {
+                            let money = incomeTextField.floatValue
+                            UserDefault.userNextButton(income: money)
+                        }
+                    } else {
+                        if invite.isReady() {
+                            let money = incomeTextField.floatValue
+                            vm.initialPosts(income: money)
+                        } else {
+                            vm.sharingInvite()
+                        }
+                    }
+                    
+                } label: {
+                    Text(text)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background((validTextField && vm.onboardingPage == 2) || vm.onboardingPage != 2 ?   Color(EnumColors.buttonColor.rawValue): .gray )
+                        .cornerRadius(13)
                 }
+                .disabled(!validTextField && vm.onboardingPage == 2)
+                
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    if onboardingViewModel.onboardingPage < 2 {
-                        SkipButton(onboardingPage: $onboardingViewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if onboardingViewModel.onboardingPage == 2 {
+                    if vm.onboardingPage < 2 {
+                        SkipButton(onboardingPage: $vm.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
+                    } else if vm.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     }

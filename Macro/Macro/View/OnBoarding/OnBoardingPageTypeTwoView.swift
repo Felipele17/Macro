@@ -10,7 +10,7 @@ import SwiftUI
 struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
-    @ObservedObject var viewModel: OnBoardingViewModel
+    @EnvironmentObject var viewModel: OnBoardingViewModel
     @Binding var value: String
     @Binding var validTextField: Bool
     @FocusState private var keyboardIsFocused: Bool
@@ -61,9 +61,9 @@ struct OnBoardingPageTypeTwoView: View {
     }
 }
 
- struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: EnumImageName.doubleSquirrels.rawValue, title: "title", description: "description", tag: 0), viewModel: OnBoardingViewModel(), value: .constant("50"), validTextField: .constant(true))
-    }
- }
+// struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: EnumImageName.doubleSquirrels.rawValue, title: "title", description: "description", tag: 0), viewModel: OnBoardingViewModel(), value: .constant("50"), validTextField: .constant(true))
+//    }
+// }

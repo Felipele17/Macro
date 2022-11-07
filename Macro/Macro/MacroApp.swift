@@ -13,6 +13,7 @@ struct MacroApp: App {
     @StateObject var viewModel = MacroViewModel()
     @StateObject var spentViewModel = SpentViewModel()
     @StateObject var goalViewModel = GoalViewModel()
+    @StateObject var onboardingViewModel = OnBoardingViewModel()
     @StateObject var observableDataBase = ObservableDataBase.shared
     let userDefault = UserDefault()
     
@@ -56,6 +57,7 @@ struct MacroApp: App {
                 }
             } else {
                 OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome))
+                    .environmentObject(onboardingViewModel)
             }
         }
         .onChange(of: scenePhase) { (newScenePhase) in
@@ -63,8 +65,8 @@ struct MacroApp: App {
                    case .active:
                        if !Invite.shared.isSendInviteAccepted {
                            Task {
-                               CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare()
-                               let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                               await CloudKitModel.shared.loadShare()
+                               let isSendInviteAccepted = await Invite.shared.checkSendInviteAccepted()
                                DispatchQueue.main.async {
                                    Invite.shared.isSendInviteAccepted = isSendInviteAccepted
                                }

@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 logger.error("\(error.localizedDescription, privacy: .public)")
             }
             print("isReceivedInviteAccepted")
-             let isReceivedInviteAccepted = await cloud.isReceivedInviteAccepted()
+             let isReceivedInviteAccepted = await Invite.shared.checkReceivedInviteAccepted()
             DispatchQueue.main.async {
                 Invite.shared.isReceivedInviteAccepted = isReceivedInviteAccepted
             }

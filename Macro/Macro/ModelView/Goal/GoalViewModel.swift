@@ -44,9 +44,16 @@ class GoalViewModel: ObservableObject {
     }
     
     func editGoal(goal: Goal) {
+       let index = goals.firstIndex { elemGoal in
+           elemGoal.id == goal.id
+        }
+        guard let index = index else { return }
+        goals.replaceSubrange( index ... index, with: [goal])
         Task.init {
             await cloud.update(model: goal)
         }
+        
+        
         
     }
     

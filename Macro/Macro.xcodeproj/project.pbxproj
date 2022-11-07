@@ -49,7 +49,6 @@
 		06AD62B52915801800C02D8C /* String+transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AD62B42915801800C02D8C /* String+transformToMoney.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
-		06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D80F2D28DE3FF7006B3E0B /* NextButton.swift */; };
 		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		4A2844642900793200D1DD08 /* NoNetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2844632900793200D1DD08 /* NoNetView.swift */; };
 		4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */; };
@@ -156,7 +155,6 @@
 		06AD62B42915801800C02D8C /* String+transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+transformToMoney.swift"; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
-		06D80F2D28DE3FF7006B3E0B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		4A2844632900793200D1DD08 /* NoNetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetView.swift; sourceTree = "<group>"; };
 		4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumColors.swift; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 		06449C3628C29D9E00035324 /* elements */ = {
 			isa = PBXGroup;
 			children = (
-				06D80F2D28DE3FF7006B3E0B /* NextButton.swift */,
 				5544772928E23050000C892E /* SkipButton.swift */,
 				5544772B28E2307E000C892E /* InfoButton.swift */,
 				5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */,
@@ -759,7 +756,6 @@
 				06449C4628C29EC000035324 /* User.swift in Sources */,
 				5544772A28E23050000C892E /* SkipButton.swift in Sources */,
 				554B102128E4D603003DEE7C /* FormsGoalsValueView.swift in Sources */,
-				06D80F2E28DE3FF7006B3E0B /* NextButton.swift in Sources */,
 				9919974728E76AB10075866D /* SpentsCard.swift in Sources */,
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,

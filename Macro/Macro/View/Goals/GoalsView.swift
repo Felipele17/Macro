@@ -68,8 +68,8 @@ struct GoalsView: View {
                         if goal.weeks != goal.methodologyGoal?.weeks {
                             WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1))
                                 .onTapGesture {
-                                    goal.weeks += 1
                                     goalViewModel.editGoal(goal: goal)
+                                    goal.weeks += 1
                                 }
                         }
                         ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in

@@ -13,7 +13,7 @@ class CloudKitModel {
     let container: CKContainer
     let databasePrivate: CKDatabase
     let databaseShared: CKDatabase
-    var share: CKShare?
+    private var share: CKShare?
     
     static var shared = CloudKitModel()
     
@@ -74,7 +74,7 @@ class CloudKitModel {
     }
     
     // MARK: Post
-    func post( model: DataModelProtocol) async throws {
+    func post(model: DataModelProtocol) async throws {
 
         let recordId = CKRecord.ID(recordName: model.getID().description, zoneID: SharedZone.ZoneID)
         let record = populateRecord(record: CKRecord(recordType: model.getType(), recordID: recordId), model: model)
@@ -207,7 +207,7 @@ class CloudKitModel {
         
     }
     
-    func fetchShare() async throws -> CKShare? {
+    private func fetchShare() async throws -> CKShare? {
         let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
         do {
             let share = try await databasePrivate.record(for: recordID) as? CKShare
@@ -219,7 +219,7 @@ class CloudKitModel {
         }
     }
     
-    func getShare() async throws -> CKShare? {
+    private func getShare() async throws -> CKShare? {
         guard let share = try await createShare() else {
             do {
                 return try await fetchShare()
@@ -229,6 +229,11 @@ class CloudKitModel {
                 return nil
             }
         }
+        return share
+    }
+    
+    public func getShare() -> CKShare? {
+        guard let share = share else { return nil}
         return share
     }
     
@@ -266,26 +271,8 @@ class CloudKitModel {
         try await container.accept(metadata)
     }
     
-    // MARK: Invite
-    func isReceivedInviteAccepted() async -> Bool {
-        if (try? await getSharedZone()) != nil {
-            return true
-        } else {
-            return false
-        }
-    }
     
-    func isSendInviteAccepted() async -> Bool {
-        let shared = try? await getShare()
-        guard let participantes = shared?.participants.count else { return false }
-        if participantes <= 1 {
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    // MARK: fecth
+    // MARK: fetch
     func fetchSharedPrivatedRecords(recordType: String, predicate: NSPredicate) async throws -> [CKRecord] {
         let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
         
