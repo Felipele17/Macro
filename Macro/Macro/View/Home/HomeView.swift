@@ -14,7 +14,7 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
                 HStack {
                     Text("Bom dia, \(UserDefault.userHomeViewString())!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
