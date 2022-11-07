@@ -23,10 +23,12 @@ struct MethodologyGoalsView: View {
                             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
                     }
                     Text(methodology.description)
+                        .lineLimit(2, reservesSpace: true)
                         .padding(.horizontal)
                         .padding(.bottom)
                         .font(.custom(EnumFonts.regular.rawValue, size: 16))
                     Text(methodology.example)
+                        .lineLimit(2, reservesSpace: true)
                         .padding(.horizontal)
                         .font(.custom(EnumFonts.light.rawValue, size: 16))
                         .foregroundColor(Color(EnumColors.subtitle.rawValue))

@@ -34,8 +34,6 @@ class UserDefault {
     static func userNextButton(income: Float) {
        UserDefaults.standard.setValue(income, forKey: "income")
     }
-
-    // MARK:
     static func userHomeViewString() -> String {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }

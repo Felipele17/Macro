@@ -26,10 +26,11 @@ struct MethodologySpentsView: View {
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 17))
                         }
                         Text(methodology.description)
+                            .lineLimit(2, reservesSpace: true)
                             .padding(.horizontal)
                             .padding(.bottom)
                             .font(.custom(EnumFonts.regular.rawValue, size: 16))
-                        Text(methodology.example)
+                        Text(methodology.example).lineLimit(2, reservesSpace: true)
                             .padding(.horizontal)
                             .font(.custom(EnumFonts.light.rawValue, size: 16))
                             .foregroundColor(Color(EnumColors.subtitle.rawValue))
@@ -59,7 +60,7 @@ struct MethodologySpentsView: View {
 
     }
 }
-struct MethodologyView_Previews: PreviewProvider {
+struct MethodologySpentsView_Previews: PreviewProvider {
     static var previews: some View {
         MethodologySpentsView()
     }

@@ -11,17 +11,17 @@ enum EnumMethodology: String {
     case imageOne = "essencialsImage"
     case titleOne = "Gastos essenciais"
     case descriptionOne = "Foque 50% da sua renda com os gastos que não podem ser adiados."
-    case exampleOne = "Ex.: Se sua renda for de R$3000 utilize R$1500 para pagar as contas mensais da sua casa."
+    case exampleOne = "Ex.: Se sua renda for de R$100,00 utilize R$50,00 para pagar as contas mensais da sua casa."
     
     case imageTwo = "priorityImage"
     case titleTwo = "Prioridades financeiras"
     case descriptionTwo = "Priorize 35% da sua renda com dívidas de cartão e outros tipos de endividamentos."
-    case exampleTwo = "Ex.: Se sua renda for de R$3000 utilize R$1050 para pagar suas dívidas do cartão de crédito."
+    case exampleTwo = "Ex.: Se sua renda for de R$100,00 utilize R$35,00 para pagar suas dívidas do cartão de crédito."
     
     case imageThree = "leisureImage"
     case titleThree = "Estilo de vida"
     case descriptionThree = "Aproveite 15% de sua renda com atividades e produtos que te fazem feliz!"
-    case exampleThree = "Ex.: Se sua renda for de R$3000 utilize R$450 para comprar fazer suas compras na loja."
+    case exampleThree = "Ex.: Se sua renda for de R$100,00 utilize R$15,00 para comprar fazer suas compras na loja."
     
     case imageFour = "52weeksImage"
     case titleFour = "Como funciona?"
