@@ -32,7 +32,8 @@ struct OnBoardingPageTypeTwoView: View {
                     .frame(height: 1.0, alignment: .bottom)
                     .foregroundColor(Color(EnumColors.subtitle.rawValue))
                     .onChange(of: value) { _ in
-                        if value.transformToMoney() != nil {
+                        if let value = value.transformToMoney() {
+                            self.value = value
                             validTextField = true
                         } else {
                             validTextField = false
