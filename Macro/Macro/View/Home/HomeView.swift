@@ -16,18 +16,19 @@ struct HomeView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Text("Bom dia \(UserDefault.userHomeViewString())!")
+                    Text("Bom dia, \(UserDefault.userHomeViewString())!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
+                    .padding(.top)
                     Spacer()
                     NavigationLink(destination:
                                     SettingsView()
                     ) {
-                        Label("", systemImage: "gearshape")
+                        Label("", systemImage: "list.bullet")
                             .font(.custom(EnumFonts.bold.rawValue, size: 22))
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                            .padding(.trailing)
-                    }
-                }
+                            
+                    }.padding(.top)
+                }.padding()
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
