@@ -12,6 +12,7 @@ struct GoalsView: View {
     @EnvironmentObject var goalViewModel: GoalViewModel
     @State private var selectFilter = 1
     @State var goal: Goal
+    @State var showingAlert = false
     
     var body: some View {
         VStack {
@@ -21,17 +22,28 @@ struct GoalsView: View {
                     .padding()
                 Spacer()
                 Button(role: nil) {
-                    goalViewModel.deleteGoal(goal: goal)
-                    goalViewModel.goals.removeAll { goal in
-                        goal.id == self.goal.id
-                    }
-                    self.presentationMode.wrappedValue.dismiss()
+                    showingAlert.toggle()
                 } label: {
                     Label("", systemImage: "trash")
                         .font(.custom(EnumFonts.bold.rawValue, size: 22))
                         .foregroundColor(Color(EnumColors.foregroundGraphMetaColor.rawValue))
                 }
                 .padding()
+                .alert("Deseja deletar meta?", isPresented: $showingAlert) {
+                    Button(role: .cancel) {
+                    }
+                    label: {
+                        Text("Não")
+                    }
+
+                    Button("Sim") {
+                        goalViewModel.deleteGoal(goal: goal)
+                        goalViewModel.goals.removeAll { goal in
+                            goal.id == self.goal.id
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
             }
             ZStack {
                 Color.white

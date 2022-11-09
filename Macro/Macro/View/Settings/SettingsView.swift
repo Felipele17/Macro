@@ -36,7 +36,7 @@ struct SettingsView: View {
                         Text("Vencimento dos gastos")
                     }
                     NavigationLink {
-                        MethodologyView()
+                        MethodologySpentsView()
                     }label: {
                         Image(systemName: "questionmark.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))

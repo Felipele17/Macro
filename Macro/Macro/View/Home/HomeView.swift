@@ -14,11 +14,25 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
+                HStack {
+                    Text("Bom dia, \(UserDefault.userHomeViewString())!")
+                    .font(.custom(EnumFonts.bold.rawValue, size: 34))
+                    .padding(.top)
+                    Spacer()
+                    NavigationLink(destination:
+                                    SettingsView()
+                    ) {
+                        Label("", systemImage: "list.bullet")
+                            .font(.custom(EnumFonts.bold.rawValue, size: 22))
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                            
+                    }.padding(.top)
+                }.padding()
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                         .padding()
+                        .padding()
                     Spacer()
                     if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
                         Button {
@@ -56,26 +70,12 @@ struct HomeView: View {
                         }
                     }
                 }
-                
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
-            .navigationTitle("Bom dia \(UserDefault.userHomeViewString())!")
             .navigationBarTitleDisplayMode(.large)
             .font(.custom(EnumFonts.bold.rawValue, size: 34))
-            
-            .toolbar {
-                //                Button(role: nil) {
-                //                    print("add configuração")
-                //                } label: {
-                //                    Label("", systemImage: "gearshape")
-                //                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                //                        .padding(.trailing)
-                //                        .padding(.top)
-                //                }
-                
-            }
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -13,6 +13,7 @@ struct OnBoardingView: View {
     @State var incomeTextField: String
     @State var text = EnumButtonText.nextButton.rawValue
     @State var validTextField = false
+    @State var showingAlert = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
     private let dotAppearance = UIPageControl.appearance()
     
@@ -85,6 +86,33 @@ struct OnBoardingView: View {
                     } else if vm.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                    } else if viewModel.onboardingPage == 3 {
+                        Button {
+                            showingAlert.toggle()
+                        } label: {
+                            Text("Deletar")
+                        }
+                        .alert("Deseja deletar o compartilhamento?", isPresented: $showingAlert) {
+                            Button(role: .cancel){
+                            }
+                            label: {
+                                Text("Não")
+                            }
+
+                            Button("Sim") {
+                                CloudKitModel.shared.deleteShare()
+                                Task {
+                                    CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
+                                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
+                                    let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
+                                    DispatchQueue.main.async {
+                                        invite.isReceivedInviteAccepted = isReceivedInviteAccepted
+                                        invite.isSendInviteAccepted = isSendInviteAccepted
+                                        }
+                                }
+                            }
+                        }
+
                     }
                 }
                 
@@ -92,5 +120,9 @@ struct OnBoardingView: View {
             .padding(24)
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            validTextField = incomeTextField.isEmpty ? false : true
+        }
+        
     }
 }

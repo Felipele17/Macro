@@ -32,9 +32,6 @@ struct MacroApp: App {
                                 goalViewModel.goals = viewModel.goals
                                 goalViewModel.methodologyGoals = viewModel.methodologyGoals
                             }
-//                            .onChange(of: viewModel.users, perform: { user in
-//                                homeViewModel.users = user
-//                            })
                             .onReceive(viewModel.$dictionarySpent, perform: { dictionarySpent in
                                 spentViewModel.dictionarySpent = dictionarySpent
                             })
@@ -56,8 +53,7 @@ struct MacroApp: App {
                     NoNetView()
                 }
             } else {
-                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome))
-                    .environmentObject(onboardingViewModel)
+                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
             }
         }
         .onChange(of: scenePhase) { (newScenePhase) in
