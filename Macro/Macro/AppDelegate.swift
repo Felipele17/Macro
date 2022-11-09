@@ -47,10 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 case .share:
                     Task {
                         print("isSendInviteAccepted")
-                        let isSendInviteAccepted = await Invite.shared.checkSendInviteAccepted()
-                        DispatchQueue.main.async {
-                           Invite.shared.isSendInviteAccepted = isSendInviteAccepted
-                       }
+                        Invite.shared.checkSendInviteAccepted()
                     }
                 case .goal:
                     print("goal notification")

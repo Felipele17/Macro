@@ -15,31 +15,37 @@ class Invite: ObservableObject {
     @Published var isSendInviteAccepted: Bool = false
         
      init() {
+        checkReceivedInviteAccepted()
+        checkSendInviteAccepted()
+    }
+    
+    func checkReceivedInviteAccepted() {
         Task {
-            let isReceivedInviteAccepted = await checkReceivedInviteAccepted()
-            let isSendInviteAccepted = await checkSendInviteAccepted()
-            DispatchQueue.main.async {
-                self.isReceivedInviteAccepted = isReceivedInviteAccepted
-                self.isSendInviteAccepted = isSendInviteAccepted
+            if (try? await cloud.getSharedZone()) != nil {
+                DispatchQueue.main.async {
+                    Invite.shared.isReceivedInviteAccepted = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    Invite.shared.isReceivedInviteAccepted = false
+                }
             }
         }
     }
     
-    func checkReceivedInviteAccepted() async -> Bool {
-        if (try? await cloud.getSharedZone()) != nil {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func checkSendInviteAccepted() async -> Bool {
-        let shared = try? await cloud.getShare()
-        guard let participantes = shared?.participants.count else { return false }
-        if participantes <= 1 {
-            return false
-        } else {
-            return true
+    func checkSendInviteAccepted() {
+        Task {
+            let shared = cloud.getShare()
+            guard let participantes = shared?.participants.count else { return }
+            if participantes <= 1 {
+                DispatchQueue.main.async {
+                    Invite.shared.isSendInviteAccepted = false
+                }
+            } else {
+                DispatchQueue.main.async {
+                    Invite.shared.isSendInviteAccepted = true
+                }
+            }
         }
     }
     

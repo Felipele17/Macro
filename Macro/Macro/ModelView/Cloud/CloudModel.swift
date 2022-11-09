@@ -206,8 +206,7 @@ class CloudKitModel {
         }
     }
     
-    func deleteShare() {
-        Task {
+    func deleteShare() async {
             let predicate = NSPredicate(value: true)
             do {
                 let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
@@ -223,7 +222,7 @@ class CloudKitModel {
                 print("deleteShare")
                 print(erro.localizedDescription)
             }
-        }
+        UserDefault.didCreateSubscriptionShareFalse()
     }
     
     func fetchShare(database: EnumDatabase) async throws -> CKShare? {
@@ -285,8 +284,13 @@ class CloudKitModel {
         return records?.first?.zoneID
     }
     
-    func accept(_ metadata: CKShare.Metadata) async throws {
-        try await container.accept(metadata)
+    func accept(_ metadata: CKShare.Metadata) async {
+        do {
+            try await container.accept(metadata)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
     }
     
     // MARK: fetch

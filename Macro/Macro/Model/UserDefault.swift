@@ -37,6 +37,9 @@ class UserDefault {
     static func userHomeViewString() -> String {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }
+    
+    // MARK: Cloud
+    static func didCreateSubscriptionShareFalse() {
+        UserDefaults.standard.setValue(false, forKey: "didCreateSubscriptioncloudkit.share")
+    }
 }
-
-

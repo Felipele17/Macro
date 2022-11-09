@@ -19,21 +19,21 @@ struct MacroApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if userDefault.userOnBoardingBool {
-                if viewModel.isConect {
-                    if viewModel.isReady() {
+            if viewModel.isConect {
+                    if onboardingViewModel.onboardingFinished {
+                        if viewModel.isReady() {
                         HomeView()
                             .environmentObject(goalViewModel)
                             .environmentObject(spentViewModel)
                             .environmentObject(viewModel)
                             .onAppear {
-                                spentViewModel.dictionarySpent = viewModel.dictionarySpent
+                                spentViewModel.dictionarySpent = viewModel.matrixSpent
                                 spentViewModel.spentsCards = viewModel.spentsCards
                                 goalViewModel.goals = viewModel.goals
                                 goalViewModel.methodologyGoals = viewModel.methodologyGoals
                             }
-                            .onReceive(viewModel.$dictionarySpent, perform: { dictionarySpent in
-                                spentViewModel.dictionarySpent = dictionarySpent
+                            .onReceive(viewModel.$matrixSpent, perform: { matrixSpent in
+                                spentViewModel.dictionarySpent = matrixSpent
                             })
                             .onReceive(viewModel.$goals, perform: { goals in
                                 goalViewModel.goals = goals
@@ -46,15 +46,17 @@ struct MacroApp: App {
                                     viewModel.reload(type: Goal.getType())
                                     observableDataBase.needFetchGoal = false
                             }
+                        } else {
+                            LaunchScreenView()
+                        }
                     } else {
-                        LaunchScreenView()
+                        OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
+                            .environmentObject(onboardingViewModel)
                     }
-                } else {
-                    NoNetView()
-                }
             } else {
-                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
+                NoNetView()
             }
+
         }
         .onChange(of: scenePhase) { (newScenePhase) in
                    switch newScenePhase {
@@ -62,10 +64,7 @@ struct MacroApp: App {
                        if !Invite.shared.isSendInviteAccepted {
                            Task {
                                await CloudKitModel.shared.loadShare()
-                               let isSendInviteAccepted = await Invite.shared.checkSendInviteAccepted()
-                               DispatchQueue.main.async {
-                                   Invite.shared.isSendInviteAccepted = isSendInviteAccepted
-                               }
+                               Invite.shared.checkSendInviteAccepted()
                            }
                        }
                    case .inactive:

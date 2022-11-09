@@ -62,6 +62,7 @@ struct OnBoardingView: View {
                         if invite.isReady() {
                             let money = incomeTextField.floatValue
                             vm.initialPosts(income: money)
+                            vm.onboardingFinished = true
                         } else {
                             vm.sharingInvite()
                         }
@@ -86,7 +87,7 @@ struct OnBoardingView: View {
                     } else if vm.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                    } else if viewModel.onboardingPage == 3 {
+                    } else if vm.onboardingPage == 3 {
                         Button {
                             showingAlert.toggle()
                         } label: {
@@ -98,18 +99,8 @@ struct OnBoardingView: View {
                             label: {
                                 Text("Não")
                             }
-
                             Button("Sim") {
-                                CloudKitModel.shared.deleteShare()
-                                Task {
-                                    CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
-                                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                                    let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
-                                    DispatchQueue.main.async {
-                                        invite.isReceivedInviteAccepted = isReceivedInviteAccepted
-                                        invite.isSendInviteAccepted = isSendInviteAccepted
-                                        }
-                                }
+                                vm.deleteShare()
                             }
                         }
 

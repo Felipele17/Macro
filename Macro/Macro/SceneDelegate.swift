@@ -21,15 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func windowScene(  _ windowScene: UIWindowScene, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShare.Metadata ) {
         Task {
-            do {
-                try await cloud.accept(cloudKitShareMetadata)
-            } catch {
-                logger.error("\(error.localizedDescription, privacy: .public)")
-            }
+            await cloud.accept(cloudKitShareMetadata)
             print("isReceivedInviteAccepted")
-             let isReceivedInviteAccepted = await Invite.shared.checkReceivedInviteAccepted()
-            DispatchQueue.main.async {
-                Invite.shared.isReceivedInviteAccepted = isReceivedInviteAccepted
+            Task {
+                await CloudKitModel.shared.loadShare()
+                Invite.shared.checkReceivedInviteAccepted()
             }
         }
     }
