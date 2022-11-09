@@ -21,14 +21,19 @@ class Invite: ObservableObject {
     
     func checkReceivedInviteAccepted() {
         Task {
-            if (try? await cloud.getSharedZone()) != nil {
-                DispatchQueue.main.async {
-                    Invite.shared.isReceivedInviteAccepted = true
+            do {
+                let zone = try await cloud.getSharedZone()
+                if zone != nil {
+                    DispatchQueue.main.async {
+                        Invite.shared.isReceivedInviteAccepted = true
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        Invite.shared.isReceivedInviteAccepted = false
+                    }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    Invite.shared.isReceivedInviteAccepted = false
-                }
+            } catch let error {
+                print(error.localizedDescription)
             }
         }
     }
