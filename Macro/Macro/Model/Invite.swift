@@ -40,7 +40,8 @@ class Invite: ObservableObject {
     
     func checkSendInviteAccepted() {
         Task {
-            let shared = cloud.getShare()
+            
+            let shared = await cloud.loadShare()
             guard let participantes = shared?.participants.count else { return }
             if participantes <= 1 {
                 DispatchQueue.main.async {

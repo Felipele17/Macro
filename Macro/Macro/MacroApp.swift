@@ -63,7 +63,6 @@ struct MacroApp: App {
                    case .active:
                        if !Invite.shared.isSendInviteAccepted {
                            Task {
-                               await CloudKitModel.shared.loadShare()
                                Invite.shared.checkSendInviteAccepted()
                            }
                        }

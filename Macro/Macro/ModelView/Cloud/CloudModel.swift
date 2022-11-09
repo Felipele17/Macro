@@ -22,7 +22,7 @@ class CloudKitModel {
         databasePrivate = container.privateCloudDatabase
         databaseShared = container.sharedCloudDatabase
         Task.init {
-            await loadShare()
+            share = await loadShare()
             await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
         }
     }
@@ -249,12 +249,7 @@ class CloudKitModel {
         return share
     }
     
-    public func getShare() -> CKShare? {
-        guard let share = share else { return nil}
-        return share
-    }
-    
-    func loadShare() async {
+    func loadShare() async -> CKShare? {
         do {
             if share == nil {
                 share = try await getShare()
@@ -263,7 +258,7 @@ class CloudKitModel {
             print("Cloud - loadShare")
             print(error.localizedDescription)
         }
-        
+        return share
     }
     
     func makeUIViewControllerShare() -> UICloudSharingController? {

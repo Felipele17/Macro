@@ -34,9 +34,6 @@ class OnBoardingViewModel: ObservableObject {
     // MARK: Cloud
     /// it shares the invite by fetching, sending and receving the invite
     func sharingInvite() {
-        invite.checkSendInviteAccepted()
-        invite.checkReceivedInviteAccepted()
-        
         guard let sharingController = cloud.makeUIViewControllerShare() else { return }
         let window = UIApplication.shared.keyWindow
         window?.rootViewController?.present(sharingController, animated: true)
@@ -46,7 +43,7 @@ class OnBoardingViewModel: ObservableObject {
     func initialPosts(income: Float) {
         Task {
             var participantsNames: [String] = []
-            if let participants = cloud.getShare()?.participants {
+            if let participants = await cloud.loadShare()?.participants {
                 for participant in participants {
                     guard let name = participant.userIdentity.nameComponents?.description else { return  }
                     participantsNames.append( name )
@@ -76,13 +73,10 @@ class OnBoardingViewModel: ObservableObject {
     }
     
     func deleteShare() {
-        Task{
+        Task {
             await CloudKitModel.shared.deleteShare()
-            await CloudKitModel.shared.loadShare()
             invite.checkSendInviteAccepted()
             invite.checkReceivedInviteAccepted()
         }
-        
-        
     }
 }

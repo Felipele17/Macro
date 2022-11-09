@@ -52,9 +52,6 @@ class GoalViewModel: ObservableObject {
         Task.init {
             await cloud.update(model: goal)
         }
-        
-        
-        
     }
     
     func calc( goal: Goal) -> CGFloat {
