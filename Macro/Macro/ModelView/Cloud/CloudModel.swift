@@ -271,7 +271,6 @@ class CloudKitModel {
         try await container.accept(metadata)
     }
     
-    
     // MARK: fetch
     func fetchSharedPrivatedRecords(recordType: String, predicate: NSPredicate) async throws -> [CKRecord] {
         let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
@@ -280,9 +279,9 @@ class CloudKitModel {
             for zone in sharedZones {
                 group.addTask { [self] in
                     do {
-                        let fecthShared = try await self.fetchRecords( in: zone.zoneID, from: self.databaseShared, recordType: recordType, predicate: predicate)
-                        let fecthPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
-                        return fecthShared + fecthPrivate
+                        let fetchShared = try await self.fetchRecords( in: zone.zoneID, from: self.databaseShared, recordType: recordType, predicate: predicate)
+                        let fetchPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
+                        return fetchShared + fetchPrivate
                     } catch {
                         print(error.localizedDescription)
                         return []
