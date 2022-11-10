@@ -10,17 +10,17 @@ import SwiftUI
 struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
-    @ObservedObject var viewModel: OnBoardingViewModel
+    @EnvironmentObject var viewModel: OnBoardingViewModel
     @Binding var value: String
     @Binding var validTextField: Bool
-    @FocusState var keyboardIsFocused: Bool
+    @FocusState private var keyboardIsFocused: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
             Text(onboarding.title)
-                .font(.custom("SFProText-Semibold", fixedSize: 26))
+                .font(.custom(EnumFonts.semibold.rawValue, fixedSize: 26))
             Text(onboarding.description)
-                .font(.custom("SFProText-Medium", fixedSize: 16))
+                .font(.custom(EnumFonts.medium.rawValue, fixedSize: 16))
                 .padding(1.3)
             
             VStack {
@@ -63,7 +63,8 @@ struct OnBoardingPageTypeTwoView: View {
 }
 
 // struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
+//
 //    static var previews: some View {
-//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: "esquilo", title: "Título", description: "texto de descrição", tag: 2), viewModel: OnBoardingViewModel(), incomeTextField: .constant(10))
+//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: EnumImageName.doubleSquirrels.rawValue, title: "title", description: "description", tag: 0), viewModel: OnBoardingViewModel(), value: .constant("50"), validTextField: .constant(true))
 //    }
 // }

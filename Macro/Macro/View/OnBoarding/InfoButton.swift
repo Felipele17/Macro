@@ -12,7 +12,7 @@ struct InfoButton: View {
 
     var body: some View {
         NavigationLink {
-            // view
+            MethodologyView()
         } label: {
             Label("Informação", systemImage: infoButton)
                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    @EnvironmentObject var viewModel: OnBoardingViewModel
+    @EnvironmentObject var invite : Invite
+    @StateObject var cloud = CloudKitModel.shared
     @State var incomeTextField: String
-    @State var text = EnumButtonText.nextButton.rawValue
-    @StateObject var viewModel = OnBoardingViewModel()
-    @StateObject var invite = Invite.shared
     @State var validTextField = false
     @State var showingAlert = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
@@ -20,14 +20,13 @@ struct OnBoardingView: View {
     var body: some View {
         
         NavigationView {
-            
             VStack {
                 TabView(selection: $viewModel.onboardingPage) {
                     OnBoardingPageTypeOneView(onboarding: pages[0])
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: viewModel, value: $incomeTextField, validTextField: $validTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], value: $incomeTextField, validTextField: $validTextField)
                         .tag(2)
                         .gesture(incomeTextField.isEmpty ? DragGesture() : nil)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
@@ -47,57 +46,55 @@ struct OnBoardingView: View {
                 .animation(.easeInOut, value: viewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
-                .onAppear {
-                    dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
-                    dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
+                Button {
+                    if viewModel.onboardingPage != 3 {
+                        viewModel.onboardingPage += 1
+                        if !incomeTextField.isEmpty {
+                            let money = incomeTextField.replacingOccurrences(of: ".", with: "").floatValue
+                            UserDefault.setIncome(income: money)
+                        }
+                    } else {
+                        if Invite.shared.isReady() {
+                            let money = UserDefault.getIncome()
+                            viewModel.initialPosts(income: money)
+                            viewModel.onboardingFinished = true
+                        } else {
+                            viewModel.sharingInvite()
+                        }
+                    }
+                    
+                } label: {
+                    Text(viewModel.onboardingPage == 3 ? (cloud.isShareNil ? "loading..." : "compatilhar") : "próximo")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background((validTextField && viewModel.onboardingPage == 2) || viewModel.onboardingPage != 2 ?   Color(EnumColors.buttonColor.rawValue): .gray )
+                        .cornerRadius(13)
                 }
-                if invite.isReady(income: incomeTextField.floatValue) {
-//                    NavigationLink {
-//                        HomeView(users: <#[User]#>, dictionarySpent: <#[[Spent]]#>, goals: <#[Goal]#>, spentsCards: <#[SpentsCard]#>, methodologyGoals: <#MethodologyGoal#>)
-//                    } label: {
-//                        Text("Concluir")
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .frame(height: 55)
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color(EnumColors.buttonColor.rawValue))
-//                            .cornerRadius(13)
-//                    }
-
-                } else {
-                    NextButton(text: viewModel.checkButton(), validTextField: $validTextField, onboardingPage: $viewModel.onboardingPage, income: $incomeTextField)
-                }
+                .disabled(!validTextField && viewModel.onboardingPage == 2)
+                
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if viewModel.onboardingPage < 2 {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
+                    } else if viewModel.onboardingPage == 2 {
+                        InfoButton(infoButton: "info.circle")
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     } else if viewModel.onboardingPage == 3 {
-//                        InfoButton(infoButton: "info.circle")
-//                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         Button {
                             showingAlert.toggle()
                         } label: {
                             Text("Deletar")
                         }
                         .alert("Deseja deletar o compartilhamento?", isPresented: $showingAlert) {
-                            Button(role: .cancel){
-                            }
+                            Button(role: .cancel) { }
                             label: {
                                 Text("Não")
                             }
-
                             Button("Sim") {
-                                CloudKitModel.shared.deleteShare()
-                                Task {
-                                    CloudKitModel.shared.share = try await CloudKitModel.shared.fetchShare(database: .dataPrivate)
-                                    let isSendInviteAccepted = await CloudKitModel.shared.isSendInviteAccepted()
-                                    let isReceivedInviteAccepted = await CloudKitModel.shared.isReceivedInviteAccepted()
-                                    DispatchQueue.main.async {
-                                        invite.isReceivedInviteAccepted = isReceivedInviteAccepted
-                                        invite.isSendInviteAccepted = isSendInviteAccepted
-                                        }
-                                }
+                                viewModel.deleteShare()
                             }
                         }
 
@@ -109,15 +106,9 @@ struct OnBoardingView: View {
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
+            dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
+            dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
             validTextField = incomeTextField.isEmpty ? false : true
         }
-        
     }
-    
 }
-
-// struct OnBoardingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnBoardingView(incomeTextField: UserDefaults.standard.float(forKey: "income"))
-//    }
-// }

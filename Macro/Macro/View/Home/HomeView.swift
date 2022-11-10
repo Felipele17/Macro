@@ -16,7 +16,7 @@ struct HomeView: View {
         NavigationStack {
             ScrollView {
                 HStack {
-                    Text("Bom dia, \(UserDefault.userHomeViewString())!")
+                    Text("Bom dia, \(UserDefault.getUsername())!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding(.top)
                     Spacer()
