@@ -9,7 +9,6 @@ import SwiftUI
 
 struct OnBoardingView: View {
     @EnvironmentObject var vm: OnBoardingViewModel
-    @StateObject var invite = Invite.shared
     @State var incomeTextField: String
     @State var text = EnumButtonText.nextButton.rawValue
     @State var validTextField = false
@@ -46,21 +45,16 @@ struct OnBoardingView: View {
                 .animation(.easeInOut, value: vm.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
-                .onAppear {
-                    dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
-                    dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
-                    validTextField = incomeTextField.isEmpty ? false : true
-                }
                 Button {
                     if vm.onboardingPage != 3 {
                         vm.onboardingPage += 1
                         if !incomeTextField.isEmpty {
-                            let money = incomeTextField.floatValue
-                            UserDefault.userNextButton(income: money)
+                            let money = incomeTextField.replacingOccurrences(of: ".", with: "").floatValue
+                            UserDefault.setIncome(income: money)
                         }
                     } else {
-                        if invite.isReady() {
-                            let money = incomeTextField.floatValue
+                        if Invite.shared.isReady() {
+                            let money = UserDefault.getIncome()
                             vm.initialPosts(income: money)
                             vm.onboardingFinished = true
                         } else {
@@ -111,8 +105,9 @@ struct OnBoardingView: View {
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
+            dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
+            dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
             validTextField = incomeTextField.isEmpty ? false : true
         }
-        
     }
 }

@@ -222,7 +222,6 @@ class CloudKitModel {
                 print("deleteShare")
                 print(erro.localizedDescription)
             }
-        UserDefault.didCreateSubscriptionShareFalse()
     }
     
     func fetchShare(database: EnumDatabase) async throws -> CKShare? {

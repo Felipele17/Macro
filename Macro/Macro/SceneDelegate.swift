@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             await cloud.accept(cloudKitShareMetadata)
             print("isReceivedInviteAccepted")
             Task {
-                Invite.shared.checkReceivedInviteAccepted()
+                await Invite.shared.checkReceivedInviteAccepted()
             }
         }
     }

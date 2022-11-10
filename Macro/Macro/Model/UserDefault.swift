@@ -15,31 +15,23 @@ class UserDefault {
     let userOnBoardingIncome = UserDefaults.standard.float(forKey: "income")
 
     // MARK: MacroViewModel
-    static func userMacroIncome() -> Float {
+    static func getIncome() -> Float {
             return UserDefaults.standard.float(forKey: "income")
     }
-    static func userMacroSetIncome(income: Float) {
+    static func setIncome(income: Float) {
         UserDefaults.standard.set(income, forKey: "income")
     }
 
-    // MARK: Invite
-    static func userOnBoardingInvite() {
-        UserDefaults.standard.setValue(true, forKey: "didOnBoardingHappen")
-    }
-    static func userOnBoardingUsername(username: String) {
+    static func setUsername(username: String) {
         UserDefaults.standard.setValue(username, forKey: "username")
     }
 
-    // MARK: NextButton (OnBoarding)
-    static func userNextButton(income: Float) {
-       UserDefaults.standard.setValue(income, forKey: "income")
-    }
-    static func userHomeViewString() -> String {
+    static func getUsername() -> String {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }
     
     // MARK: Cloud
-    static func didCreateSubscriptionShareFalse() {
+    static func setSubscriptionShareToFalse() {
         UserDefaults.standard.setValue(false, forKey: "didCreateSubscriptioncloudkit.share")
     }
 }

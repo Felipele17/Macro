@@ -15,13 +15,14 @@ struct MacroApp: App {
     @StateObject var goalViewModel = GoalViewModel()
     @StateObject var onboardingViewModel = OnBoardingViewModel()
     @StateObject var observableDataBase = ObservableDataBase.shared
+    @StateObject var invite = Invite.shared
     let userDefault = UserDefault()
     
     var body: some Scene {
         WindowGroup {
             if viewModel.isConect {
-                    if onboardingViewModel.onboardingFinished {
-                        if viewModel.isReady() {
+                    if viewModel.isReady() {
+                        if onboardingViewModel.onboardingFinished {
                         HomeView()
                             .environmentObject(goalViewModel)
                             .environmentObject(spentViewModel)
@@ -47,11 +48,11 @@ struct MacroApp: App {
                                     observableDataBase.needFetchGoal = false
                             }
                         } else {
-                            LaunchScreenView()
+                            OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
+                                .environmentObject(onboardingViewModel)
                         }
                     } else {
-                        OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
-                            .environmentObject(onboardingViewModel)
+                        LaunchScreenView()
                     }
             } else {
                 NoNetView()
@@ -63,7 +64,7 @@ struct MacroApp: App {
                    case .active:
                        if !Invite.shared.isSendInviteAccepted {
                            Task {
-                               Invite.shared.checkSendInviteAccepted()
+                               await Invite.shared.checkSendInviteAccepted()
                            }
                        }
                    case .inactive:

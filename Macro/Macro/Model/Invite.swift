@@ -15,42 +15,42 @@ class Invite: ObservableObject {
     @Published var isSendInviteAccepted: Bool = false
         
      init() {
-        checkReceivedInviteAccepted()
-        checkSendInviteAccepted()
+         Task {
+             await checkReceivedInviteAccepted()
+         }
+        Task {
+             await checkSendInviteAccepted()
+         }
+        
     }
     
-    func checkReceivedInviteAccepted() {
-        Task {
-            do {
-                let zone = try await cloud.getSharedZone()
-                if zone != nil {
-                    DispatchQueue.main.async {
-                        Invite.shared.isReceivedInviteAccepted = true
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        Invite.shared.isReceivedInviteAccepted = false
-                    }
-                }
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func checkSendInviteAccepted() {
-        Task {
-            
-            let shared = await cloud.loadShare()
-            guard let participantes = shared?.participants.count else { return }
-            if participantes <= 1 {
+    func checkReceivedInviteAccepted() async {
+        do {
+            let zone = try await cloud.getSharedZone()
+            if zone != nil {
                 DispatchQueue.main.async {
-                    Invite.shared.isSendInviteAccepted = false
+                    self.isReceivedInviteAccepted = true
                 }
             } else {
                 DispatchQueue.main.async {
-                    Invite.shared.isSendInviteAccepted = true
+                    self.isReceivedInviteAccepted = false
                 }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func checkSendInviteAccepted() async {
+        let shared = await cloud.loadShare()
+        guard let participantes = shared?.participants.count else { return }
+        if participantes <= 1 {
+            DispatchQueue.main.async {
+                self.isSendInviteAccepted = false
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.isSendInviteAccepted = true
             }
         }
     }

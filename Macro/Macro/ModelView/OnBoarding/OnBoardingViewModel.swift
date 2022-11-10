@@ -13,14 +13,22 @@ class OnBoardingViewModel: ObservableObject {
     
     @Published var onboardingFinished = false
     @Published var onboardingPage: Int = 0
+    @Published private var invite = Invite.shared
     private var cloud = CloudKitModel.shared
-    private var invite = Invite.shared
     
     init() {
-        if invite.isReady() {
-            onboardingFinished = true
-        } else {
-            onboardingFinished = false
+        Task {
+            await invite.checkSendInviteAccepted()
+            await invite.checkReceivedInviteAccepted()
+            if invite.isReady() {
+                DispatchQueue.main.async {
+                    self.onboardingFinished = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.onboardingFinished = false
+                }
+            }
         }
     }
 
@@ -49,10 +57,10 @@ class OnBoardingViewModel: ObservableObject {
                     participantsNames.append( name )
                 }
             }
-            guard let username = invite.cleanName(name: participantsNames.first) else { return }
-            guard let partenername = invite.cleanName(name: participantsNames.last) else { return }
+            guard let username = self.invite.cleanName(name: participantsNames.first) else { return }
+            guard let partenername = self.invite.cleanName(name: participantsNames.last) else { return }
 
-            UserDefault.userOnBoardingUsername(username: username)
+            UserDefault.setUsername(username: username)
             
             let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
             try? await cloud.post(model: methodologySpent)
@@ -75,8 +83,8 @@ class OnBoardingViewModel: ObservableObject {
     func deleteShare() {
         Task {
             await CloudKitModel.shared.deleteShare()
-            invite.checkSendInviteAccepted()
-            invite.checkReceivedInviteAccepted()
+            await invite.checkSendInviteAccepted()
+            await invite.checkReceivedInviteAccepted()
         }
     }
 }

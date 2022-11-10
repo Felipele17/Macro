@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 case .share:
                     Task {
                         print("isSendInviteAccepted")
-                        Invite.shared.checkSendInviteAccepted()
+                        await Invite.shared.checkSendInviteAccepted()
                     }
                 case .goal:
                     print("goal notification")
