@@ -31,7 +31,7 @@ class UserDefault {
     }
     
     // MARK: Cloud
-    static func setSubscriptionShareToFalse() {
+    static func setSubscriptionShareFalse() {
         UserDefaults.standard.setValue(false, forKey: "didCreateSubscriptioncloudkit.share")
     }
 }

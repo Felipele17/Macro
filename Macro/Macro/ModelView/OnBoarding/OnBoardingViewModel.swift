@@ -16,19 +16,11 @@ class OnBoardingViewModel: ObservableObject {
     @Published private var invite = Invite.shared
     private var cloud = CloudKitModel.shared
     
-    init() {
-        Task {
-            await invite.checkSendInviteAccepted()
-            await invite.checkReceivedInviteAccepted()
-            if invite.isReady() {
-                DispatchQueue.main.async {
-                    self.onboardingFinished = true
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.onboardingFinished = false
-                }
-            }
+    func checkOnboardingFinished(){
+        if invite.isReady() {
+            onboardingFinished = true
+        } else {
+            onboardingFinished = false
         }
     }
 
@@ -49,9 +41,9 @@ class OnBoardingViewModel: ObservableObject {
 
     /// Checking if:    1. the Spent's methodology and username was got;   2. the Goal's methodology was posted;    3. the notification of the Goal and Spent was saved
     func initialPosts(income: Float) {
-        Task {
+        Task.init {
             var participantsNames: [String] = []
-            if let participants = await cloud.loadShare()?.participants {
+            if let participants = try await cloud.getShare()?.participants {
                 for participant in participants {
                     guard let name = participant.userIdentity.nameComponents?.description else { return  }
                     participantsNames.append( name )
@@ -68,14 +60,14 @@ class OnBoardingViewModel: ObservableObject {
             let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
             try? await cloud.post(model: user)
         }
-        Task {
+        Task.init {
             let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
             try? await cloud.post(model: methodologyGoal)
         }
-        Task {
+        Task.init {
             await cloud.saveNotification(recordType: Goal.getType(), database: .dataShare)
         }
-        Task {
+        Task.init {
             await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
         }
     }
@@ -83,8 +75,10 @@ class OnBoardingViewModel: ObservableObject {
     func deleteShare() {
         Task {
             await CloudKitModel.shared.deleteShare()
-            await invite.checkSendInviteAccepted()
-            await invite.checkReceivedInviteAccepted()
+            DispatchQueue.main.async {
+                self.invite.isReceivedInviteAccepted = false
+                self.invite.isSendInviteAccepted = false
+            }
         }
     }
 }

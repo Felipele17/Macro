@@ -21,7 +21,7 @@ struct MacroApp: App {
     var body: some Scene {
         WindowGroup {
             if viewModel.isConect {
-                    if viewModel.isReady() {
+                    if viewModel.isFinishedLoad {
                         if onboardingViewModel.onboardingFinished {
                         HomeView()
                             .environmentObject(goalViewModel)
@@ -50,9 +50,16 @@ struct MacroApp: App {
                         } else {
                             OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
                                 .environmentObject(onboardingViewModel)
+                                .environmentObject(invite)
                         }
                     } else {
                         LaunchScreenView()
+                            .onChange(of: invite.isSendInviteAccepted) { _ in
+                                onboardingViewModel.checkOnboardingFinished()
+                            }
+                            .onChange(of: invite.isReceivedInviteAccepted) { _ in
+                                onboardingViewModel.checkOnboardingFinished()
+                            }
                     }
             } else {
                 NoNetView()
@@ -62,11 +69,7 @@ struct MacroApp: App {
         .onChange(of: scenePhase) { (newScenePhase) in
                    switch newScenePhase {
                    case .active:
-                       if !Invite.shared.isSendInviteAccepted {
-                           Task {
-                               await Invite.shared.checkSendInviteAccepted()
-                           }
-                       }
+                       print("")
                    case .inactive:
                        print("")
 //                       print("scene is now inactive!")

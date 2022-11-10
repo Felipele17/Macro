@@ -9,10 +9,11 @@ import Foundation
 import CloudKit
 import SwiftUI
 
-class CloudKitModel {
+class CloudKitModel: ObservableObject {
     let container: CKContainer
     let databasePrivate: CKDatabase
     let databaseShared: CKDatabase
+    @Published var isShareNil = true
     private var share: CKShare?
     
     static var shared = CloudKitModel()
@@ -22,7 +23,10 @@ class CloudKitModel {
         databasePrivate = container.privateCloudDatabase
         databaseShared = container.sharedCloudDatabase
         Task.init {
-            share = await loadShare()
+            share = try await getShare()
+            await Invite.shared.checkSendAccepted(share: share)
+        }
+        Task.init {
             await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
         }
     }
@@ -192,10 +196,6 @@ class CloudKitModel {
     
     // MARK: Share
     private func createShare() async throws -> CKShare? {
-        _ = try await databasePrivate.modifyRecordZones(
-            saving: [CKRecordZone(zoneName: SharedZone.name)],
-            deleting: []
-        )
         let share = CKShare(recordZoneID: SharedZone.ZoneID)
         share.publicPermission = .readWrite
         do {
@@ -207,6 +207,10 @@ class CloudKitModel {
     }
     
     func deleteShare() async {
+            DispatchQueue.main.async {
+                self.isShareNil = true
+            }
+            share = nil
             let predicate = NSPredicate(value: true)
             do {
                 let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
@@ -218,6 +222,9 @@ class CloudKitModel {
                     }
                     
                 }
+                UserDefault.setSubscriptionShareFalse()
+                share = try await getShare()
+                await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
             } catch let erro {
                 print("deleteShare")
                 print(erro.localizedDescription)
@@ -228,49 +235,45 @@ class CloudKitModel {
         let recordID = CKRecord.ID(recordName: CKRecordNameZoneWideShare, zoneID: SharedZone.ZoneID)
         do {
             return try await databasePrivate.record(for: recordID) as? CKShare
-        } catch let erro {
-            print("Cloud - fetchShare")
-            print(erro.localizedDescription)
+        } catch {
             return nil
         }
     }
     
-    private func getShare() async throws -> CKShare? {
-        guard let share = try await createShare() else {
+    func getShare() async throws -> CKShare? {
+        guard let share =  try await fetchShare(database: .dataPrivate) else {
             do {
-                return try await fetchShare(database: .dataPrivate)
+                let createdShare = try await createShare()
+                DispatchQueue.main.async {
+                    self.isShareNil = false
+                }
+                return createdShare
             } catch let error {
                 print("Cloud - getShare")
                 print(error.localizedDescription)
                 return nil
             }
         }
-        return share
-    }
-    
-    func loadShare() async -> CKShare? {
-        do {
-            if share == nil {
-                share = try await getShare()
-            }
-        } catch let error {
-            print("Cloud - loadShare")
-            print(error.localizedDescription)
+        DispatchQueue.main.async {
+            self.isShareNil = false
         }
         return share
     }
     
     func makeUIViewControllerShare() -> UICloudSharingController? {
-
-        guard let share = share else { return nil }
-
-        let sharingController = UICloudSharingController(
-            share: share,
-            container: container
-        )
-        sharingController.availablePermissions = .allowPublic
-        sharingController.modalPresentationStyle = .formSheet
-        return sharingController
+        if let share = share {
+            
+            let sharingController = UICloudSharingController(
+                share: share,
+                container: container
+            )
+            sharingController.availablePermissions = .allowPublic
+            sharingController.modalPresentationStyle = .formSheet
+            return sharingController
+            
+        } else {
+            return nil
+        }
     }
     
     func getSharedZone() async throws -> CKRecordZone.ID? {

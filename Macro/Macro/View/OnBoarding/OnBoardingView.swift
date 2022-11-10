@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @EnvironmentObject var vm: OnBoardingViewModel
+    @EnvironmentObject var viewModel: OnBoardingViewModel
+    @EnvironmentObject var invite : Invite
+    @StateObject var cloud = CloudKitModel.shared
     @State var incomeTextField: String
-    @State var text = EnumButtonText.nextButton.rawValue
     @State var validTextField = false
     @State var showingAlert = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
@@ -20,7 +21,7 @@ struct OnBoardingView: View {
         
         NavigationView {
             VStack {
-                TabView(selection: $vm.onboardingPage) {
+                TabView(selection: $viewModel.onboardingPage) {
                     OnBoardingPageTypeOneView(onboarding: pages[0])
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
@@ -28,13 +29,13 @@ struct OnBoardingView: View {
                     OnBoardingPageTypeTwoView(onboarding: pages[2], value: $incomeTextField, validTextField: $validTextField)
                         .tag(2)
                         .gesture(incomeTextField.isEmpty ? DragGesture() : nil)
-                    if Invite.shared.isSendInviteAccepted && Invite.shared.isReceivedInviteAccepted {
+                    if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[6])
                             .tag(3)
-                    } else if Invite.shared.isSendInviteAccepted {
+                    } else if invite.isSendInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[4])
                             .tag(3)
-                    } else if Invite.shared.isReceivedInviteAccepted {
+                    } else if invite.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[5])
                             .tag(3)
                     } else {
@@ -42,12 +43,12 @@ struct OnBoardingView: View {
                             .tag(3)
                     }
                 }
-                .animation(.easeInOut, value: vm.onboardingPage)
+                .animation(.easeInOut, value: viewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
                 Button {
-                    if vm.onboardingPage != 3 {
-                        vm.onboardingPage += 1
+                    if viewModel.onboardingPage != 3 {
+                        viewModel.onboardingPage += 1
                         if !incomeTextField.isEmpty {
                             let money = incomeTextField.replacingOccurrences(of: ".", with: "").floatValue
                             UserDefault.setIncome(income: money)
@@ -55,33 +56,33 @@ struct OnBoardingView: View {
                     } else {
                         if Invite.shared.isReady() {
                             let money = UserDefault.getIncome()
-                            vm.initialPosts(income: money)
-                            vm.onboardingFinished = true
+                            viewModel.initialPosts(income: money)
+                            viewModel.onboardingFinished = true
                         } else {
-                            vm.sharingInvite()
+                            viewModel.sharingInvite()
                         }
                     }
                     
                 } label: {
-                    Text(text)
+                    Text(viewModel.onboardingPage == 3 ? (cloud.isShareNil ? "loading..." : "compatilhar") : "próximo")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
-                        .background((validTextField && vm.onboardingPage == 2) || vm.onboardingPage != 2 ?   Color(EnumColors.buttonColor.rawValue): .gray )
+                        .background((validTextField && viewModel.onboardingPage == 2) || viewModel.onboardingPage != 2 ?   Color(EnumColors.buttonColor.rawValue): .gray )
                         .cornerRadius(13)
                 }
-                .disabled(!validTextField && vm.onboardingPage == 2)
+                .disabled(!validTextField && viewModel.onboardingPage == 2)
                 
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    if vm.onboardingPage < 2 {
-                        SkipButton(onboardingPage: $vm.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if vm.onboardingPage == 2 {
+                    if viewModel.onboardingPage < 2 {
+                        SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
+                    } else if viewModel.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                    } else if vm.onboardingPage == 3 {
+                    } else if viewModel.onboardingPage == 3 {
                         Button {
                             showingAlert.toggle()
                         } label: {
@@ -93,7 +94,7 @@ struct OnBoardingView: View {
                                 Text("Não")
                             }
                             Button("Sim") {
-                                vm.deleteShare()
+                                viewModel.deleteShare()
                             }
                         }
 

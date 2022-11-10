@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CloudKit
 class Invite: ObservableObject {
     
     static var shared = Invite()
@@ -14,17 +15,13 @@ class Invite: ObservableObject {
     @Published var isReceivedInviteAccepted: Bool = false
     @Published var isSendInviteAccepted: Bool = false
         
-     init() {
-         Task {
-             await checkReceivedInviteAccepted()
-         }
+     private init() {
         Task {
-             await checkSendInviteAccepted()
-         }
-        
+            await checkReceivedAccepted()
+        }
     }
     
-    func checkReceivedInviteAccepted() async {
+    func checkReceivedAccepted() async {
         do {
             let zone = try await cloud.getSharedZone()
             if zone != nil {
@@ -39,11 +36,11 @@ class Invite: ObservableObject {
         } catch let error {
             print(error.localizedDescription)
         }
+        print("checkReceivedInviteAccepted")
     }
     
-    func checkSendInviteAccepted() async {
-        let shared = await cloud.loadShare()
-        guard let participantes = shared?.participants.count else { return }
+    func checkSendAccepted(share: CKShare?) async {
+        guard let participantes = share?.participants.count else { return }
         if participantes <= 1 {
             DispatchQueue.main.async {
                 self.isSendInviteAccepted = false
@@ -53,6 +50,7 @@ class Invite: ObservableObject {
                 self.isSendInviteAccepted = true
             }
         }
+        print("checkSendInviteAccepted")
     }
     
     func cleanName(name: String?) -> String? {
