@@ -33,10 +33,6 @@ class CloudKitModel: ObservableObject {
     
     // MARK: PushNotification
     func saveNotification(recordType: String, database: EnumDatabase) async {
-        
-        // Only proceed if the subscription doesn't already exist.
-        guard !UserDefaults.standard.bool(forKey: "didCreateSubscription\(recordType)")
-            else { return }
                 
         // Create a subscription with an ID that's unique within the scope of
         // the user's private database.
@@ -58,7 +54,7 @@ class CloudKitModel: ObservableObject {
         operation.modifySubscriptionsResultBlock = { result in
             switch result {
             case .success:
-                UserDefaults.standard.setValue(true, forKey: "didCreateSubscription\(recordType)")
+                print("saveNotification \(recordType): sucesso")
             case .failure(let error):
                 print("Cloud - saveNotification")
                 print(error.localizedDescription)
@@ -196,6 +192,10 @@ class CloudKitModel: ObservableObject {
     
     // MARK: Share
     private func createShare() async throws -> CKShare? {
+        _ = try await databasePrivate.modifyRecordZones(
+            saving: [CKRecordZone(zoneName: SharedZone.name)],
+            deleting: []
+        )
         let share = CKShare(recordZoneID: SharedZone.ZoneID)
         share.publicPermission = .readWrite
         do {
@@ -222,7 +222,6 @@ class CloudKitModel: ObservableObject {
                     }
                     
                 }
-                UserDefault.setSubscriptionShareFalse()
                 share = try await getShare()
                 await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
             } catch let erro {
@@ -261,6 +260,10 @@ class CloudKitModel: ObservableObject {
     }
     
     func makeUIViewControllerShare() -> UICloudSharingController? {
+        Task {
+            share = try? await getShare()
+        }
+        
         if let share = share {
             
             let sharingController = UICloudSharingController(

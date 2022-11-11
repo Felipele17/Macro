@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnBoardingView: View {
     @EnvironmentObject var viewModel: OnBoardingViewModel
-    @EnvironmentObject var invite : Invite
+    @EnvironmentObject var invite: Invite
     @StateObject var cloud = CloudKitModel.shared
     @State var incomeTextField: String
     @State var validTextField = false
@@ -64,7 +64,7 @@ struct OnBoardingView: View {
                     }
                     
                 } label: {
-                    Text(viewModel.onboardingPage == 3 ? (cloud.isShareNil ? "loading..." : "compatilhar") : "próximo")
+                    Text(viewModel.onboardingPage == 3 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "loading..." : "compatilhar") : "próximo")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(height: 55)

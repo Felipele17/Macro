@@ -33,10 +33,10 @@ class MacroViewModel: ObservableObject {
     }
     
     func loadData() {
+        loadMethodologyGoals()
+        loadGoals()
         loadSpentsCards()
         loadUser()
-        loadGoals()
-        loadMethodologyGoals()
     }
     
     func interntMonitorOn() {
@@ -62,6 +62,7 @@ class MacroViewModel: ObservableObject {
     }
     
     func isReady() -> Bool {
+        print(checkData)
         let check = checkData.values.first { $0 == .loading }
         if check == nil { return true }
         return false
@@ -74,7 +75,12 @@ class MacroViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.checkData["SpentsCards"] = .loading
             }
-            guard let methodologySpent = try await getMethodologySpent() else { return }
+            guard let methodologySpent = try await getMethodologySpent() else {
+                DispatchQueue.main.async {
+                    self.checkData["SpentsCards"] = .error
+                }
+                return
+            }
             let namePercent = methodologySpent.namePercent
             let valuesPercent = methodologySpent.valuesPercent
             DispatchQueue.main.async {
@@ -117,7 +123,7 @@ class MacroViewModel: ObservableObject {
             }
             await getGoals()
             DispatchQueue.main.async {
-            if self.checkData["goal"] == .loading {
+                if self.checkData["goal"] == .loading {
                     self.checkData["goal"] = .sucess
                 }
             }
@@ -294,22 +300,25 @@ class MacroViewModel: ObservableObject {
     private func fecthMethodologyGoal() async throws -> MethodologyGoal? {
         var methodologyGoal: MethodologyGoal?
         let predicate = NSPredicate(value: true)
-        let records = try? await cloud.fetchSharedPrivatedRecords(recordType: MethodologyGoal.getType(), predicate: predicate)
-        guard let records = records else {
+        do {
+            let records = try await cloud.fetchSharedPrivatedRecords(recordType: MethodologyGoal.getType(), predicate: predicate)
+            for record in records {
+                guard let methodology = MethodologyGoal(record: record) else {
+                    DispatchQueue.main.async {
+                        self.checkData["methodologyGoals"] = .error
+                    }
+                    return nil
+                }
+                methodologyGoal = methodology
+            }
+            return methodologyGoal
+        } catch let error {
             DispatchQueue.main.async {
                 self.checkData["methodologyGoals"] = .error
             }
+            print("fecthMethodologyGoal")
+            print(error.localizedDescription)
             return nil
         }
-        for record in records {
-            guard let methodology = MethodologyGoal(record: record) else {
-                DispatchQueue.main.async {
-                    self.checkData["methodologyGoals"] = .error
-                }
-                return nil
-            }
-            methodologyGoal = methodology
-        }
-        return methodologyGoal
     }
 }

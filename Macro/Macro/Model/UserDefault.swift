@@ -30,8 +30,11 @@ class UserDefault {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }
     
-    // MARK: Cloud
-    static func setSubscriptionShareFalse() {
-        UserDefaults.standard.setValue(false, forKey: "didCreateSubscriptioncloudkit.share")
+    static func getFistPost() -> Bool {
+        return UserDefaults.standard.bool(forKey: "fistPost")
+    }
+    
+    static func setFistPost(isFistPost: Bool){
+        UserDefaults.standard.set(isFistPost, forKey: "fistPost")
     }
 }
