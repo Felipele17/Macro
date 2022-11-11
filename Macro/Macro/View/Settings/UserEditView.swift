@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct SettingsEditView: View {
+struct UserEditView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
     @EnvironmentObject var settingsViewModel: SettingsViewModel
-    @Binding var user: User
     @State var validTextField: Bool = false
     @State var value: String = ""
     @FocusState var keyboardIsFocused: Bool
@@ -26,7 +25,7 @@ struct SettingsEditView: View {
             Text("Renda Mensal")
                 .foregroundColor(Color("Title"))
                 .font(.custom(EnumFonts.regular.rawValue, size: 22))
-            TextField("\(UserDefaults.standard.string(forKey: "income") ?? "")", text: $value)
+            TextField("Novo valor", text: $value)
                 .keyboardType(.decimalPad)
                 .foregroundColor(Color(EnumColors.subtitle.rawValue))
                 .focused($keyboardIsFocused)
@@ -49,10 +48,16 @@ struct SettingsEditView: View {
         .navigationBarTitle("Editar", displayMode: .inline)
         .toolbar {
             Button("Salvar") {
-                settingsViewModel.user.income = Float(value) ?? UserDefaults.standard.float(forKey: "income")
-                settingsViewModel.editUser()
+                guard let user = settingsViewModel.users.first else { return } // verifying if we have the first user (the owner of the phone)
+                if validTextField { // verifying if the text is valid
+                    if !(Float(value) == UserDefaults.standard.float(forKey: "income")) { // verifying if the value that it's coming is new or it is the same
+                        settingsViewModel.users[0].income = Float(value) ?? 0.0
+                        settingsViewModel.editUser()
+                    }
+                }
                 self.presentationMode.wrappedValue.dismiss()
             }
+            .disabled(!validTextField)
         }
         
     }

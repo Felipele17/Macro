@@ -22,7 +22,7 @@ struct HomeView: View {
                     .padding(.top)
                     Spacer()
                     NavigationLink(destination:
-                                    SettingsView(user: settingsViewModel.user)
+                                    SettingsView()
                     ) {
                         Label("", systemImage: "list.bullet")
                             .font(.custom(EnumFonts.bold.rawValue, size: 22))

@@ -40,7 +40,7 @@ struct MethodologyGoalsView: View {
                 }
             }
             NavigationLink(destination:
-                SettingsView(user: settingsViewModel.user)
+                            SettingsView()
             ) {
                 Text(EnumButtonText.close.rawValue)
                     .font(.headline)

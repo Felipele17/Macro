@@ -12,16 +12,11 @@ class SettingsViewModel: ObservableObject {
     private let userDefault = UserDefault()
 
     private let cloud = CloudKitModel.shared
-    @Published var user: User
-
-
-    init(user: User) {
-        self.user = user
-    }
+    @Published var users: [User] = []
 
     func editUser() {
         Task.init {
-            await cloud.update(model: user)
+            await cloud.update(model: users[0])
         }
     }
 }
