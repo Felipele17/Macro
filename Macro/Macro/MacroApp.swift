@@ -22,7 +22,7 @@ struct MacroApp: App {
         WindowGroup {
             if viewModel.isConect {
                     if viewModel.isFinishedLoad {
-                        if onboardingViewModel.onboardingFinished {
+                        if onboardingViewModel.onboardingFinished && UserDefault.getFistPost() {
                         HomeView()
                             .environmentObject(goalViewModel)
                             .environmentObject(spentViewModel)
@@ -51,6 +51,14 @@ struct MacroApp: App {
                             OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
                                 .environmentObject(onboardingViewModel)
                                 .environmentObject(invite)
+                                .onReceive(onboardingViewModel.$onboardingFinished, perform: { _ in
+                                    let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userOnBoardingIncome)
+                                    viewModel.spentsCards = spentsCards
+                                    viewModel.methodologyGoals = onboardingViewModel.methodologyGoal
+                                })
+                                .onAppear {
+                                    UserDefault.setFistPost(isFistPost: false)
+                                }
                         }
                     } else {
                         LaunchScreenView()
@@ -69,16 +77,13 @@ struct MacroApp: App {
         .onChange(of: scenePhase) { (newScenePhase) in
                    switch newScenePhase {
                    case .active:
-                       print("")
+                       print("scene is active!")
                    case .inactive:
-                       print("")
-//                       print("scene is now inactive!")
+                       print("scene is now inactive!")
                    case .background:
-                       print("")
-//                       print("scene is now in the background!")
+                       print("scene is now in the background!")
                    @unknown default:
-                       print("")
-//                       print("Apple must have added something new!")
+                       print("Apple must have added something new!")
                    }
                }
     }
