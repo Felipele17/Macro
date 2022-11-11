@@ -11,7 +11,7 @@ struct MethodologyView: View {
     private let dotAppearance = UIPageControl.appearance()
     var body: some View {
         VStack {
-            TabView() {
+            TabView {
                 
             }
         }.onAppear {

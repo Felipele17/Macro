@@ -14,21 +14,25 @@ class MacroViewModel: ObservableObject {
     var methodologySpent: MethodologySpent?
     var income: Float = UserDefaults.standard.float(forKey: "income")
     let monitor = NWPathMonitor()
-    var didLoad = false
     @Published var isConect = false
+    @Published var isFinishedLoad = false
     @Published var users: [User] = []
-    @Published var dictionarySpent: [[Spent]] = []
+    @Published var matrixSpent: [[Spent]] = []
     @Published var goals: [Goal] = []
     @Published var spentsCards: [SpentsCard] = []
-    @Published var checkData: [String: EnumStatusFecth] = [:]
+    @Published var checkData: [String: EnumStatusFecth] = [:] {
+        didSet {
+            isFinishedLoad = isReady()
+        }
+    }
     
     init() {
+        loadData()
         interntMonitorOn()
-        self.income = UserDefault.userMacroIncome()
+        self.income = UserDefault.getIncome()
     }
     
     func loadData() {
-        didLoad = true
         loadSpentsCards()
         loadUser()
         loadGoals()
@@ -44,10 +48,10 @@ class MacroViewModel: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     self.isConect = false
-                    self.didLoad = false
+                    self.isFinishedLoad = false
                     self.checkData = [:]
                     self.users = []
-                    self.dictionarySpent = []
+                    self.matrixSpent = []
                     self.goals = []
                     self.spentsCards = []
                 }
@@ -58,12 +62,8 @@ class MacroViewModel: ObservableObject {
     }
     
     func isReady() -> Bool {
-        if isConect {
-            if !didLoad { loadData() }
-            let check = checkData.values.first { $0 == .loading }
-            if check == nil { return true }
-            return false
-        }
+        let check = checkData.values.first { $0 == .loading }
+        if check == nil { return true }
         return false
     }
     
@@ -71,18 +71,26 @@ class MacroViewModel: ObservableObject {
     
     func loadSpentsCards() {
         Task.init {
+            DispatchQueue.main.async {
+                self.checkData["SpentsCards"] = .loading
+            }
             guard let methodologySpent = try await getMethodologySpent() else { return }
             let namePercent = methodologySpent.namePercent
             let valuesPercent = methodologySpent.valuesPercent
+            DispatchQueue.main.async {
+                self.methodologySpent = methodologySpent
+            }
             for value in valuesPercent {
                 DispatchQueue.main.async {
-                    self.methodologySpent = methodologySpent
                     self.spentsCards.append(SpentsCard())
-                    self.dictionarySpent.append([])
+                    self.matrixSpent.append([])
                     self.checkData["\(value)spent"] = .loading
                 }
             }
             fecthSpentsCards(namePercent: namePercent, valuesPercent: valuesPercent)
+            DispatchQueue.main.async {
+                self.checkData["SpentsCards"] = .sucess
+            }
             print("loadSpentsCards")
         }
     }
@@ -109,7 +117,7 @@ class MacroViewModel: ObservableObject {
             }
             await getGoals()
             DispatchQueue.main.async {
-                if self.checkData["goal"] == .loading {
+            if self.checkData["goal"] == .loading {
                     self.checkData["goal"] = .sucess
                 }
             }
@@ -125,7 +133,7 @@ class MacroViewModel: ObservableObject {
             }
             methodologyGoals = try await fecthMethodologyGoal()
             DispatchQueue.main.async {
-                if self.checkData["methodologyGoals"] == .loading {
+            if self.checkData["methodologyGoals"] == .loading {
                     self.checkData["methodologyGoals"] = .sucess
                 }
             }
@@ -205,7 +213,7 @@ class MacroViewModel: ObservableObject {
                     let moneySpented = self.spentedMoneyCategory(spents: spents)
                     let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, availableMoney: total - moneySpented )
                     DispatchQueue.main.async {
-                        self.dictionarySpent[index] = spents
+                        self.matrixSpent[index] = spents
                         self.spentsCards[index] = spentsCard
                         self.checkData["\(spentsCard.valuesPercent)spent"] = .sucess
                     }
@@ -247,7 +255,7 @@ class MacroViewModel: ObservableObject {
                     let moneySpented = self.spentedMoneyCategory(spents: spents)
                     let spentsCard = SpentsCard(id: index, valuesPercent: categoryPorcent, namePercent: namePercent[index], moneySpented: moneySpented, availableMoney: total - moneySpented )
                     DispatchQueue.main.async {
-                        self.dictionarySpent[index] = spents
+                        self.matrixSpent[index] = spents
                         self.spentsCards[index] = spentsCard
                         self.checkData["\(spentsCard.valuesPercent)spent"] = .sucess
                     }
