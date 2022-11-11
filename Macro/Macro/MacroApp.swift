@@ -14,6 +14,7 @@ struct MacroApp: App {
     @StateObject var spentViewModel = SpentViewModel()
     @StateObject var goalViewModel = GoalViewModel()
     @StateObject var observableDataBase = ObservableDataBase.shared
+    @StateObject var settingsViewModel = SettingsViewModel()
     let userDefault = UserDefault()
     
     var body: some Scene {
@@ -25,6 +26,7 @@ struct MacroApp: App {
                             .environmentObject(goalViewModel)
                             .environmentObject(spentViewModel)
                             .environmentObject(viewModel)
+                            .environmentObject(settingsViewModel)
                             .onAppear {
                                 spentViewModel.dictionarySpent = viewModel.dictionarySpent
                                 spentViewModel.spentsCards = viewModel.spentsCards
@@ -52,7 +54,7 @@ struct MacroApp: App {
                     NoNetView()
                 }
             } else {
-                OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
+                OnBoardingView(incomeTextField: userDefault.userFloatIncome == 0.0 ? "" : String(userDefault.userFloatIncome).replacingOccurrences(of: ".", with: ","))
             }
         }
         .onChange(of: scenePhase) { (newScenePhase) in

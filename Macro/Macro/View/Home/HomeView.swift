@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var showingSheet: Bool = false
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
     
@@ -21,7 +22,7 @@ struct HomeView: View {
                     .padding(.top)
                     Spacer()
                     NavigationLink(destination:
-                                    SettingsView()
+                                    SettingsView(user: settingsViewModel.user)
                     ) {
                         Label("", systemImage: "list.bullet")
                             .font(.custom(EnumFonts.bold.rawValue, size: 22))

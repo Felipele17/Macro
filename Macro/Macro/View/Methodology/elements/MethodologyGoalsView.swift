@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MethodologyGoalsView: View {
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     let methodologies: [MethodologyValues] = [
         MethodologyValues(tag: 4, images: EnumMethodology.imageFour.rawValue, title: EnumMethodology.titleFour.rawValue, description: EnumMethodology.descriptionFour.rawValue, example: EnumMethodology.exampleFour.rawValue),
         MethodologyValues(tag: 5, images: EnumMethodology.imageFive.rawValue, title: EnumMethodology.titleFive.rawValue, description: EnumMethodology.descriptionFive.rawValue, example: EnumMethodology.exampleFive.rawValue)
@@ -39,7 +40,7 @@ struct MethodologyGoalsView: View {
                 }
             }
             NavigationLink(destination:
-                SettingsView()
+                SettingsView(user: settingsViewModel.user)
             ) {
                 Text(EnumButtonText.close.rawValue)
                     .font(.headline)

@@ -10,10 +10,13 @@ import SwiftUI
 struct SettingsView: View {
     @State private var toggle: Bool = false
     @State private var selectDate = Date()
+    @State var user: User
+    
     var body: some View {
             List {
                 Section {
                     NavigationLink {
+                        SettingsEditView(user: $user)
                     }label: {
                         VStack(alignment: .leading) {
                             Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
@@ -93,6 +96,8 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        NavigationView {
+            SettingsView(user: User(name: "", income: 0.0, dueData: 0, partner: "", notification: [2,2], methodologySpent: MethodologySpent(valuesPercent: [3,3], namePercent: ["c", "s"], nameCategory: "")))
+        }
     }
 }

@@ -304,4 +304,6 @@ class MacroViewModel: ObservableObject {
         }
         return methodologyGoal
     }
+    
+    
 }

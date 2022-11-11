@@ -12,7 +12,7 @@ class UserDefault {
 
     // MARK: MacroApp
     let userOnBoardingBool = UserDefaults.standard.bool(forKey: "didOnBoardingHappen")
-    let userOnBoardingIncome = UserDefaults.standard.float(forKey: "income")
+    let userFloatIncome = UserDefaults.standard.float(forKey: "income")
 
     // MARK: MacroViewModel
     static func userMacroIncome() -> Float {
@@ -38,5 +38,3 @@ class UserDefault {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }
 }
-
-
