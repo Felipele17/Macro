@@ -38,5 +38,3 @@ class UserDefault {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }
 }
-
-

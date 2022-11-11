@@ -53,8 +53,6 @@
 		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		4A2844642900793200D1DD08 /* NoNetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2844632900793200D1DD08 /* NoNetView.swift */; };
 		4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */; };
-		5533B39B291D45030060C599 /* onboardingFlow.json in Resources */ = {isa = PBXBuildFile; fileRef = 5533B39A291D45030060C599 /* onboardingFlow.json */; };
-		5533B39F291D463C0060C599 /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 5533B39E291D463C0060C599 /* launchScreen.json */; };
 		5544772A28E23050000C892E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772928E23050000C892E /* SkipButton.swift */; };
 		5544772C28E2307E000C892E /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772B28E2307E000C892E /* InfoButton.swift */; };
 		5544773628E231C3000C892E /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773528E231C3000C892E /* OnBoardingView.swift */; };
@@ -69,6 +67,8 @@
 		554B102328E4D703003DEE7C /* FormsGoalMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */; };
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
 		55B16D6C29105E6700A7D140 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B16D6B29105E6700A7D140 /* UserDefault.swift */; };
+		55CE4DD1291EF3380011BDBA /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 55CE4DD0291EF3380011BDBA /* launchScreen.json */; };
+		55CE4DD3291EF3E30011BDBA /* onboardingFlow.json in Resources */ = {isa = PBXBuildFile; fileRef = 55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */; };
 		55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */; };
 		55D19CAE28E76970004F84A8 /* FormsGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */; };
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
@@ -166,8 +166,6 @@
 		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		4A2844632900793200D1DD08 /* NoNetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetView.swift; sourceTree = "<group>"; };
 		4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumColors.swift; sourceTree = "<group>"; };
-		5533B39A291D45030060C599 /* onboardingFlow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = onboardingFlow.json; path = "../../../../../Adobe/After Effects 2022/Projetos/explicacao invite/onboardingFlow.json"; sourceTree = "<group>"; };
-		5533B39E291D463C0060C599 /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = launchScreen.json; path = "../../../../../Adobe/After Effects 2022/Projetos/launch screen App/launchScreen.json"; sourceTree = "<group>"; };
 		5544772928E23050000C892E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
 		5544772B28E2307E000C892E /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		5544773528E231C3000C892E /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -182,6 +180,8 @@
 		554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalMotivationView.swift; sourceTree = "<group>"; };
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
 		55B16D6B29105E6700A7D140 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		55CE4DD0291EF3380011BDBA /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
+		55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingFlow.json; sourceTree = "<group>"; };
 		55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTextButton.swift; sourceTree = "<group>"; };
 		55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalViewModel.swift; sourceTree = "<group>"; };
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
@@ -614,8 +614,8 @@
 		99F7E4AA29073036009534ED /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				5533B39A291D45030060C599 /* onboardingFlow.json */,
-				5533B39E291D463C0060C599 /* launchScreen.json */,
+				55CE4DD0291EF3380011BDBA /* launchScreen.json */,
+				55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */,
 				99F7E3BE290085EC009534ED /* LaunchScreenView.swift */,
 				99F7E4AB29073050009534ED /* LaunchScreen.swift */,
 			);
@@ -734,14 +734,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				06449C1628C2957F00035324 /* .swiftlint.yml in Resources */,
+				55CE4DD1291EF3380011BDBA /* launchScreen.json in Resources */,
 				06449BF228C2921F00035324 /* Preview Assets.xcassets in Resources */,
 				99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */,
 				99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */,
 				99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */,
-				5533B39B291D45030060C599 /* onboardingFlow.json in Resources */,
+				55CE4DD3291EF3E30011BDBA /* onboardingFlow.json in Resources */,
 				99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */,
 				99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */,
-				5533B39F291D463C0060C599 /* launchScreen.json in Resources */,
 				06449BEF28C2921F00035324 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
