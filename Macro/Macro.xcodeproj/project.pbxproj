@@ -26,7 +26,6 @@
 		06449C2828C29C4700035324 /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2728C29C4700035324 /* GoalCardView.swift */; };
 		06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2928C29C5D00035324 /* SpentsCardView.swift */; };
 		06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */; };
-		06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3928C29E2200035324 /* HomeViewModel.swift */; };
 		06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3B28C29E4100035324 /* SpentViewModel.swift */; };
 		06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalViewModel.swift */; };
 		06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3F28C29E8300035324 /* SettingsViewModel.swift */; };
@@ -136,7 +135,6 @@
 		06449C2728C29C4700035324 /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		06449C2928C29C5D00035324 /* SpentsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCardView.swift; sourceTree = "<group>"; };
 		06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsDetailsCardView.swift; sourceTree = "<group>"; };
-		06449C3928C29E2200035324 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		06449C3B28C29E4100035324 /* SpentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentViewModel.swift; sourceTree = "<group>"; };
 		06449C3D28C29E5D00035324 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		06449C3F28C29E8300035324 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -326,7 +324,6 @@
 				99E4F21328E4D52200AB24FA /* Spent */,
 				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
-				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
 			);
 			path = ModelView;
@@ -471,14 +468,6 @@
 				06449C5428C2A66800035324 /* CloudKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		065E258328CFAD1A00EEAFAD /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				06449C3928C29E2200035324 /* HomeViewModel.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		0664AF7428D2691300244EB2 /* Goal */ = {
@@ -812,7 +801,6 @@
 				99F6A9F0290B23F200925DFD /* MethodologySpentsView.swift in Sources */,
 				55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
-				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
@@ -1014,7 +1002,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -1025,8 +1013,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1041,7 +1029,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1053,7 +1041,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -1064,8 +1052,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1080,7 +1068,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
