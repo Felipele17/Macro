@@ -103,8 +103,7 @@ struct Goal: DataModelProtocol, Identifiable {
     func getArrayWeeksNotCheck() -> [Int] {
         var arrayWeek: [Int] = []
         guard let methodologyGoalWeeks = methodologyGoal?.weeks else { return arrayWeek }
-        if weeks == methodologyGoalWeeks - 1 { return [methodologyGoalWeeks] }
-        if weeks == methodologyGoalWeeks { return [] }
+        if weeks == methodologyGoalWeeks - 1 { return [] }
         for week in weeks+2 ... methodologyGoalWeeks {
             arrayWeek.append(week)
         }
