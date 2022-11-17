@@ -38,19 +38,43 @@ class GoalViewModel: ObservableObject {
 //    }
     
     func deleteGoal(goal: Goal) {
+        goals.removeAll { goalDeleted in
+            goalDeleted.id == goal.id
+        }
         Task.init {
             await cloud.delete(model: goal)
         }
     }
     
+    func isGoalFinished(goal: Goal) -> Bool {
+        guard let methodologyWeeks = goal.methodologyGoal?.weeks else { return false}
+        if goal.weeks >= methodologyWeeks {
+
+            return true
+        }
+        return false
+    }
+    
     func editGoal(goal: Goal) {
-       let index = goals.firstIndex { elemGoal in
-           elemGoal.id == goal.id
+        let index = goals.firstIndex { elemGoal in
+            elemGoal.id == goal.id
         }
         guard let index = index else { return }
         goals.replaceSubrange( index ... index, with: [goal])
+        moveCompletedGoalToEnd()
         Task.init {
             await cloud.update(model: goal)
+        }
+    }
+    
+    func moveCompletedGoalToEnd(){
+        for goal in goals {
+            if goal.weeks >= methodologyGoals?.weeks ?? 0 {
+                goals.removeAll { goalInArray in
+                    goalInArray.id == goal.id
+                }
+                goals.append(goal)
+            }
         }
     }
     

@@ -36,6 +36,7 @@
 		06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4C28C2A2DC00035324 /* MethodologySpent.swift */; };
 		06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* MethodologyGoal.swift */; };
 		06449C5528C2A66800035324 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06449C5428C2A66800035324 /* CloudKit.framework */; };
+		06509DD62926C9EE00F3B0EE /* CompletedGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06509DD52926C9EE00F3B0EE /* CompletedGoalView.swift */; };
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		065F765A28E60A09003526CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F765928E60A09003526CF /* AppDelegate.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
@@ -147,6 +148,7 @@
 		06449C5128C2A65500035324 /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
 		06449C5228C2A65B00035324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06449C5428C2A66800035324 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		06509DD52926C9EE00F3B0EE /* CompletedGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalView.swift; sourceTree = "<group>"; };
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		065F765928E60A09003526CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				063C8A9F28D241DC0053054B /* GraphView.swift */,
 				063C8AA328D249280053054B /* WeakGoalsView.swift */,
 				998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */,
+				06509DD52926C9EE00F3B0EE /* CompletedGoalView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
+				06509DD62926C9EE00F3B0EE /* CompletedGoalView.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				993D49992915AEF200229031 /* MethodologyViewModel.swift in Sources */,
