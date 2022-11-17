@@ -64,7 +64,7 @@ struct OnBoardingView: View {
                     }
                     
                 } label: {
-                    Text(viewModel.onboardingPage == 3 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "loading..." : "compatilhar") : "próximo")
+                    Text(viewModel.onboardingPage == 3 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "Carregando..." : "Compatilhar") : EnumButtonText.nextButton.rawValue)
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(height: 55)

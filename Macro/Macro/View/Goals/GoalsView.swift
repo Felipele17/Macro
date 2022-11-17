@@ -13,9 +13,10 @@ struct GoalsView: View {
     @State private var selectFilter = 1
     @State var goal: Goal
     @State var showingAlert = false
+    @State private var isSelected = false
     
     var body: some View {
-        VStack {
+        ScrollView {
             HStack {
                 Text(goal.title)
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
@@ -73,22 +74,23 @@ struct GoalsView: View {
                 List {
                     if selectFilter != 1 {
                         ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
-                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week), isSelected: $isSelected)
                      }
                     }
                     if selectFilter != 2 {
                         if goal.weeks != goal.methodologyGoal?.weeks {
-                            WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1))
+                            WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1), isSelected: $isSelected)
                                 .onTapGesture {
                                     goal.weeks += 1
                                     goalViewModel.editGoal(goal: goal)
                                 }
                         }
                         ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
-                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week), isSelected: $isSelected)
                         }
                     }
-                }
+                }.frame(height: 250)
+     //               .transition(.move(edge: .trailing))
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -111,12 +113,11 @@ extension GoalsView {
     }
 }
 
-// struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            GoalsView(goal:
-//                    .constant(Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))), goals: .constant([Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))])
-//            )
-//        }
-//    }
-// }
+ struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            GoalsView(goal:
+                        Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+        }
+    }
+ }
