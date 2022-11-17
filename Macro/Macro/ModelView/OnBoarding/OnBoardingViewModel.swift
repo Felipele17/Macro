@@ -13,10 +13,10 @@ class OnBoardingViewModel: ObservableObject {
     
     @Published var onboardingFinished = false
     @Published var onboardingPage: Int = 0
+    @Published var incomeTextField: String = ""
     @Published private var invite = Invite.shared
     private var cloud = CloudKitModel.shared
-    
-    func checkOnboardingFinished(){
+    func checkOnboardingFinished() {
         if invite.isReady() {
             onboardingFinished = true
         } else {
@@ -80,5 +80,10 @@ class OnBoardingViewModel: ObservableObject {
                 self.invite.isSendInviteAccepted = false
             }
         }
+    }
+    
+    func convertIncome() -> Float {
+        //guard Float(incomeTextField) != nil else { return 0.0 }
+        return Float(incomeTextField) ?? 0.0
     }
 }

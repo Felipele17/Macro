@@ -50,8 +50,9 @@ struct MacroApp: App {
                                     observableDataBase.needFetchGoal = false
                             }
                         } else {
-                            OnBoardingView(incomeTextField: userDefault.userFloatIncome == 0.0 ? "" : String(userDefault.userFloatIncome).replacingOccurrences(of: ".", with: ","))
+                            OnBoardingView()
                                 .environmentObject(onboardingViewModel)
+                                .environmentObject(settingsViewModel)
                                 .environmentObject(invite)
                         }
                     } else {

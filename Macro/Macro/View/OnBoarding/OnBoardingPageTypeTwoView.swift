@@ -11,7 +11,6 @@ struct OnBoardingPageTypeTwoView: View {
     
     let onboarding: OnBoarding
     @EnvironmentObject var viewModel: OnBoardingViewModel
-    @Binding var value: String
     @Binding var validTextField: Bool
     @FocusState private var keyboardIsFocused: Bool
 
@@ -24,16 +23,16 @@ struct OnBoardingPageTypeTwoView: View {
                 .padding(1.3)
             
             VStack {
-                TextField("Ex.: R$ 3000,00", text: $value)
+                TextField("Ex.: R$ 3000,00", text: $viewModel.incomeTextField)
                     .keyboardType(.decimalPad)
                     .foregroundColor(Color(EnumColors.subtitle.rawValue))
                     .focused($keyboardIsFocused)
                 Rectangle()
                     .frame(height: 1.0, alignment: .bottom)
                     .foregroundColor(Color(EnumColors.subtitle.rawValue))
-                    .onChange(of: value) { _ in
-                        if let value = value.transformToMoney() {
-                            self.value = value
+                    .onChange(of: viewModel.incomeTextField) { _ in
+                        if let value = viewModel.incomeTextField.transformToMoney() {
+                            self.viewModel.incomeTextField = value
                             validTextField = true
                         } else {
                             validTextField = false
@@ -61,10 +60,3 @@ struct OnBoardingPageTypeTwoView: View {
         .frame(width: UIScreen.screenWidth/1.2, height: UIScreen.screenHeight/1.6)
     }
 }
-
-// struct OnBoardingPageTypeTwoView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        OnBoardingPageTypeTwoView(onboarding: OnBoarding(imageName: EnumImageName.doubleSquirrels.rawValue, title: "title", description: "description", tag: 0), viewModel: OnBoardingViewModel(), value: .constant("50"), validTextField: .constant(true))
-//    }
-// }

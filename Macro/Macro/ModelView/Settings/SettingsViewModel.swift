@@ -19,4 +19,5 @@ class SettingsViewModel: ObservableObject {
             await cloud.update(model: users[0])
         }
     }
+
 }

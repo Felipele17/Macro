@@ -21,7 +21,8 @@ struct SettingsView: View {
                         VStack(alignment: .leading) {
                             Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                            Text("Renda mensal: \(UserDefaults.standard.string(forKey: "income") ?? "") ")
+//                            Text("Renda mensal: \(UserDefaults.standard.string(forKey: "income") ?? "") ")
+                            Text("Renda mensal: \(settingsViewModel.users.first?.income ?? 0.0)")
                             
                         }
                     }
