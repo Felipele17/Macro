@@ -15,7 +15,7 @@ struct FormsGoalMotivationView: View {
     
     @State var index = 1
     @State var motivation = ""
-    @Binding var popToRoot: Bool
+    @Binding var path: NavigationPath
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -61,7 +61,7 @@ struct FormsGoalMotivationView: View {
                         try? await CloudKitModel.shared.post( model: goal)
                     }
                     viewModel.goals.append(goal)
-                    popToRoot.toggle()
+                    path.removeLast(path.count-3)
                 } label: {
                     Text("Salvar")
                 }.foregroundColor(Color(EnumColors.buttonColor.rawValue))

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @State private var toggle: Bool = false
     @State private var selectDate = Date()
+    @Binding var path: NavigationPath 
     var body: some View {
             List {
                 Section {
@@ -36,7 +37,7 @@ struct SettingsView: View {
                         Text("Vencimento dos gastos")
                     }
                     NavigationLink {
-                        MethodologySpentsView()
+                        MethodologySpentsView(path: $path)
                     }label: {
                         Image(systemName: "questionmark.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -93,6 +94,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(path: .constant(NavigationPath()))
     }
 }

@@ -11,9 +11,10 @@ struct HomeView: View {
     @State var showingSheet: Bool = false
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
+    @State var path: NavigationPath = NavigationPath()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView {
                 HStack {
                     Text("Bom dia, \(UserDefault.getUsername())!")
@@ -21,7 +22,7 @@ struct HomeView: View {
                     .padding(.top)
                     Spacer()
                     NavigationLink(destination:
-                                    SettingsView()
+                                    SettingsView(path: $path)
                     ) {
                         Label("", systemImage: "list.bullet")
                             .font(.custom(EnumFonts.bold.rawValue, size: 22))
@@ -35,16 +36,13 @@ struct HomeView: View {
                         .padding()
                     Spacer()
                     if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
-                        Button {
-                            showingSheet.toggle()
+                        NavigationLink {
+                            FormsGoalsNameView(goal: goal, path: $path)
                         } label: {
                             Label("", systemImage: "plus")
                                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                                 .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                                 .padding()
-                        }
-                        .sheet(isPresented: $showingSheet) {
-                            FormsGoalsNameView(goal: goal, popToRoot: $showingSheet)
                         }
                     }
                 }
