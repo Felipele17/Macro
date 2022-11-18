@@ -55,7 +55,7 @@ struct MacroApp: App {
                                 .environmentObject(settingsViewModel)
                                 .environmentObject(invite)
                                 .onReceive(onboardingViewModel.$onboardingFinished, perform: { _ in
-                                    let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userOnBoardingIncome)
+                                    let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userFloatIncome)
                                     viewModel.spentsCards = spentsCards
                                     viewModel.methodologyGoals = onboardingViewModel.methodologyGoal
                                 })
