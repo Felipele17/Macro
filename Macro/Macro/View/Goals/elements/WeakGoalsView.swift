@@ -20,6 +20,7 @@ struct WeakGoalsView: View {
     
     var body: some View {
             Button {
+                if animate { return }
                 self.animate = true
                 self.checkWeek = checkWeek ? false : true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
