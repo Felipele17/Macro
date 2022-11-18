@@ -61,6 +61,7 @@ struct FormsGoalMotivationView: View {
                         try? await CloudKitModel.shared.post( model: goal)
                     }
                     viewModel.goals.append(goal)
+                    viewModel.moveCompletedGoalToEnd()
                     popToRoot.toggle()
                 } label: {
                     Text("Salvar")

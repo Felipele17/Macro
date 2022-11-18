@@ -33,6 +33,13 @@ class UserDefault {
     static func setSubscriptionShareFalse() {
         UserDefaults.standard.setValue(false, forKey: "didCreateSubscriptioncloudkit.share")
     }
+    static func getFistPost() -> Bool {
+        return UserDefaults.standard.bool(forKey: "fistPost")
+    }
+    
+    static func setFistPost(isFistPost: Bool){
+        UserDefaults.standard.set(isFistPost, forKey: "fistPost")
+    }
     
     // MARK: OnBoarding
     static func setSingleUserIncome(income: String) {

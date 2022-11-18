@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProgressBarCardView: View {
     var percentsProgress: CGFloat
+    var isFinished: Bool
     var body: some View {
         VStack {
             ZStack(alignment: .leading) {
@@ -16,7 +17,7 @@ struct ProgressBarCardView: View {
                     .foregroundColor(Color(EnumColors.backgroundProgressColor.rawValue))
                     .frame(width: 220, height: 8)
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(Color(EnumColors.foregroundProgressColor.rawValue))
+                    .foregroundColor(Color(isFinished ? EnumColors.backgroundProgressColor.rawValue :EnumColors.foregroundProgressColor.rawValue))
                     .frame(width: percentsProgress, height: 8)
             }
         }
@@ -24,8 +25,3 @@ struct ProgressBarCardView: View {
     }
 }
 
-struct ProgressBarCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressBarCardView(percentsProgress: 10.0 )
-    }
-}

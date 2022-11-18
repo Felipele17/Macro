@@ -16,12 +16,11 @@ class OnBoardingViewModel: ObservableObject {
     @Published var incomeTextField: String = ""
     @Published private var invite = Invite.shared
     private var cloud = CloudKitModel.shared
+    private let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
+    let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
+    
     func checkOnboardingFinished() {
-        if invite.isReady() {
-            onboardingFinished = true
-        } else {
-            onboardingFinished = false
-        }
+        onboardingFinished = invite.isReady()
     }
 
     func checkButton() -> String {
@@ -41,6 +40,7 @@ class OnBoardingViewModel: ObservableObject {
 
     /// Checking if:    1. the Spent's methodology and username was got;   2. the Goal's methodology was posted;    3. the notification of the Goal and Spent was saved
     func initialPosts(income: Float) {
+        UserDefault.setFistPost(isFistPost: true)
         Task.init {
             var participantsNames: [String] = []
             if let participants = try await cloud.getShare()?.participants {
@@ -52,16 +52,17 @@ class OnBoardingViewModel: ObservableObject {
             guard let username = self.invite.cleanName(name: participantsNames.first) else { return }
             guard let partenername = self.invite.cleanName(name: participantsNames.last) else { return }
 
+            let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
             UserDefault.setUsername(username: username)
             
-            let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
-            try? await cloud.post(model: methodologySpent)
-            
-            let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
-            try? await cloud.post(model: user)
+            Task.init {
+                try? await cloud.post(model: methodologySpent)
+            }
+            Task.init {
+                try? await cloud.post(model: user)
+            }
         }
         Task.init {
-            let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
             try? await cloud.post(model: methodologyGoal)
         }
         Task.init {
@@ -70,6 +71,14 @@ class OnBoardingViewModel: ObservableObject {
         Task.init {
             await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
         }
+    }
+    
+    func crateSpentCards(income: Float) -> [SpentsCard] {
+        var spentCards: [SpentsCard] = []
+        for index in 0 ..< methodologySpent.valuesPercent.count {
+            spentCards.append(SpentsCard(id: index, valuesPercent: methodologySpent.valuesPercent[index], namePercent: methodologySpent.namePercent[index], moneySpented: 0.0, availableMoney: income*Float(methodologySpent.valuesPercent[index])/100))
+        }
+        return spentCards
     }
     
     func deleteShare() {

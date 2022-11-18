@@ -13,95 +13,97 @@ struct GoalsView: View {
     @State private var selectFilter = 1
     @State var goal: Goal
     @State var showingAlert = false
+    @State private var isSelected = false
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(goal.title)
-                    .font(.custom(EnumFonts.bold.rawValue, size: 34))
-                    .padding()
-                Spacer()
-                Button(role: nil) {
-                    showingAlert.toggle()
-                } label: {
-                    Label("", systemImage: "trash")
-                        .font(.custom(EnumFonts.bold.rawValue, size: 22))
-                        .foregroundColor(Color(EnumColors.foregroundGraphMetaColor.rawValue))
-                }
-                .padding()
-                .alert("Deseja deletar meta?", isPresented: $showingAlert) {
-                    Button(role: .cancel) {
+        if goalViewModel.isGoalFinished(goal: goal) {
+            CompletedGoalView(goal: goal)
+        } else {
+            ScrollView {
+                HStack {
+                    Text(goal.title)
+                        .font(.custom(EnumFonts.bold.rawValue, size: 34))
+                        .padding()
+                    Spacer()
+                    Button(role: nil) {
+                        showingAlert.toggle()
+                    } label: {
+                        Label("", systemImage: "trash")
+                            .font(.custom(EnumFonts.bold.rawValue, size: 22))
+                            .foregroundColor(Color(EnumColors.foregroundGraphMetaColor.rawValue))
                     }
+                    .padding()
+                    .alert("Deseja deletar meta?", isPresented: $showingAlert) {
+                        Button(role: .cancel) {
+                        }
                     label: {
                         Text("Não")
                     }
-
-                    Button("Sim") {
-                        goalViewModel.deleteGoal(goal: goal)
-                        goalViewModel.goals.removeAll { goal in
-                            goal.id == self.goal.id
+                        Button("Sim") {
+                            goalViewModel.deleteGoal(goal: goal)
+                            self.presentationMode.wrappedValue.dismiss()
                         }
-                        self.presentationMode.wrappedValue.dismiss()
                     }
                 }
-            }
-            ZStack {
-                Color.white
-                    .cornerRadius(cornerRadiusNumber())
-                    .shadow(radius: cornerRadiusNumber())
-                    .padding([.leading, .trailing, .bottom])
-                Color(EnumColors.backgroundExpenseColor.rawValue)
-                
+                ZStack {
+                    Color.white
+                        .cornerRadius(cornerRadiusNumber())
+                        .shadow(radius: cornerRadiusNumber())
+                        .padding([.leading, .trailing, .bottom])
+                    Color(EnumColors.backgroundExpenseColor.rawValue)
+                    
+                    VStack {
+                        Text("Semana \(goal.weeks)")
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 22))
+                            .padding()
+                        GraphView(chartPieViewModel: ChartPieViewModel(
+                            chartDatas: [
+                                ChartData(color: Color(EnumColors.foregroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
+                                ChartData(color: Color(EnumColors.backgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
+                            ]
+                        )
+                        )
+                        .offset(x: 0, y: UIScreen.screenHeight/35)
+                    }
+                }
+                .frame(width: UIScreen.screenHeight/2.3, height: UIScreen.screenHeight/2.5 )
+                .cornerRadius(30)
                 VStack {
-                    Text("Semana \(goal.weeks)")
-                        .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                        .padding()
-                    GraphView(chartPieViewModel: ChartPieViewModel(
-                        chartDatas: [
-                            ChartData(color: Color(EnumColors.foregroundGraphMetaColor.rawValue), value: CGFloat(goal.getAllMoneySave())),
-                            ChartData(color: Color(EnumColors.backgroundGraphMetaColor.rawValue), value: CGFloat(goal.getNeedMoneyToCompleteGoal()))
-                        ]
-                    )
-                    )
-                    .offset(x: 0, y: UIScreen.screenHeight/35)
+                    PickerSegmentedView(selectFilter: $selectFilter)
+                    List {
+                        if selectFilter != 1 {
+                            ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
+                                WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week), isSelected: $isSelected)
+                            }
+                        }
+                        if selectFilter != 2 {
+                            if goal.weeks != goal.methodologyGoal?.weeks {
+                                WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1), isSelected: $isSelected)
+                                    .onTapGesture {
+                                        goal.weeks += 1
+                                        goalViewModel.editGoal(goal: goal)
+                                    }
+                            }
+                            ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
+                                WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week), isSelected: $isSelected)
+                            }
+                        }
+                    }.frame(height: 250)
+                    //               .transition(.move(edge: .trailing))
                 }
             }
-            .frame(width: UIScreen.screenHeight/2.3, height: UIScreen.screenHeight/2.5 )
-            .cornerRadius(30)
-            VStack {
-                PickerSegmentedView(selectFilter: $selectFilter)
-                List {
-                    if selectFilter != 1 {
-                        ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
-                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
-                     }
-                    }
-                    if selectFilter != 2 {
-                        if goal.weeks != goal.methodologyGoal?.weeks {
-                            WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1))
-                                .onTapGesture {
-                                    goalViewModel.editGoal(goal: goal)
-                                    goal.weeks += 1
-                                }
-                        }
-                        ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
-                            WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
-                        }
-                    }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                NavigationLink {
+                    FormsEditGoals(nameGoal: goal.title, priority: goal.priority, goal: $goal)
+                } label: {
+                    Text("Editar")
+                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
+                        .tint(Color(EnumColors.buttonColor.rawValue))
                 }
-            }
+            }.accentColor(Color(EnumColors.buttonColor.rawValue))
+                .background(Color(EnumColors.backgroundScreen.rawValue))
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            NavigationLink {
-                FormsEditGoals(nameGoal: goal.title, priority: goal.priority, goal: $goal)
-            } label: {
-                Text("Editar")
-                    .font(.custom(EnumFonts.regular.rawValue, size: 17))
-                    .tint(Color(EnumColors.buttonColor.rawValue))
-            }
-        }.accentColor(Color(EnumColors.buttonColor.rawValue))
-        .background(Color(EnumColors.backgroundScreen.rawValue))
     }
 }
 
@@ -111,12 +113,11 @@ extension GoalsView {
     }
 }
 
-// struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            GoalsView(goal:
-//                    .constant(Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))), goals: .constant([Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))])
-//            )
-//        }
-//    }
-// }
+ struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            GoalsView(goal:
+                        Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+        }
+    }
+ }

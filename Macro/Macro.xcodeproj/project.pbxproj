@@ -26,7 +26,6 @@
 		06449C2828C29C4700035324 /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2728C29C4700035324 /* GoalCardView.swift */; };
 		06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C2928C29C5D00035324 /* SpentsCardView.swift */; };
 		06449C3228C29D3400035324 /* SpentsDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */; };
-		06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3928C29E2200035324 /* HomeViewModel.swift */; };
 		06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3B28C29E4100035324 /* SpentViewModel.swift */; };
 		06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3D28C29E5D00035324 /* GoalViewModel.swift */; };
 		06449C4028C29E8300035324 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C3F28C29E8300035324 /* SettingsViewModel.swift */; };
@@ -37,6 +36,7 @@
 		06449C4D28C2A2DC00035324 /* MethodologySpent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4C28C2A2DC00035324 /* MethodologySpent.swift */; };
 		06449C5028C2A45C00035324 /* MethodologyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449C4F28C2A45C00035324 /* MethodologyGoal.swift */; };
 		06449C5528C2A66800035324 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06449C5428C2A66800035324 /* CloudKit.framework */; };
+		06509DD62926C9EE00F3B0EE /* CompletedGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06509DD52926C9EE00F3B0EE /* CompletedGoalView.swift */; };
 		065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E258628CFBE7700EEAFAD /* UIScreen.swift */; };
 		065F765A28E60A09003526CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F765928E60A09003526CF /* AppDelegate.swift */; };
 		0688A9D228C7B7B2001044A6 /* SharedZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688A9D128C7B7B2001044A6 /* SharedZone.swift */; };
@@ -67,6 +67,8 @@
 		554B102528E4E40F003DEE7C /* MotivationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B102428E4E40F003DEE7C /* MotivationCard.swift */; };
 		556F5601291D77EE00CB927B /* UserEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F5600291D77EE00CB927B /* UserEditView.swift */; };
 		55B16D6C29105E6700A7D140 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B16D6B29105E6700A7D140 /* UserDefault.swift */; };
+		55CE4DD1291EF3380011BDBA /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 55CE4DD0291EF3380011BDBA /* launchScreen.json */; };
+		55CE4DD3291EF3E30011BDBA /* onboardingFlow.json in Resources */ = {isa = PBXBuildFile; fileRef = 55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */; };
 		55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */; };
 		55D19CAE28E76970004F84A8 /* FormsGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */; };
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
@@ -77,7 +79,6 @@
 		996E65D5291193A8005A4A40 /* EnumMethodology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D4291193A8005A4A40 /* EnumMethodology.swift */; };
 		996E65DA2911BB65005A4A40 /* MethodologyGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
-		998B2A2B29075A5800D9C6BD /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 998B2A2A29075A5800D9C6BD /* launchScreen.json */; };
 		998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */; };
 		998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAE28F094EF000791D9 /* ModalView.swift */; };
 		99B2EF4028DE573D00657C53 /* FormsSpentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */; };
@@ -136,7 +137,6 @@
 		06449C2728C29C4700035324 /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		06449C2928C29C5D00035324 /* SpentsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCardView.swift; sourceTree = "<group>"; };
 		06449C3128C29D3400035324 /* SpentsDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsDetailsCardView.swift; sourceTree = "<group>"; };
-		06449C3928C29E2200035324 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		06449C3B28C29E4100035324 /* SpentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentViewModel.swift; sourceTree = "<group>"; };
 		06449C3D28C29E5D00035324 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		06449C3F28C29E8300035324 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -149,6 +149,7 @@
 		06449C5128C2A65500035324 /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
 		06449C5228C2A65B00035324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06449C5428C2A66800035324 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		06509DD52926C9EE00F3B0EE /* CompletedGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoalView.swift; sourceTree = "<group>"; };
 		065E258628CFBE7700EEAFAD /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		065F765928E60A09003526CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0688A9D128C7B7B2001044A6 /* SharedZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedZone.swift; sourceTree = "<group>"; };
@@ -179,6 +180,8 @@
 		554B102428E4E40F003DEE7C /* MotivationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationCard.swift; sourceTree = "<group>"; };
 		556F5600291D77EE00CB927B /* UserEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditView.swift; sourceTree = "<group>"; };
 		55B16D6B29105E6700A7D140 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		55CE4DD0291EF3380011BDBA /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
+		55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingFlow.json; sourceTree = "<group>"; };
 		55CF86A928E63F7600C36B7F /* TemplateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTextButton.swift; sourceTree = "<group>"; };
 		55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalViewModel.swift; sourceTree = "<group>"; };
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
@@ -189,7 +192,6 @@
 		996E65D4291193A8005A4A40 /* EnumMethodology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMethodology.swift; sourceTree = "<group>"; };
 		996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyGoalsView.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
-		998B2A2A29075A5800D9C6BD /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
 		998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSegmentedView.swift; sourceTree = "<group>"; };
 		998C6AAE28F094EF000791D9 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSpentsView.swift; sourceTree = "<group>"; };
@@ -326,7 +328,6 @@
 				99E4F21328E4D52200AB24FA /* Spent */,
 				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
-				065E258328CFAD1A00EEAFAD /* Home */,
 				06449C4928C29F2500035324 /* Cloud */,
 			);
 			path = ModelView;
@@ -425,6 +426,7 @@
 				063C8A9F28D241DC0053054B /* GraphView.swift */,
 				063C8AA328D249280053054B /* WeakGoalsView.swift */,
 				998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */,
+				06509DD52926C9EE00F3B0EE /* CompletedGoalView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -472,14 +474,6 @@
 				06449C5428C2A66800035324 /* CloudKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		065E258328CFAD1A00EEAFAD /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				06449C3928C29E2200035324 /* HomeViewModel.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		0664AF7428D2691300244EB2 /* Goal */ = {
@@ -612,7 +606,8 @@
 		99F7E4AA29073036009534ED /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				998B2A2A29075A5800D9C6BD /* launchScreen.json */,
+				55CE4DD0291EF3380011BDBA /* launchScreen.json */,
+				55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */,
 				99F7E3BE290085EC009534ED /* LaunchScreenView.swift */,
 				99F7E4AB29073050009534ED /* LaunchScreen.swift */,
 			);
@@ -731,11 +726,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				06449C1628C2957F00035324 /* .swiftlint.yml in Resources */,
-				998B2A2B29075A5800D9C6BD /* launchScreen.json in Resources */,
+				55CE4DD1291EF3380011BDBA /* launchScreen.json in Resources */,
 				06449BF228C2921F00035324 /* Preview Assets.xcassets in Resources */,
 				99B676BF28DCD45F007C8BC6 /* SF-Pro-Text-Light.otf in Resources */,
 				99B676BB28DCD038007C8BC6 /* SF-Pro-Text-Bold.otf in Resources */,
 				99B676B928DCD023007C8BC6 /* SF-Pro-Text-Semibold.otf in Resources */,
+				55CE4DD3291EF3E30011BDBA /* onboardingFlow.json in Resources */,
 				99B676B728DCD019007C8BC6 /* SF-Pro-Text-Regular.otf in Resources */,
 				99B676BD28DCD319007C8BC6 /* SF-Pro-Text-Medium.otf in Resources */,
 				06449BEF28C2921F00035324 /* Assets.xcassets in Resources */,
@@ -812,7 +808,6 @@
 				556F5601291D77EE00CB927B /* UserEditView.swift in Sources */,
 				55CF86AA28E63F7600C36B7F /* TemplateTextButton.swift in Sources */,
 				06449C3E28C29E5D00035324 /* GoalViewModel.swift in Sources */,
-				06449C3A28C29E2200035324 /* HomeViewModel.swift in Sources */,
 				061FFD6328CBD66C003F9FDA /* CarouselView.swift in Sources */,
 				998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */,
 				065E258728CFBE7700EEAFAD /* UIScreen.swift in Sources */,
@@ -846,6 +841,7 @@
 				063C8AA028D241DC0053054B /* GraphView.swift in Sources */,
 				9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */,
 				063C8AA628D2661C0053054B /* ChartPieViewModel.swift in Sources */,
+				06509DD62926C9EE00F3B0EE /* CompletedGoalView.swift in Sources */,
 				99B2EF4228DE576200657C53 /* FormsGoalsNameView.swift in Sources */,
 				06449C3C28C29E4100035324 /* SpentViewModel.swift in Sources */,
 				993D49992915AEF200229031 /* MethodologyViewModel.swift in Sources */,
@@ -1014,7 +1010,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -1025,8 +1021,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1041,7 +1037,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1053,7 +1049,7 @@
 				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Macro/Preview Content\"";
 				DEVELOPMENT_TEAM = NHY67K6358;
 				ENABLE_PREVIEWS = YES;
@@ -1064,8 +1060,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1080,7 +1076,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
