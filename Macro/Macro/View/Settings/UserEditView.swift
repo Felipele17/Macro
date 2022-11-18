@@ -53,6 +53,8 @@ struct UserEditView: View {
                     if !(Float(newValue) == UserDefaults.standard.float(forKey: "income")) { // verifying if the value that it's coming is new or it is the same
                         settingsViewModel.users[0].income = Float(newValue) ?? 0.0
                         settingsViewModel.editUser()
+                        
+                        UserDefault.setIncome(income: settingsViewModel.users[0].income)
                     }
                 }
                 self.presentationMode.wrappedValue.dismiss()
