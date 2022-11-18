@@ -62,8 +62,8 @@ class GoalViewModel: ObservableObject {
         guard let index = index else { return }
         DispatchQueue.main.async {
             self.goals.replaceSubrange( index ... index, with: [goal])
+            self.moveCompletedGoalToEnd()
         }
-        moveCompletedGoalToEnd()
         Task.init {
             await cloud.update(model: goal)
         }

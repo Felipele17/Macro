@@ -67,28 +67,27 @@ struct GoalsView: View {
                         .offset(x: 0, y: UIScreen.screenHeight/35)
                     }
                 }
-            .frame(width: UIScreen.screenHeight/2.3, height: UIScreen.screenHeight/2.5 )
-            .cornerRadius(30)
-            VStack {
-                PickerSegmentedView(selectFilter: $selectFilter)
-                List {
-                    if selectFilter != 1 {
-                        ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
-                            WeakGoalsView(checkWeek: true, goal: $goal, title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
-                                .disabled(goal.weeks == week ? false : true)
-                     }
-                    }
-                    if selectFilter != 2 {
-                        ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
-                            WeakGoalsView(checkWeek: false, goal: $goal, title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
-                                .disabled(goal.weeks == week-1 ? false : true)
+                .frame(width: UIScreen.screenHeight/2.3, height: UIScreen.screenHeight/2.5 )
+                .cornerRadius(30)
+                VStack {
+                    PickerSegmentedView(selectFilter: $selectFilter)
+                    List {
+                        if selectFilter != 1 {
+                            ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
+                                WeakGoalsView(checkWeek: true, goal: $goal, title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                                    .disabled(goal.weeks == week ? false : true)
+                            }
+                        }
+                        if selectFilter != 2 {
+                            ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
+                                WeakGoalsView(checkWeek: false, goal: $goal, title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                                    .disabled(goal.weeks == week-1 ? false : true)
+                            }
                         }
                     }
+                    .animation( .default.speed(0.5) )
+                    .frame(height: 250)
                 }
-                .animation(
-                    .default.speed(0.5)
-                )
-                .frame(height: 250)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -99,11 +98,13 @@ struct GoalsView: View {
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                         .tint(Color(EnumColors.buttonColor.rawValue))
                 }
-            }.accentColor(Color(EnumColors.buttonColor.rawValue))
-                .background(Color(EnumColors.backgroundScreen.rawValue))
+            }
+            .accentColor(Color(EnumColors.buttonColor.rawValue))
+            .background(Color(EnumColors.backgroundScreen.rawValue))
         }
     }
 }
+
 
 extension GoalsView {
     private func cornerRadiusNumber() -> CGFloat {

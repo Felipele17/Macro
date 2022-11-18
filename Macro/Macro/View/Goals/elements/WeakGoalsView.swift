@@ -14,7 +14,6 @@ struct WeakGoalsView: View {
     @Binding var goal: Goal
     var title: String
     var valor: Float
-    private let animationDuration: Double = 0.5
     private var animationScale: CGFloat {
         checkWeek ? 0.7 : 1.3
     }
@@ -23,8 +22,10 @@ struct WeakGoalsView: View {
             Button {
                 self.animate = true
                 self.checkWeek = checkWeek ? false : true
-                goal.weeks += checkWeek ? 1 : -1
-                goalViewModel.editGoal(goal: goal)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    goal.weeks += checkWeek ? 1 : -1
+                    goalViewModel.editGoal(goal: goal)
+                })
             } label: {
                 HStack(spacing: 0) {
                 Image(systemName: checkWeek ?  "checkmark.circle.fill" : "circle")
@@ -38,6 +39,7 @@ struct WeakGoalsView: View {
                     .font(.custom(EnumFonts.medium.rawValue, size: 20))
                     .padding(.vertical)
             }
+                .animation(.default.speed(1))
         }
     }
 }
