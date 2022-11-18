@@ -48,7 +48,9 @@ class GoalViewModel: ObservableObject {
            elemGoal.id == goal.id
         }
         guard let index = index else { return }
-        goals.replaceSubrange( index ... index, with: [goal])
+        DispatchQueue.main.async {
+            self.goals.replaceSubrange( index ... index, with: [goal])
+        }
         Task.init {
             await cloud.update(model: goal)
         }

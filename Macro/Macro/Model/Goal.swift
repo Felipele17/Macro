@@ -105,7 +105,7 @@ struct Goal: DataModelProtocol, Identifiable {
         guard let methodologyGoalWeeks = methodologyGoal?.weeks else { return arrayWeek }
         if weeks == methodologyGoalWeeks - 1 { return [methodologyGoalWeeks] }
         if weeks == methodologyGoalWeeks { return [] }
-        for week in weeks+2 ... methodologyGoalWeeks {
+        for week in weeks+1 ... methodologyGoalWeeks {
             arrayWeek.append(week)
         }
         return arrayWeek
