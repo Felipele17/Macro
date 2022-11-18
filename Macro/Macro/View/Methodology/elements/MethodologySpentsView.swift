@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MethodologySpentsView: View {
+    @Binding var path: NavigationPath 
     
     let methodologies: [MethodologyValues] = [
         MethodologyValues(tag: 0, images: EnumMethodology.imageOne.rawValue, title: EnumMethodology.titleOne.rawValue, description: EnumMethodology.descriptionOne.rawValue, example: EnumMethodology.exampleOne.rawValue),
@@ -40,8 +41,8 @@ struct MethodologySpentsView: View {
                             .padding()
                     }
                 }
-                NavigationLink(destination:
-                    MethodologyGoalsView()
+                NavigationLink (destination:
+                                MethodologyGoalsView(path: $path)
                 ) {
                     Text(EnumButtonText.nextButton.rawValue)
                         .font(.headline)
@@ -62,6 +63,6 @@ struct MethodologySpentsView: View {
 }
 struct MethodologySpentsView_Previews: PreviewProvider {
     static var previews: some View {
-        MethodologySpentsView()
+        MethodologySpentsView(path: .constant(NavigationPath()))
     }
 }

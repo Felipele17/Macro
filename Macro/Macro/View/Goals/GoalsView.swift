@@ -14,6 +14,7 @@ struct GoalsView: View {
     @State var goal: Goal
     @State var showingAlert = false
     @State private var isSelected = false
+    let transition = AnyTransition.asymmetric(insertion: .slide, removal: .scale).combined(with: .opacity)
     
     var body: some View {
         if goalViewModel.isGoalFinished(goal: goal) {
@@ -73,23 +74,19 @@ struct GoalsView: View {
                     List {
                         if selectFilter != 1 {
                             ForEach(goal.getArrayWeeksCheck(), id: \.self) { week in
-                                WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week), isSelected: $isSelected)
+                                WeakGoalsView(checkWeek: true, goal: $goal, title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                                    .disabled(goal.weeks == week ? false : true)
                             }
                         }
                         if selectFilter != 2 {
-                            if goal.weeks != goal.methodologyGoal?.weeks {
-                                WeakGoalsView(title: "Semana \(goal.weeks+1)", valor: goal.getMoneySaveForWeek(week: goal.weeks+1), isSelected: $isSelected)
-                                    .onTapGesture {
-                                        goal.weeks += 1
-                                        goalViewModel.editGoal(goal: goal)
-                                    }
-                            }
                             ForEach(goal.getArrayWeeksNotCheck(), id: \.self) { week in
-                                WeakGoalsView(title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week), isSelected: $isSelected)
+                                WeakGoalsView(checkWeek: false, goal: $goal, title: "Semana \(week)", valor: goal.getMoneySaveForWeek(week: week))
+                                    .disabled(goal.weeks == week-1 ? false : true)
                             }
                         }
-                    }.frame(height: 250)
-                    //               .transition(.move(edge: .trailing))
+                    }
+                    .animation( .default.speed(0.5) )
+                    .frame(height: 250)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -101,11 +98,13 @@ struct GoalsView: View {
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                         .tint(Color(EnumColors.buttonColor.rawValue))
                 }
-            }.accentColor(Color(EnumColors.buttonColor.rawValue))
-                .background(Color(EnumColors.backgroundScreen.rawValue))
+            }
+            .accentColor(Color(EnumColors.buttonColor.rawValue))
+            .background(Color(EnumColors.backgroundScreen.rawValue))
         }
     }
 }
+
 
 extension GoalsView {
     private func cornerRadiusNumber() -> CGFloat {

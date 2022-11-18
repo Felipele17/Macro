@@ -11,7 +11,7 @@ struct FormsGoalsValueView: View {
     @EnvironmentObject var viewModel: GoalViewModel
     
     @State var goal: Goal
-    @Binding var popToRoot: Bool
+    @Binding var path: NavigationPath
     
     @State private var value: String = ""
     @FocusState var keyboardIsFocused: Bool
@@ -48,7 +48,7 @@ struct FormsGoalsValueView: View {
             PrioritySelector(priority: $goal.priority)
             Spacer()
             NavigationLink {
-                FormsGoalMotivationView(goal: goal, popToRoot: $popToRoot)
+                FormsGoalMotivationView(goal: goal, path: $path)
             } label: {
                 TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: !isValidValue)
             }
