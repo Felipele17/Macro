@@ -27,7 +27,7 @@ struct CarouselView: View {
                 } else {
                     ForEach(goalViewModel.goals) { goal in
                         NavigationLink(destination: GoalsView(goal: goal)) {
-                            GoalCardView(goal: goal)
+                            GoalCardView(goal: goal, didFinished: goalViewModel.isGoalFinished(goal: goal))
                                 .frame(width: width, height: heigth)
                                 .padding([.leading, .bottom])
                         }

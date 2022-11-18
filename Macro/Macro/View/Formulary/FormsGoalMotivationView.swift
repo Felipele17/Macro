@@ -62,6 +62,7 @@ struct FormsGoalMotivationView: View {
                     }
                     viewModel.goals.append(goal)
                     path.removeLast(path.count-3)
+                    viewModel.moveCompletedGoalToEnd()
                 } label: {
                     Text("Salvar")
                 }.foregroundColor(Color(EnumColors.buttonColor.rawValue))

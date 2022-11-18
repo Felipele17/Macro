@@ -11,6 +11,7 @@ struct GoalCardView: View, Identifiable {
     @EnvironmentObject var viewModel: GoalViewModel
     var id = UUID()
     var goal: Goal
+    var didFinished: Bool
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -18,7 +19,9 @@ struct GoalCardView: View, Identifiable {
                 Text(goal.title).font(.custom(EnumFonts.semibold.rawValue, size: 22))
                     .padding(.top, 2)
                 Spacer()
-                Image("\(viewModel.setImagebyPriority(goal: goal))")
+                Image(didFinished ? "medal" :"\(viewModel.setImagebyPriority(goal: goal))")
+                    .resizable()
+                    .scaledToFit()
                     .padding(.trailing)
             }
             
@@ -26,20 +29,24 @@ struct GoalCardView: View, Identifiable {
                 .font(.custom(EnumFonts.semibold.rawValue, size: 13)) + Text(goal.motivation ?? "").font(.custom(EnumFonts.regular.rawValue, size: 13))
             Spacer()
             
-            ProgressBarCardView(percentsProgress: viewModel.calc(goal: goal))
+            ProgressBarCardView(percentsProgress: viewModel.calc(goal: goal), isFinished: didFinished)
                 .padding(.top, 2)
                 .padding(.bottom, 2)
             
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text( "\(goal.getAllMoneySave())".floatValue.currency)
-                        .font(.custom(EnumFonts.semibold.rawValue, size: 17))
-                    + Text(" de ")
-                        .font(.custom(EnumFonts.light.rawValue, size: 17))
-                    + Text("   \(goal.value)".floatValue.currency)
-                        .font(.custom(EnumFonts.light.rawValue, size: 17))
-                    
-                    Text("Faltam \(52 - goal.weeks) semanas").font(.custom(EnumFonts.regular.rawValue, size: 13))
+                    if (didFinished) {
+                        Text( "\(goal.getAllMoneySave())".floatValue.currency)
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
+                    } else {
+                        Text( "\(goal.getAllMoneySave())".floatValue.currency)
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
+                        + Text(" de ")
+                            .font(.custom(EnumFonts.light.rawValue, size: 17))
+                        + Text("   \(goal.value)".floatValue.currency)
+                            .font(.custom(EnumFonts.light.rawValue, size: 17))
+                    }
+                    Text(didFinished ? "Meta concluida" : "Faltam \(52 - goal.weeks) semanas").font(.custom(EnumFonts.regular.rawValue, size: 13))
                     
                     Spacer()
                 }
@@ -49,7 +56,7 @@ struct GoalCardView: View, Identifiable {
         .padding(.leading, 20)
         .padding(.top, 20)
         .foregroundColor(Color(.white))
-        .background(Color(EnumColors.backgroundCardMetaColor.rawValue))
+        .background(Color(didFinished ? EnumColors.foregroundProgressColor.rawValue : EnumColors.backgroundCardMetaColor.rawValue))
         .cornerRadius(8)
         .shadow(radius: 4)
     }
