@@ -17,27 +17,33 @@ struct SettingsView: View {
                 Section {
                     NavigationLink {
                         UserEditView()
-                    }label: {
+                    } label: {
                         VStack(alignment: .leading) {
-                            Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
-                                .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                            Text("Renda mensal: \(UserDefault.getSingleUserIncome())")
+                            VStack {
+                                Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
+                                    .font(.custom(EnumFonts.semibold.rawValue, size: 22))
+                                    Text("Renda Mensal \(settingsViewModel.verifyUser())")
+                            }
+                            .padding(.bottom)
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                Text("Vencimento dos gastos")
+                            }
+                            .padding(.bottom)
                             
+                            HStack {
+                                Image(systemName: "heart")
+                                    .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                Text( "Conectado com \(settingsViewModel.users.first?.partner ?? ")")
+                            }
                         }
+                        
                     }
-                } .listRowSeparator(.hidden)
+                }
+              
                 Section {
-                    NavigationLink {
-                        DatePicker(
-                            "Start Date",
-                            selection: $selectDate,
-                            displayedComponents: [.date]
-                        )
-                    }label: {
-                        Image(systemName: "calendar")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                        Text("Vencimento dos gastos")
-                    }
+                    
                     NavigationLink {
                         MethodologySpentsView()
                     }label: {
@@ -52,12 +58,7 @@ struct SettingsView: View {
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         Text("Histórico de gastos")
                     }
-                    NavigationLink {
-                    }label: {
-                        Image(systemName: "heart")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                        Text( "Conectado com")
-                    }
+                    
                 }
                 Section(header: Text("Notificação")) {
                     Toggle(isOn: $toggle) {

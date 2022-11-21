@@ -35,6 +35,9 @@ struct MacroApp: App {
                                 goalViewModel.goals = viewModel.goals
                                 goalViewModel.methodologyGoals = viewModel.methodologyGoals
                             }
+                            .onReceive(viewModel.$users, perform: { users in
+                                settingsViewModel.users = users
+                            })
                             .onReceive(viewModel.$matrixSpent, perform: { matrixSpent in
                                 spentViewModel.dictionarySpent = matrixSpent
                             })

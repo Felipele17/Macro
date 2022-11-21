@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserEditView: View {
     
-    @Environment(\.presentationMode) var presentationMode: Binding <PresentationMode>
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @State var validTextField: Bool = false
     @State var newValue: String = ""
@@ -57,7 +57,7 @@ struct UserEditView: View {
                         UserDefault.setIncome(income: settingsViewModel.users[0].income)
                     }
                 }
-                self.presentationMode.wrappedValue.dismiss()
+                dismiss()
             }
             .disabled(!validTextField)
         }

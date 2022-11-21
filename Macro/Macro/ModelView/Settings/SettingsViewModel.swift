@@ -19,4 +19,9 @@ class SettingsViewModel: ObservableObject {
             await cloud.update(model: users[0])
         }
     }
+    
+    func verifyUser() -> Float {
+        guard let user = users.first else { return 0.0 }
+        return user.income
+    }
 }

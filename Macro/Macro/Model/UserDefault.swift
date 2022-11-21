@@ -37,7 +37,7 @@ class UserDefault {
         return UserDefaults.standard.bool(forKey: "fistPost")
     }
     
-    static func setFistPost(isFistPost: Bool){
+    static func setFistPost(isFistPost: Bool) {
         UserDefaults.standard.set(isFistPost, forKey: "fistPost")
     }
     
