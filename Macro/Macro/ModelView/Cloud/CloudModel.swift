@@ -201,7 +201,8 @@ class CloudKitModel: ObservableObject {
         do {
             try await databasePrivate.save(share)
             return share
-        } catch {
+        } catch let error {
+            print(error.localizedDescription)
             return nil
         }
     }
@@ -261,7 +262,11 @@ class CloudKitModel: ObservableObject {
     
     func makeUIViewControllerShare() -> UICloudSharingController? {
         Task {
-            share = try? await getShare()
+            do {
+            share = try await getShare()
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         
         if let share = share {

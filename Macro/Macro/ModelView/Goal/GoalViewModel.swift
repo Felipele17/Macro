@@ -10,32 +10,21 @@ import SwiftUI
 class GoalViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
     @Published var goals: [Goal] = []
+    @Published var selectedGoal: Goal = Goal.mockGoals(methodologyGoals: nil)
     var methodologyGoals: MethodologyGoal?
-    @Published var goalField = ""
-    @Published var moneyField: Float = 0.0
-    @Published var priority: Int = 0
-    @Published var motivation = ""
-    // var methodologyGoal: MethodologyGoal
     
-//    init(methodologyGoal: MethodologyGoal) {
-//        self.methodologyGoal = methodologyGoal
-//    }
+    func setMethodologyGoals(methodologyGoals: MethodologyGoal?) {
+        self.selectedGoal = Goal.mockGoals(methodologyGoals: methodologyGoals)
+        self.methodologyGoals = methodologyGoals
+    }
     
-//    func createGoal() -> Goal? {
-//        if motivation.isEmpty {
-//            return nil
-//        }
-//        return Goal(title: goalField, value: moneyField, weeks: 0, motivation: motivation, priority: priority, methodologyGoal: methodologyGoal)
-//    }
-//    
-//    func postGoals() {
-//        Task.init {
-//            guard let goal = createGoal() else {
-//                return
-//            }
-//            try? await cloud.post(recordType: Goal.getType(), model: goal)
-//        }
-//    }
+    func addGoal(goal: Goal) {
+        Task.init {
+            try? await CloudKitModel.shared.post( model: goal)
+        }
+        goals.append(goal)
+        moveCompletedGoalToEnd()
+    }
     
     func deleteGoal(goal: Goal) {
         goals.removeAll { goalDeleted in
@@ -69,7 +58,7 @@ class GoalViewModel: ObservableObject {
         }
     }
     
-    func moveCompletedGoalToEnd(){
+    func moveCompletedGoalToEnd() {
         for goal in goals {
             if goal.weeks >= methodologyGoals?.weeks ?? 0 {
                 goals.removeAll { goalInArray in
