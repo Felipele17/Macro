@@ -84,6 +84,7 @@ class CloudKitModel: ObservableObject {
         } catch {
             print("Cloud - post")
             print(error.localizedDescription)
+            isCloudFull(erroDescription: error.localizedDescription)
         }
     }
     
@@ -203,6 +204,7 @@ class CloudKitModel: ObservableObject {
             return share
         } catch let error {
             print(error.localizedDescription)
+            isCloudFull(erroDescription: error.localizedDescription)
             return nil
         }
     }
@@ -349,5 +351,17 @@ class CloudKitModel: ObservableObject {
             print(error.localizedDescription)
         }
         return nil
+    }
+    
+    func isCloudFull(erroDescription: String) {
+        if erroDescription.contains("Quota exceeded") {
+            DispatchQueue.main.async {
+                var dialogMessage = UIAlertController(title: "Erro", message: "Seu iCloud está cheio", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .cancel)
+                dialogMessage.addAction(ok)
+                let window = UIApplication.shared.keyWindow
+                window?.rootViewController?.present(dialogMessage, animated: true)
+            }
+        }
     }
 }
