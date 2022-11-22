@@ -22,7 +22,7 @@ struct SettingsView: View {
                             VStack {
                                 Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
                                     .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                                    Text("Renda Mensal \(settingsViewModel.verifyUser())")
+                                    Text("Renda Mensal \(settingsViewModel.verifyIncomeUser())")
                             }
                             .padding(.bottom)
                             HStack {
@@ -35,7 +35,7 @@ struct SettingsView: View {
                             HStack {
                                 Image(systemName: "heart")
                                     .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                                Text( "Conectado com \(settingsViewModel.users.first?.partner ?? ")")
+                                Text("Conectado com \(settingsViewModel.verifyPartnerUser())")
                             }
                         }
                         

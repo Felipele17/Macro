@@ -20,8 +20,13 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
-    func verifyUser() -> Float {
+    func verifyIncomeUser() -> Float {
         guard let user = users.first else { return 0.0 }
         return user.income
+    }
+    
+    func verifyPartnerUser() -> String {
+        guard let user = users.first else { return "" }
+        return user.partner
     }
 }
