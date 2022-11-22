@@ -12,8 +12,8 @@ class UserDefault {
 
     // MARK: MacroApp
     let userOnBoardingBool = UserDefaults.standard.bool(forKey: "didOnBoardingHappen")
-    let userOnBoardingIncome = UserDefaults.standard.float(forKey: "income")
-
+    let userFloatIncome = UserDefaults.standard.float(forKey: "income")
+    
     // MARK: MacroViewModel
     static func getIncome() -> Float {
             return UserDefaults.standard.float(forKey: "income")
@@ -29,12 +29,24 @@ class UserDefault {
     static func getUsername() -> String {
         return UserDefaults.standard.string(forKey: "username") ?? ""
     }
-    
+    // MARK: Cloud
+    static func setSubscriptionShareFalse() {
+        UserDefaults.standard.setValue(false, forKey: "didCreateSubscriptioncloudkit.share")
+    }
     static func getFistPost() -> Bool {
         return UserDefaults.standard.bool(forKey: "fistPost")
     }
     
-    static func setFistPost(isFistPost: Bool){
+    static func setFistPost(isFistPost: Bool) {
         UserDefaults.standard.set(isFistPost, forKey: "fistPost")
     }
+    
+    // MARK: OnBoarding
+    static func setSingleUserIncome(income: String) {
+        UserDefaults.standard.setValue(income, forKey: "singleUser") // setting the income from the user onboarding
+    }
+    static func getSingleUserIncome() -> String {
+        return UserDefaults.standard.string(forKey: "singleUser") ?? "" // getting the income from the user onboarding
+    }
+    
 }

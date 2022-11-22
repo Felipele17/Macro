@@ -11,19 +11,37 @@ struct SettingsView: View {
     @EnvironmentObject var pathController: PathController
     @State private var toggle: Bool = false
     @State private var selectDate = Date()
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     var body: some View {
             List {
                 Section {
                     NavigationLink {
-                    }label: {
+                        UserEditView()
+                    } label: {
                         VStack(alignment: .leading) {
-                            Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
-                                .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                            Text("Renda mensal: \(UserDefaults.standard.string(forKey: "income") ?? "") ")
+                            VStack {
+                                Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
+                                    .font(.custom(EnumFonts.semibold.rawValue, size: 22))
+                                    Text("Renda Mensal \(settingsViewModel.verifyIncomeUser())")
+                            }
+                            .padding(.bottom)
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                Text("Vencimento dos gastos")
+                            }
+                            .padding(.bottom)
                             
+                            HStack {
+                                Image(systemName: "heart")
+                                    .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                                Text("Conectado com \(settingsViewModel.verifyPartnerUser())")
+                            }
                         }
+                        
                     }
-                } .listRowSeparator(.hidden)
+                }
+              
                 Section {
                     NavigationLink {
                         DatePicker(
@@ -48,12 +66,7 @@ struct SettingsView: View {
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         Text("Histórico de gastos")
                     }
-                    NavigationLink {
-                    }label: {
-                        Image(systemName: "heart")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                        Text( "Conectado com")
-                    }
+                    
                 }
                 Section(header: Text("Notificação")) {
                     Toggle(isOn: $toggle) {
