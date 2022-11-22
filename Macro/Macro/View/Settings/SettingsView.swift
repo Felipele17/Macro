@@ -12,6 +12,7 @@ struct SettingsView: View {
     @State private var selectDate = Date()
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     
+    @Binding var path: NavigationPath 
     var body: some View {
             List {
                 Section {
@@ -45,7 +46,7 @@ struct SettingsView: View {
                 Section {
                     
                     NavigationLink {
-                        MethodologySpentsView()
+                        MethodologySpentsView(path: $path)
                     }label: {
                         Image(systemName: "questionmark.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -97,8 +98,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            SettingsView()
-        }
+        SettingsView(path: .constant(NavigationPath()))
     }
 }

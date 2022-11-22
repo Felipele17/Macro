@@ -10,7 +10,7 @@ import SwiftUI
 struct FormsGoalsNameView: View {
     @EnvironmentObject var viewModel: GoalViewModel
     @State var goal: Goal
-    @Binding var popToRoot: Bool
+    @Binding var path: NavigationPath
     
     var body: some View {
         NavigationStack {
@@ -27,7 +27,7 @@ struct FormsGoalsNameView: View {
                     .padding(5)
                 Spacer()
                 NavigationLink {
-                    FormsGoalsValueView(goal: goal, popToRoot: $popToRoot)
+                    FormsGoalsValueView(goal: goal, path: $path)
                 } label: {
                     TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: goal.title.isEmpty)
                 }

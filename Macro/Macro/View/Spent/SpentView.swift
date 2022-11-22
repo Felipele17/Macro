@@ -42,8 +42,9 @@ struct SpentView: View {
             List {
                 ForEach(viewModel.getArraySpents(spentsCard: spentsCard)) { spent in
                     SpentsDetailsCardView(spent: spent, spentsCard: spentsCard)
-                }
+                }.background(Color(EnumColors.backgroundScreen.rawValue))
             } .listStyle(.insetGrouped)
+              .background(Color(EnumColors.backgroundScreen.rawValue))
         }
         .navigationTitle(spentsCard.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
