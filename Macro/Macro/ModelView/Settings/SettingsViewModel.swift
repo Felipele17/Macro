@@ -29,4 +29,10 @@ class SettingsViewModel: ObservableObject {
         guard let user = users.first else { return "" }
         return user.partner
     }
+    
+    func deleteShare() {
+        Task {
+            await CloudKitModel.shared.deleteShare()
+        }
+    }
 }

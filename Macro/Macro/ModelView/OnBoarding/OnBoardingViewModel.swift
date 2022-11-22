@@ -84,10 +84,7 @@ class OnBoardingViewModel: ObservableObject {
     func deleteShare() {
         Task {
             await CloudKitModel.shared.deleteShare()
-            DispatchQueue.main.async {
-                self.invite.isReceivedInviteAccepted = false
-                self.invite.isSendInviteAccepted = false
-            }
+            
         }
     }
     
