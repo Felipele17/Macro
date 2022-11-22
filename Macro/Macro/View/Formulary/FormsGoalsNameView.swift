@@ -27,6 +27,7 @@ struct FormsGoalsNameView: View {
                 }
                 .disabled(viewModel.selectedGoal.title.isEmpty)
         }
+        .navigationBarTitle("Nome", displayMode: .inline)
         .padding(20)
 
     }

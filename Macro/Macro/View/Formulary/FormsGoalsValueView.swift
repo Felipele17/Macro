@@ -44,11 +44,12 @@ struct FormsGoalsValueView: View {
                 }
             PrioritySelector(priority: $viewModel.selectedGoal.priority)
             Spacer()
-            NavigationLink(value: EnumViewNames.formsGoalsMotivationView){
+            NavigationLink(value: EnumViewNames.formsGoalsMotivationView) {
                 TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: !isValidValue)
             }
             .disabled(!isValidValue)
         }
+        .navigationBarTitle("valor", displayMode: .inline)
         .padding(20)
     }
 }

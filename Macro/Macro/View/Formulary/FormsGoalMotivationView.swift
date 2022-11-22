@@ -53,6 +53,7 @@ struct FormsGoalMotivationView: View {
             Spacer()
         }
         .padding(20)
+        .navigationBarTitle("motivação", displayMode: .inline)
         .toolbar {
             Button {
                 viewModel.addGoal(goal: viewModel.selectedGoal)
@@ -60,8 +61,7 @@ struct FormsGoalMotivationView: View {
             } label: {
                 Text("Salvar")
             }.foregroundColor(Color(EnumColors.buttonColor.rawValue))
-        }.accentColor(Color(EnumColors.buttonColor.rawValue))
-        
+        }
     }
 }
 
