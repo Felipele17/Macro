@@ -44,6 +44,7 @@ struct FormsSpentsView: View {
                     }
                 .sheet(isPresented: $showingSheet) {
                     ModalView(selectedIcon: $icon, colorIcon: colorIcon)
+                        .presentationDetents([.medium, .medium, .fraction(0.75)])
                 }
                 .padding(.leading, UIScreen.screenWidth*0.58)
                     .listRowBackground(Color.clear)
