@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var pathController: PathController
     @State private var toggle: Bool = false
     @State private var selectDate = Date()
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @State var showSheet: Bool = false
     
-    @Binding var path: NavigationPath
     var body: some View {
         List {
             Section {
