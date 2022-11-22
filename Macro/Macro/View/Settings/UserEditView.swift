@@ -10,31 +10,23 @@ import SwiftUI
 struct UserEditView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State private var date = Date()
+    var days = Array(1...28)
     @EnvironmentObject var settingsViewModel: SettingsViewModel
-    @State var validTextField: Bool = false
-    @State var newValue: String = ""
+    @State private var validTextField: Bool = true
+    @State private var showAlert: Bool = false
+    @State var date: Int
+    @State var newValue: String
     @FocusState var keyboardIsFocused: Bool
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("Renda Mensal")
                 .foregroundColor(Color("Title"))
                 .font(.custom(EnumFonts.regular.rawValue, size: 22))
-            TextField("Novo valor", text: $newValue)
+            TextField("Valor atual: \(settingsViewModel.verifyIncomeUser())", text: $newValue)
                 .keyboardType(.decimalPad)
                 .foregroundColor(Color(EnumColors.subtitle.rawValue))
                 .focused($keyboardIsFocused)
-            Rectangle()
-                .frame(height: 1.0, alignment: .bottom)
-                .padding(.trailing, 30)
-                .padding(.bottom, 10)
-                .foregroundColor(Color(EnumColors.subtitle.rawValue))
                 .onChange(of: newValue) { _ in
                     if let newValue = newValue.transformToMoney() {
                         self.newValue = newValue
@@ -43,15 +35,21 @@ struct UserEditView: View {
                         validTextField = false
                     }
                 }
-            Text("Data de Pagamento")
+            Rectangle()
+                .frame(height: 1.0, alignment: .bottom)
+                .padding(.trailing, 30)
+                .padding(.bottom, 10)
+                .foregroundColor(Color(EnumColors.subtitle.rawValue))
+
+            Text("Data de Pagamento:")
+                .padding(.top, 20)
                 .foregroundColor(Color("Title"))
                 .font(.custom(EnumFonts.regular.rawValue, size: 22))
-            DatePicker(
-                    "Start Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
-                .datePickerStyle(.graphical)
+            Picker("Selecione a nova data: ", selection: $date) {
+                ForEach(days, id: \.self) {
+                    Text("\($0.formatted(.number.grouping(.never)))")
+                }
+            }.pickerStyle(WheelPickerStyle())
             
             Spacer()
         }
@@ -60,18 +58,20 @@ struct UserEditView: View {
         .navigationBarTitle("Editar", displayMode: .inline)
         .toolbar {
             Button("Salvar") {
-                guard settingsViewModel.users.first != nil else { return } // verifying if we have the first user (the owner of the phone)
-                if validTextField { // verifying if the text is valid
-                    if !(Float(newValue) == UserDefaults.standard.float(forKey: "income")) { // verifying if the value that it's coming is new or it is the same
-                        settingsViewModel.users[0].income = Float(newValue) ?? 0.0
-                        settingsViewModel.editUser()
-                        
-                        UserDefault.setIncome(income: settingsViewModel.users[0].income)
-                    }
+                if validTextField || date != settingsViewModel.verifyDueDataUser(){
+                    settingsViewModel.editUser(income: newValue, date: date)
+                    dismiss()
+                } else {
+                    showAlert.toggle()
                 }
-                dismiss()
+            } .alert("Algum dado está errado", isPresented: $showAlert) {
+                Button {
+                    showAlert.toggle()
+                } label: {
+                    Text("OK")
+                }
+
             }
-            .disabled(!validTextField)
         }
         
     }

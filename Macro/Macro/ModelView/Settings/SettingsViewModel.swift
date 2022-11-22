@@ -14,19 +14,33 @@ class SettingsViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
     @Published var users: [User] = []
 
-    func editUser() {
-        Task.init {
-            await cloud.update(model: users[0])
+    func editUser(income: String, date: Int) {
+        guard let _ = users.first else { return }
+        let verifyIncome = income.replacingOccurrences(of: ".", with: "").floatValue
+        if verifyIncome != 0.0 {
+            UserDefault.setIncome(income: UserDefault.getIncome()-users[0].income)
+            users[0].income = verifyIncome
+            users[0].dueData = date
+            Task.init {
+                await cloud.update(model: users[0])
+            }
+            UserDefault.setIncome(income: UserDefault.getIncome()+verifyIncome)
         }
     }
     
-    func verifyIncomeUser() -> Float {
-        guard let user = users.first else { return 0.0 }
-        return user.income
+    func verifyIncomeUser() -> String {
+        guard let user = users.first else { return "carregando" }
+        return String(user.income).replacingOccurrences(of: ".", with: ",").transformToMoney() ?? ""
     }
     
     func verifyPartnerUser() -> String {
         guard let user = users.first else { return "" }
         return user.partner
     }
+    
+    func verifyDueDataUser() -> Int {
+        guard let user = users.first else { return 0 }
+        return user.dueData
+    }
+    
 }

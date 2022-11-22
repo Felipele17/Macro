@@ -17,13 +17,14 @@ struct SettingsView: View {
             List {
                 Section {
                     NavigationLink {
-                        UserEditView()
+                        UserEditView(date: settingsViewModel.verifyDueDataUser(), newValue: settingsViewModel.verifyIncomeUser())
                     } label: {
                         VStack(alignment: .leading) {
                             VStack {
                                 Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
                                     .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                                    Text("Renda Mensal \(settingsViewModel.verifyIncomeUser())")
+                                    Text("Renda Mensal:  \(settingsViewModel.verifyIncomeUser())")
+                                
                             }
                             .padding(.bottom)
                             HStack {
