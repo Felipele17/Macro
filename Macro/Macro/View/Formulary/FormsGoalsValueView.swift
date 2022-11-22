@@ -9,10 +9,7 @@ import SwiftUI
 
 struct FormsGoalsValueView: View {
     @EnvironmentObject var viewModel: GoalViewModel
-    
-    @State var goal: Goal
-    @Binding var path: NavigationPath
-    
+    @EnvironmentObject var pathController: PathController
     @State private var value: String = ""
     @FocusState var keyboardIsFocused: Bool
     @State var isValidValue = false
@@ -39,20 +36,17 @@ struct FormsGoalsValueView: View {
                 .onChange(of: value) { _ in
                     if let stringMoney = value.transformToMoney() {
                         value = stringMoney
-                        goal.value = stringMoney.replacingOccurrences(of: ".", with: "").floatValue
+                        viewModel.selectedGoal.value = stringMoney.replacingOccurrences(of: ".", with: "").floatValue
                         isValidValue = true
                     } else {
                         isValidValue = false
                     }
                 }
-            PrioritySelector(priority: $goal.priority)
+            PrioritySelector(priority: $viewModel.selectedGoal.priority)
             Spacer()
-            NavigationLink {
-                FormsGoalMotivationView(goal: goal, path: $path)
-            } label: {
+            NavigationLink(value: EnumViewNames.formsGoalsMotivationView){
                 TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: !isValidValue)
             }
-            .isDetailLink(false)
             .disabled(!isValidValue)
         }
         .padding(20)

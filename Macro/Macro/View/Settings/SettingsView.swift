@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var pathController: PathController
     @State private var toggle: Bool = false
     @State private var selectDate = Date()
-    @Binding var path: NavigationPath 
     var body: some View {
             List {
                 Section {
@@ -36,13 +36,11 @@ struct SettingsView: View {
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         Text("Vencimento dos gastos")
                     }
-                    NavigationLink {
-                        MethodologySpentsView(path: $path)
-                    }label: {
+                    NavigationLink(value: EnumViewNames.methodologySpentsView) {
                         Image(systemName: "questionmark.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                         Text( "Metodologias financeiras")
-                    }
+                    } 
                     NavigationLink {
                         HistorySpentsView()
                     }label: {
@@ -90,10 +88,4 @@ struct SettingsView: View {
             .font(.custom(EnumFonts.regular.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.automatic)
         }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(path: .constant(NavigationPath()))
-    }
 }

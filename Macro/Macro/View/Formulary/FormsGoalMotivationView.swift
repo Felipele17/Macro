@@ -9,13 +9,12 @@ import SwiftUI
 
 struct FormsGoalMotivationView: View {
     @EnvironmentObject var viewModel: GoalViewModel
+    @EnvironmentObject var pathController: PathController
     
-    @State var goal: Goal
     var motivations: [String] = ["Guardar dinheiro", "Realização de um sonho", "Sempre quis conquistar essa meta"]
     
     @State var index = 1
     @State var motivation = ""
-    @Binding var path: NavigationPath
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,7 +26,7 @@ struct FormsGoalMotivationView: View {
             
             Button {
                 index = 1
-                goal.motivation = motivations[index - 1]
+                viewModel.selectedGoal.motivation = motivations[index - 1]
             } label: {
                 MotivationCard(text: motivations[0])
                     .foregroundColor(index == 1 ? Color("ButtonColor") : Color("ButtonUnselect"))
@@ -35,7 +34,7 @@ struct FormsGoalMotivationView: View {
             
             Button {
                 index = 2
-                goal.motivation = motivations[index - 1]
+                viewModel.selectedGoal.motivation = motivations[index - 1]
 
             } label: {
                 MotivationCard(text: motivations[1])
@@ -44,7 +43,7 @@ struct FormsGoalMotivationView: View {
             
             Button {
                 index = 3
-                goal.motivation = motivations[index - 1]
+                viewModel.selectedGoal.motivation = motivations[index - 1]
 
             } label: {
                 MotivationCard(text: motivations[2])
@@ -55,20 +54,12 @@ struct FormsGoalMotivationView: View {
         }
         .padding(20)
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button {
-                    Task.init {
-                        try? await CloudKitModel.shared.post( model: goal)
-                    }
-                    viewModel.goals.append(goal)
-                    path.removeLast(path.count-3)
-                    viewModel.moveCompletedGoalToEnd()
-                } label: {
-                    Text("Salvar")
-                }.foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                
-            }
-            
+            Button {
+                viewModel.addGoal(goal: viewModel.selectedGoal)
+                pathController.path.removeLast(pathController.path.count)
+            } label: {
+                Text("Salvar")
+            }.foregroundColor(Color(EnumColors.buttonColor.rawValue))
         }.accentColor(Color(EnumColors.buttonColor.rawValue))
         
     }

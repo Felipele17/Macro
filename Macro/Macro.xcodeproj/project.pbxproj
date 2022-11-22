@@ -49,6 +49,7 @@
 		06AD62B52915801800C02D8C /* String+transformToMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AD62B42915801800C02D8C /* String+transformToMoney.swift */; };
 		06BFF3EA28EB83360015C79B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3E928EB83360015C79B /* SceneDelegate.swift */; };
 		06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3EB28ECCA870015C79B /* Invite.swift */; };
+		06F87464292C0D420006CD22 /* PathController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F87463292C0D420006CD22 /* PathController.swift */; };
 		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		4A2844642900793200D1DD08 /* NoNetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2844632900793200D1DD08 /* NoNetView.swift */; };
 		4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */; };
@@ -161,6 +162,7 @@
 		06AD62B42915801800C02D8C /* String+transformToMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+transformToMoney.swift"; sourceTree = "<group>"; };
 		06BFF3E928EB83360015C79B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		06BFF3EB28ECCA870015C79B /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		06F87463292C0D420006CD22 /* PathController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathController.swift; sourceTree = "<group>"; };
 		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		4A2844632900793200D1DD08 /* NoNetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetView.swift; sourceTree = "<group>"; };
 		4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumColors.swift; sourceTree = "<group>"; };
@@ -303,7 +305,6 @@
 		06449C1728C2993300035324 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				993D49922915AC6B00229031 /* Methodology */,
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				4A2844632900793200D1DD08 /* NoNetView.swift */,
 				99B2EF4328DE576A00657C53 /* Formulary */,
@@ -327,6 +328,7 @@
 				5544774128E233DA000C892E /* OnBoarding */,
 				0664AF7428D2691300244EB2 /* Goal */,
 				06449C4928C29F2500035324 /* Cloud */,
+				06F87463292C0D420006CD22 /* PathController.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -395,6 +397,8 @@
 			isa = PBXGroup;
 			children = (
 				06449C2128C29BFB00035324 /* SettingsView.swift */,
+				996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */,
+				99F6A9EF290B23F200925DFD /* MethodologySpentsView.swift */,
 				99F6A9EB290AFE6400925DFD /* elements */,
 			);
 			path = Settings;
@@ -404,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				5544773528E231C3000C892E /* OnBoardingView.swift */,
+				993D49942915ACA300229031 /* MethodologyView.swift */,
 				06449C3628C29D9E00035324 /* elements */,
 			);
 			path = OnBoarding;
@@ -522,24 +527,6 @@
 				55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */,
 			);
 			path = Formulary;
-			sourceTree = "<group>";
-		};
-		993D49922915AC6B00229031 /* Methodology */ = {
-			isa = PBXGroup;
-			children = (
-				993D49942915ACA300229031 /* MethodologyView.swift */,
-				993D49932915AC7B00229031 /* elements */,
-			);
-			path = Methodology;
-			sourceTree = "<group>";
-		};
-		993D49932915AC7B00229031 /* elements */ = {
-			isa = PBXGroup;
-			children = (
-				996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */,
-				99F6A9EF290B23F200925DFD /* MethodologySpentsView.swift */,
-			);
-			path = elements;
 			sourceTree = "<group>";
 		};
 		993D49972915AED600229031 /* Methodology */ = {
@@ -846,6 +833,7 @@
 				998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */,
 				99F6A9EE290AFEE800925DFD /* HistorySpentsView.swift in Sources */,
 				5544773828E231E9000C892E /* OnBoardingPageTypeOneView.swift in Sources */,
+				06F87464292C0D420006CD22 /* PathController.swift in Sources */,
 				06449C1E28C29B6600035324 /* HomeView.swift in Sources */,
 				06449C2028C29BCC00035324 /* SpentView.swift in Sources */,
 			);
