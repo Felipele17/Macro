@@ -10,6 +10,7 @@ import SwiftUI
 struct UserEditView: View {
     
     @Environment(\.dismiss) var dismiss
+    @State private var date = Date()
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @State var validTextField: Bool = false
     @State var newValue: String = ""
@@ -32,6 +33,7 @@ struct UserEditView: View {
             Rectangle()
                 .frame(height: 1.0, alignment: .bottom)
                 .padding(.trailing, 30)
+                .padding(.bottom, 10)
                 .foregroundColor(Color(EnumColors.subtitle.rawValue))
                 .onChange(of: newValue) { _ in
                     if let newValue = newValue.transformToMoney() {
@@ -41,6 +43,16 @@ struct UserEditView: View {
                         validTextField = false
                     }
                 }
+            Text("Data de Pagamento")
+                .foregroundColor(Color("Title"))
+                .font(.custom(EnumFonts.regular.rawValue, size: 22))
+            DatePicker(
+                    "Start Date",
+                    selection: $date,
+                    displayedComponents: [.date]
+                )
+                .datePickerStyle(.graphical)
+            
             Spacer()
         }
         .padding(.top, 60)
