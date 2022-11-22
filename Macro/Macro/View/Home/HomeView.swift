@@ -9,42 +9,38 @@ import SwiftUI
 
 struct HomeView: View {
     @State var showingSheet: Bool = false
+    @EnvironmentObject var pathController: PathController
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
-    @State var path: NavigationPath = NavigationPath()
-    
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $pathController.path) {
             ScrollView {
                 HStack {
                     Text("Bom dia, \(UserDefault.getUsername())!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding(.top)
                     Spacer()
-                    NavigationLink(destination:
-                                    SettingsView(path: $path)
-                    ) {
+                    NavigationLink(value: EnumViewNames.settingsView ) {
                         Label("", systemImage: "list.bullet")
                             .font(.custom(EnumFonts.bold.rawValue, size: 22))
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             
-                    }.padding(.top)
-                }.padding()
+                    }
+                    .padding(.top)
+                }
+                .padding()
+
                 HStack {
                     Text("Nossas metas")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                         .padding()
                     Spacer()
-                    if let goal = Goal.mockGoals(methodologyGoals: goalViewModel.methodologyGoals) {
-                        NavigationLink {
-                            FormsGoalsNameView(goal: goal, path: $path)
-                        } label: {
-                            Label("", systemImage: "plus")
-                                .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                                .font(.custom(EnumFonts.semibold.rawValue, size: 28))
-                                .padding()
-                        }
+                    NavigationLink(value: EnumViewNames.formsGoalsNameView) {
+                        Label("", systemImage: "plus")
+                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 28))
+                            .padding()
                     }
                 }
                 .padding(.top)
@@ -72,6 +68,9 @@ struct HomeView: View {
                         }
                     }
                 }
+            }
+            .navigationDestination(for: EnumViewNames.self ) { destination in
+                pathController.pushPath(destination: destination)
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
             .navigationBarTitleDisplayMode(.large)

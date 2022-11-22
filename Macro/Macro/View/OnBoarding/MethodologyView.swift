@@ -20,9 +20,3 @@ struct MethodologyView: View {
         }
     }
 }
-
-struct MethodologyView_Previews: PreviewProvider {
-    static var previews: some View {
-        MethodologyView()
-    }
-}

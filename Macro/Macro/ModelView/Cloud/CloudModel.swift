@@ -33,20 +33,20 @@ class CloudKitModel: ObservableObject {
     
     // MARK: PushNotification
     func saveNotification(recordType: String, database: EnumDatabase) async {
-                
+        
         // Create a subscription with an ID that's unique within the scope of
         // the user's private database.
         let subscription = CKDatabaseSubscription(subscriptionID: "\(recordType)-changes")
-
+        
         // Scope the subscription to just the 'FeedItem' record type.
         subscription.recordType = "\(recordType)"
-                
+        
         // Configure the notification so that the system delivers it silently
         // and, therefore, doesn't require permission from the user.
         let notificationInfo = CKSubscription.NotificationInfo()
         notificationInfo.shouldSendContentAvailable = true
         subscription.notificationInfo = notificationInfo
-    
+        
         // Create an operation that saves the subscription to the server.
         let operation = CKModifySubscriptionsOperation(
             subscriptionsToSave: [subscription], subscriptionIDsToDelete: nil)
@@ -70,12 +70,12 @@ class CloudKitModel: ObservableObject {
         case .dataShare:
             databaseShared.add(operation)
         }
-
+        
     }
     
     // MARK: Post
     func post(model: DataModelProtocol) async throws {
-
+        
         let recordId = CKRecord.ID(recordName: model.getID().description, zoneID: SharedZone.ZoneID)
         let record = populateRecord(record: CKRecord(recordType: model.getType(), recordID: recordId), model: model)
         
@@ -84,6 +84,7 @@ class CloudKitModel: ObservableObject {
         } catch {
             print("Cloud - post")
             print(error.localizedDescription)
+            isCloudFull(erroDescription: error.localizedDescription)
         }
     }
     
@@ -149,7 +150,7 @@ class CloudKitModel: ObservableObject {
                             let fecthRecord = try await databasePrivate.record(for: recordId)
                             return [fecthRecord]
                         } catch {
-                                print(error.localizedDescription)
+                            print(error.localizedDescription)
                             return []
                         }
                     }
@@ -201,33 +202,38 @@ class CloudKitModel: ObservableObject {
         do {
             try await databasePrivate.save(share)
             return share
-        } catch {
+        } catch let error {
+            print(error.localizedDescription)
+            isCloudFull(erroDescription: error.localizedDescription)
             return nil
         }
     }
     
     func deleteShare() async {
-            DispatchQueue.main.async {
-                self.isShareNil = true
-            }
-            share = nil
-            let predicate = NSPredicate(value: true)
-            do {
-                let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
-                for share in ckShares {
-                    do {
-                        try await databasePrivate.deleteRecord(withID: share.recordID)
-                    } catch {
-                        try await databaseShared.deleteRecord(withID: share.recordID)
-                    }
-                    
+        DispatchQueue.main.async {
+            Invite.shared.isReceivedInviteAccepted = false
+            Invite.shared.isSendInviteAccepted = false
+            self.isShareNil = true
+            
+        }
+        share = nil
+        let predicate = NSPredicate(value: true)
+        do {
+            let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
+            for share in ckShares {
+                do {
+                    try await databasePrivate.deleteRecord(withID: share.recordID)
+                } catch {
+                    try await databaseShared.deleteRecord(withID: share.recordID)
                 }
-                share = try await getShare()
-                await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
-            } catch let erro {
-                print("deleteShare")
-                print(erro.localizedDescription)
+                
             }
+            share = try await getShare()
+            await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
+        } catch let erro {
+            print("deleteShare")
+            print(erro.localizedDescription)
+        }
     }
     
     func fetchShare(database: EnumDatabase) async throws -> CKShare? {
@@ -261,7 +267,11 @@ class CloudKitModel: ObservableObject {
     
     func makeUIViewControllerShare() -> UICloudSharingController? {
         Task {
-            share = try? await getShare()
+            do {
+            share = try await getShare()
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         
         if let share = share {
@@ -344,5 +354,17 @@ class CloudKitModel: ObservableObject {
             print(error.localizedDescription)
         }
         return nil
+    }
+    
+    func isCloudFull(erroDescription: String) {
+        if erroDescription.contains("Quota exceeded") {
+            DispatchQueue.main.async {
+                var dialogMessage = UIAlertController(title: "Erro", message: "Seu iCloud está cheio", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .cancel)
+                dialogMessage.addAction(ok)
+                let window = UIApplication.shared.keyWindow
+                window?.rootViewController?.present(dialogMessage, animated: true)
+            }
+        }
     }
 }

@@ -43,4 +43,9 @@ class SettingsViewModel: ObservableObject {
         return user.dueData
     }
     
+    func deleteShare() {
+        Task {
+            await CloudKitModel.shared.deleteShare()
+        }
+    }
 }

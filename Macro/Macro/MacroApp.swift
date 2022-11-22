@@ -13,6 +13,7 @@ struct MacroApp: App {
     @StateObject var viewModel = MacroViewModel()
     @StateObject var spentViewModel = SpentViewModel()
     @StateObject var goalViewModel = GoalViewModel()
+    @StateObject var pathController = PathController()
     @StateObject var onboardingViewModel = OnBoardingViewModel()
     @StateObject var observableDataBase = ObservableDataBase.shared
     @StateObject var settingsViewModel = SettingsViewModel()
@@ -28,12 +29,13 @@ struct MacroApp: App {
                             .environmentObject(goalViewModel)
                             .environmentObject(spentViewModel)
                             .environmentObject(viewModel)
+                            .environmentObject(pathController)
                             .environmentObject(settingsViewModel)
                             .onAppear {
                                 spentViewModel.dictionarySpent = viewModel.matrixSpent
                                 spentViewModel.spentsCards = viewModel.spentsCards
                                 goalViewModel.goals = viewModel.goals
-                                goalViewModel.methodologyGoals = viewModel.methodologyGoals
+                                goalViewModel.setMethodologyGoals(methodologyGoals: viewModel.methodologyGoals)
                             }
                             .onReceive(viewModel.$users, perform: { users in
                                 settingsViewModel.users = users

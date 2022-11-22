@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MethodologyGoalsView: View {
-    @Binding var path: NavigationPath
+    @EnvironmentObject var pathController: PathController
+
     let methodologies: [MethodologyValues] = [
         MethodologyValues(tag: 4, images: EnumMethodology.imageFour.rawValue, title: EnumMethodology.titleFour.rawValue, description: EnumMethodology.descriptionFour.rawValue, example: EnumMethodology.exampleFour.rawValue),
         MethodologyValues(tag: 5, images: EnumMethodology.imageFive.rawValue, title: EnumMethodology.titleFive.rawValue, description: EnumMethodology.descriptionFive.rawValue, example: EnumMethodology.exampleFive.rawValue)
@@ -40,7 +41,8 @@ struct MethodologyGoalsView: View {
                 }
             }
             Button {
-                path.removeLast(path.count-2)
+                print(pathController.path.count)
+                pathController.path.removeLast(pathController.path.count-1)
             }label: {
                 Text(EnumButtonText.close.rawValue)
                     .font(.headline)
@@ -60,8 +62,4 @@ struct MethodologyGoalsView: View {
     }
 }
 
-struct MethodologyGoalsView_Previews: PreviewProvider {
-    static var previews: some View {
-        MethodologyGoalsView(path: .constant(NavigationPath()))
-    }
-}
+

@@ -9,33 +9,27 @@ import SwiftUI
 
 struct FormsGoalsNameView: View {
     @EnvironmentObject var viewModel: GoalViewModel
-    @State var goal: Goal
-    @Binding var path: NavigationPath
-    
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
                 Text("Qual o nome da sua meta?")
                     .font(.custom("SFProText-Medium", size: 34))
                     .padding(1)
                 Text("Coloque um nome que te lembre de alcançar esta meta")
                     .padding(10)
-                TextField("Ex.: Carro novo", text: $goal.title)
+                TextField("Ex.: Carro novo", text: $viewModel.selectedGoal.title)
                 
                     .foregroundColor(Color(EnumColors.title.rawValue))
                     .underlineTextField()
                     .padding(5)
                 Spacer()
-                NavigationLink {
-                    FormsGoalsValueView(goal: goal, path: $path)
-                } label: {
-                    TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: goal.title.isEmpty)
+                NavigationLink(value: EnumViewNames.formsGoalsValueView) {
+                    TemplateTextButton(text: EnumButtonText.nextButton.rawValue, isTextFieldEmpty: viewModel.selectedGoal.title.isEmpty)
                 }
-                .isDetailLink(false)
-                .disabled(goal.title.isEmpty)
-            }
-            .padding(20)
+                .disabled(viewModel.selectedGoal.title.isEmpty)
         }
+        .navigationBarTitle("Nome", displayMode: .inline)
+        .padding(20)
+
     }
 }
 
