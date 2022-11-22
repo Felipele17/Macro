@@ -13,6 +13,7 @@ class OnBoardingViewModel: ObservableObject {
     
     @Published var onboardingFinished = false
     @Published var onboardingPage: Int = 0
+    @Published var incomeTextField: String = ""
     @Published private var invite = Invite.shared
     private var cloud = CloudKitModel.shared
     private let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
@@ -88,5 +89,10 @@ class OnBoardingViewModel: ObservableObject {
                 self.invite.isSendInviteAccepted = false
             }
         }
+    }
+    
+    func convertIncome() -> Float {
+        //guard Float(incomeTextField) != nil else { return 0.0 }
+        return Float(incomeTextField) ?? 0.0
     }
 }

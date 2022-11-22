@@ -15,6 +15,7 @@ struct MacroApp: App {
     @StateObject var goalViewModel = GoalViewModel()
     @StateObject var onboardingViewModel = OnBoardingViewModel()
     @StateObject var observableDataBase = ObservableDataBase.shared
+    @StateObject var settingsViewModel = SettingsViewModel()
     @StateObject var invite = Invite.shared
     let userDefault = UserDefault()
     
@@ -27,12 +28,16 @@ struct MacroApp: App {
                             .environmentObject(goalViewModel)
                             .environmentObject(spentViewModel)
                             .environmentObject(viewModel)
+                            .environmentObject(settingsViewModel)
                             .onAppear {
                                 spentViewModel.dictionarySpent = viewModel.matrixSpent
                                 spentViewModel.spentsCards = viewModel.spentsCards
                                 goalViewModel.goals = viewModel.goals
                                 goalViewModel.methodologyGoals = viewModel.methodologyGoals
                             }
+                            .onReceive(viewModel.$users, perform: { users in
+                                settingsViewModel.users = users
+                            })
                             .onReceive(viewModel.$matrixSpent, perform: { matrixSpent in
                                 spentViewModel.dictionarySpent = matrixSpent
                             })
@@ -48,11 +53,12 @@ struct MacroApp: App {
                                     observableDataBase.needFetchGoal = false
                             }
                         } else {
-                            OnBoardingView(incomeTextField: userDefault.userOnBoardingIncome == 0.0 ? "" : String(userDefault.userOnBoardingIncome).replacingOccurrences(of: ".", with: ","))
+                            OnBoardingView()
                                 .environmentObject(onboardingViewModel)
+                                .environmentObject(settingsViewModel)
                                 .environmentObject(invite)
                                 .onReceive(onboardingViewModel.$onboardingFinished, perform: { _ in
-                                    let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userOnBoardingIncome)
+                                    let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userFloatIncome)
                                     viewModel.spentsCards = spentsCards
                                     viewModel.methodologyGoals = onboardingViewModel.methodologyGoal
                                 })

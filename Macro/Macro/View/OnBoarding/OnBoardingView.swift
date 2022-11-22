@@ -11,7 +11,6 @@ struct OnBoardingView: View {
     @EnvironmentObject var viewModel: OnBoardingViewModel
     @EnvironmentObject var invite: Invite
     @StateObject var cloud = CloudKitModel.shared
-    @State var incomeTextField: String
     @State var validTextField = false
     @State var showingAlert = false
     @State private var pages: [OnBoarding] = OnBoarding.onboardingPages
@@ -26,9 +25,9 @@ struct OnBoardingView: View {
                         .tag(0)
                     OnBoardingPageTypeOneView(onboarding: pages[1])
                         .tag(1)
-                    OnBoardingPageTypeTwoView(onboarding: pages[2], value: $incomeTextField, validTextField: $validTextField)
+                    OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: _viewModel, validTextField: $validTextField)
                         .tag(2)
-                        .gesture(incomeTextField.isEmpty ? DragGesture() : nil)
+                        .gesture(viewModel.incomeTextField.isEmpty ? DragGesture() : nil)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[6])
                             .tag(3)
@@ -49,8 +48,8 @@ struct OnBoardingView: View {
                 Button {
                     if viewModel.onboardingPage != 3 {
                         viewModel.onboardingPage += 1
-                        if !incomeTextField.isEmpty {
-                            let money = incomeTextField.replacingOccurrences(of: ".", with: "").floatValue
+                        if !viewModel.incomeTextField.isEmpty {
+                            let money = viewModel.incomeTextField.replacingOccurrences(of: ".", with: "").floatValue
                             UserDefault.setIncome(income: money)
                         }
                     } else {
@@ -108,7 +107,7 @@ struct OnBoardingView: View {
         .onAppear {
             dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
             dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
-            validTextField = incomeTextField.isEmpty ? false : true
+            validTextField = viewModel.incomeTextField.isEmpty ? false : true
         }
     }
 }

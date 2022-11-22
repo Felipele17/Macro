@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var showingSheet: Bool = false
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
     @State var path: NavigationPath = NavigationPath()
