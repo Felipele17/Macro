@@ -306,7 +306,6 @@ class CloudKitModel: ObservableObject {
     // MARK: fetch
     func fetchSharedPrivatedRecords(recordType: String, predicate: NSPredicate) async throws -> [CKRecord] {
         let sharedZones = try await container.sharedCloudDatabase.allRecordZones()
-        
         let fecthPrivate = try await self.fetchRecords( in: SharedZone.ZoneID, from: self.databasePrivate, recordType: recordType, predicate: predicate)
         
         let fecthShared = try await withThrowingTaskGroup(of: [CKRecord].self, returning: [CKRecord].self) { group in

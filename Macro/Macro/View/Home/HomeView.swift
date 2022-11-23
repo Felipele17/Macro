@@ -22,7 +22,7 @@ struct HomeView: View {
                     .padding(.top)
                     Spacer()
                     NavigationLink(value: EnumViewNames.settingsView ) {
-                        Label("", systemImage: "list.bullet")
+                        Label("", systemImage: "gearshape.2.fill")
                             .font(.custom(EnumFonts.bold.rawValue, size: 22))
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             

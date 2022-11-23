@@ -22,6 +22,7 @@ struct FormsGoalMotivationView: View {
                 .font(.custom("SFProText-Medium", size: 34))
                 .padding(1)
             Text("Selecione qual motivação mais se encaixa na sua meta (opcional)")
+                .font(.custom("SFProText-Light", size: 15))
                 .padding(10)
             
             Button {
@@ -30,6 +31,7 @@ struct FormsGoalMotivationView: View {
             } label: {
                 MotivationCard(text: motivations[0])
                     .foregroundColor(index == 1 ? Color("ButtonColor") : Color("ButtonUnselect"))
+                    .accentColor(index == 1 ? Color("Title") : Color("UnselectText"))
             }
             
             Button {
@@ -39,6 +41,7 @@ struct FormsGoalMotivationView: View {
             } label: {
                 MotivationCard(text: motivations[1])
                     .foregroundColor(index == 2 ? Color("ButtonColor") : Color("ButtonUnselect"))
+                    .accentColor(index == 2 ? Color("Title") : Color("UnselectText"))
             }
             
             Button {
@@ -48,8 +51,8 @@ struct FormsGoalMotivationView: View {
             } label: {
                 MotivationCard(text: motivations[2])
                     .foregroundColor(index == 3 ? Color("ButtonColor") : Color("ButtonUnselect"))
+                    .accentColor(index == 3 ? Color("Title") : Color("UnselectText"))
             }
-            
             Spacer()
         }
         .padding(20)

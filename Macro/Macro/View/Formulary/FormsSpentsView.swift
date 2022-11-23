@@ -35,20 +35,22 @@ struct FormsSpentsView: View {
                 Button {
                     showingSheet.toggle()
                 } label: {
+                    VStack(alignment: .leading) {
                         HStack {
                             Label("", systemImage: icon)
-                                .foregroundColor(Color(colorIcon))
+                                .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                                 .font(.custom("SFProText-Regular", size: 26))
                             Label("", systemImage: "chevron.right")
                         }
                     }
+                }
                 .sheet(isPresented: $showingSheet) {
                     ModalView(selectedIcon: $icon, colorIcon: colorIcon)
                         .presentationDetents([.medium, .medium, .fraction(0.75)])
                 }
                 .padding(.leading, UIScreen.screenWidth*0.58)
-                    .listRowBackground(Color.clear)
-                    .underlineTextField()
+                .listRowBackground(Color.clear)
+                .underlineTextField()
                 
             }.textCase(.none)
             

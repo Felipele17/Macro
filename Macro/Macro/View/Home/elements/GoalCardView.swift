@@ -47,7 +47,6 @@ struct GoalCardView: View, Identifiable {
                             .font(.custom(EnumFonts.light.rawValue, size: 17))
                     }
                     Text(didFinished ? "Meta concluida" : "Faltam \(52 - goal.weeks) semanas").font(.custom(EnumFonts.regular.rawValue, size: 13))
-                    
                     Spacer()
                 }
                 Spacer()
@@ -94,7 +93,7 @@ extension FloatingPoint {
 
 // struct GoalCardView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        GoalCardView( goal: .constant(Goal(title: "Carro Novo", value: 5000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true))))
+//        GoalCardView( goal: Goal(title: "Carro Novo", value: 5000, weeks: 48, motivation: "Realização de um sonho", priority: 1, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)), didFinished: false)
 //            .previewInterfaceOrientation(.portrait)
 //    }
 // }

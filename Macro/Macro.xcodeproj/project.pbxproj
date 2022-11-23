@@ -74,11 +74,12 @@
 		55D19CAE28E76970004F84A8 /* FormsGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */; };
 		9919974728E76AB10075866D /* SpentsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974628E76AB10075866D /* SpentsCard.swift */; };
 		9919974928E77E8F0075866D /* EnumSpentsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919974828E77E8F0075866D /* EnumSpentsInfo.swift */; };
-		993D49952915ACA300229031 /* MethodologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D49942915ACA300229031 /* MethodologyView.swift */; };
 		993D49992915AEF200229031 /* MethodologyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993D49982915AEF200229031 /* MethodologyViewModel.swift */; };
 		996E65D32911924B005A4A40 /* MethodologyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D22911924B005A4A40 /* MethodologyValues.swift */; };
 		996E65D5291193A8005A4A40 /* EnumMethodology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D4291193A8005A4A40 /* EnumMethodology.swift */; };
 		996E65DA2911BB65005A4A40 /* MethodologyGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */; };
+		997AA9AC292E751500D85DBF /* OnboardingLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997AA9AB292E751500D85DBF /* OnboardingLottie.swift */; };
+		997AA9AF292E7A0200D85DBF /* SafetyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997AA9AE292E7A0200D85DBF /* SafetyView.swift */; };
 		997C81B428DA584500C2229D /* ProgressBarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997C81B328DA584500C2229D /* ProgressBarCardView.swift */; };
 		998C6AAD28EF680D000791D9 /* PickerSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */; };
 		998C6AAF28F094EF000791D9 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C6AAE28F094EF000791D9 /* ModalView.swift */; };
@@ -188,11 +189,12 @@
 		55D19CAD28E76970004F84A8 /* FormsGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsGoalViewModel.swift; sourceTree = "<group>"; };
 		9919974628E76AB10075866D /* SpentsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpentsCard.swift; sourceTree = "<group>"; };
 		9919974828E77E8F0075866D /* EnumSpentsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpentsInfo.swift; sourceTree = "<group>"; };
-		993D49942915ACA300229031 /* MethodologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyView.swift; sourceTree = "<group>"; };
 		993D49982915AEF200229031 /* MethodologyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyViewModel.swift; sourceTree = "<group>"; };
 		996E65D22911924B005A4A40 /* MethodologyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyValues.swift; sourceTree = "<group>"; };
 		996E65D4291193A8005A4A40 /* EnumMethodology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMethodology.swift; sourceTree = "<group>"; };
 		996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyGoalsView.swift; sourceTree = "<group>"; };
+		997AA9AB292E751500D85DBF /* OnboardingLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLottie.swift; sourceTree = "<group>"; };
+		997AA9AE292E7A0200D85DBF /* SafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyView.swift; sourceTree = "<group>"; };
 		997C81B328DA584500C2229D /* ProgressBarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCardView.swift; sourceTree = "<group>"; };
 		998C6AAC28EF680D000791D9 /* PickerSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSegmentedView.swift; sourceTree = "<group>"; };
 		998C6AAE28F094EF000791D9 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				065E258628CFBE7700EEAFAD /* UIScreen.swift */,
 				4A2844632900793200D1DD08 /* NoNetView.swift */,
+				997AA9AD292E79A800D85DBF /* Metohodology */,
 				99B2EF4328DE576A00657C53 /* Formulary */,
 				06449C2F28C29CF300035324 /* OnBoarding */,
 				06449C2D28C29CC700035324 /* Settings */,
@@ -399,9 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				06449C2128C29BFB00035324 /* SettingsView.swift */,
-				996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */,
-				99F6A9EF290B23F200925DFD /* MethodologySpentsView.swift */,
-				556F5600291D77EE00CB927B /* UserEditView.swift */,
 				99F6A9EB290AFE6400925DFD /* elements */,
 			);
 			path = Settings;
@@ -411,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				5544773528E231C3000C892E /* OnBoardingView.swift */,
-				993D49942915ACA300229031 /* MethodologyView.swift */,
 				06449C3628C29D9E00035324 /* elements */,
 			);
 			path = OnBoarding;
@@ -443,6 +442,7 @@
 				5544772B28E2307E000C892E /* InfoButton.swift */,
 				5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */,
 				5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */,
+				997AA9AE292E7A0200D85DBF /* SafetyView.swift */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -540,16 +540,25 @@
 			path = Methodology;
 			sourceTree = "<group>";
 		};
+		997AA9AD292E79A800D85DBF /* Metohodology */ = {
+			isa = PBXGroup;
+			children = (
+				996E65D92911BB65005A4A40 /* MethodologyGoalsView.swift */,
+				99F6A9EF290B23F200925DFD /* MethodologySpentsView.swift */,
+			);
+			path = Metohodology;
+			sourceTree = "<group>";
+		};
 		99B2EF4328DE576A00657C53 /* Formulary */ = {
 			isa = PBXGroup;
 			children = (
-				06CB395328F0A51000CDEC0B /* elements */,
 				99B2EF3F28DE573D00657C53 /* FormsSpentsView.swift */,
 				99B2EF4128DE576200657C53 /* FormsGoalsNameView.swift */,
 				554B102028E4D603003DEE7C /* FormsGoalsValueView.swift */,
 				554B102228E4D703003DEE7C /* FormsGoalMotivationView.swift */,
 				99E4F20F28E4BF0000AB24FA /* FormsEditGoals.swift */,
 				998C6AAE28F094EF000791D9 /* ModalView.swift */,
+				06CB395328F0A51000CDEC0B /* elements */,
 			);
 			path = Formulary;
 			sourceTree = "<group>";
@@ -577,6 +586,7 @@
 		99F6A9EB290AFE6400925DFD /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				556F5600291D77EE00CB927B /* UserEditView.swift */,
 				99F6A9ED290AFEE800925DFD /* HistorySpentsView.swift */,
 			);
 			path = elements;
@@ -597,6 +607,7 @@
 				55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */,
 				99F7E3BE290085EC009534ED /* LaunchScreenView.swift */,
 				99F7E4AB29073050009534ED /* LaunchScreen.swift */,
+				997AA9AB292E751500D85DBF /* OnboardingLottie.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -787,7 +798,7 @@
 				06449C2A28C29C5D00035324 /* SpentsCardView.swift in Sources */,
 				5544773C28E2324A000C892E /* EnumButtonText.swift in Sources */,
 				4A2844642900793200D1DD08 /* NoNetView.swift in Sources */,
-				993D49952915ACA300229031 /* MethodologyView.swift in Sources */,
+				997AA9AC292E751500D85DBF /* OnboardingLottie.swift in Sources */,
 				0695CE50290C69120021CF3F /* EnumStatusFecth.swift in Sources */,
 				06449C4828C29F1100035324 /* CloudModel.swift in Sources */,
 				4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */,
@@ -811,6 +822,7 @@
 				0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				996E65D5291193A8005A4A40 /* EnumMethodology.swift in Sources */,
+				997AA9AF292E7A0200D85DBF /* SafetyView.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingViewModel.swift in Sources */,
 				99F7E4AC29073050009534ED /* LaunchScreen.swift in Sources */,
