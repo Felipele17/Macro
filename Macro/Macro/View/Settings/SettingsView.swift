@@ -24,10 +24,12 @@ struct SettingsView: View {
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     Text("Vencimento dos gastos")
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
-                    }
+                }.padding(.leading, 8)
                 NavigationLink {
                     UserEditView()
                 } label: {
+                    Image(systemName: "square.and.pencil")
+                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     Text("Editar dados do perfil")
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                 }
@@ -35,7 +37,7 @@ struct SettingsView: View {
             
             Section {
                 NavigationLink {
-                    MethodologySpentsView(path: $path)
+                    MethodologySpentsView()
                 }label: {
                     Image(systemName: "questionmark.circle")
                         .foregroundColor(Color(EnumColors.buttonColor.rawValue))
@@ -101,6 +103,7 @@ struct SettingsView: View {
                             ])
             })
         }
+        .background(Color(EnumSpentsinfo.backgroundSpentsColor.rawValue))
         .listStyle(.insetGrouped)
         .navigationTitle("Configurações")
         .font(.custom(EnumFonts.regular.rawValue, size: 17))

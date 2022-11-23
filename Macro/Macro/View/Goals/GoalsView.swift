@@ -85,7 +85,8 @@ struct GoalsView: View {
                             }
                         }
                     }
-                    .animation( .default.speed(0.5) )
+                    .background(Color(EnumSpentsinfo.backgroundSpentsColor.rawValue))
+                    .animation( .default.speed(0.5))
                     .frame(height: 250)
                 }
             }
@@ -104,19 +105,17 @@ struct GoalsView: View {
         }
     }
 }
-
-
 extension GoalsView {
     private func cornerRadiusNumber() -> CGFloat {
         return 10
     }
 }
 
- struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            GoalsView(goal:
-                        Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
-        }
-    }
- }
+// struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            GoalsView(goal:
+//                        Goal(title: "Novo Carro", value: 2000.00, weeks: 45, motivation: "", priority: 2, methodologyGoal: MethodologyGoal(weeks: 52, crescent: true)))
+//        }
+//    }
+// }
