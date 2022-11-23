@@ -34,20 +34,18 @@ struct SettingsView: View {
             }
             
             Section {
-                NavigationLink {
-                    MethodologySpentsView(path: $path)
-                }label: {
+                NavigationLink(value: EnumViewNames.methodologySpentsView) {
                     Image(systemName: "questionmark.circle")
                         .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     Text( "Metodologias financeiras")
                 }
-                NavigationLink {
-                    HistorySpentsView()
-                }label: {
-                    Image(systemName: "newspaper")
-                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                    Text("Histórico de gastos")
-                }
+//                NavigationLink {
+//                    HistorySpentsView()
+//                }label: {
+//                    Image(systemName: "newspaper")
+//                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+//                    Text("Histórico de gastos")
+//                }
             }
             Section(header: Text("Notificação")) {
                 Toggle(isOn: $toggle) {
