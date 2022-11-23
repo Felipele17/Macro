@@ -214,7 +214,7 @@ class CloudKitModel: ObservableObject {
             Invite.shared.isReceivedInviteAccepted = false
             Invite.shared.isSendInviteAccepted = false
             self.isShareNil = true
-            
+            UserDefault.setFistPost(isFistPost: true)
         }
         share = nil
         let predicate = NSPredicate(value: true)
@@ -364,6 +364,33 @@ class CloudKitModel: ObservableObject {
                 let window = UIApplication.shared.keyWindow
                 window?.rootViewController?.present(dialogMessage, animated: true)
             }
+        }
+    }
+    
+    func deleteAllRecords() async {
+        // fetch records from iCloud, get their recordID and then delete them
+        do {
+            let zonesShared = try await databaseShared.allRecordZones()
+            let zonesPrivate = try await databasePrivate.allRecordZones()
+            for zone in zonesShared {
+                do {
+                    try await databaseShared.deleteRecordZone(withID: zone.zoneID)
+                } catch let error {
+                    print("deleteAllRecordsPrivate")
+                    print(error.localizedDescription)
+                }
+            }
+            for zone in zonesPrivate {
+                do {
+                    try await databasePrivate.deleteRecordZone(withID: zone.zoneID)
+                } catch let error {
+                    print("deleteAllRecordsShared")
+                    print(error.localizedDescription)
+                }
+            }
+        } catch let error {
+            print("deleteAllRecords")
+            print(error.localizedDescription)
         }
     }
 }

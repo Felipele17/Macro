@@ -40,6 +40,9 @@ class OnBoardingViewModel: ObservableObject {
 
     /// Checking if:    1. the Spent's methodology and username was got;   2. the Goal's methodology was posted;    3. the notification of the Goal and Spent was saved
     func initialPosts(income: Float) {
+        if UserDefault.getFistPost() {
+            return
+        }
         UserDefault.setFistPost(isFistPost: true)
         Task.init {
             var participantsNames: [String] = []

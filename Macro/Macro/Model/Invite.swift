@@ -7,7 +7,10 @@
 
 import Foundation
 import CloudKit
-class Invite: ObservableObject {
+class Invite: ObservableObject, Equatable {
+    static func == (lhs: Invite, rhs: Invite) -> Bool {
+        lhs.isReceivedInviteAccepted == rhs.isReceivedInviteAccepted && lhs.isSendInviteAccepted == rhs.isReceivedInviteAccepted
+    }
     
     static var shared = Invite()
     private var cloud = CloudKitModel.shared
