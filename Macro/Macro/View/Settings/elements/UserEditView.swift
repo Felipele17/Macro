@@ -46,7 +46,7 @@ struct UserEditView: View {
         .navigationBarTitle("Editar", displayMode: .inline)
         .toolbar {
             Button("Salvar") {
-                if (validTextField) {
+                if validTextField {
                     settingsViewModel.editUser(income: newValue)
                     dismiss()
                 } else {

@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var pathController: PathController
     @State private var toggle: Bool = false
-    @State private var selectDate = Date()
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @State var showSheet: Bool = false
     
@@ -29,7 +28,7 @@ struct SettingsView: View {
                     UserEditView(newValue: settingsViewModel.verifyIncomeUser())
                 } label: {
                     Image(systemName: "square.and.pencil")
-                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                        .tint(Color(EnumColors.buttonColor.rawValue))
                     Text("Editar dados do perfil")
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                 }
@@ -38,7 +37,7 @@ struct SettingsView: View {
             Section {
                 NavigationLink(value: EnumViewNames.methodologySpentsView) {
                     Image(systemName: "questionmark.circle")
-                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                        .tint(Color(EnumColors.buttonColor.rawValue))
                     Text( "Metodologias financeiras")
                 }
                 //                NavigationLink {
@@ -79,7 +78,7 @@ struct SettingsView: View {
                 Section {
                     HStack {
                         Image(systemName: "heart")
-                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                            .tint(Color(EnumColors.buttonColor.rawValue))
                         Text("Conectado com ").font(.custom(EnumFonts.regular.rawValue, size: 17)) + Text("\(settingsViewModel.verifyPartnerUser())").font(.custom(EnumFonts.semibold.rawValue, size: 17))
                     }
                     Button {
@@ -88,7 +87,7 @@ struct SettingsView: View {
                         HStack {
                             Image(systemName: "rectangle.portrait.and.arrow.right")
                             Text("Desconectar")
-                        }.foregroundColor(Color(.red))
+                        }.tint(Color(.red))
                     }
                 }
                 .actionSheet(isPresented: $showSheet, content: {
@@ -101,7 +100,6 @@ struct SettingsView: View {
                                 ])
                 })
             }
-            .background(Color(EnumSpentsinfo.backgroundSpentsColor.rawValue))
             .listStyle(.insetGrouped)
             .navigationTitle("Configurações")
             .font(.custom(EnumFonts.regular.rawValue, size: 17))
