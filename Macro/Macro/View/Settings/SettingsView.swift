@@ -26,7 +26,7 @@ struct SettingsView: View {
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                 }.padding(.leading, 8)
                 NavigationLink {
-                    UserEditView()
+                     UserEditView(date: settingsViewModel.verifyDueDataUser(), newValue: settingsViewModel.verifyIncomeUser())
                 } label: {
                     Image(systemName: "square.and.pencil")
                         .foregroundColor(Color(EnumColors.buttonColor.rawValue))
