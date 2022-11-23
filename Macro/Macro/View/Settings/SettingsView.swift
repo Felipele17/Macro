@@ -26,7 +26,7 @@ struct SettingsView: View {
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     }
                 NavigationLink {
-                    UserEditView()
+                     UserEditView(date: settingsViewModel.verifyDueDataUser(), newValue: settingsViewModel.verifyIncomeUser())
                 } label: {
                     Text("Editar dados do perfil")
                         .font(.custom(EnumFonts.regular.rawValue, size: 17))
