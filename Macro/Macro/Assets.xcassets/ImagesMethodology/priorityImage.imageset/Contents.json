@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "TresNozesCard1x.png",
+      "filename" : "Pódio.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "TresNozesCard2x.png",
+      "filename" : "Pódio 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "TresNozesCard3x.png",
+      "filename" : "Pódio 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

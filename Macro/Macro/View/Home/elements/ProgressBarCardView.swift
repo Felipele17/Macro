@@ -24,4 +24,3 @@ struct ProgressBarCardView: View {
         .frame(width: 220, height: 8, alignment: .leading)
     }
 }
-

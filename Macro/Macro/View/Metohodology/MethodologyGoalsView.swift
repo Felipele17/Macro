@@ -1,20 +1,22 @@
 //
-//  MethodologyView.swift
+//  MethodologyGoalsView.swift
 //  Macro
 //
-//  Created by Gabriele Namie on 27/10/22.
+//  Created by Gabriele Namie on 01/11/22.
 //
 
 import SwiftUI
 
-struct MethodologySpentsView: View {
-    let methodologies: [MethodologyValues] = [
-        MethodologyValues(tag: 0, images: EnumMethodology.imageOne.rawValue, title: EnumMethodology.titleOne.rawValue, description: EnumMethodology.descriptionOne.rawValue, example: EnumMethodology.exampleOne.rawValue),
-        MethodologyValues(tag: 1, images: EnumMethodology.imageTwo.rawValue, title: EnumMethodology.titleTwo.rawValue, description: EnumMethodology.descriptionTwo.rawValue, example: EnumMethodology.exampleTwo.rawValue),
-        MethodologyValues(tag: 2, images: EnumMethodology.imageThree.rawValue, title: EnumMethodology.titleThree.rawValue, description: EnumMethodology.descriptionThree.rawValue, example: EnumMethodology.exampleThree.rawValue)
-        ]
+struct MethodologyGoalsView: View {
+    @EnvironmentObject var pathController: PathController
 
+    let methodologies: [MethodologyValues] = [
+        MethodologyValues(tag: 4, images: EnumMethodology.imageFour.rawValue, title: EnumMethodology.titleFour.rawValue, description: EnumMethodology.descriptionFour.rawValue, example: EnumMethodology.exampleFour.rawValue),
+        MethodologyValues(tag: 5, images: EnumMethodology.imageFive.rawValue, title: EnumMethodology.titleFive.rawValue, description: EnumMethodology.descriptionFive.rawValue, example: EnumMethodology.exampleFive.rawValue)
+        ]
     var body: some View {
+        ZStack {
+            Color(EnumColors.backgroundScreen.rawValue)
             VStack(alignment: .leading) {
                 ForEach(methodologies, id: \.self) { methodology in
                     VStack(alignment: .leading) {
@@ -29,7 +31,8 @@ struct MethodologySpentsView: View {
                             .padding(.horizontal)
                             .padding(.bottom)
                             .font(.custom(EnumFonts.regular.rawValue, size: 16))
-                        Text(methodology.example).lineLimit(2, reservesSpace: true)
+                        Text(methodology.example)
+                            .lineLimit(2, reservesSpace: true)
                             .padding(.horizontal)
                             .font(.custom(EnumFonts.light.rawValue, size: 16))
                             .foregroundColor(Color(EnumColors.subtitle.rawValue))
@@ -39,22 +42,24 @@ struct MethodologySpentsView: View {
                             .padding()
                     }
                 }
-                NavigationLink(value: EnumViewNames.methodologyGoalsView){
-                    Text(EnumButtonText.nextButton.rawValue)
+                Button {
+                    print(pathController.path.count)
+                    pathController.path.removeLast(pathController.path.count-1)
+                }label: {
+                    Text(EnumButtonText.close.rawValue)
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
-                        .background(Color(EnumColors.buttonColor.rawValue) )
+                        .background(Color(EnumColors.buttonColor.rawValue))
                         .cornerRadius(13)
                         .padding()
                 }
             }
-                .navigationTitle("Método 50-15-35")
-                .font(.custom(EnumFonts.semibold.rawValue, size: 17))
-                .navigationBarTitleDisplayMode(.automatic)
-                .background(Color(EnumColors.backgroundScreen.rawValue))
+        }
+            .navigationTitle("Método 52 semanas")
+            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
+            .navigationBarTitleDisplayMode(.automatic)
 
     }
 }
-

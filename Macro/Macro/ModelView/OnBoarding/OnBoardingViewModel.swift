@@ -83,8 +83,7 @@ class OnBoardingViewModel: ObservableObject {
     
     func deleteShare() {
         Task {
-            await CloudKitModel.shared.deleteShare()
-            
+            await CloudKitModel.shared.deleteShare()            
         }
     }
     

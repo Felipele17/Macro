@@ -30,7 +30,7 @@ struct SpentsCardView: View {
             }
             
             ZStack {
-                Color(EnumSpentsinfo.backgroundSpentsColor.rawValue)
+                Color(spentsCard.colorName2)
                 
                 HStack(alignment: .center) {
                     

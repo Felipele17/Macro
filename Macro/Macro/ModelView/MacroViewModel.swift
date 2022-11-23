@@ -321,6 +321,4 @@ class MacroViewModel: ObservableObject {
             return nil
         }
     }
-    
-    
 }

@@ -18,6 +18,10 @@ struct ModalView: View {
     
     var body: some View {
         VStack {
+            Text("Ícones")
+                .font(.custom("SFProText-Semibold", size: 28))
+                .padding()
+                .padding(.trailing, UIScreen.screenWidth/1.5)
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(icons, id: \.self) { icon in
                     Button {
@@ -38,10 +42,10 @@ struct ModalView: View {
                 .padding(.trailing)
                 .listRowBackground(Color.clear)
             if selected {
-                Text("Salvo!")
-                    .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                    .padding(.top, 40)
-                    .foregroundColor(Color(EnumColors.title.rawValue))
+                    Text("Salvo!")
+                        .font(.custom(EnumFonts.semibold.rawValue, size: 22))
+                        .padding()
+                        .foregroundColor(Color(EnumColors.title.rawValue))
             }
         }
     }
