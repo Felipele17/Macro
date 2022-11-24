@@ -33,7 +33,6 @@ struct OnBoardingPageTypeTwoView: View {
                     .onChange(of: viewModel.incomeTextField) { _ in
                         if let value = viewModel.incomeTextField.transformToMoney() {
                             self.viewModel.incomeTextField = value
-                            UserDefault.setSingleUserIncome(income: viewModel.incomeTextField)
                             validTextField = true
                         } else {
                             validTextField = false
