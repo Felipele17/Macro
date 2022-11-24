@@ -31,9 +31,9 @@ struct OnBoardingPageTypeTwoView: View {
                     .frame(height: 1.0, alignment: .bottom)
                     .foregroundColor(Color(EnumColors.subtitle.rawValue))
                     .onChange(of: viewModel.incomeTextField) { _ in
+                        UserDefault.setIncome(income: viewModel.incomeTextField.convertoMoneyToFloat())
                         if let value = viewModel.incomeTextField.transformToMoney() {
                             self.viewModel.incomeTextField = value
-                            UserDefault.setSingleUserIncome(income: viewModel.incomeTextField)
                             validTextField = true
                         } else {
                             validTextField = false

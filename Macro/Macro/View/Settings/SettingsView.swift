@@ -95,7 +95,6 @@ struct SettingsView: View {
                                 buttons: [
                                     .destructive(Text("Desconectar")) {
                                         settingsViewModel.deleteShare()
-                                        pathController.path.removeLast(pathController.path.count)
                                     },
                                     .cancel()
                                 ])

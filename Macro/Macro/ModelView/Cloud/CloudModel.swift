@@ -14,7 +14,7 @@ class CloudKitModel: ObservableObject {
     let databasePrivate: CKDatabase
     let databaseShared: CKDatabase
     @Published var isShareNil = true
-    private var share: CKShare?
+    var share: CKShare?
     
     static var shared = CloudKitModel()
     
@@ -25,6 +25,7 @@ class CloudKitModel: ObservableObject {
         Task.init {
             share = try await getShare()
             await Invite.shared.checkSendAccepted(share: share)
+
         }
         Task.init {
             await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
@@ -210,12 +211,10 @@ class CloudKitModel: ObservableObject {
     }
     
     func deleteShare() async {
-        DispatchQueue.main.async {
-            Invite.shared.isReceivedInviteAccepted = false
-            Invite.shared.isSendInviteAccepted = false
-            self.isShareNil = true
-            UserDefault.setFistPost(isFistPost: false)
-        }
+        
+        let dialogMessage = await UIAlertController(title: "Alerta", message: "Deletando dados", preferredStyle: .alert)
+        let window = await UIApplication.shared.keyWindow
+        await window?.rootViewController?.present(dialogMessage, animated: true)
         share = nil
         await deleteAllRecords()
         let predicate = NSPredicate(value: true)
@@ -232,6 +231,13 @@ class CloudKitModel: ObservableObject {
             }
             share = try await getShare()
             await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
+            DispatchQueue.main.async {
+                Invite.shared.isReceivedInviteAccepted = false
+                Invite.shared.isSendInviteAccepted = false
+                self.isShareNil = true
+                UserDefault.setFistPost(isFistPost: false)
+            }
+            await dialogMessage.dismiss(animated: true)
         } catch let erro {
             print("deleteShare")
             print(erro.localizedDescription)

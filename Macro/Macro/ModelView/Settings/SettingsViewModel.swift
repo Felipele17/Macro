@@ -10,10 +10,8 @@ import Foundation
 class SettingsViewModel: ObservableObject {
 
     private let userDefault = UserDefault()
-
     private let cloud = CloudKitModel.shared
     @Published var users: [User] = []
-
     func editUser(income: String) {
         guard let _ = users.first else { return }
         let verifyIncome = income.replacingOccurrences(of: ".", with: "").floatValue
