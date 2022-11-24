@@ -30,7 +30,7 @@ enum OnBoardingText: String {
     case titleConnectedScreen = "Agora vocês estão conectados"
     case connectedScreen = "Já podem iniciar as suas metas e dividirem seus gastos."
     
-    case titleAnimationScreen = "Entenda como irá funcionar o App"
+    case titleAnimationScreen = "Entenda como irá funcionar"
     case animationScreen = "Vocês devem enviar um link um para o outro, para que consigam começar."
     
 }
