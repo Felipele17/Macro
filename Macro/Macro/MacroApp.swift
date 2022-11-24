@@ -54,6 +54,12 @@ struct MacroApp: App {
                                     viewModel.reload(type: Goal.getType())
                                     observableDataBase.needFetchGoal = false
                             }
+                            .onChange(of: invite.isSendInviteAccepted) { _ in
+                                onboardingViewModel.checkOnboardingFinished()
+                            }
+                            .onChange(of: invite.isReceivedInviteAccepted) { _ in
+                                onboardingViewModel.checkOnboardingFinished()
+                            }
                         } else {
                             OnBoardingView()
                                 .environmentObject(onboardingViewModel)

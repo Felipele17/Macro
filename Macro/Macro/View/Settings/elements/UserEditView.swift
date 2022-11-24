@@ -10,11 +10,9 @@ import SwiftUI
 struct UserEditView: View {
     
     @Environment(\.dismiss) var dismiss
-    var days = Array(1...28)
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @State private var validTextField: Bool = true
     @State private var showAlert: Bool = false
-    @State var date: Int
     @State var newValue: String
     @FocusState var keyboardIsFocused: Bool
     
@@ -40,16 +38,6 @@ struct UserEditView: View {
                 .padding(.trailing, 30)
                 .padding(.bottom, 10)
                 .foregroundColor(Color(EnumColors.subtitle.rawValue))
-
-            Text("Data de Pagamento:")
-                .padding(.top, 20)
-                .foregroundColor(Color("Title"))
-                .font(.custom(EnumFonts.regular.rawValue, size: 22))
-            Picker("Selecione a nova data: ", selection: $date) {
-                ForEach(days, id: \.self) {
-                    Text("\($0.formatted(.number.grouping(.never)))")
-                }
-            }.pickerStyle(WheelPickerStyle())
             
             Spacer()
         }
@@ -58,19 +46,18 @@ struct UserEditView: View {
         .navigationBarTitle("Editar", displayMode: .inline)
         .toolbar {
             Button("Salvar") {
-                if validTextField || date != settingsViewModel.verifyDueDataUser(){
-                    settingsViewModel.editUser(income: newValue, date: date)
+                if validTextField {
+                    settingsViewModel.editUser(income: newValue)
                     dismiss()
                 } else {
                     showAlert.toggle()
                 }
-            } .alert("Algum dado está errado", isPresented: $showAlert) {
+            } .alert("Há algo errado com a sua nova renda.", isPresented: $showAlert) {
                 Button {
                     showAlert.toggle()
                 } label: {
                     Text("OK")
                 }
-
             }
         }
         

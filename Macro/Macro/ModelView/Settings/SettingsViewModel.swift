@@ -14,13 +14,12 @@ class SettingsViewModel: ObservableObject {
     private let cloud = CloudKitModel.shared
     @Published var users: [User] = []
 
-    func editUser(income: String, date: Int) {
+    func editUser(income: String) {
         guard let _ = users.first else { return }
         let verifyIncome = income.replacingOccurrences(of: ".", with: "").floatValue
         if verifyIncome != 0.0 {
             UserDefault.setIncome(income: UserDefault.getIncome()-users[0].income)
             users[0].income = verifyIncome
-            users[0].dueData = date
             Task.init {
                 await cloud.update(model: users[0])
             }
