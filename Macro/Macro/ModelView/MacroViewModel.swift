@@ -275,7 +275,16 @@ class MacroViewModel: ObservableObject {
     
     private func fetchSpent(categoryPorcent: Int) async throws -> [Spent] {
         var spents: [Spent] = []
-        let predicate = NSPredicate(format: "categoryPercent == \(categoryPorcent) ")
+        var component = Date().get(.day, .month, .year)
+        component.year = component.month == 1 ? (component.year ?? 2)-1 : component.year
+        component.month = component.day ?? 21 <= 21 ? (component.month ?? 2)-1 : component.month
+        component.day = 21
+        component.hour = 0
+        component.minute = 0
+        component.second = 0
+        print(component)
+        let date: Date = NSCalendar.current.date(from: component) ?? Date.now
+        let predicate = NSPredicate(format: "categoryPercent == \(categoryPorcent) && date >= %@", NSDate(timeInterval: 0, since: date))
         let records = try? await cloud.fetchSharedPrivatedRecords(recordType: Spent.getType(), predicate: predicate)
         guard let records = records else { return [] }
         for record in records {
@@ -320,5 +329,15 @@ class MacroViewModel: ObservableObject {
             print(error.localizedDescription)
             return nil
         }
+    }
+}
+
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
     }
 }
