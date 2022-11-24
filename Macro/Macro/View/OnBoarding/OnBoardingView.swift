@@ -61,7 +61,6 @@ struct OnBoardingView: View {
                             viewModel.sharingInvite()
                         }
                     }
-                    
                 } label: {
                     Text(viewModel.onboardingPage == 3 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "Carregando..." : "Compatilhar") : EnumButtonText.nextButton.rawValue)
                         .font(.headline)

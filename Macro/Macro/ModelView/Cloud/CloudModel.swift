@@ -214,17 +214,19 @@ class CloudKitModel: ObservableObject {
             Invite.shared.isReceivedInviteAccepted = false
             Invite.shared.isSendInviteAccepted = false
             self.isShareNil = true
-            UserDefault.setFistPost(isFistPost: true)
+            UserDefault.setFistPost(isFistPost: false)
         }
         share = nil
+        await deleteAllRecords()
         let predicate = NSPredicate(value: true)
         do {
             let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
             for share in ckShares {
                 do {
                     try await databasePrivate.deleteRecord(withID: share.recordID)
-                } catch {
+                } catch let erro {
                     try await databaseShared.deleteRecord(withID: share.recordID)
+                    print(erro.localizedDescription)
                 }
                 
             }
@@ -366,30 +368,28 @@ class CloudKitModel: ObservableObject {
             }
         }
     }
-    
     func deleteAllRecords() async {
         // fetch records from iCloud, get their recordID and then delete them
+        let arrayType = [Goal.getType(), User.getType(), Spent.getType(), MethodologyGoal.getType(), MethodologySpent.getType()]
         do {
-            let zonesShared = try await databaseShared.allRecordZones()
-            let zonesPrivate = try await databasePrivate.allRecordZones()
-            for zone in zonesShared {
-                do {
-                    try await databaseShared.deleteRecordZone(withID: zone.zoneID)
-                } catch let error {
-                    print("deleteAllRecordsPrivate")
-                    print(error.localizedDescription)
-                }
-            }
-            for zone in zonesPrivate {
-                do {
-                    try await databasePrivate.deleteRecordZone(withID: zone.zoneID)
-                } catch let error {
-                    print("deleteAllRecordsShared")
-                    print(error.localizedDescription)
+            let predicate = NSPredicate(value: true)
+            for type in arrayType {
+                let records = try await fetchSharedPrivatedRecords(recordType: type, predicate: predicate)
+                for record in records {
+                    do {
+                        try await container.privateCloudDatabase.deleteRecord(withID: record.recordID)
+                    } catch {
+                        do {
+                            try await container.sharedCloudDatabase.deleteRecord(withID: record.recordID)
+                        } catch {
+                            print("deleteAllRecord")
+                            print(error.localizedDescription)
+                        }
+                    }
                 }
             }
         } catch let error {
-            print("deleteAllRecords")
+            print("fecthDeleteAllRecords")
             print(error.localizedDescription)
         }
     }
