@@ -10,21 +10,29 @@ import SwiftUI
 struct OnBoardingPageTypeOneView: View {
     
     let onboarding: OnBoarding
+    @EnvironmentObject var viewModel: OnBoardingViewModel
     
     var body: some View {
         VStack(alignment: .center) {
-            Image(self.onboarding.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            if onboarding.tag != 7 {
+                Image(self.onboarding.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                OnboardingLottie(name: "onboardingFlow", loopMode: .loop)
+                    .padding(.bottom, 20)
+            }
             
             Text(onboarding.title)
-                .font(.custom("SF Pro Text", size: 22))
+                .font(.custom(EnumFonts.bold.rawValue, size: 22))
+                .padding(.bottom, viewModel.onboardingPage == 4 ?  5 : 0)
                 .multilineTextAlignment(.center)
                 .padding(1.1)
             
             Text(onboarding.description)
                 .multilineTextAlignment(.center)
-                .font(.custom("SF Pro Text", fixedSize: 16))
+                .padding(.bottom, viewModel.onboardingPage == 4 ?  5 : 0)
+                .font(.custom(EnumFonts.regular.rawValue, fixedSize: 16))
             
             Spacer()
         }

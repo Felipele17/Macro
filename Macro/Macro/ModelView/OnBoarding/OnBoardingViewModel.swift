@@ -24,7 +24,7 @@ class OnBoardingViewModel: ObservableObject {
     }
 
     func checkButton() -> String {
-        if onboardingPage == 3 {
+        if onboardingPage == 4 {
             return EnumButtonText.shareButton.rawValue
         }
         return EnumButtonText.nextButton.rawValue

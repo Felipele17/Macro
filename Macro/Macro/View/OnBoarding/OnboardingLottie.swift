@@ -38,6 +38,6 @@ struct OnboardingLottie: UIViewRepresentable {
 
 struct OnboardingLottie_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchScreen(name: "OnboardingFlow", loopMode: .loop)
+        LaunchScreen(name: "onboardingFlow", loopMode: .loop)
     }
 }

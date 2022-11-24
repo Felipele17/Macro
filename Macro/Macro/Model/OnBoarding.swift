@@ -21,6 +21,7 @@ struct OnBoarding: Identifiable, Hashable, Equatable {
         OnBoarding(imageName: EnumImageName.invitePhone.rawValue, title: OnBoardingText.titleInviteScreen.rawValue, description: OnBoardingText.inviteScreen.rawValue, tag: 3),
         OnBoarding(imageName: EnumImageName.sharedPhone.rawValue, title: OnBoardingText.titleShareScreen.rawValue, description: OnBoardingText.shareScreen.rawValue, tag: 4),
         OnBoarding(imageName: EnumImageName.confirmationPhone.rawValue, title: OnBoardingText.titleConfirmationScreen.rawValue, description: OnBoardingText.confirmationScreen.rawValue, tag: 5),
-        OnBoarding(imageName: EnumImageName.connectedPhone.rawValue, title: OnBoardingText.titleConnectedScreen.rawValue, description: OnBoardingText.connectedScreen.rawValue, tag: 6)
+        OnBoarding(imageName: EnumImageName.connectedPhone.rawValue, title: OnBoardingText.titleConnectedScreen.rawValue, description: OnBoardingText.connectedScreen.rawValue, tag: 6),
+        OnBoarding(imageName: EnumImageName.connectedPhone.rawValue, title: OnBoardingText.titleAnimationScreen.rawValue, description: OnBoardingText.animationScreen.rawValue, tag: 7)
     ]
 }
