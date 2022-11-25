@@ -41,4 +41,10 @@ extension String {
         }
         return number
     }
+    
+    func convertoMoneyToFloat() -> Float {
+        let string = self
+        guard let number = Float(string.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: ".")) else { return 0.0 }
+        return number
+    }
 }

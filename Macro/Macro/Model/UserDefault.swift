@@ -41,6 +41,4 @@ class UserDefault {
         UserDefaults.standard.set(isFistPost, forKey: "fistPost")
     }
     
-
-    
 }

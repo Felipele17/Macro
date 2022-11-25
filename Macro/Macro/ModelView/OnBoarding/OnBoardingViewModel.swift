@@ -13,7 +13,7 @@ class OnBoardingViewModel: ObservableObject {
     
     @Published var onboardingFinished = false
     @Published var onboardingPage: Int = 0
-    @Published var incomeTextField: String = ""
+    @Published var incomeTextField: String = ((UserDefault.getIncome() == 0.0 ? "" : String(UserDefault.getIncome()).replacingOccurrences(of: ".", with: ",").transformToMoney()) ?? "")
     @Published private var invite = Invite.shared
     private var cloud = CloudKitModel.shared
     private let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
@@ -40,6 +40,9 @@ class OnBoardingViewModel: ObservableObject {
 
     /// Checking if:    1. the Spent's methodology and username was got;   2. the Goal's methodology was posted;    3. the notification of the Goal and Spent was saved
     func initialPosts(income: Float) {
+        if UserDefault.getFistPost() {
+            return
+        }
         UserDefault.setFistPost(isFistPost: true)
         Task.init {
             var participantsNames: [String] = []

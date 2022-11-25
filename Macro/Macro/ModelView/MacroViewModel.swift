@@ -110,7 +110,7 @@ class MacroViewModel: ObservableObject {
                 for user in users {
                     self.income += user.income
                 }
-                UserDefaults.standard.set(self.income, forKey: "income")
+                UserDefault.setIncome(income: self.income)
             }
             print("loadUser")
         }

@@ -54,6 +54,12 @@ struct MacroApp: App {
                                     viewModel.reload(type: Goal.getType())
                                     observableDataBase.needFetchGoal = false
                             }
+                            .onChange(of: invite.isSendInviteAccepted) { _ in
+                                onboardingViewModel.checkOnboardingFinished()
+                            }
+                            .onChange(of: invite.isReceivedInviteAccepted) { _ in
+                                onboardingViewModel.checkOnboardingFinished()
+                            }
                         } else {
                             OnBoardingView()
                                 .environmentObject(onboardingViewModel)
@@ -62,9 +68,19 @@ struct MacroApp: App {
                                 .onReceive(onboardingViewModel.$onboardingFinished, perform: { _ in
                                     let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userFloatIncome)
                                     viewModel.spentsCards = spentsCards
+                                    viewModel.matrixSpent = [[],[],[]]
                                     viewModel.methodologyGoals = onboardingViewModel.methodologyGoal
                                 })
                                 .onAppear {
+                                    Task {
+                                        viewModel.cloud.share = try await viewModel.cloud.getShare()
+                                        Task {
+                                            await invite.checkSendAccepted(share: viewModel.cloud.share)
+                                        }
+                                        Task {
+                                            await invite.checkReceivedAccepted()
+                                        }
+                                    }
                                     UserDefault.setFistPost(isFistPost: false)
                                 }
                         }
