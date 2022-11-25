@@ -14,7 +14,7 @@ class CloudKitModel: ObservableObject {
     let databasePrivate: CKDatabase
     let databaseShared: CKDatabase
     @Published var isShareNil = true
-    private var share: CKShare?
+    var share: CKShare?
     
     static var shared = CloudKitModel()
     
@@ -25,6 +25,7 @@ class CloudKitModel: ObservableObject {
         Task.init {
             share = try await getShare()
             await Invite.shared.checkSendAccepted(share: share)
+
         }
         Task.init {
             await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
@@ -210,26 +211,33 @@ class CloudKitModel: ObservableObject {
     }
     
     func deleteShare() async {
-        DispatchQueue.main.async {
-            Invite.shared.isReceivedInviteAccepted = false
-            Invite.shared.isSendInviteAccepted = false
-            self.isShareNil = true
-            UserDefault.setFistPost(isFistPost: true)
-        }
+        
+        let dialogMessage = await UIAlertController(title: "Alerta", message: "Deletando dados", preferredStyle: .alert)
+        let window = await UIApplication.shared.keyWindow
+        await window?.rootViewController?.present(dialogMessage, animated: true)
         share = nil
+        await deleteAllRecords()
         let predicate = NSPredicate(value: true)
         do {
             let ckShares = try await fetchSharedPrivatedRecords(recordType: "cloudkit.share", predicate: predicate)
             for share in ckShares {
                 do {
                     try await databasePrivate.deleteRecord(withID: share.recordID)
-                } catch {
+                } catch let erro {
                     try await databaseShared.deleteRecord(withID: share.recordID)
+                    print(erro.localizedDescription)
                 }
                 
             }
             share = try await getShare()
             await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
+            DispatchQueue.main.async {
+                Invite.shared.isReceivedInviteAccepted = false
+                Invite.shared.isSendInviteAccepted = false
+                self.isShareNil = true
+                UserDefault.setFistPost(isFistPost: false)
+            }
+            await dialogMessage.dismiss(animated: true)
         } catch let erro {
             print("deleteShare")
             print(erro.localizedDescription)
@@ -366,30 +374,28 @@ class CloudKitModel: ObservableObject {
             }
         }
     }
-    
     func deleteAllRecords() async {
         // fetch records from iCloud, get their recordID and then delete them
+        let arrayType = [Goal.getType(), User.getType(), Spent.getType(), MethodologyGoal.getType(), MethodologySpent.getType()]
         do {
-            let zonesShared = try await databaseShared.allRecordZones()
-            let zonesPrivate = try await databasePrivate.allRecordZones()
-            for zone in zonesShared {
-                do {
-                    try await databaseShared.deleteRecordZone(withID: zone.zoneID)
-                } catch let error {
-                    print("deleteAllRecordsPrivate")
-                    print(error.localizedDescription)
-                }
-            }
-            for zone in zonesPrivate {
-                do {
-                    try await databasePrivate.deleteRecordZone(withID: zone.zoneID)
-                } catch let error {
-                    print("deleteAllRecordsShared")
-                    print(error.localizedDescription)
+            let predicate = NSPredicate(value: true)
+            for type in arrayType {
+                let records = try await fetchSharedPrivatedRecords(recordType: type, predicate: predicate)
+                for record in records {
+                    do {
+                        try await container.privateCloudDatabase.deleteRecord(withID: record.recordID)
+                    } catch {
+                        do {
+                            try await container.sharedCloudDatabase.deleteRecord(withID: record.recordID)
+                        } catch {
+                            print("deleteAllRecord")
+                            print(error.localizedDescription)
+                        }
+                    }
                 }
             }
         } catch let error {
-            print("deleteAllRecords")
+            print("fecthDeleteAllRecords")
             print(error.localizedDescription)
         }
     }

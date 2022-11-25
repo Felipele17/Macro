@@ -19,7 +19,7 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                    Text("Renda mensal: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyIncomeUser())".floatValue.currency)
+                    Text("Renda mensal: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyIncomeUser())")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
                     Text("Data para vencimento dos gastos: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyDueDataUser())")
                         .font(.custom(EnumFonts.semibold.rawValue, size: 17))

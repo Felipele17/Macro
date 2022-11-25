@@ -41,12 +41,4 @@ class UserDefault {
         UserDefaults.standard.set(isFistPost, forKey: "fistPost")
     }
     
-    // MARK: OnBoarding
-    static func setSingleUserIncome(income: String) {
-        UserDefaults.standard.setValue(income, forKey: "singleUser") // setting the income from the user onboarding
-    }
-    static func getSingleUserIncome() -> String {
-        return UserDefaults.standard.string(forKey: "singleUser") ?? "" // getting the income from the user onboarding
-    }
-    
 }

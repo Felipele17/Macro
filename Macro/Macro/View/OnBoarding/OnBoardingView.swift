@@ -49,7 +49,7 @@ struct OnBoardingView: View {
                     if viewModel.onboardingPage != 3 {
                         viewModel.onboardingPage += 1
                         if !viewModel.incomeTextField.isEmpty {
-                            let money = viewModel.incomeTextField.replacingOccurrences(of: ".", with: "").floatValue
+                            let money = viewModel.incomeTextField.convertoMoneyToFloat()
                             UserDefault.setIncome(income: money)
                         }
                     } else {
@@ -61,7 +61,6 @@ struct OnBoardingView: View {
                             viewModel.sharingInvite()
                         }
                     }
-                    
                 } label: {
                     Text(viewModel.onboardingPage == 3 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "Carregando..." : "Compatilhar") : EnumButtonText.nextButton.rawValue)
                         .font(.headline)
