@@ -87,9 +87,9 @@ struct OnBoardingView: View {
                         Button {
                             showingAlert.toggle()
                         } label: {
-                            Text("Deletar")
+                            Text("Cancelar")
                         }
-                        .alert("Deseja deletar o compartilhamento?", isPresented: $showingAlert) {
+                        .alert("Deseja cancelar o compartilhamento?", isPresented: $showingAlert) {
                             Button(role: .cancel) { }
                             label: {
                                 Text("Não")

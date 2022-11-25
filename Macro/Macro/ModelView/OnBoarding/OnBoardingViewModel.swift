@@ -88,7 +88,6 @@ class OnBoardingViewModel: ObservableObject {
     }
     
     func convertIncome() -> Float {
-        //guard Float(incomeTextField) != nil else { return 0.0 }
         return Float(incomeTextField) ?? 0.0
     }
     

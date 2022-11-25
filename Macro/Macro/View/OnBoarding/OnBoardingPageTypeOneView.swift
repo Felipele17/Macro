@@ -9,12 +9,12 @@ import SwiftUI
 
 struct OnBoardingPageTypeOneView: View {
     
-    let onboarding: OnBoarding
     @EnvironmentObject var viewModel: OnBoardingViewModel
+    let onboarding: OnBoarding
     
     var body: some View {
         VStack(alignment: .center) {
-            if onboarding.tag != 7 {
+            if viewModel.onboardingPage != 3 {
                 Image(self.onboarding.imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

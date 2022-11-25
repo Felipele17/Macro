@@ -15,8 +15,7 @@ struct InfoButton: View {
         NavigationLink {
             if viewModel.onboardingPage == 2 {
                 MethodologySpentsView()
-            }
-            else {
+            } else {
                 OnBoardingFlowView()
             }
             
