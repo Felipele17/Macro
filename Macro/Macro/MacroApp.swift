@@ -42,6 +42,7 @@ struct MacroApp: App {
                             })
                             .onReceive(viewModel.$matrixSpent, perform: { matrixSpent in
                                 spentViewModel.dictionarySpent = matrixSpent
+                                spentViewModel.updateDateSpentsCards()
                             })
                             .onReceive(viewModel.$goals, perform: { goals in
                                 goalViewModel.goals = goals
