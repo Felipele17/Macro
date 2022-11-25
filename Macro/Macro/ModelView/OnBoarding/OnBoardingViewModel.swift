@@ -79,7 +79,7 @@ class OnBoardingViewModel: ObservableObject {
     func crateSpentCards(income: Float) -> [SpentsCard] {
         var spentCards: [SpentsCard] = []
         for index in 0 ..< methodologySpent.valuesPercent.count {
-            spentCards.append(SpentsCard(id: index, valuesPercent: methodologySpent.valuesPercent[index], namePercent: methodologySpent.namePercent[index], moneySpented: 0.0, availableMoney: income*Float(methodologySpent.valuesPercent[index])/100))
+            spentCards.append(SpentsCard(id: index, valuesPercent: methodologySpent.valuesPercent[index], namePercent: methodologySpent.namePercent[index], moneySpented: 0.0, availableMoney: income*Float(methodologySpent.valuesPercent[index])/100, totalMoney: income*Float(methodologySpent.valuesPercent[index])/100))
         }
         return spentCards
     }
