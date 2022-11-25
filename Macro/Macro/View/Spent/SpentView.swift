@@ -40,10 +40,15 @@ struct SpentView: View {
                 .padding(.leading)
                 .padding(.top, 20)
             List {
-                ForEach(viewModel.getArraySpents(spentsCard: spentsCard)) { spent in
-                    SpentsDetailsCardView(spent: spent, spentsCard: spentsCard)
+                Section {
+                    ForEach(viewModel.getArraySpents(spentsCard: spentsCard)) { spent in
+                        SpentsDetailsCardView(spent: spent, spentsCard: spentsCard)
+                    }
                 }
-            } .listStyle(.insetGrouped)
+            }
+            .background(Color(EnumColors.backgroundScreen.rawValue))
+            .scrollContentBackground(.hidden)
+//            .listStyle(.insetGrouped)
         }
         .navigationTitle(spentsCard.namePercent)
         .font(.custom(EnumFonts.semibold.rawValue, size: 17))
