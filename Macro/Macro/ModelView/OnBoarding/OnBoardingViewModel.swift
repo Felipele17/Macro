@@ -24,7 +24,7 @@ class OnBoardingViewModel: ObservableObject {
     }
 
     func checkButton() -> String {
-        if onboardingPage == 3 {
+        if onboardingPage == 4 {
             return EnumButtonText.shareButton.rawValue
         }
         return EnumButtonText.nextButton.rawValue
@@ -91,7 +91,7 @@ class OnBoardingViewModel: ObservableObject {
     }
     
     func convertIncome() -> Float {
-        //guard Float(incomeTextField) != nil else { return 0.0 }
         return Float(incomeTextField) ?? 0.0
     }
+    
 }

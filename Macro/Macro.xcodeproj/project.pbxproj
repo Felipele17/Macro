@@ -53,6 +53,7 @@
 		4A1E6C0B28DE486F00A3B938 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */; };
 		4A2844642900793200D1DD08 /* NoNetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2844632900793200D1DD08 /* NoNetView.swift */; };
 		4AEE42FE28E4C2F9002CAEF7 /* EnumColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */; };
+		553B342D293001F1006C2589 /* OnBoardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553B342C293001F1006C2589 /* OnBoardingFlowView.swift */; };
 		5544772A28E23050000C892E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772928E23050000C892E /* SkipButton.swift */; };
 		5544772C28E2307E000C892E /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544772B28E2307E000C892E /* InfoButton.swift */; };
 		5544773628E231C3000C892E /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544773528E231C3000C892E /* OnBoardingView.swift */; };
@@ -168,6 +169,7 @@
 		4A1E6C0A28DE486F00A3B938 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 		4A2844632900793200D1DD08 /* NoNetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetView.swift; sourceTree = "<group>"; };
 		4AEE42FD28E4C2F9002CAEF7 /* EnumColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumColors.swift; sourceTree = "<group>"; };
+		553B342C293001F1006C2589 /* OnBoardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFlowView.swift; sourceTree = "<group>"; };
 		5544772928E23050000C892E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
 		5544772B28E2307E000C892E /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		5544773528E231C3000C892E /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -438,11 +440,14 @@
 		06449C3628C29D9E00035324 /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				997AA9AB292E751500D85DBF /* OnboardingLottie.swift */,
+				55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */,
 				5544772928E23050000C892E /* SkipButton.swift */,
 				5544772B28E2307E000C892E /* InfoButton.swift */,
 				5544773728E231E9000C892E /* OnBoardingPageTypeOneView.swift */,
 				5544773928E23216000C892E /* OnBoardingPageTypeTwoView.swift */,
 				997AA9AE292E7A0200D85DBF /* SafetyView.swift */,
+				553B342C293001F1006C2589 /* OnBoardingFlowView.swift */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -604,10 +609,8 @@
 			isa = PBXGroup;
 			children = (
 				55CE4DD0291EF3380011BDBA /* launchScreen.json */,
-				55CE4DD2291EF3E30011BDBA /* onboardingFlow.json */,
 				99F7E3BE290085EC009534ED /* LaunchScreenView.swift */,
 				99F7E4AB29073050009534ED /* LaunchScreen.swift */,
-				997AA9AB292E751500D85DBF /* OnboardingLottie.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				0695CE4A290AF4570021CF3F /* EnumDatabase.swift in Sources */,
 				5544774028E23335000C892E /* EnumOnBoardingText.swift in Sources */,
 				996E65D5291193A8005A4A40 /* EnumMethodology.swift in Sources */,
+				553B342D293001F1006C2589 /* OnBoardingFlowView.swift in Sources */,
 				997AA9AF292E7A0200D85DBF /* SafetyView.swift in Sources */,
 				06BFF3EC28ECCA870015C79B /* Invite.swift in Sources */,
 				5544774528E23415000C892E /* OnBoardingViewModel.swift in Sources */,

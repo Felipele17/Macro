@@ -28,25 +28,27 @@ struct OnBoardingView: View {
                     OnBoardingPageTypeTwoView(onboarding: pages[2], viewModel: _viewModel, validTextField: $validTextField)
                         .tag(2)
                         .gesture(viewModel.incomeTextField.isEmpty ? DragGesture() : nil)
+                    OnBoardingPageTypeOneView(onboarding: pages[7])
+                        .tag(3)
                     if invite.isSendInviteAccepted && invite.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[6])
-                            .tag(3)
+                            .tag(4)
                     } else if invite.isSendInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[4])
-                            .tag(3)
+                            .tag(4)
                     } else if invite.isReceivedInviteAccepted {
                         OnBoardingPageTypeOneView(onboarding: pages[5])
-                            .tag(3)
+                            .tag(4)
                     } else {
                         OnBoardingPageTypeOneView(onboarding: pages[3])
-                            .tag(3)
+                            .tag(4)
                     }
                 }
                 .animation(.easeInOut, value: viewModel.onboardingPage)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .tabViewStyle(.page)
                 Button {
-                    if viewModel.onboardingPage != 3 {
+                    if viewModel.onboardingPage != 4 {
                         viewModel.onboardingPage += 1
                         if !viewModel.incomeTextField.isEmpty {
                             let money = viewModel.incomeTextField.convertoMoneyToFloat()
@@ -62,7 +64,7 @@ struct OnBoardingView: View {
                         }
                     }
                 } label: {
-                    Text(viewModel.onboardingPage == 3 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "Carregando..." : "Compatilhar") : EnumButtonText.nextButton.rawValue)
+                    Text(viewModel.onboardingPage == 4 && !(invite.isSendInviteAccepted && invite.isReceivedInviteAccepted ) ? (cloud.isShareNil ? "Carregando..." : "Compartilhar") : EnumButtonText.nextButton.rawValue)
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(height: 55)
@@ -77,16 +79,16 @@ struct OnBoardingView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if viewModel.onboardingPage < 2 {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if viewModel.onboardingPage == 2 {
+                    } else if viewModel.onboardingPage == 2 || viewModel.onboardingPage == 4 {
                         InfoButton(infoButton: "info.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                    } else if viewModel.onboardingPage == 3 {
+                    } else if viewModel.onboardingPage == 4 {
                         Button {
                             showingAlert.toggle()
                         } label: {
-                            Text("Deletar")
+                            Text("Cancelar")
                         }
-                        .alert("Deseja deletar o compartilhamento?", isPresented: $showingAlert) {
+                        .alert("Deseja cancelar o compartilhamento?", isPresented: $showingAlert) {
                             Button(role: .cancel) { }
                             label: {
                                 Text("Não")

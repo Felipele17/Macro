@@ -9,10 +9,16 @@ import SwiftUI
 
 struct InfoButton: View {
     var infoButton: String
+    @EnvironmentObject var viewModel: OnBoardingViewModel
 
     var body: some View {
         NavigationLink {
-            MethodologySpentsView()
+            if viewModel.onboardingPage == 2 {
+                MethodologySpentsView()
+            } else {
+                OnBoardingFlowView()
+            }
+            
         } label: {
             Label("Informação", systemImage: infoButton)
                 .foregroundColor(Color(EnumColors.buttonColor.rawValue))
