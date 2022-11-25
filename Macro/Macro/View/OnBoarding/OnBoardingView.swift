@@ -79,7 +79,7 @@ struct OnBoardingView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if viewModel.onboardingPage < 2 {
                         SkipButton(onboardingPage: $viewModel.onboardingPage, skipButton: EnumButtonText.skip.rawValue)
-                    } else if viewModel.onboardingPage == 2 || viewModel.onboardingPage == 4 {
+                    } else if viewModel.onboardingPage == 2 {
                         InfoButton(infoButton: "info.circle")
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                     } else if viewModel.onboardingPage == 4 {
