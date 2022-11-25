@@ -109,4 +109,14 @@ class SpentViewModel: ObservableObject {
         return arraySpents
     }
     
+    func updateDateSpentsCards(){
+        for index in 0 ..< spentsCards.count {
+            var moneySpented: Float = 0.0
+            for spent in dictionarySpent[index] {
+                moneySpented += spent.value
+            }
+                spentsCards[index].moneySpented = moneySpented
+            spentsCards[index].availableMoney = spentsCards[index].totalMoney - moneySpented
+        }
+    }
 }
