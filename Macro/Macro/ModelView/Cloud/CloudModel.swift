@@ -234,7 +234,7 @@ class CloudKitModel: ObservableObject {
             DispatchQueue.main.async {
                 Invite.shared.isReceivedInviteAccepted = false
                 Invite.shared.isSendInviteAccepted = false
-                self.isShareNil = true
+                self.isShareNil = false
                 UserDefault.setFistPost(isFistPost: false)
             }
             await dialogMessage.dismiss(animated: true)
