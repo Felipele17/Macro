@@ -1,0 +1,73 @@
+/* 
+  Localizable.strings
+  Macro
+
+  Created by Felipe Leite on 22/11/22.
+  
+*/
+// Onboarding
+"Onboarding1.Titulo" = "Achieve your goals!";
+"Crie metas e controle gastos com quem você ama" = "Create goals and control your expenses with the person you love";
+
+"Use métodos financeiros fáceis de entender" = "Use easy-to-understand financial methods";
+"Aplique o 'método 50 - 35 - 15' nos gastos, e o 'método 52 semanas' nas metas para te auxiliar financeiramente" = "Apply the '50 - 35 - 15' method to your expenses, and the '52 weeks method on goals to help you financially";
+
+"Informe sua renda mensal" = "Inform your monthly income";
+"Nos informe a sua renda mensal que deseja investir em seu relacionamento. Assim iremos calcular o quanto será aplicado da sua parte nos gastos" = "Tell us your monthly income that you want to invest in your relationship. This way we will calculate how much of your share of the expenses will be applied";
+
+"Envie um convite" = "Send a invitation";
+"Compartilhe o link com quem ama para dividirem seus gastos e metas juntos" = "Share the link with the person you love to share your expenses and goals together";
+
+"Aguarde o convite do seu parceiro" = "Wait for your partner's invitation";
+"Agora o seu parceiro deve te enviar um convite semelhante ao que você enviou" = "Now your partner should send you an invitation similar to the one you sent";
+
+"Envie um convite de confirmação ao seu paceiro" = "Send a confirmation invite to your partner";
+"Após o envio do convite, vocês estarão conectados" = "After sending the invitation, you will be connected";
+
+"É um gênero de orquídea de flores grandes e vistosas, muito popular, com muitas variedades!" = "It is a genus of orchid with large and showy flowers, very popular, with many varieties!";
+"Ocorre nas estações de verão e suas flores chegam a permanecer abertas de 45 até 60 dias. " = "It occurs in the summer seasons and its flowers stay open for 45 to 60 days.";
+"Apreciam clima quente e úmido, mas preferem sombra." = "They like hot and humid weather, but prefer shade.";
+"3 a 4 vezes por semana na estação do Verão e de 1 a 2 vezes por semana durante o Inverno." = "3 to 4 times a week in the summer season and 1 to 2 times a week in the winter.";
+
+// Cymbidium
+"Por ter origem em países como a China, Índia, Sri Lanka, Nepal, Malásia, Filipinas e Austrália, essa flor tem como habitat natural altitudes mais elevadas. Por isso, ela se adapta melhor a regiões com um clima mais frio!" = "As it originates in countries such as China, India, Sri Lanka, Nepal, Malaysia, Philippines and Australia, this flower has a natural habitat at higher altitudes. Therefore, it adapts better to regions with a colder climate!";
+"Ocorre predominantemente no inverno." = "It occurs predominantly in winter.";
+"Exigem uma queda de temperatura entre o final do verão e o início de outono para florescer durante o inverno." = "They require a drop in temperature between late summer and early autumn to bloom through the winter.";
+"Regar a planta com água gelada, principalmente à noite, ou adicionar cubos de gelo ao vaso, para tentar simular esta queda de temperatura, durante o outono e inverno." = "Water the plant with cold water, especially at night, or add ice cubes to the pot, to try to simulate this drop in temperature, during autumn and winter.";
+
+// Dendrobium
+"Elas são epífitas, ou seja, crescem em cima das árvores. Por isso, seu nome significa 'planta que vive nas árvores' :)" = "They are epiphytes, meaning they grow on trees. Hence, its name means 'plant that lives in trees' :)";
+"Inverno até primavera." = "Winter to spring.";
+"Durante o dia: 20 a 32ºC; Durante a noite: 18ºC a 24ºC." = "During the day: 20 to 32ºC; Overnight: 18ºC to 24ºC.";
+"A dendrobium precisa ser regada duas vezes na semana, mas isso pode variar muito." = "Dendrobium needs to be watered twice a week, but this can vary greatly.";
+
+// Oncidium
+"As orquídeas de Oncidium estão entre as orquídeas mais diversificadas do mundo!" = "Oncidium orchids are among the most diverse orchids in the world!";
+"Elas têm requisitos de água diferentes durante diferentes estágios de seu crescimento, mas uma regra geral é que elas nunca devem estar sobrecarregadas." = "They have different water requirements during different stages of their growth, but a general rule of thumb is that they should never be overworked.";
+"Quando começam a florescer e dar flores, é importante movê-la para um lugar mais frio, sem a luz solar direta." = "When it starts to bloom and flower, it's important to move it to a cooler place out of direct sunlight.";
+"Essas plantas adoram a umidade, então o ideal é, na verdade, entre 55% e 75%. " = "These plants love humidity, so the ideal is actually between 55% and 75%.";
+
+// Paphiopedilum
+"Também é conhecida como 'Sapatinho' por causa do seu formato :)" = "Also known as 'Shoe' because of its shape :)";
+"Ocorre uma vez por ano, normalmente no inverno ou em dias mais frios. Suas flores podem durar de 6 a 8 semanas." = "It occurs once a year, usually in winter or on colder days. Its flowers can last from 6 to 8 weeks.";
+"Gosta de temperaturas mais frias, sendo ideal uma temperatura entre 13°C a 24°C." = "It likes cooler temperatures, ideally a temperature between 13°C and 24°C.";
+"Ela não possui meios para guardar água. Regue-a abundantemente pouco antes do solo ou substrato secarem." = "It has no means of storing water. Water it abundantly just before the soil or substrate dries out.";
+
+// Phalaenopsis
+"Dentre as orquídeas, as phalaenopsis estão entre aquelas em que o cultivo é mais simples!" = "Among orchids, phalaenopsis are among those in which cultivation is simpler!";
+"Em espécies híbridas, você consegue ter 2 ou até mesmo 3 florações em 1 ano." = "In hybrid species, you can have 2 or even 3 blooms in 1 year.";
+"Temperatura média ou alta." = "Medium or high temperature.";
+"Regar quando o substrato secar." = "Water when the substrate dries.";
+
+// Vanda
+"Ela não necessita de substrato para desenvolver-se. Portanto, pode ser cultivada suspensa com suas raízes livres e soltas no ar!" = "It does not need substrate to develop. Therefore, it can be grown suspended with its roots free and loose in the air!";
+"Ela tem um crescimento lento, demorando a se adaptar às mudanças de ambiente. Pode demorar de 4 a 7 anos, dependendo da espécie ou híbrido." = "It has a slow growth, taking time to adapt to changes in the environment. It can take 4 to 7 years, depending on the species or hybrid.";
+"Evite exposição ao vento e local frio, pois ela pode “perder todas as suas folhas e não conseguir florescer novamente”. Ela precisa de bastante iluminação, mas nunca Sol direto, para não queimar." = "Avoid exposure to wind and cold, as it may “lose all its leaves and not be able to bloom again”. It needs a lot of light, but never direct sun, so it doesn't burn.";
+"Mantenha-a de maneira a mantê-la bem úmida, como seria encontrada na floresta." = "Keep it in a way that keeps it as moist as you would find it in the forest.";
+
+// Modal Predição
+"Aqui estão os resultados:" = "Here are the results:";
+"Procure mais sobre o resultado no Catálogo!" = "Look for more about the result in the Catalog!";
+"Não há imagem para análise." = "There is no image for review.";
+"Fechar" = "Close";
+"erro" = "error";

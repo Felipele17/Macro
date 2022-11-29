@@ -1,0 +1,67 @@
+/* 
+ Localizable.strings
+ Macro
+ 
+ Created by Felipe Leite on 22/11/22.
+ 
+ */
+
+// Mark: Onboarding
+"Onboarding1.Title" = "Conquiste os seus objetivos";
+"Onboarding1.Text" = "Crie metas e controle gastos com quem você ama";
+
+"Onboarding2.Title" = "Use métodos financeiros fáceis de entender";
+"Onboarding2.Text" = "Aplique o método ”50-35-15” nos gastos, e o método ”52 semanas” nas metas para te auxiliar financeiramente";
+
+"Onboarding3.Title" = "Informe sua renda mensal";
+"Onboarding3.Text" = "Nos informe a sua renda mensal que deseja investir em seu relacionamento. Assim iremos calcular o quanto será aplicado da sua parte nos gastos";
+
+"Onboarding4.Title" = "Envie um convite";
+"Onboarding4.Text" = "Compartilhe o link com quem ama para dividirem seus gastos e metas juntos";
+
+"Onboarding5.Title" = "Aguarde o convite do seu parceiro";
+"Onboarding5.Text" = "Agora o seu parceiro deve te enviar um convite semelhante ao que você enviou";
+
+"Onboarding6.Title" = "Envie um convite de confirmação ao seu paceiro";
+"Onboarding6.Text" = "Após o envio do convite, vocês estarão conectados";
+
+"Onboarding7.Title" = "Agora vocês estão conectados";
+"Onboarding7.Text" = "Já podem iniciar as suas metas e dividirem seus gastos";
+
+"Onboarding8.Title" = "Oh, não! Você se conectou com a pessoa errada";
+"Onboarding8.Text" = "Tente se conectar com o seu/sua parceiro(a) novamente";
+
+
+// Mark: Tela Inicial
+"TelaInicial1.Title" = "Bom dia";
+"TelaInicial1.Section1" = "Nossas Metas";
+"TelaInicial1.EmptyState" = "Oh não, você não tem nenhuma meta com o seu parceiro ainda. Clique no ”+” para criar.";
+"TelaInicial1.Section2" = "Nossos Gastos";
+"TelaInicial1.Expense1" = "Essenciais";
+"TelaInicial1.Expense2" = "Prioridades";
+"TelaInicial1.Expense3" = "Lazer";
+
+"TelaInicial2.Motivation1" = "Guardar dinheiro";
+"TelaInicial2.Motivation2" = "Realização de um sonho";
+"TelaInicial2.Motivation3" = "Sempre quis conquistar essa meta";
+"TelaInicial2.Week1" = "Faltam";
+"TelaInicial2.Week2" = "semanas";
+"TelaInicial2.Complete" = "Meta concluída"
+
+
+// Mark: Metas
+"Meta1.AddTitle1" = ""
+"Meta1.AddText1" = ""
+"Meta1.AddPlaceHolder1" = ""
+"Meta1.AddTitle2" = ""
+"Meta1.AddText2" = ""
+"Meta1.AddPlaceHolder2" = ""
+"Meta1.AddPriority" = ""
+"Meta1.AddPriorityLevel1" = ""
+"Meta1.AddPriorityLevel2" = ""
+"Meta1.AddPriorityLevel3" = ""
+"Meta1.AddTitle3" = ""
+"Meta1.AddText3" = ""
+
+"Meta2.Title" = ""
+"Meta2.Week" = ""
