@@ -17,7 +17,7 @@ class OnBoardingViewModel: ObservableObject {
     @Published private var invite = Invite.shared
     @Published var isSheetShare = false
     private var cloud = CloudKitModel.shared
-    private let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
+    let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
     var users: [User] = []
     let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
     

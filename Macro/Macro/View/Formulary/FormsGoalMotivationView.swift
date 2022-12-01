@@ -57,6 +57,7 @@ struct FormsGoalMotivationView: View {
         }
         .padding(20)
         .navigationBarTitle("motivação", displayMode: .inline)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
         .toolbar {
             Button {
                 viewModel.addGoal(goal: viewModel.selectedGoal)

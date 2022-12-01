@@ -37,6 +37,7 @@ struct FormsEditGoals: View {
         }
         .padding()
         .navigationBarTitle("Editar", displayMode: .inline)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
             .toolbar {
                 Button("Salvar") {
                     goal.title = nameGoal

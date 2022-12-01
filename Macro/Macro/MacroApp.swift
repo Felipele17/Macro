@@ -72,6 +72,11 @@ struct MacroApp: App {
                                     spentViewModel.spentsCards = spentsCards
                                     spentViewModel.dictionarySpent = [[], [], []]
                                     goalViewModel.setMethodologyGoals(methodologyGoals: onboardingViewModel.methodologyGoal)
+                                    
+                                    viewModel.methodologySpent = onboardingViewModel.methodologySpent
+                                    viewModel.matrixSpent = spentViewModel.dictionarySpent
+                                    viewModel.spentsCards = spentViewModel.spentsCards
+                                    viewModel.goals = goalViewModel.goals
                                 })
                                 .onAppear {
                                     Task {

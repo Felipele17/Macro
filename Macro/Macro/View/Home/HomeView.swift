@@ -17,7 +17,7 @@ struct HomeView: View {
         NavigationStack(path: $pathController.path) {
             ScrollView {
                 HStack {
-                    Text("Bom dia, \(UserDefault.getUsername())!")
+                    Text("Olá, \(UserDefault.getUsername())!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding(.top)
                     Spacer()
@@ -41,6 +41,7 @@ struct HomeView: View {
                             .foregroundColor(Color(EnumColors.buttonColor.rawValue))
                             .font(.custom(EnumFonts.semibold.rawValue, size: 28))
                             .padding()
+
                     }
                 }
                 .padding(.top)

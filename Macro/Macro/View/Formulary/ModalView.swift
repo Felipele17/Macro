@@ -47,7 +47,7 @@ struct ModalView: View {
                         .padding()
                         .foregroundColor(Color(EnumColors.title.rawValue))
             }
-        }
+        }.background(Color(EnumColors.backgroundScreen.rawValue))
     }
 }
 

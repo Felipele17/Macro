@@ -85,7 +85,8 @@ struct GoalsView: View {
                             }
                         }
                     }
-                    .background(Color(EnumSpentsinfo.backgroundSpentsColor.rawValue))
+                    .background(Color(EnumColors.backgroundScreen.rawValue))
+                    .scrollContentBackground(.hidden)
                     .animation( .default.speed(0.5))
                     .frame(height: 250)
                 }

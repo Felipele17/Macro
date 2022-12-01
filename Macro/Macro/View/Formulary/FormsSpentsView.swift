@@ -43,6 +43,7 @@ struct FormsSpentsView: View {
                             Label("", systemImage: "chevron.right")
                         }
                     }
+                    .background(Color(EnumColors.backgroundScreen.rawValue))
                 }
                 .sheet(isPresented: $showingSheet) {
                     ModalView(selectedIcon: $icon, colorIcon: colorIcon)
@@ -75,6 +76,8 @@ struct FormsSpentsView: View {
             }.textCase(.none)
         }
         .navigationBarTitle("Gastos", displayMode: .inline)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
+        .scrollContentBackground(.hidden)
         .toolbar {
             Button {
                 if isValidValue {

@@ -27,8 +27,12 @@ struct FormsGoalsNameView: View {
                 }
                 .disabled(viewModel.selectedGoal.title.isEmpty)
         }
+        .onAppear {
+            viewModel.selectedGoal = Goal.mockGoals(methodologyGoals: viewModel.methodologyGoals)
+        }
         .navigationBarTitle("Nome", displayMode: .inline)
         .padding(20)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
 
     }
 }

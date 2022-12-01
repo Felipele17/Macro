@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Pódio 3.png",
+      "filename" : "Pódio 3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Pódio 4.png",
+      "filename" : "Pódio 4.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Pódio.png",
+      "filename" : "Pódio.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
