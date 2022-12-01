@@ -283,7 +283,6 @@ class CloudKitModel: ObservableObject {
         }
         
         if let share = share {
-            
             let sharingController = UICloudSharingController(
                 share: share,
                 container: container

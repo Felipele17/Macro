@@ -44,6 +44,8 @@ struct UserEditView: View {
         .padding(.top, 60)
         .padding(.leading, 20)
         .navigationBarTitle("Editar", displayMode: .inline)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
+        
         .toolbar {
             Button("Salvar") {
                 if validTextField {

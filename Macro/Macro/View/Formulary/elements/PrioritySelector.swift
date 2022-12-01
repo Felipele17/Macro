@@ -21,7 +21,6 @@ struct PrioritySelector: View {
                     VStack {
                         Image("Noz1")
                         Text("Pequena")
-                            .tint(.black)
                             .hoverEffect(.automatic)
                     }
                 }
@@ -33,7 +32,6 @@ struct PrioritySelector: View {
                     VStack {
                         Image("Noz2")
                         Text("Média")
-                            .tint(.black)
                             .hoverEffect(.automatic)
                     }
                 }
@@ -45,7 +43,6 @@ struct PrioritySelector: View {
                     VStack {
                         Image("Noz3")
                         Text("Grande")
-                            .tint(.black)
                             .hoverEffect(.automatic)
                     }
                 }.opacity(priority == 3 ? 1.0 : 0.5)

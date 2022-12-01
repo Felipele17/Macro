@@ -14,68 +14,67 @@ struct SettingsView: View {
     @State var showSheet: Bool = false
     
     var body: some View {
-        List {
-            Section {
-                VStack(alignment: .leading) {
-                    Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
-                        .font(.custom(EnumFonts.semibold.rawValue, size: 22))
-                    Text("Renda mensal: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyIncomeUser())")
-                        .font(.custom(EnumFonts.semibold.rawValue, size: 17))
-                    Text("Data para vencimento dos gastos: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyDueDataUser())")
-                        .font(.custom(EnumFonts.semibold.rawValue, size: 17))
-                }.padding(.leading, 8)
-                NavigationLink {
-                    UserEditView(newValue: settingsViewModel.verifyIncomeUser())
-                } label: {
-                    Image(systemName: "square.and.pencil")
-                        .tint(Color(EnumColors.buttonColor.rawValue))
-                    Text("Editar dados do perfil")
-                        .font(.custom(EnumFonts.regular.rawValue, size: 17))
-                }
-            }
-            
-            Section {
-                NavigationLink(value: EnumViewNames.methodologySpentsView) {
-                    Image(systemName: "questionmark.circle")
-                        .tint(Color(EnumColors.buttonColor.rawValue))
-                    Text( "Metodologias financeiras")
-                }
-                //                NavigationLink {
-                //                    HistorySpentsView()
-                //                }label: {
-                //                    Image(systemName: "newspaper")
-                //                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                //                    Text("Histórico de gastos")
-                //                }
-                //            }
-                //            Section(header: Text("Notificação")) {
-                //                Toggle(isOn: $toggle) {
-                //                    HStack {
-                //                        Image(systemName: "envelope.open")
-                //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                //                        Text("Depósito do parceiro")
-                //                            .foregroundColor(Color(EnumColors.title.rawValue))
-                //                    }
-                //                }
-                //                Toggle(isOn: $toggle) {
-                //                    HStack {
-                //                        Image(systemName: "flag")
-                //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                //                        Text("Fim do limite")
-                //                            .foregroundColor(Color(EnumColors.title.rawValue))
-                //                    }
-                //                }
-                //                Toggle(isOn: $toggle) {
-                //                    HStack {
-                //                        Image(systemName: "calendar")
-                //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
-                //                        Text("Cumprir meta")
-                //                            .foregroundColor(Color(EnumColors.title.rawValue))
-                //                    }
-                //                }
-                //            }
-                //            .textCase(.none)
+            List {
                 Section {
+                    VStack(alignment: .leading) {
+                        Text("\(UserDefaults.standard.string(forKey: "username") ?? "")")
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 22))
+                        Text("Renda mensal: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyIncomeUser())")
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
+                        Text("Data para vencimento dos gastos: ").font(.custom(EnumFonts.regular.rawValue, size: 17))+Text("\(settingsViewModel.verifyDueDataUser())")
+                            .font(.custom(EnumFonts.semibold.rawValue, size: 17))
+                    }.padding(.leading, 8)
+                    NavigationLink {
+                        UserEditView(newValue: settingsViewModel.verifyIncomeUser())
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .tint(Color(EnumColors.buttonColor.rawValue))
+                        Text("Editar dados do perfil")
+                            .font(.custom(EnumFonts.regular.rawValue, size: 17))
+                    }
+                }
+                
+                Section {
+                    NavigationLink(value: EnumViewNames.methodologySpentsView) {
+                        Image(systemName: "questionmark.circle")
+                            .tint(Color(EnumColors.buttonColor.rawValue))
+                        Text( "Metodologias financeiras")
+                    }
+                    //                NavigationLink {
+                    //                    HistorySpentsView()
+                    //                }label: {
+                    //                    Image(systemName: "newspaper")
+                    //                        .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                    //                    Text("Histórico de gastos")
+                    //                }
+                    //            }
+                    //            Section(header: Text("Notificação")) {
+                    //                Toggle(isOn: $toggle) {
+                    //                    HStack {
+                    //                        Image(systemName: "envelope.open")
+                    //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                    //                        Text("Depósito do parceiro")
+                    //                            .foregroundColor(Color(EnumColors.title.rawValue))
+                    //                    }
+                    //                }
+                    //                Toggle(isOn: $toggle) {
+                    //                    HStack {
+                    //                        Image(systemName: "flag")
+                    //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                    //                        Text("Fim do limite")
+                    //                            .foregroundColor(Color(EnumColors.title.rawValue))
+                    //                    }
+                    //                }
+                    //                Toggle(isOn: $toggle) {
+                    //                    HStack {
+                    //                        Image(systemName: "calendar")
+                    //                            .foregroundColor(Color(EnumColors.buttonColor.rawValue))
+                    //                        Text("Cumprir meta")
+                    //                            .foregroundColor(Color(EnumColors.title.rawValue))
+                    //                    }
+                    //                }
+                    //            }
+                    //            .textCase(.none)
                     HStack {
                         Image(systemName: "heart")
                             .tint(Color(EnumColors.buttonColor.rawValue))
@@ -100,10 +99,11 @@ struct SettingsView: View {
                                 ])
                 })
             }
-            .listStyle(.insetGrouped)
-            .navigationTitle("Configurações")
-            .font(.custom(EnumFonts.regular.rawValue, size: 17))
-            .navigationBarTitleDisplayMode(.automatic)
-        }
+        .listStyle(.insetGrouped)
+        .navigationTitle("Configurações")
+        .font(.custom(EnumFonts.regular.rawValue, size: 17))
+        .navigationBarTitleDisplayMode(.automatic)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
+        .scrollContentBackground(.hidden)
     }
 }

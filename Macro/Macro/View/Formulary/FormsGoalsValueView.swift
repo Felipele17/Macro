@@ -28,7 +28,6 @@ struct FormsGoalsValueView: View {
             Text("Depositando R$ 1 por semana de forma gradual, em 52 semanas você irá ter em sua conta R$ 1.378,00")
                 .padding(10)
             TextField("Ex.: R$ 1.378,00", text: $value)
-                .foregroundColor(.black)
                 .keyboardType(.decimalPad)
                 .focused($keyboardIsFocused)
                 .underlineTextField()
@@ -51,6 +50,7 @@ struct FormsGoalsValueView: View {
         }
         .navigationBarTitle("valor", displayMode: .inline)
         .padding(20)
+        .background(Color(EnumColors.backgroundScreen.rawValue))
     }
 }
 

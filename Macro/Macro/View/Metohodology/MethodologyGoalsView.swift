@@ -15,8 +15,6 @@ struct MethodologyGoalsView: View {
         MethodologyValues(tag: 5, images: EnumMethodology.imageFive.rawValue, title: EnumMethodology.titleFive.rawValue, description: EnumMethodology.descriptionFive.rawValue, example: EnumMethodology.exampleFive.rawValue)
         ]
     var body: some View {
-        ZStack {
-            Color(EnumColors.backgroundScreen.rawValue)
             VStack(alignment: .leading) {
                 ForEach(methodologies, id: \.self) { methodology in
                     VStack(alignment: .leading) {
@@ -42,6 +40,7 @@ struct MethodologyGoalsView: View {
                             .padding()
                     }
                 }
+                Spacer()
                 Button {
                     print(pathController.path.count)
                     pathController.path.removeLast(pathController.path.count-1)
@@ -56,10 +55,10 @@ struct MethodologyGoalsView: View {
                         .padding()
                 }
             }
-        }
             .navigationTitle("Método 52 semanas")
             .font(.custom(EnumFonts.semibold.rawValue, size: 17))
             .navigationBarTitleDisplayMode(.automatic)
-
+            .background(Color(EnumColors.backgroundScreen.rawValue))
+            
     }
 }

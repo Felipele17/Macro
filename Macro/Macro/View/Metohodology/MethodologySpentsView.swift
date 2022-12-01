@@ -15,6 +15,7 @@ struct MethodologySpentsView: View {
         ]
 
     var body: some View {
+        ScrollView {
             VStack(alignment: .leading) {
                 ForEach(methodologies, id: \.self) { methodology in
                     VStack(alignment: .leading) {
@@ -26,7 +27,7 @@ struct MethodologySpentsView: View {
                         }
                         Text(methodology.description)
                             .lineLimit(2, reservesSpace: true)
-                            .padding(.horizontal)
+                            .padding()
                             .padding(.bottom)
                             .font(.custom(EnumFonts.regular.rawValue, size: 16))
                         Text(methodology.example)
@@ -51,6 +52,7 @@ struct MethodologySpentsView: View {
                         .padding()
                 }
             }
+        }
                 .navigationTitle("Método 50-15-35")
                 .font(.custom(EnumFonts.semibold.rawValue, size: 17))
                 .navigationBarTitleDisplayMode(.automatic)
