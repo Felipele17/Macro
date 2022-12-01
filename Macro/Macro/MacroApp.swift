@@ -68,9 +68,10 @@ struct MacroApp: App {
                                 .environmentObject(invite)
                                 .onReceive(onboardingViewModel.$onboardingFinished, perform: { _ in
                                     let spentsCards = onboardingViewModel.crateSpentCards(income: userDefault.userFloatIncome)
-                                    viewModel.spentsCards = spentsCards
-                                    viewModel.matrixSpent = [[],[],[]]
-                                    viewModel.methodologyGoals = onboardingViewModel.methodologyGoal
+                                    settingsViewModel.users = onboardingViewModel.users
+                                    spentViewModel.spentsCards = spentsCards
+                                    spentViewModel.dictionarySpent = [[], [], []]
+                                    goalViewModel.setMethodologyGoals(methodologyGoals: onboardingViewModel.methodologyGoal)
                                 })
                                 .onAppear {
                                     Task {

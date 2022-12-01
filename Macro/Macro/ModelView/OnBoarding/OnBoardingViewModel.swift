@@ -15,9 +15,15 @@ class OnBoardingViewModel: ObservableObject {
     @Published var onboardingPage: Int = 0
     @Published var incomeTextField: String = ((UserDefault.getIncome() == 0.0 ? "" : String(UserDefault.getIncome()).replacingOccurrences(of: ".", with: ",").transformToMoney()) ?? "")
     @Published private var invite = Invite.shared
+    @Published var isSheetShare = false
     private var cloud = CloudKitModel.shared
     private let methodologySpent = MethodologySpent(valuesPercent: [50, 35, 15], namePercent: ["Essencial", "Prioridade", "Lazer"], nameCategory: "50-35-15")
+    var users: [User] = []
     let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
+    
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(sendShare), name: UIPasteboard.changedNotification, object: nil)
+    }
     
     func checkOnboardingFinished() {
         onboardingFinished = invite.isReady()
@@ -28,6 +34,10 @@ class OnBoardingViewModel: ObservableObject {
             return EnumButtonText.shareButton.rawValue
         }
         return EnumButtonText.nextButton.rawValue
+    }
+    
+    @objc func sendShare(notification: Notification) {
+        isSheetShare.toggle()
     }
     
     // MARK: Cloud
@@ -54,15 +64,18 @@ class OnBoardingViewModel: ObservableObject {
             }
             guard let username = self.invite.cleanName(name: participantsNames.first) else { return }
             guard let partenername = self.invite.cleanName(name: participantsNames.last) else { return }
-
-            let user = User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent)
+            
             UserDefault.setUsername(username: username)
             
             Task.init {
                 try? await cloud.post(model: methodologySpent)
             }
             Task.init {
-                try? await cloud.post(model: user)
+                users.append(User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent))
+                users.append(User( name: partenername, income: 0.0, dueData: 21, partner: username, notification: [1, 2], methodologySpent: methodologySpent))
+                if let user = users.first {
+                    try? await cloud.post(model: user)
+                }
             }
         }
         Task.init {
@@ -73,6 +86,12 @@ class OnBoardingViewModel: ObservableObject {
         }
         Task.init {
             await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
+        }
+        Task.init {
+            await cloud.saveNotification(recordType: Goal.getType(), database: .dataPrivate)
+        }
+        Task.init {
+            await cloud.saveNotification(recordType: Spent.getType(), database: .dataPrivate)
         }
     }
     
