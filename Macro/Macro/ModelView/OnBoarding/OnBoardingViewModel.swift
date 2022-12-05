@@ -21,10 +21,6 @@ class OnBoardingViewModel: ObservableObject {
     var users: [User] = []
     let methodologyGoal = MethodologyGoal(weeks: 52, crescent: true)
     
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(sendShare), name: UIPasteboard.changedNotification, object: nil)
-    }
-    
     func checkOnboardingFinished() {
         onboardingFinished = invite.isReady()
     }
@@ -34,10 +30,6 @@ class OnBoardingViewModel: ObservableObject {
             return EnumButtonText.shareButton.rawValue
         }
         return EnumButtonText.nextButton.rawValue
-    }
-    
-    @objc func sendShare(notification: Notification) {
-        isSheetShare.toggle()
     }
     
     // MARK: Cloud
@@ -73,13 +65,20 @@ class OnBoardingViewModel: ObservableObject {
             Task.init {
                 users.append(User( name: username, income: income, dueData: 21, partner: partenername, notification: [1, 2], methodologySpent: methodologySpent))
                 users.append(User( name: partenername, income: 0.0, dueData: 21, partner: username, notification: [1, 2], methodologySpent: methodologySpent))
+                DispatchQueue.main.async {
+                    self.onboardingFinished = true
+                }
                 if let user = users.first {
                     try? await cloud.post(model: user)
                 }
             }
         }
         Task.init {
-            try? await cloud.post(model: methodologyGoal)
+            do {
+                try await cloud.post(model: methodologyGoal)
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         Task.init {
             await cloud.saveNotification(recordType: Goal.getType(), database: .dataShare)

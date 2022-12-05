@@ -73,6 +73,8 @@ struct MacroApp: App {
                                     spentViewModel.dictionarySpent = [[], [], []]
                                     goalViewModel.setMethodologyGoals(methodologyGoals: onboardingViewModel.methodologyGoal)
                                     
+                                    viewModel.users = onboardingViewModel.users
+                                    viewModel.methodologyGoals = onboardingViewModel.methodologyGoal
                                     viewModel.methodologySpent = onboardingViewModel.methodologySpent
                                     viewModel.matrixSpent = spentViewModel.dictionarySpent
                                     viewModel.spentsCards = spentViewModel.spentsCards
@@ -103,19 +105,6 @@ struct MacroApp: App {
             } else {
                 NoNetView()
             }
-
         }
-        .onChange(of: scenePhase) { (newScenePhase) in
-                   switch newScenePhase {
-                   case .active:
-                       print("scene is active!")
-                   case .inactive:
-                       print("scene is now inactive!")
-                   case .background:
-                       print("scene is now in the background!")
-                   @unknown default:
-                       print("Apple must have added something new!")
-                   }
-               }
     }
 }

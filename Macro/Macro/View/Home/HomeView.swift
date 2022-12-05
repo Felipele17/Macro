@@ -17,7 +17,7 @@ struct HomeView: View {
         NavigationStack(path: $pathController.path) {
             ScrollView {
                 HStack {
-                    Text("Olá, \(UserDefault.getUsername())!")
+                    Text("Olá, \(settingsViewModel.users.first?.name ?? "...")!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding(.top)
                     Spacer()
