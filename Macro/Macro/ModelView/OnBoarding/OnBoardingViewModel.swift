@@ -81,16 +81,10 @@ class OnBoardingViewModel: ObservableObject {
             }
         }
         Task.init {
-            await cloud.saveNotification(recordType: Goal.getType(), database: .dataShare)
+            await cloud.saveNotification(recordType: Goal.getType())
         }
         Task.init {
-            await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
-        }
-        Task.init {
-            await cloud.saveNotification(recordType: Goal.getType(), database: .dataPrivate)
-        }
-        Task.init {
-            await cloud.saveNotification(recordType: Spent.getType(), database: .dataPrivate)
+            await cloud.saveNotification(recordType: Spent.getType())
         }
     }
     

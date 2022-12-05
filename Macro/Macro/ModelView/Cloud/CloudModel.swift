@@ -28,12 +28,12 @@ class CloudKitModel: ObservableObject {
 
         }
         Task.init {
-            await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
+            await saveNotification(recordType: "cloudkit.share")
         }
     }
     
     // MARK: PushNotification
-    func saveNotification(recordType: String, database: EnumDatabase) async {
+    func saveNotification(recordType: String) async {
         
         // Create a subscription with an ID that's unique within the scope of
         // the user's private database.
@@ -65,10 +65,8 @@ class CloudKitModel: ObservableObject {
         // Set an appropriate QoS and add the operation to the private
         // database's operation queue to execute it.
         operation.qualityOfService = .utility
-        switch database {
-        case .dataPrivate:
-            databasePrivate.add(operation)
-        case .dataShare:
+        databasePrivate.add(operation)
+        if recordType != "cloudkit.share"{
             databaseShared.add(operation)
         }
         
@@ -230,7 +228,7 @@ class CloudKitModel: ObservableObject {
                 
             }
             share = try await getShare()
-            await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
+            await saveNotification(recordType: "cloudkit.share")
             DispatchQueue.main.async {
                 Invite.shared.isReceivedInviteAccepted = false
                 Invite.shared.isSendInviteAccepted = false
