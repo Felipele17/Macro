@@ -40,7 +40,7 @@ class CloudKitModel: ObservableObject {
         let subscription = CKDatabaseSubscription(subscriptionID: "\(recordType)-changes")
         
         // Scope the subscription to just the 'FeedItem' record type.
-//        subscription.recordType = "\(recordType)"
+        subscription.recordType = "\(recordType)"
         
         // Configure the notification so that the system delivers it silently
         // and, therefore, doesn't require permission from the user.

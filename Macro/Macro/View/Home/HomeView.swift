@@ -13,6 +13,7 @@ struct HomeView: View {
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
+    @EnvironmentObject var observableDataBase: ObservableDataBase
     var body: some View {
         NavigationStack(path: $pathController.path) {
             ScrollView {
@@ -72,6 +73,10 @@ struct HomeView: View {
             }
             .navigationDestination(for: EnumViewNames.self ) { destination in
                 pathController.pushPath(destination: destination)
+            }
+            .refreshable {
+                observableDataBase.needFetchSpent = true
+                observableDataBase.needFetchGoal = true
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
             .navigationBarTitleDisplayMode(.large)

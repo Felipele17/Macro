@@ -31,6 +31,7 @@ struct MacroApp: App {
                             .environmentObject(viewModel)
                             .environmentObject(pathController)
                             .environmentObject(settingsViewModel)
+                            .environmentObject(observableDataBase)
                             .onAppear {
                                 spentViewModel.dictionarySpent = viewModel.matrixSpent
                                 spentViewModel.spentsCards = viewModel.spentsCards
