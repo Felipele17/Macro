@@ -28,19 +28,19 @@ class CloudKitModel: ObservableObject {
 
         }
         Task.init {
-            await saveNotification(recordType: "cloudkit.share")
+            await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
         }
     }
     
     // MARK: PushNotification
-    func saveNotification(recordType: String) async {
+    func saveNotification(recordType: String, database: EnumDatabase) async {
         
         // Create a subscription with an ID that's unique within the scope of
         // the user's private database.
         let subscription = CKDatabaseSubscription(subscriptionID: "\(recordType)-changes")
         
         // Scope the subscription to just the 'FeedItem' record type.
-        subscription.recordType = "\(recordType)"
+//        subscription.recordType = "\(recordType)"
         
         // Configure the notification so that the system delivers it silently
         // and, therefore, doesn't require permission from the user.
@@ -65,8 +65,10 @@ class CloudKitModel: ObservableObject {
         // Set an appropriate QoS and add the operation to the private
         // database's operation queue to execute it.
         operation.qualityOfService = .utility
-        databasePrivate.add(operation)
-        if recordType != "cloudkit.share"{
+        switch database {
+        case .dataPrivate:
+            databasePrivate.add(operation)
+        case .dataShare:
             databaseShared.add(operation)
         }
         
@@ -228,7 +230,7 @@ class CloudKitModel: ObservableObject {
                 
             }
             share = try await getShare()
-            await saveNotification(recordType: "cloudkit.share")
+            await saveNotification(recordType: "cloudkit.share", database: .dataPrivate)
             DispatchQueue.main.async {
                 Invite.shared.isReceivedInviteAccepted = false
                 Invite.shared.isSendInviteAccepted = false

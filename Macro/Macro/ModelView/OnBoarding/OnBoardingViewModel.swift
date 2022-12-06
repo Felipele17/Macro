@@ -79,12 +79,19 @@ class OnBoardingViewModel: ObservableObject {
             } catch let error {
                 print(error.localizedDescription)
             }
+            
         }
         Task.init {
-            await cloud.saveNotification(recordType: Goal.getType())
+            await cloud.saveNotification(recordType: Goal.getType(), database: .dataShare)
         }
         Task.init {
-            await cloud.saveNotification(recordType: Spent.getType())
+            await cloud.saveNotification(recordType: Spent.getType(), database: .dataShare)
+        }
+        Task.init {
+            await cloud.saveNotification(recordType: Goal.getType(), database: .dataPrivate)
+        }
+        Task.init {
+            await cloud.saveNotification(recordType: Spent.getType(), database: .dataPrivate)
         }
     }
     
