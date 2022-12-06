@@ -44,7 +44,7 @@ struct HomeView: View {
 
                     }
                 }
-                .padding(.top)
+                //.padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5)
                     .environmentObject(goalViewModel)
                     .onAppear {

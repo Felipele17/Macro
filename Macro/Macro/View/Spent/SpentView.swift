@@ -24,7 +24,7 @@ struct SpentView: View {
                     .font(.custom(EnumFonts.regular.rawValue, size: 17))
                     .padding(.leading)
                 HStack {
-                    Text("Gasto Essenciais")
+                    Text("Gastos")
                         .font(.custom(EnumFonts.bold.rawValue, size: 28))
                     Spacer()
                     NavigationLink {
