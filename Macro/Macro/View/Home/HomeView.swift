@@ -13,11 +13,12 @@ struct HomeView: View {
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     @EnvironmentObject var spentViewModel: SpentViewModel
     @EnvironmentObject var goalViewModel: GoalViewModel
+    @EnvironmentObject var observableDataBase: ObservableDataBase
     var body: some View {
         NavigationStack(path: $pathController.path) {
             ScrollView {
                 HStack {
-                    Text("Olá, \(UserDefault.getUsername())!")
+                    Text("Olá, \(settingsViewModel.users.first?.name ?? "...")!")
                     .font(.custom(EnumFonts.bold.rawValue, size: 34))
                     .padding(.top)
                     Spacer()
@@ -44,7 +45,7 @@ struct HomeView: View {
 
                     }
                 }
-                .padding(.top)
+                //.padding(.top)
                 CarouselView( width: UIScreen.screenWidth*53/64, heigth: UIScreen.screenHeight/5)
                     .environmentObject(goalViewModel)
                     .onAppear {
@@ -72,6 +73,10 @@ struct HomeView: View {
             }
             .navigationDestination(for: EnumViewNames.self ) { destination in
                 pathController.pushPath(destination: destination)
+            }
+            .refreshable {
+                observableDataBase.needFetchSpent = true
+                observableDataBase.needFetchGoal = true
             }
             .background(Color(EnumColors.backgroundScreen.rawValue))
             .navigationBarTitleDisplayMode(.large)

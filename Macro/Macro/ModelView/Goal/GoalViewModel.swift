@@ -14,6 +14,9 @@ class GoalViewModel: ObservableObject {
     var methodologyGoals: MethodologyGoal?
     
     func setMethodologyGoals(methodologyGoals: MethodologyGoal?) {
+        if methodologyGoals == nil{
+            print("methodologyGoals = nil")
+        }
         self.selectedGoal = Goal.mockGoals(methodologyGoals: methodologyGoals)
         self.methodologyGoals = methodologyGoals
     }

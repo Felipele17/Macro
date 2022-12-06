@@ -17,8 +17,7 @@ struct OnBoardingView: View {
     private let dotAppearance = UIPageControl.appearance()
     
     var body: some View {
-        
-        NavigationView {
+        NavigationView{
             VStack {
                 TabView(selection: $viewModel.onboardingPage) {
                     OnBoardingPageTypeOneView(onboarding: pages[0])
@@ -58,7 +57,6 @@ struct OnBoardingView: View {
                         if Invite.shared.isReady() {
                             let money = UserDefault.getIncome()
                             viewModel.initialPosts(income: money)
-                            viewModel.onboardingFinished = true
                         } else {
                             viewModel.sharingInvite()
                         }
@@ -90,21 +88,21 @@ struct OnBoardingView: View {
                         }
                         .alert("Deseja cancelar o compartilhamento?", isPresented: $showingAlert) {
                             Button(role: .cancel) { }
-                            label: {
-                                Text("Não")
-                            }
+                        label: {
+                            Text("Não")
+                        }
                             Button("Sim") {
                                 viewModel.deleteShare()
                             }
                         }
-
+                        
                     }
                 }
                 
             }
             .padding(24)
-        }.accentColor(Color(EnumColors.buttonColor.rawValue))
-        .navigationViewStyle(StackNavigationViewStyle())
+            .background(Color(EnumColors.backgroundScreen.rawValue))
+        }
         .onAppear {
             dotAppearance.currentPageIndicatorTintColor = UIColor(Color(EnumColors.dotAppearing.rawValue))
             dotAppearance.pageIndicatorTintColor = UIColor(Color(EnumColors.dotNotAppearing.rawValue))
